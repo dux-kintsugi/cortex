@@ -1,5 +1,8 @@
 # 🧠 Cortex — Brain Training
 
+**Live app:** https://dux-kintsugi.github.io/cortex/ — open it on any device,
+Add to Home Screen on iPhone, and it works fully offline after the first load.
+
 A self-contained cognitive performance trainer: **assess** your baseline across 7
 cognitive domains, get a **personalized daily training plan**, and play **12 adaptive
 games** that target your weakest areas. Progress is tracked with charts, streaks and
