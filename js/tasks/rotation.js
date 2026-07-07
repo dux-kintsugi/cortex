@@ -7,6 +7,8 @@
    Shapes are generated as cell sets and transformed on the cell
    coordinates (no CSS transforms); achiral shapes are rejected
    so the answer is always well-defined.
+   Survival: no duration cutoff — play until 3 wrong answers (or
+   the engine's 300s cap); primary = pairs answered correctly.
    ============================================================ */
 (function () {
   'use strict';
@@ -35,6 +37,8 @@
     // primary = net correct pairs per minute = (correct − wrong) / min.
     norms: { metric: 'netPerMin', mean: 8, sd: 3.5, higherIsBetter: true },
     fmtPrimary: s => (Math.round(s.primary * 10) / 10) + ' pairs/min',
+    survival: true,
+    fmtSurvival: s => 'Solved ' + s.metrics.correct + ' before 3 strikes',
 
     run(ctx) {
       const cellCount = 4 + Math.floor(ctx.level / 3);
@@ -129,10 +133,13 @@
       }
 
       function updateHud() {
-        ctx.hud.progress(Math.min((ctx.now() - startedAt) / ctx.durationMs, 1));
+        const frac = Math.min((ctx.now() - startedAt) / ctx.durationMs, 1);
+        ctx.hud.progress(ctx.survival ? Math.max(frac, wrong / 3) : frac);
         const done = correct + wrong;
-        ctx.hud.stat('Pair ' + (done + 1) + ' · ✓ ' + correct + ' · ✗ ' + wrong +
-          (done ? ' · ' + Math.round(correct / done * 100) + '%' : ''));
+        ctx.hud.stat(ctx.survival
+          ? 'Pair ' + (done + 1) + ' · ✓ ' + correct + ' · Strikes ' + wrong + '/3'
+          : 'Pair ' + (done + 1) + ' · ✓ ' + correct + ' · ✗ ' + wrong +
+            (done ? ' · ' + Math.round(correct / done * 100) + '%' : ''));
       }
 
       function nextPair() {
@@ -168,6 +175,11 @@
         else { wrong++; half.wrong++; }
         ctx.feedback(ok);
         updateHud();
+        if (ctx.survival && wrong >= 3) {
+          // third strike: keep the pair frozen while the flash shows, then end
+          ctx.timeout(end, 550);
+          return;
+        }
         ctx.timeout(nextPair, ok ? 280 : 550);
       }
 
@@ -176,11 +188,13 @@
       ctx.keys({ ArrowLeft: () => answer(false), ArrowRight: () => answer(true) });
 
       // progress heartbeat + hard stop at the time budget (even mid-pair,
-      // so ctx.finish is reached even if the user never answers)
+      // so ctx.finish is reached even if the user never answers).
+      // In survival, ctx.durationMs is the engine's 300s cap.
       ctx.interval(() => {
         if (!ctx.running || ended) return;
         const elapsed = ctx.now() - startedAt;
-        ctx.hud.progress(Math.min(elapsed / ctx.durationMs, 1));
+        const frac = Math.min(elapsed / ctx.durationMs, 1);
+        ctx.hud.progress(ctx.survival ? Math.max(frac, wrong / 3) : frac);
         if (elapsed >= ctx.durationMs) end();
       }, 250);
 
@@ -199,7 +213,7 @@
         const half2 = n1 && n2 ? Math.round((h2.correct - h2.wrong) / halfMin * 10) / 10 : null;
         ctx.hud.progress(1);
         ctx.finish({
-          primary: netPerMin,
+          primary: ctx.survival ? correct : netPerMin,
           levelProgress: BT.clamp((acc - 0.60) / (0.85 - 0.60), 0, 1),
           metrics: {
             netPerMin: Math.round(netPerMin * 10) / 10,

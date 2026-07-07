@@ -70,6 +70,21 @@ Export/import backups from **Settings** to move progress between devices.
 | 🖼️ Memory Matrix | Visual Memory | Pattern recall staircase |
 | ➗ Number Sprint | Number Fluency | Mental arithmetic |
 | 📖 Word Pairs | Verbal Memory | Paired-associate recognition |
+| 🎯 Flanker | Executive | Eriksen flanker interference |
+| 🔗 Trail Blazer | Speed | Trail Making A/B |
+| 🛰️ Orbit Tracker | Attention | Multiple object tracking |
+| 👀 Flicker | Visual Memory | Change detection |
+| 🥁 Tempo | Speed | Sensorimotor synchronization |
+| ✨ Flash Count | Number Fluency | Numerosity estimation |
+| 🎧 Dual N-Back | Working Memory | Position + audio letter streams |
+| 🗼 Tower | Executive | Tower of London planning |
+
+**Variety systems**: daily sessions are picked by domain-weakness × recency starvation
+(games you haven't seen bubble up, same-domain repeats are penalized, max 2 brand-new
+games per session) — no two sessions feel alike. Four games grow new rules at levels
+11–12 (reverse Stroop, stop-signal Go/No-Go, sequencing span, drifting search).
+**💀 Survival mode** (12 games): play until 3 mistakes, raw endurance score.
+**Challenge modifiers**: ~half of daily challenges roll ⚡Sprint, 🏔Marathon, or 🎪High Wire.
 
 ## Honest fine print
 

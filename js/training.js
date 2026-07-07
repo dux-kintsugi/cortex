@@ -26,43 +26,85 @@
     return BT.state.plan;
   };
 
-  /* ---------------- Today's session ---------------- */
+  /* ---------------- Today's session (variety-aware) ----------------
+     Deterministic per day. Weights combine: domain weakness (from the plan)
+     × recency starvation (games you haven't seen in a while bubble up)
+     × a soft same-domain penalty. Recency is frozen to *before today* so the
+     lineup never changes mid-day as you play. Max 2 never-played games per
+     session so a content drop doesn't turn training into a tutorial marathon. */
   BT.todaysGames = function () {
     const plan = BT.state.plan;
     const allIds = BT.taskOrder.slice();
     if (!allIds.length) return [];
-    const rnd = BT.rng(BT.hashStr(BT.dayKey() + ':' + (plan ? plan.generatedAt : 0)));
+    const today = BT.dayKey();
+    const rnd = BT.rng(BT.hashStr(today + ':' + (plan ? plan.generatedAt : 0)));
 
-    if (!plan) return BT.shuffle(allIds, rnd).slice(0, SESSION_SIZE);
+    // last play BEFORE today (mid-day stability)
+    const lastPlayed = {};
+    for (const s of BT.state.sessions) {
+      if (s.mode !== 'assess' && BT.dayKey(s.ts) !== today) lastPlayed[s.taskId] = s.ts;
+    }
+    const NEVER = 8;
+    const starve = id => lastPlayed[id] == null ? NEVER
+      : BT.clamp(BT.daysBetween(BT.dayKey(lastPlayed[id]), today), 0.5, NEVER);
+    const isNew = id => lastPlayed[id] == null;
 
     const chosen = [];
-    const usedDomains = [];
+    const domainCount = {};
+    let newCount = 0;
 
-    function pickFromDomain(dk) {
-      const pool = BT.tasksByDomain(dk).map(t => t.id).filter(id => chosen.indexOf(id) === -1);
-      if (!pool.length) return false;
-      chosen.push(pool[Math.floor(rnd() * pool.length)]);
-      usedDomains.push(dk);
-      return true;
-    }
-
-    if (plan.focus.length) pickFromDomain(plan.focus[0]);
-
-    while (chosen.length < SESSION_SIZE - 1) {
-      const candidates = BT.DOMAIN_KEYS.filter(dk => usedDomains.indexOf(dk) === -1);
-      if (!candidates.length) break;
-      const total = candidates.reduce((s, dk) => s + (plan.weights[dk] || 50), 0);
+    function weightedPick(pool, weightFn) {
+      let usable = pool.filter(id => chosen.indexOf(id) === -1 &&
+        (!isNew(id) || newCount < 2));
+      // fresh installs: everything is "new" — the cap must not starve the session
+      if (!usable.length) usable = pool.filter(id => chosen.indexOf(id) === -1);
+      if (!usable.length) return null;
+      const weights = usable.map(weightFn);
+      const total = weights.reduce((s, w) => s + w, 0);
       let r = rnd() * total;
-      let picked = candidates[candidates.length - 1];
-      for (const dk of candidates) { r -= (plan.weights[dk] || 50); if (r <= 0) { picked = dk; break; } }
-      if (!pickFromDomain(picked)) usedDomains.push(picked);
+      for (let i = 0; i < usable.length; i++) {
+        r -= weights[i];
+        if (r <= 0) return usable[i];
+      }
+      return usable[usable.length - 1];
     }
 
-    const rest = allIds.filter(id => chosen.indexOf(id) === -1);
-    if (rest.length && chosen.length < SESSION_SIZE) {
-      chosen.push(rest[Math.floor(rnd() * rest.length)]);
+    function commit(id) {
+      if (!id) return;
+      chosen.push(id);
+      const dk = BT.tasks[id].domain;
+      domainCount[dk] = (domainCount[dk] || 0) + 1;
+      if (isNew(id)) newCount++;
     }
-    return chosen.slice(0, SESSION_SIZE);
+
+    if (!plan) {
+      // no assessment yet — pure variety rotation
+      while (chosen.length < SESSION_SIZE) {
+        const pick = weightedPick(allIds, id => starve(id));
+        if (!pick) break;
+        commit(pick);
+      }
+      return chosen;
+    }
+
+    // Slot 1: weakest domain — always trained, rotating by starvation within it.
+    if (plan.focus.length) {
+      const pool = BT.tasksByDomain(plan.focus[0]).map(t => t.id);
+      commit(weightedPick(pool, id => starve(id)));
+    }
+
+    // Remaining slots: weakness × starvation × soft same-domain penalty.
+    while (chosen.length < SESSION_SIZE) {
+      const pick = weightedPick(allIds, id => {
+        const dk = BT.tasks[id].domain;
+        const domainW = (plan.weights[dk] || 50);
+        const repeatPenalty = Math.pow(0.25, domainCount[dk] || 0);
+        return domainW * starve(id) * repeatPenalty;
+      });
+      if (!pick) break;
+      commit(pick);
+    }
+    return chosen;
   };
 
   BT.todaysProgress = function () {
@@ -184,13 +226,23 @@
     });
   };
 
-  /* ---------------- Daily challenge (seeded 3-game gauntlet) ---------------- */
+  /* ---------------- Daily challenge (seeded 3-game gauntlet) ----------------
+     ~Half of days roll a modifier — the twist keeps day 40 from feeling like day 4. */
+  BT.CHALLENGE_MODS = {
+    sprint:   { name: '⚡ Sprint', blurb: 'Rounds 25% shorter — pure pace.', durationScale: 0.75 },
+    marathon: { name: '🏔 Marathon', blurb: 'Rounds 40% longer — hold your focus.', durationScale: 1.4 },
+    highwire: { name: '🎪 High Wire', blurb: 'Every game one level above yours.', levelOffset: 1 },
+  };
+
   BT.todaysChallenge = function () {
     const day = BT.dayKey();
     const rnd = BT.rng(BT.hashStr(day + ':challenge'));
     const ids = BT.shuffle(BT.taskOrder.slice(), rnd).slice(0, 3);
+    const roll = rnd();
+    const modKey = roll < 0.5 ? null : roll < 0.7 ? 'sprint' : roll < 0.85 ? 'marathon' : 'highwire';
     return {
       games: ids.map((id, i) => ({ taskId: id, seed: BT.hashStr(day + ':' + id + ':' + i) })),
+      modifier: modKey ? Object.assign({ key: modKey }, BT.CHALLENGE_MODS[modKey]) : null,
       done: BT.state.challengeDays[day] != null,
       score: BT.state.challengeDays[day],
     };
@@ -205,13 +257,15 @@
         const combined = Math.round(BT.mean(scores.filter(s => s != null)));
         BT.state.challengeDays[BT.dayKey()] = combined;
         BT.save();
-        showChallengeFinale(combined, () => { if (onDone) onDone({ completed: true, combined }); });
+        showChallengeFinale(combined, ch.modifier, () => { if (onDone) onDone({ completed: true, combined }); });
         return;
       }
       BT.runTask({
         taskId: ch.games[i].taskId,
         mode: 'challenge',
         rngSeed: ch.games[i].seed,
+        durationScale: ch.modifier ? ch.modifier.durationScale : undefined,
+        levelOffset: ch.modifier ? ch.modifier.levelOffset : undefined,
         seq: { index: i + 1, total: ch.games.length },
         onDone: res => {
           if (!res) { if (onDone) onDone({ completed: false, aborted: true }); return; }
@@ -314,12 +368,13 @@
       tagChips()), onClose);
   }
 
-  function showChallengeFinale(combined, onClose) {
+  function showChallengeFinale(combined, modifier, onClose) {
     // yesterday's challenge, if any, for comparison
     const y = new Date(); y.setDate(y.getDate() - 1);
     const prev = BT.state.challengeDays[BT.dayKey(y.getTime())];
     ceremonyLayer(el('div', null,
       el('h2', { text: 'Challenge complete ⚔️' }),
+      modifier ? el('div', { class: 'pill focus', style: 'margin-bottom:8px;', text: modifier.name + ' modifier' }) : null,
       el('div', { class: 'streak-big', style: 'font-size:2.2rem;', text: String(combined) }),
       el('div', { class: 'small muted', text: 'combined score · 3 seeded games — same boards for everyone who plays today' }),
       prev != null ? el('div', { class: 'r-delta ' + (combined > prev ? 'up' : combined < prev ? 'down' : ''), style: 'margin-top:8px;', text: 'yesterday: ' + prev }) : null),

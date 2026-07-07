@@ -5,6 +5,10 @@
    random ink color. Respond with the INK color, not the word,
    via 4 fixed buttons or keys 1–4. Incongruent trials get more
    frequent with level; from level 5 a response deadline applies.
+   Twist (levels 11–12): REVERSE Stroop — answer the WORD, ignore
+   the ink. L11 is all-reverse; L12 alternates normal/reverse
+   every ~10 trials. Survival mode: play until 3 total errors
+   (wrong + timeouts) or the 300s cap; primary = correct answers.
    ============================================================ */
 (function () {
   'use strict';
@@ -26,9 +30,10 @@
       'Answer with the INK COLOR, never the word itself.',
       'Tap Red / Blue / Green / Yellow, or press keys 1–4.',
       'From level 5: answer before the deadline or it counts as wrong.',
+      'Levels 11–12: REVERSE rounds flip the rule — answer the WORD, ignore the ink. The line above the word shows the active rule.',
     ],
 
-    maxLevel: 10,
+    maxLevel: 12,
     assessLevel: 3,
     startLevel: 3,
     assessDurationMs: 75000,
@@ -39,10 +44,18 @@
     fmtPrimary: s => Math.round(s.primary) + '/min · interference ' +
       Math.round((s.metrics && s.metrics.interference) || 0) + 'ms',
 
+    survival: true,
+    fmtSurvival: s => Math.round(s.primary) + ' correct before 3 strikes',
+
     run(ctx) {
       // Level knobs
       const incongruentP = Math.min(0.4 + 0.04 * ctx.level, 0.8);
       const deadlineMs = ctx.level >= 5 ? Math.max(2600 - 150 * ctx.level, 1100) : 0;
+      // Twist knobs (levels 11–12): reverse Stroop. L11 = every trial
+      // reversed; L12 = alternate normal/reverse blocks of ~10 trials.
+      const twist = ctx.level >= 11;
+      const reverseAt = idx => twist &&
+        (ctx.level < 12 || Math.floor(idx / 10) % 2 === 0);
       // CVD assist: swap to a colorblind-safe word/ink set (read once per round).
       const colors = (BT.state.settings && BT.state.settings.cvdAssist) ? COLORS_CVD : COLORS;
 
@@ -55,6 +68,7 @@
       let live = false;        // a stimulus is on screen awaiting response
       let shownAt = 0;
       let deadlineTimer = null;
+      let reverseNow = reverseAt(0); // rule for the trial on screen
 
       const stim = el('div', { class: 'stim' });
       const msg = el('div', { class: 'task-msg', text: 'Answer with the INK color' });
@@ -82,9 +96,13 @@
 
       function updateHud() {
         const total = correct + wrong;
-        ctx.hud.stat('Trial ' + (total + 1) + (total
+        let line = 'Trial ' + (total + 1) + (total
           ? ' · ' + Math.round((correct / total) * 100) + '%'
-          : ''));
+          : '');
+        // At twist levels, spell out the rule for the upcoming trial.
+        if (twist) line = (reverseAt(trialIdx) ? 'Answer the WORD' : 'Answer the INK') + ' · ' + line;
+        if (ctx.survival) line = 'Strikes ' + Math.min(wrong, 3) + '/3 · ' + line;
+        ctx.hud.stat(line);
       }
 
       function makeStim() {
@@ -111,7 +129,15 @@
 
       function nextTrial() {
         if (!ctx.running) return;
+        // In survival ctx.durationMs is the engine's 300s cap, so this
+        // doubles as the survival hard stop.
         if (ctx.now() - startedAt >= ctx.durationMs) return end();
+        reverseNow = reverseAt(trialIdx);
+        if (twist) {
+          msg.textContent = reverseNow
+            ? 'REVERSE — answer the WORD, ignore the ink'
+            : 'Answer with the INK color';
+        }
         cur = makeStim();
         stim.className = 'stim ink-' + cur.ink;
         stim.textContent = WORDS[cur.word];
@@ -127,6 +153,7 @@
             ctx.feedback(false);
             stim.textContent = '';
             updateHud();
+            if (ctx.survival && wrong >= 3) return end();
             ctx.timeout(nextTrial, 350);
           }, deadlineMs);
         }
@@ -139,7 +166,7 @@
         const rt = ctx.now() - shownAt;
         const half = halves[trialIdx % 2];
         trialIdx++; half.n++;
-        if (color === cur.ink) {
+        if (color === (reverseNow ? cur.word : cur.ink)) {
           correct++; half.c++;
           (cur.congruent ? rtCongruent : rtIncongruent).push(rt);
           ctx.feedback(true);
@@ -149,6 +176,7 @@
         }
         stim.textContent = '';
         updateHud();
+        if (ctx.survival && wrong >= 3) return end();
         ctx.timeout(nextTrial, 350);
       }
 
@@ -176,7 +204,8 @@
         const haveHalves = halves[0].n > 0 && halves[1].n > 0;
         ctx.hud.progress(1);
         ctx.finish({
-          primary: netPerMin,
+          // Survival: primary = correct answers achieved before 3 strikes.
+          primary: ctx.survival ? correct : netPerMin,
           levelProgress: BT.clamp((acc - 0.70) / (0.90 - 0.70), 0, 1),
           metrics: {
             netPerMin, correct, wrong, timeouts, trials: total,

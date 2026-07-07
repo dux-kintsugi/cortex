@@ -6,6 +6,10 @@
    Levels 5+: conjunction search — a blue T among blue Ls and
    red Ts. Tap the target to clear the board; wrong taps count
    as errors and the same board continues.
+   Levels 11–12: drifting tiles — the whole board slowly wanders
+   (±14px sinusoidal per tile) so pop-out never settles.
+   Survival: no duration cutoff — play until 3 errors (or the
+   engine's 300s cap); primary = boards found.
    ============================================================ */
 (function () {
   'use strict';
@@ -24,7 +28,7 @@
       'From level 5: find the BLUE T among blue Ls and red Ts.',
     ],
 
-    maxLevel: 10,
+    maxLevel: 12,
     assessLevel: 3,
     startLevel: 3,
     assessDurationMs: 75000,
@@ -33,11 +37,14 @@
     // primary = net boards per minute = (solved − errors) / min.
     norms: { metric: 'netPerMin', mean: 9, sd: 3.5, higherIsBetter: true },
     fmtPrimary: s => (Math.round(s.primary * 10) / 10) + ' boards/min',
+    survival: true,
+    fmtSurvival: s => 'Found ' + s.metrics.solved + ' boards before 3 strikes',
 
     run(ctx) {
       const setSize = 9 + 3 * ctx.level;
       const cols = Math.ceil(Math.sqrt(setSize));
       const conjunction = ctx.level >= 5;
+      const drifting = ctx.level >= 11;
       const ROTATIONS = [0, 90, 180, 270];
 
       let solved = 0, errors = 0;
@@ -45,6 +52,7 @@
       let targetTile = null;
       let boardStart = 0;
       const findTimes = [];
+      const driftTiles = [];     // {node, ax, ay} — rebuilt per board
       const halfNet = [0, 0], halfN = [0, 0]; // split-half: taps bucketed by attempt parity
       const startedAt = ctx.now();
 
@@ -54,7 +62,8 @@
       });
       const msg = el('div', {
         class: 'task-msg',
-        text: conjunction ? 'Tap the blue T' : 'Tap the T',
+        text: (conjunction ? 'Tap the blue T' : 'Tap the T') +
+          (drifting ? ' — the tiles won’t sit still' : ''),
       });
       ctx.container.appendChild(el('div', { class: 'stage-center' }, msg, board));
 
@@ -74,7 +83,9 @@
       }
 
       function updateHud() {
-        ctx.hud.stat('Boards ' + solved + ' · Errors ' + errors);
+        ctx.hud.stat(ctx.survival
+          ? 'Boards ' + solved + ' · Strikes ' + errors + '/3'
+          : 'Boards ' + solved + ' · Errors ' + errors);
       }
 
       // spec: {letter, ink} — ink '' for feature-search boards
@@ -108,6 +119,16 @@
             ? makeTile(target, true)
             : makeTile(distractors.pop(), false));
         }
+        if (drifting) {
+          driftTiles.length = 0;
+          for (let i = 0; i < board.children.length; i++) {
+            driftTiles.push({
+              node: board.children[i],
+              ax: ctx.rng() * 2 * Math.PI,
+              ay: ctx.rng() * 2 * Math.PI,
+            });
+          }
+        }
         boardStart = ctx.now();
         updateHud();
       }
@@ -140,16 +161,37 @@
           tile.classList.add('bad');
           ctx.feedback(false);
           updateHud();
+          if (ctx.survival && errors >= 3) {
+            busy = true; // freeze the board while the last strike flashes
+            ctx.timeout(end, 400);
+            return;
+          }
           ctx.timeout(() => { tile.classList.remove('bad'); }, 400);
         }
       }
       ctx.listen(board, 'pointerdown', onTap);
 
+      // levels 11–12: tiles wander ±14px sinusoidally, phase-offset per tile
+      if (drifting) {
+        ctx.interval(() => {
+          if (!ctx.running) return;
+          const t = (ctx.now() - startedAt) / 1000;
+          for (let i = 0; i < driftTiles.length; i++) {
+            const d = driftTiles[i];
+            d.node.style.transform = 'translate(' +
+              (14 * Math.sin(1.3 * t + d.ax)).toFixed(1) + 'px,' +
+              (14 * Math.sin(1.7 * t + d.ay)).toFixed(1) + 'px)';
+          }
+        }, 50);
+      }
+
       // clock: drives the progress bar and guarantees the round ends
+      // (in survival ctx.durationMs is the engine's 300s cap)
       ctx.interval(() => {
         if (!ctx.running) return;
         const elapsed = ctx.now() - startedAt;
-        ctx.hud.progress(Math.min(elapsed / ctx.durationMs, 1));
+        const frac = Math.min(elapsed / ctx.durationMs, 1);
+        ctx.hud.progress(ctx.survival ? Math.max(frac, errors / 3) : frac);
         if (elapsed >= ctx.durationMs) end();
       }, 200);
 
@@ -162,7 +204,7 @@
         const bothHalves = halfN[0] > 0 && halfN[1] > 0;
         ctx.hud.progress(1);
         ctx.finish({
-          primary: netPerMin,
+          primary: ctx.survival ? solved : netPerMin,
           // advance band tests accuracy: down < .75, up = 1.0 (zero errors)
           levelProgress: attempts ? BT.clamp((acc - 0.75) / (1 - 0.75), 0, 1) : 0,
           metrics: {

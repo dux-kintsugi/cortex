@@ -180,6 +180,9 @@
         ch.done
           ? el('div', { class: 'sub', text: 'Done — combined score ' + ch.score + '. New gauntlet tomorrow.' })
           : el('div', null,
+              ch.modifier ? el('div', { style: 'margin-bottom:8px;' },
+                el('span', { class: 'pill focus', text: ch.modifier.name }),
+                el('span', { class: 'small muted', text: ' ' + ch.modifier.blurb })) : null,
               el('div', { class: 'sub', style: 'margin-bottom:12px;', text:
                 '3 seeded games at your levels: ' + ch.games.map(g => BT.tasks[g.taskId] ? BT.tasks[g.taskId].icon : '❓').join(' ') +
                 ' — the boards are the same for the whole day, so the score is pure you.' }),
@@ -301,6 +304,13 @@
       el('div', { class: 'small muted', text: 'Level (max ' + def.maxLevel + ')' }),
       el('div', { class: 'btn-row', style: 'justify-content:center;' },
         el('button', { class: 'btn ghost', text: 'Cancel', onclick: () => ov.close() }),
+        def.survival ? el('button', {
+          class: 'btn', text: '💀 Survival', title: 'Play until 3 mistakes — how long can you last?',
+          onclick: () => {
+            ov.close();
+            BT.runTask({ taskId: def.id, mode: 'survival', level: lvl, onDone: () => BT.go('games') });
+          },
+        }) : null,
         el('button', {
           class: 'btn primary', text: 'Play', onclick: () => {
             ov.close();

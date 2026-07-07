@@ -5,6 +5,8 @@
    SHAPE), then a colored shape appears. COLOR: red → LEFT,
    blue → RIGHT. SHAPE: ● → LEFT, ▲ → RIGHT. The rule flips
    more often at higher levels; answer within 2.5s.
+   Survival mode: play until 3 total errors (wrong + timeouts)
+   or the 300s cap; primary = correct answers achieved.
    ============================================================ */
 (function () {
   'use strict';
@@ -33,6 +35,9 @@
     norms: { metric: 'netPerMin', mean: 30, sd: 9, higherIsBetter: true },
     fmtPrimary: s => (Math.round(s.primary * 10) / 10) + '/min · switch cost ' +
       (s.metrics && s.metrics.switchCost != null ? s.metrics.switchCost + 'ms' : '—'),
+
+    survival: true,
+    fmtSurvival: s => Math.round(s.primary) + ' correct before 3 strikes',
 
     run(ctx) {
       const DEADLINE = 2500;
@@ -68,15 +73,22 @@
         el('div', { class: 'choice-row' }, leftBtn, rightBtn)));
 
       function updateHud() {
-        ctx.hud.stat('Trial ' + (trials + 1) + ' · ✓ ' + correct + ' · ✗ ' + wrong);
+        // `wrong` already includes timeouts, so it IS the strike count.
+        let line = 'Trial ' + (trials + 1) + ' · ✓ ' + correct + ' · ✗ ' + wrong;
+        if (ctx.survival) line = 'Strikes ' + Math.min(wrong, 3) + '/3 · ' + line;
+        ctx.hud.stat(line);
       }
       ctx.interval(() => {
         if (!ctx.running) return;
-        ctx.hud.progress(Math.min((ctx.now() - startedAt) / ctx.durationMs, 1));
+        const frac = Math.min((ctx.now() - startedAt) / ctx.durationMs, 1);
+        // Survival: the 300s cap barely moves the bar — track strikes too.
+        ctx.hud.progress(ctx.survival ? Math.max(frac, wrong / 3) : frac);
       }, 250);
 
       function nextTrial() {
         if (!ctx.running) return;
+        // In survival ctx.durationMs is the engine's 300s cap, so this
+        // doubles as the survival hard stop.
         if (ctx.now() - startedAt > ctx.durationMs) return end();
 
         if (rule == null) {
@@ -113,6 +125,7 @@
           trials++; wrong++; timeouts++;
           ctx.feedback(false);
           stim.style.opacity = '.25';
+          if (ctx.survival && wrong >= 3) return end();
           ctx.timeout(nextTrial, 650);
         }, DEADLINE);
       }
@@ -135,6 +148,7 @@
         }
         stim.style.opacity = '.25';
         updateHud();
+        if (ctx.survival && wrong >= 3) return end();
         ctx.timeout(nextTrial, side === correctSide ? 350 : 650);
       }
 
@@ -159,7 +173,8 @@
         const half2 = n1 && n2 ? Math.round((h2.correct - h2.wrong) / halfMin * 10) / 10 : null;
         ctx.hud.progress(1);
         ctx.finish({
-          primary: netPerMin,
+          // Survival: primary = correct answers achieved before 3 strikes.
+          primary: ctx.survival ? correct : netPerMin,
           levelProgress: BT.clamp((acc - 0.70) / (0.90 - 0.70), 0, 1),
           metrics: {
             netPerMin: Math.round(netPerMin * 10) / 10,

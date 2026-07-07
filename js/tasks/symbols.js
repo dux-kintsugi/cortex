@@ -5,6 +5,8 @@
    A big glyph appears; answer with its digit (keyboard 1..9
    or the on-screen keypad). Immediate feedback, then the next
    glyph. From level 6 the legend reshuffles at half time.
+   Survival (ctx.survival): no clock — play until 3 wrong
+   answers (or the engine's 300s cap); primary = correct count.
    ============================================================ */
 (function () {
   'use strict';
@@ -36,10 +38,14 @@
     // primary = net correct per minute: (correct − wrong) / minutes.
     norms: { metric: 'netPerMin', mean: 26, sd: 8, higherIsBetter: true },
     fmtPrimary: s => Math.round(s.primary) + ' correct/min',
+    survival: true,
+    fmtSurvival: s => 'Matched ' + s.metrics.correct + ' symbols before 3 strikes',
 
     run(ctx) {
       const N = N_BY_LEVEL[BT.clamp(ctx.level, 1, N_BY_LEVEL.length) - 1];
       const reshuffles = ctx.level >= 6;
+      const survival = !!ctx.survival;
+      const STRIKES = 3;
 
       // glyphs[i] ↔ digits[i]; digits are a permutation of 1..N
       const glyphs = BT.shuffle(GLYPHS, ctx.rng).slice(0, N);
@@ -68,7 +74,9 @@
         legendRow,
         el('div', { class: 'stim-box' }, stim),
         keypad,
-        el('div', { class: 'task-msg', text: 'Match the symbol to its digit' })));
+        el('div', { class: 'task-msg', text: survival
+          ? 'Match the symbol to its digit — 3 misses ends the run'
+          : 'Match the symbol to its digit' })));
 
       const keyMap = {};
       for (let d = 1; d <= N; d++) keyMap[String(d)] = () => answer(d);
@@ -85,6 +93,10 @@
 
       function updateStat() {
         if (ctx.now() < statHoldUntil) return;
+        if (survival) {
+          ctx.hud.stat('✓ ' + correct + ' · strikes ' + wrong + '/' + STRIKES);
+          return;
+        }
         const minutes = (ctx.now() - startedAt) / 60000;
         const rate = minutes > 0 ? Math.round((correct - wrong) / minutes) : 0;
         ctx.hud.stat('✓ ' + correct + ' · ✗ ' + wrong + ' · net ' + rate + '/min');
@@ -118,6 +130,7 @@
         updateStat();
         ctx.timeout(() => {
           if (!ctx.running || ended) return;
+          if (survival && wrong >= STRIKES) return end();
           if (ctx.now() - startedAt >= ctx.durationMs) return end();
           locked = false;
           nextGlyph();
@@ -126,10 +139,14 @@
 
       // Heartbeat: progress bar, half-time reshuffle, and the
       // duration cutoff (a stimulus can otherwise wait forever).
+      // In survival ctx.durationMs is the engine's 300s cap, so the
+      // same elapsed check enforces it; strikes drive the bar instead.
       ctx.interval(() => {
         if (!ctx.running || ended) return;
         const elapsed = ctx.now() - startedAt;
-        ctx.hud.progress(elapsed / ctx.durationMs);
+        ctx.hud.progress(survival
+          ? Math.max(elapsed / ctx.durationMs, wrong / STRIKES)
+          : elapsed / ctx.durationMs);
         if (reshuffles && !reshuffled && elapsed >= ctx.durationMs / 2) {
           reshuffled = true;
           digits = BT.shuffle(digits, ctx.rng);
@@ -153,7 +170,7 @@
         const haveHalves = halves[0].n > 0 && halves[1].n > 0;
         ctx.hud.progress(1);
         ctx.finish({
-          primary: (correct - wrong) / minutes,
+          primary: survival ? correct : (correct - wrong) / minutes,
           levelProgress: BT.clamp((acc - 0.75) / (0.92 - 0.75), 0, 1),
           metrics: {
             correct, wrong, attempts,

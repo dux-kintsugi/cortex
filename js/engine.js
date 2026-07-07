@@ -41,25 +41,32 @@
 
   /* ---------------- Task runner ----------------
      BT.runTask({
-       taskId, mode: 'assess'|'train'|'free'|'challenge',
+       taskId, mode: 'assess'|'train'|'free'|'challenge'|'survival',
        level, rngSeed,               // rngSeed => deterministic stimuli
+       levelOffset, durationScale,   // challenge modifiers
        seq: {index, total} | null,
        onDone(result|null)           // null => quit or voided round
      })
+     'survival' (tasks with def.survival): play until 3 errors; primary =
+     what you survived; no percentile score, no level adaptation.
   ------------------------------------------------- */
+  const SURVIVAL_CAP_MS = 300000;
+
   BT.runTask = function (opts) {
     const def = BT.tasks[opts.taskId];
     if (!def) { console.error('[Cortex] unknown task', opts.taskId); if (opts.onDone) opts.onDone(null); return; }
 
     const mode = opts.mode || 'free';
+    const isSurvival = mode === 'survival';
     const level = BT.clamp(
-      opts.level != null ? opts.level
+      (opts.level != null ? opts.level
         : mode === 'assess' ? def.assessLevel
-        : BT.taskLevel(def.id),
+        : BT.taskLevel(def.id)) + (opts.levelOffset || 0),
       1, def.maxLevel);
-    const durationMs = mode === 'assess'
-      ? (def.assessDurationMs || 75000)
-      : (def.trainDurationMs || def.assessDurationMs || 90000);
+    const durationMs = isSurvival ? SURVIVAL_CAP_MS
+      : Math.round((mode === 'assess'
+        ? (def.assessDurationMs || 75000)
+        : (def.trainDurationMs || def.assessDurationMs || 90000)) * (opts.durationScale || 1));
 
     /* ----- layer skeleton ----- */
     const quitBtn = el('button', { class: 't-quit', text: '✕', 'aria-label': 'Quit' });
@@ -178,7 +185,7 @@
       const pills = el('div', { class: 'ti-domain' },
         el('span', { class: 'pill', text: domain.icon + ' ' + domain.name }),
         ' ',
-        el('span', { class: 'pill', text: mode === 'assess' ? 'Assessment' : mode === 'challenge' ? 'Challenge' : 'Level ' + level }));
+        el('span', { class: 'pill', text: mode === 'assess' ? 'Assessment' : mode === 'challenge' ? 'Challenge' : isSurvival ? '💀 Survival · Lv ' + level : 'Level ' + level }));
       const howList = el('ul', null, def.howTo.map(line => el('li', { text: line })));
       const startBtn = el('button', {
         class: 'btn primary big', text: 'Start',
@@ -313,6 +320,7 @@
         mode, level,
         durationMs: isPractice ? Math.min(PRACTICE_MS, durationMs) : durationMs,
         practice: isPractice,
+        survival: isSurvival,
         container: stage,
         rng: opts.rngSeed != null ? BT.rng((opts.rngSeed >>> 0) + (isPractice ? 999 : 0)) : Math.random,
         now: () => performance.now(),
@@ -395,9 +403,10 @@
       if (quitDlg) { quitDlg.close(); quitDlg = null; }
       releaseWake();
 
-      const score = BT.stats.scoreFromNorms(summary.primary, def.norms);
-      const prevScore = BT.lastScore(def.id);
-      const prevBest = BT.bestScore(def.id);
+      // Survival rounds have no percentile meaning — record raw, score null.
+      const score = isSurvival ? null : BT.stats.scoreFromNorms(summary.primary, def.norms);
+      const prevScore = isSurvival ? null : BT.lastScore(def.id);
+      const prevBest = isSurvival ? null : BT.bestScore(def.id);
       const history = BT.state.sessions
         .filter(s => s.taskId === def.id && s.score != null &&
           (mode === 'assess' ? s.mode === 'assess' : s.mode !== 'assess'))
@@ -415,11 +424,13 @@
         }
       }
 
-      const ability = level + BT.clamp(summary.levelProgress != null ? summary.levelProgress : 0.5, 0, 1);
+      const ability = isSurvival ? null
+        : level + BT.clamp(summary.levelProgress != null ? summary.levelProgress : 0.5, 0, 1);
 
       const rec = {
         ts: Date.now(), taskId: def.id, mode, level,
-        score, primary: summary.primary, ability: Math.round(ability * 10) / 10,
+        score, primary: summary.primary,
+        ability: ability == null ? null : Math.round(ability * 10) / 10,
         band, sem: sem == null ? null : Math.round(sem * 10) / 10,
         metrics: m,
       };
@@ -469,7 +480,9 @@
           d > 0 ? '▲ +' + d + ' vs last time' : d < 0 ? '▼ ' + d + ' vs last time' : '— same as last time');
       }
 
-      const primaryText = def.fmtPrimary ? def.fmtPrimary(o.summary) : null;
+      const primaryText = isSurvival
+        ? (def.fmtSurvival ? def.fmtSurvival(o.summary) : 'Survived ' + Math.round(o.summary.primary) + ' before 3 strikes')
+        : (def.fmtPrimary ? def.fmtPrimary(o.summary) : null);
       const pbBanner = isPB ? el('div', { class: 'pb-banner', text: '🏆 New personal best!' }) : null;
 
       veil.innerHTML = '';
@@ -482,7 +495,7 @@
           ? el('div', { class: 'small muted', style: 'margin-bottom:6px;', text: '±' + Math.ceil(o.sem) + ' typical wobble on one round' })
           : null,
         deltaEl,
-        mode !== 'assess'
+        mode !== 'assess' && o.ability != null
           ? el('div', { class: 'small muted', style: 'margin-bottom:10px;', text: 'Ability ' + o.ability.toFixed(1) + ' / ' + (def.maxLevel + 1) })
           : null,
         o.leveledUp ? el('div', { class: 'r-level', text: '⬆ Level up! Next: level ' + BT.state.levels[def.id] }) : null,

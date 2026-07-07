@@ -333,3 +333,134 @@ inside the instructions screen (`box` is an empty `.intro-demo` div). Return a
 function that stops all animation timers; the engine calls it when the round
 starts or the layer closes. Use plain setInterval here (pre-ctx phase). Keep it
 under ~160px tall. Best for paradigms that text can't explain (n-back).
+
+---
+
+# CONTRACT v3 — Variety expansion
+
+Engine additions tasks may rely on:
+- `ctx.survival` (bool): survival mode — IGNORE the normal duration end; play until
+  3 total errors (wrong answers + timeouts) OR elapsed > ctx.durationMs (300s cap).
+  `primary` = count of correct answers achieved. Engine records score/ability as null,
+  never adapts levels. Tasks that support it set `survival: true` in the def and may
+  provide `fmtSurvival(summary) -> string`. levelProgress/advance are ignored in
+  survival — still return them (any value) so the shape is uniform.
+- `BT.runTask` accepts `levelOffset` / `durationScale` (challenge modifiers) — no task
+  changes needed; ctx.level/ctx.durationMs arrive pre-adjusted.
+- Existing v2 rules all apply (levelProgress, half1/half2, ctx.feedback for throughput
+  games, ctx.practice early-exit for trial-based games, ctx.rng for ALL randomness,
+  optional introDemo).
+
+## New game specs (8 modules)
+
+### flanker.js — “Flanker” (executive) · survival: yes
+Row of 5 arrows in `.stim` (e.g. ← ← → ← ←). Respond to the CENTER arrow only:
+LEFT/RIGHT `.choice` buttons + ArrowLeft/ArrowRight. Incongruent ratio = min(.35+.04·level, .75);
+level ≥ 5 adds response deadline max(2400−150·level, 1100)ms (timeout = error, feedback(false)).
+Never same center direction more than 3 in a row. Duration 75s/90s. primary = net correct/min.
+norms mean 28 sd 9 higher. assessLevel 3. advance acc ≥.92 up / <.72 down.
+metrics.flankerEffect = medianRT(incongruent) − medianRT(congruent), correct trials.
+fmtPrimary `X/min · interference Yms`. introDemo optional but welcome (static 2-frame).
+
+### trails.js — “Trail Blazer” (speed) · survival: yes
+Scattered tappable nodes (absolutely-positioned round divs ≥48px inside a relatively-
+positioned board div sized to the stage; rejection-sample non-overlapping positions with
+ctx.rng, ≥8px gaps; read container.clientWidth/Height AFTER appending, then place).
+Levels 1–4: numbers 1..(6+level) in order (Trails A). Level ≥5: alternate 1-A-2-B-…,
+total nodes = 8 + level (Trails B). Tap correct next node → it dims + shows ✓ (stays
+visible); wrong node → error, bad feedback, board continues. Board done → new board.
+Duration 75/90s. primary = net correct taps/min = (correctTaps − errors)/min.
+norms mean 40 sd 12 higher. advance acc ≥.93/<.75. fmtPrimary `X taps/min`.
+
+### mot.js — “Orbit Tracker” (attention) · survival: yes (3 wrong picks total)
+Canvas (square, min(container width, container height − 40px)). Round: T = 2+ceil(level/3)
+targets flash accent for 1.5s among D total dots (D = 7 + level, cap 16, radius ~12px);
+then all identical (muted) and drift for 6+level·0.3 s: constant speed (55+9·level px/s),
+wall bounce, small per-frame heading jitter from ctx.rng, dot-dot collision not required.
+Freeze → user taps T dots (nearest-dot hit test ≤ 28px, tapped dots highlight; no re-tap).
+Reveal correct/incorrect, score round = correct picks. Rounds until duration (75/90s).
+primary = 100 · totalCorrectPicks / totalTargets. norms mean 75 sd 15 higher.
+advance primary ≥92/<60. Animation: requestAnimationFrame loop with the id kept and
+cancelled via ctx.onCleanup AND guarded by ctx.running (rAF is allowed here — the loop
+must self-terminate when !ctx.running). halves by round parity. fmtPrimary `X% tracked`.
+
+### flicker.js — “Flicker” (memory) · survival: yes
+Change-blindness board: grid g×g (g = 4 below level 5, 5 below 8, else 6) of glyph tiles
+(glyphs from ◆▲●★✚☾♠⬢✦, each tinted one of 4 ink classes). Cycle: version A 700ms →
+all-hidden blank 250ms → version B 700ms → blank … A and B differ in EXACTLY one tile
+(different glyph OR different ink). Tapping any tile at any time = answer: the changing
+tile → solved (good feedback), new board; else error (bad feedback), same board continues.
+Duration 75/90s. primary = net boards/min = (solved − errors)/min. norms mean 4.5 sd 2
+higher. advance acc ≥.9/<.65. halves by board parity. fmtPrimary `X boards/min`.
+
+### tempo.js — “Tempo” (speed) · survival: no
+Sensorimotor synchronization. A round = 3 cycles. Cycle: metronome beats at IOI =
+60000/(70+6·level) ms — 8 audible beats (tone + big visual pulse dot), user taps along
+(tap-pad or SPACE) from beat 3; then SILENT continuation: user keeps tapping 10 more
+intervals with no cues (pulse dot freezes). Asynchrony per continuation tap =
+|tapTime − (lastBeatTime + k·IOI)|, capped at IOI/2. primary = mean asynchrony ms across
+all continuation taps (LOWER better). norms mean 85 sd 35 higherIsBetter:false.
+advance primary ≤50 up / >120 down. Missing taps (gap > 1.6·IOI) count as one 'skipped'
+interval, asynchrony IOI/2, and advance k accordingly — resync so one miss doesn't cascade.
+Trial-based (~70s). If sound is OFF (BT.state.settings.sound false) show a visible
+countdown-style pulse for audible phase — the game stays playable silently.
+halves odd/even continuation taps. levelProgress from advance thresholds (inverted).
+fmtPrimary `±X ms timing drift`.
+
+### flashcount.js — “Flash Count” (math) · survival: yes (3 out-of-tolerance)
+Numerosity: canvas flashes N dots for 450ms (N drawn per trial: min 3+level, max 8+3·level,
+cap 45; non-overlapping rejection sampling; dot radius jittered ±30% via ctx.rng so area
+isn't a reliable cue). Then `.keypad` estimate + OK. Tolerance: exact for N ≤ 6, else
+|est−N|/N ≤ 0.15 = correct. Feedback shows true N briefly. Duration 60/75s.
+primary = mean per-trial accuracy ×100 where per-trial accuracy = max(0, 1 − |est−N|/N).
+norms mean 82 sd 8 higher. advance: correctRate ≥.9 up / <.7 down (correctRate = tolerance
+hits / trials). halves trial parity. fmtPrimary `X% estimation accuracy`.
+
+### dualnback.js — “Dual N-Back” (workingMemory) · survival: no
+Two simultaneous streams: 3×3 grid position (as nback.js) + spoken letter
+(speechSynthesis, letters C H K L Q R S T, utterance rate 1.1, cancel() in ctx.onCleanup).
+N: level 1–2→1, 3–6→2, 7+→3. ISI = max(2800 − 70·level, 2100)ms, stim 500ms.
+Trials = 20 + N. Independent target streams: each forced to round(0.25·(T−N)) matches at
+lag N exactly (reuse nback's sequence trick per stream). Buttons: POSITION (key A) and
+SOUND (key L) — both may be pressed in one trial window; per-stream latches.
+Scoring per stream: (hits − FA)/targets ×100 floor −100; primary = mean of the two.
+norms mean 45 sd 22 higher. advance ≥75/<35. If speechSynthesis is unavailable OR sound
+is off, ALSO render the letter as text under the grid (visual-visual fallback — note it
+in hud.stat once). practice: N+2 trials. halves trial parity (pooled streams).
+fmtPrimary `N-back ×2 · X%`. introDemo strongly recommended (copy nback's pattern, add
+a letter row).
+
+### tower.js — “Tower” (executive) · survival: no
+Tower of London. 3 pegs with capacities 3/2/1 rendered as tap targets (columns of disc
+slots built from tiles); 3 discs (ink-red/blue/yellow). State space is tiny (36 states) —
+embed a BFS solver. Per puzzle: pick a random goal + start (ctx.rng) whose BFS distance
+d matches the level band: d = 2 + floor(level/2) (cap 7). Show goal as a mini readonly
+diagram above the interactive pegs. Interaction: tap source peg (top disc lifts/highlights)
+→ tap destination peg (respects capacity; illegal → shake/bad beep, not an error count).
+Move counter vs minimum shown live. Puzzle solved → good feedback; solved in d moves =
+'perfect'. New puzzle until duration (75/90s) or 8 puzzles. primary = perfect solves/min.
+norms mean 2.2 sd 1.1 higher. advance: perfect/solved ≥.75 up / <.4 down (0 solved → down).
+practice: one d=2 puzzle. halves puzzle parity. fmtPrimary `X perfect/min`.
+
+## Twist updates (4 existing modules — new HIGH-LEVEL behavior, maxLevel 10→12)
+
+- **stroop.js**: maxLevel 12. Levels 11–12 = REVERSE Stroop blocks: instruction line and
+  hud.stat flip to “answer the WORD, ignore the ink”; alternate normal/reverse every ~10
+  trials at L12. All existing level behavior below 11 unchanged.
+- **gonogo.js**: maxLevel 12. Levels 11–12 = Stop-Signal: on 25% of GO trials a loud
+  'bad'-style stop tone + red border fires 150–400ms (ctx.rng) after onset — responding
+  after the stop signal = error. hud.stat explains once. Below 11 unchanged.
+- **digitspan.js**: maxLevel 12. Levels 11–12 = sequencing span: recall digits in
+  ASCENDING order (duplicates avoided in generation); instruction + answer-line hint
+  update accordingly. Below 11 unchanged.
+- **search.js**: maxLevel 12. Levels 11–12 = drifting tiles: the whole board's tiles
+  slowly translate (CSS transform updated via ctx.interval ~50ms, ±14px sinusoidal,
+  phase-offset per tile) so pop-out never settles. Tap targets stay ≥44px. Below 11 unchanged.
+
+## Survival support (7 existing throughput modules)
+
+symbols, gonogo, search, rotation, stroop, switching, math: when `ctx.survival` is true —
+ignore the normal duration cutoff; end the round when (errors + timeouts) reaches 3 OR
+elapsed > ctx.durationMs (the 300s cap). `primary` = correct answers achieved.
+Set `survival: true` and add `fmtSurvival` (e.g. `s => 'Solved ' + s.metrics.correct + ' before 3 strikes'`).
+Normal modes must behave EXACTLY as before — survival is a pure addition.

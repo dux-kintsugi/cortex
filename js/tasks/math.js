@@ -4,6 +4,8 @@
    before the clock runs out. Level bands:
    1–2 add/sub · 3–4 adds × · 5–6 adds ÷ · 7+ two-step (a + b × c).
    Wrong answers keep the problem on screen; two misses skip it.
+   Survival mode: play until 3 wrong submits or the 300s cap;
+   primary = problems solved.
    ============================================================ */
 (function () {
   'use strict';
@@ -32,6 +34,8 @@
     // primary = net correct per minute = (correct − wrong) / minutes.
     norms: { metric: 'netPerMin', mean: 12, sd: 5, higherIsBetter: true },
     fmtPrimary: s => (Math.round(s.primary * 10) / 10) + ' problems/min',
+    survival: true,
+    fmtSurvival: s => 'Solved ' + s.metrics.correct + ' before 3 strikes',
 
     run(ctx) {
       const level = ctx.level;
@@ -162,6 +166,10 @@
 
       function updateHud() {
         const attempts = correct + wrong;
+        if (ctx.survival) {
+          ctx.hud.stat('Strikes ' + Math.min(wrong, 3) + '/3 · solved ' + correct);
+          return;
+        }
         ctx.hud.stat('Solved ' + correct + ' · errors ' + wrong +
           (attempts ? ' · ' + Math.round((correct / attempts) * 100) + '%' : ''));
       }
@@ -206,7 +214,12 @@
           typed = '';
           renderAnswer();
           updateHud();
-          if (misses >= 2) {
+          if (ctx.survival && wrong >= 3) {
+            // third strike — show the answer briefly, then end the run
+            accepting = false;
+            msg.textContent = 'Answer: ' + problem.answer;
+            ctx.timeout(() => { if (ctx.running) end(); }, 700);
+          } else if (misses >= 2) {
             skipped++;
             accepting = false;
             msg.textContent = 'Answer: ' + problem.answer;
@@ -219,11 +232,14 @@
         }
       }
 
-      // progress + hard time-up check (covers idle rounds too)
+      // progress + hard time-up check (covers idle rounds too).
+      // In survival ctx.durationMs is the engine's 300s cap, so this
+      // doubles as the survival hard stop; the bar tracks strikes too.
       ctx.interval(() => {
         if (!ctx.running) return;
         const t = ctx.now() - startedAt;
-        ctx.hud.progress(Math.min(t / ctx.durationMs, 1));
+        const frac = Math.min(t / ctx.durationMs, 1);
+        ctx.hud.progress(ctx.survival ? Math.max(frac, wrong / 3) : frac);
         if (t >= ctx.durationMs) end();
       }, 250);
 
@@ -237,7 +253,8 @@
         const hasHalves = halves[0].c + halves[0].w > 0 && halves[1].c + halves[1].w > 0;
         ctx.hud.progress(1);
         ctx.finish({
-          primary: netPerMin,
+          // Survival: primary = problems solved before 3 strikes.
+          primary: ctx.survival ? correct : netPerMin,
           // advance rule tests accuracy: down < 0.65, up ≥ 0.90
           levelProgress: BT.clamp((acc - 0.65) / (0.90 - 0.65), 0, 1),
           metrics: {

@@ -17,7 +17,19 @@
   L.unitState = id => (L.state.units[id] = L.state.units[id] || { grammar: false, vocab: false, reads: {}, quizBest: 0, done: false });
   L.isDone = id => !!(L.state.units[id] && L.state.units[id].done);
   L.isUnlocked = id => id === 1 || L.state.unlockAll || L.isDone(id - 1);
-  L.addXP = n => { L.state.xp += n; };
+  L.addXP = n => {
+    L.state.xp += n;
+    const today = dayStampPublic();
+    if (!L.state.xpDay || L.state.xpDay.day !== today) L.state.xpDay = { day: today, n: 0 };
+    L.state.xpDay.n += n;
+  };
+  L.xpToday = () => {
+    return (L.state.xpDay && L.state.xpDay.day === dayStampPublic()) ? L.state.xpDay.n : 0;
+  };
+  function dayStampPublic() {
+    const d = new Date();
+    return [d.getFullYear(), d.getMonth() + 1, d.getDate()].join('-');
+  }
 
   function dayStamp(offset = 0) {
     const d = new Date();
@@ -111,6 +123,7 @@
         <nav class="navlinks">
           <button class="navbtn ${c === 'home' ? 'on' : ''}" data-go="home">Course</button>
           <button class="navbtn ${c === 'review' ? 'on' : ''}" data-go="review">Review${due ? ` <span class="badge">${due}</span>` : ''}</button>
+          <button class="navbtn ${c === 'library' ? 'on' : ''}" data-go="library">Library</button>
           <button class="navbtn ${c === 'reference' ? 'on' : ''}" data-go="reference">Reference</button>
           <button class="navbtn ${c === 'guide' ? 'on' : ''}" data-go="guide">Guide</button>
         </nav>
@@ -129,6 +142,8 @@
     else if (c.view === 'unit') L.renderUnit(app, c.a, c.b);
     else if (c.view === 'review') L.renderReview(app);
     else if (c.view === 'reference') L.renderReference(app, c.a);
+    else if (c.view === 'library') L.renderLibrary(app);
+    else if (c.view === 'placement') L.renderPlacement(app);
     else if (c.view === 'guide') app.innerHTML = renderGuide();
     else app.innerHTML = renderHome();
   };
@@ -152,16 +167,72 @@
         <em>write</em> Latin. You only learn to read it.</p>
         <button class="btn big" data-go="unit|1">Begin · Unit I</button>
         <p class="mini"><button class="linkbtn" data-go="guide">How the course works</button></p>
-      </section>` : `
-      <section class="statsrow">
-        <div class="stat"><b>${doneCount}<span>/30</span></b><label>units complete</label></div>
-        <div class="stat"><b>${words}</b><label>words learned</label></div>
-        <div class="stat"><b>${L.state.streak}</b><label>day streak</label></div>
-        <div class="stat"><b>${L.state.xp}</b><label>XP</label></div>
-        <button class="btn big" data-go="unit|${nextId}">Continue · Unit ${L.roman(nextId)}</button>
-      </section>`;
+      </section>` : renderHodie(doneCount, words, nextId);
 
-    const stages = L.STAGES.map(s => {
+    const stages = renderStages();
+    return `${hero}${stages}
+      <p class="homefoot">Already know some Latin? <button class="linkbtn" data-go="placement">Take the placement exam</button>
+      — or simply <button class="linkbtn" data-action="unlock-all">unlock every unit</button>.</p>`;
+  }
+
+  // the very next thing to do inside the current unit
+  function nextStep() {
+    for (let i = 1; i <= L.TOTAL_UNITS; i++) {
+      if (!L.isUnlocked(i)) break;
+      if (L.isDone(i)) continue;
+      if (!L.units[i]) break;
+      const us = L.state.units[i] || {};
+      const readsDone = us.reads && us.reads[0] && us.reads[1];
+      if (!us.grammar) return { id: i, tab: 'grammar', label: 'read the grammar briefing' };
+      if (!us.vocab) return { id: i, tab: 'vocab', label: 'study the vocabulary deck' };
+      if (!readsDone) return { id: i, tab: 'read', label: 'read the stories' };
+      return { id: i, tab: 'quiz', label: 'take the quiz' };
+    }
+    return null;
+  }
+  L.nextStep = nextStep;
+
+  const XP_GOAL = 40;
+
+  function renderHodie(doneCount, words, nextId) {
+    const due = L.dueCount ? L.dueCount() : 0;
+    const step = nextStep();
+    const xpNow = L.xpToday();
+    const pct = Math.min(100, Math.round(100 * xpNow / XP_GOAL));
+    const tomorrow = L.dueTomorrow ? L.dueTomorrow() : 0;
+    return `
+      <section class="hodie">
+        <div class="hodie-head">
+          <h2>Hodiē — today</h2>
+          <div class="goal" title="daily goal: ${XP_GOAL} XP">
+            <span>🔥 ${L.state.streak} · ${xpNow}/${XP_GOAL} XP</span>
+            <div class="goalbar"><div class="goalfill${pct >= 100 ? ' full' : ''}" style="width:${pct}%"></div></div>
+          </div>
+        </div>
+        <div class="hodie-row">
+          <button class="hodie-tile ${due ? 'urgent' : 'quiet'}" data-go="review">
+            <b>${due}</b><span>${due === 1 ? 'word' : 'words'} to review</span>
+            <em>${due ? 'start here — 5 minutes' : 'all caught up ✓'}</em>
+          </button>
+          ${step ? `
+          <button class="hodie-tile" data-go="unit|${step.id}|${step.tab}">
+            <b>${L.roman(step.id)}</b><span>Unit ${L.roman(step.id)} · next step</span>
+            <em>${L.esc(step.label)}</em>
+          </button>` : `
+          <button class="hodie-tile" data-go="unit|${nextId}">
+            <b>${L.roman(nextId)}</b><span>continue the course</span><em>Unit ${L.roman(nextId)}</em>
+          </button>`}
+          <button class="hodie-tile quiet" data-go="library">
+            <b>${doneCount}<i>/30</i></b><span>units · ${words} words known</span>
+            <em>re-read a story you love</em>
+          </button>
+        </div>
+        ${tomorrow ? `<p class="mini hodie-cras">Crās — tomorrow: ${tomorrow} word${tomorrow === 1 ? '' : 's'} will be ripe for review. Come back for them.</p>` : ''}
+      </section>`;
+  }
+
+  function renderStages() {
+    return L.STAGES.map(s => {
       const cards = [];
       for (let id = s.range[0]; id <= s.range[1]; id++) {
         const u = L.units[id];
@@ -186,10 +257,33 @@
           <div class="ugrid">${cards.join('')}</div>
         </section>`;
     }).join('');
-
-    return `${hero}${stages}
-      <p class="homefoot">Already know some Latin? <button class="linkbtn" data-action="unlock-all">Unlock every unit</button>.</p>`;
   }
+
+  // ---------- keyboard shortcuts ----------
+  document.addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const card = document.getElementById('fcard');
+    if (card) {
+      const back = card.querySelector('.fcard-back');
+      const bar = document.getElementById('gradebar');
+      if ((e.key === ' ' || e.key === 'Enter') && back && back.hidden) { e.preventDefault(); card.click(); return; }
+      if (bar && !bar.hidden) {
+        if (e.key === '1') bar.querySelector('.again').click();
+        else if (e.key === '2' || e.key === 'Enter') bar.querySelector('.good').click();
+        else if (e.key === '3') bar.querySelector('.easy').click();
+      }
+      return;
+    }
+    const solo = document.querySelector('.qcard.solo');
+    if (solo) {
+      const nb = document.querySelector('#nextq');
+      if (e.key === 'Enter' && nb && !nb.hidden) { nb.click(); return; }
+      if (['1', '2', '3', '4'].includes(e.key) && !solo.querySelector('.qopt.correct, .qopt.wrong')) {
+        const opt = solo.querySelectorAll('.qopt')[+e.key - 1];
+        if (opt) opt.click();
+      }
+    }
+  });
 
   // ---------- guide ----------
   function renderGuide() {
@@ -197,7 +291,7 @@
       <article class="prose">
         <h1>How Legō works</h1>
         <p><strong>Legō</strong> is Latin for <em>I read</em> — and reading is the only skill this course
-        teaches. You will never be asked to compose, type, or decline anything. Every exercise is
+        teaches. You will never be asked to compose or type a word of Latin. Every exercise is
         recognition: read, tap, choose.</p>
 
         <h2>The shape of a unit</h2>
