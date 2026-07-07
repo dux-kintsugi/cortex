@@ -205,6 +205,11 @@
   const MAX_SESSIONS = 5000;
   BT.recordSession = function (rec) {
     BT.state.sessions.push(rec);
+    // All-time bests survive the session-cap trim (bestEver map, tiny).
+    if (rec.score != null) {
+      const be = (BT.state.bestEver = BT.state.bestEver || {});
+      if (be[rec.taskId] == null || rec.score > be[rec.taskId]) be[rec.taskId] = rec.score;
+    }
     if (BT.state.sessions.length > MAX_SESSIONS) {
       BT.state.sessions.splice(0, BT.state.sessions.length - MAX_SESSIONS);
     }
@@ -214,7 +219,8 @@
   /* ---------------- Session queries ---------------- */
   BT.sessionsFor = taskId => BT.state.sessions.filter(s => s.taskId === taskId);
   BT.bestScore = function (taskId) {
-    let best = null;
+    let best = (BT.state.bestEver && BT.state.bestEver[taskId]) != null
+      ? BT.state.bestEver[taskId] : null;
     for (const s of BT.state.sessions) {
       if (s.taskId === taskId && s.score != null && (best == null || s.score > best)) best = s.score;
     }

@@ -175,11 +175,14 @@
             ink: INKS[Math.floor(ctx.rng() * INKS.length)],
           });
         }
-        // version B: exactly one tile differs — glyph OR ink, 50/50
+        // version B: exactly one tile differs — glyph OR ink, 50/50.
+        // CVD assist: ink-only changes on a red/green-heavy palette can be
+        // invisible to colorblind players, so changes become glyph-only.
+        const cvd = !!(BT.state.settings && BT.state.settings.cvdAssist);
         cellsB = cellsA.map(c => ({ glyph: c.glyph, ink: c.ink }));
         changeIdx = Math.floor(ctx.rng() * total);
         const c = cellsB[changeIdx];
-        if (ctx.rng() < 0.5) c.glyph = pickOther(GLYPHS, c.glyph);
+        if (cvd || ctx.rng() < 0.5) c.glyph = pickOther(GLYPHS, c.glyph);
         else c.ink = pickOther(INKS, c.ink);
 
         tileEls.forEach(t => t.classList.remove('good', 'bad'));

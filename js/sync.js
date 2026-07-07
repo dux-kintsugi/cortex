@@ -14,8 +14,8 @@
 
   const MAX_SESSIONS = 5000; // mirrors the cap in core.js
 
-  const MODE_CHAR = { assess: 'a', train: 't', free: 'f', challenge: 'c' };
-  const CHAR_MODE = { a: 'assess', t: 'train', f: 'free', c: 'challenge' };
+  const MODE_CHAR = { assess: 'a', train: 't', free: 'f', challenge: 'c', survival: 's' };
+  const CHAR_MODE = { a: 'assess', t: 'train', f: 'free', c: 'challenge', s: 'survival' };
 
   /* ---------------- base64url <-> bytes ---------------- */
   // Chunked btoa: fromCharCode.apply on the whole array would blow the

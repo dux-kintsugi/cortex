@@ -32,8 +32,10 @@
     maxLevel: 12,
     assessLevel: 3,
     startLevel: 3,
-    assessDurationMs: 75000,
-    trainDurationMs: 90000,
+    // Generous budgets: a strong run legitimately takes 2+ minutes and the
+    // clock must never truncate the backward phase (engine void = this +180s).
+    assessDurationMs: 130000,
+    trainDurationMs: 150000,
 
     // primary = mean of best forward and best backward span lengths.
     norms: { metric: 'meanSpan', mean: 5.6, sd: 1.0, higherIsBetter: true },
@@ -120,7 +122,13 @@
       function nextTrial() {
         if (!ctx.running) return;
         if (ctx.practice && attempts >= 2) return end(); // warm-up: two attempts are enough
-        if (ctx.now() - startedAt > ctx.durationMs) return end(); // duration end (avoids engine overrun void)
+        if (ctx.now() - startedAt > ctx.durationMs) {
+          // Time can never ZERO the backward phase — a strong forward run must
+          // not produce a worse primary than a weak one. Jump to backward
+          // instead of ending; only end when time expires during backward.
+          if (phase === 'fwd') return endPhase();
+          return end();
+        }
         attemptsInPhase++;
         updateHud();
         state = 'show';

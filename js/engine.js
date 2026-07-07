@@ -407,9 +407,13 @@
       const score = isSurvival ? null : BT.stats.scoreFromNorms(summary.primary, def.norms);
       const prevScore = isSurvival ? null : BT.lastScore(def.id);
       const prevBest = isSurvival ? null : BT.bestScore(def.id);
+      // "vs your typical range" only makes sense against rounds of the SAME
+      // difficulty — same level, and not modifier-distorted challenge rounds.
       const history = BT.state.sessions
         .filter(s => s.taskId === def.id && s.score != null &&
-          (mode === 'assess' ? s.mode === 'assess' : s.mode !== 'assess'))
+          (mode === 'assess'
+            ? s.mode === 'assess'
+            : (s.mode === 'train' || s.mode === 'free') && s.level === level))
         .slice(-5).map(s => s.score);
 
       // Split-half noise band (SEM in score points)

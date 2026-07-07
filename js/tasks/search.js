@@ -7,7 +7,9 @@
    red Ts. Tap the target to clear the board; wrong taps count
    as errors and the same board continues.
    Levels 11–12: drifting tiles — the whole board slowly wanders
-   (±14px sinusoidal per tile) so pop-out never settles.
+   (±14px sinusoidal per tile: ±10px shared board sway + ±4px
+   per-tile jitter, so tiles never drift into each other) and
+   pop-out never settles.
    Survival: no duration cutoff — play until 3 errors (or the
    engine's 300s cap); primary = boards found.
    ============================================================ */
@@ -53,6 +55,7 @@
       let boardStart = 0;
       const findTimes = [];
       const driftTiles = [];     // {node, ax, ay} — rebuilt per board
+      const boardPhase = { x: 0, y: 0 }; // shared sway phase — re-rolled per board
       const halfNet = [0, 0], halfN = [0, 0]; // split-half: taps bucketed by attempt parity
       const startedAt = ctx.now();
 
@@ -120,6 +123,8 @@
             : makeTile(distractors.pop(), false));
         }
         if (drifting) {
+          boardPhase.x = ctx.rng() * 2 * Math.PI;
+          boardPhase.y = ctx.rng() * 2 * Math.PI;
           driftTiles.length = 0;
           for (let i = 0; i < board.children.length; i++) {
             driftTiles.push({
@@ -171,16 +176,22 @@
       }
       ctx.listen(board, 'pointerdown', onTap);
 
-      // levels 11–12: tiles wander ±14px sinusoidally, phase-offset per tile
+      // levels 11–12: tiles wander ±14px sinusoidally, phase-offset per tile.
+      // Split as ±10px shared board sway + ±4px per-tile jitter: the shared
+      // part cancels between any two tiles, so relative drift stays ≤ 8px per
+      // axis — below the 10px grid gap — and tiles can never overlap (a fair
+      // tap on the visible target must never hit-test to a neighbour).
       if (drifting) {
         ctx.interval(() => {
           if (!ctx.running) return;
           const t = (ctx.now() - startedAt) / 1000;
+          const swayX = 10 * Math.sin(1.3 * t + boardPhase.x);
+          const swayY = 10 * Math.sin(1.7 * t + boardPhase.y);
           for (let i = 0; i < driftTiles.length; i++) {
             const d = driftTiles[i];
             d.node.style.transform = 'translate(' +
-              (14 * Math.sin(1.3 * t + d.ax)).toFixed(1) + 'px,' +
-              (14 * Math.sin(1.7 * t + d.ay)).toFixed(1) + 'px)';
+              (swayX + 4 * Math.sin(1.3 * t + d.ax)).toFixed(1) + 'px,' +
+              (swayY + 4 * Math.sin(1.7 * t + d.ay)).toFixed(1) + 'px)';
           }
         }, 50);
       }

@@ -791,8 +791,21 @@
             inp.addEventListener('change', () => {
               const f = inp.files[0]; if (!f) return;
               f.text().then(t => {
-                try { BT.importJSON(t); BT.go('home'); }
-                catch (e) { alert('Import failed: ' + e.message); }
+                // Parse first so the confirm can show real numbers — a stray
+                // file pick must never silently wipe the device.
+                let parsed;
+                try {
+                  parsed = JSON.parse(t);
+                  if (!parsed || !Array.isArray(parsed.sessions)) throw new Error('Not a Cortex backup file');
+                } catch (e) { alert('Import failed: ' + e.message); return; }
+                BT.confirmDialog('Replace all progress on this device?',
+                  'This backup has ' + parsed.sessions.length + ' rounds; this device has ' +
+                  BT.state.sessions.length + '. Importing REPLACES everything here — for a merge that keeps both, use a sync code instead.',
+                  'Replace with backup',
+                  () => {
+                    try { BT.importJSON(t); BT.go('home'); }
+                    catch (e) { alert('Import failed: ' + e.message); }
+                  });
               });
             });
             document.body.appendChild(inp); inp.click();

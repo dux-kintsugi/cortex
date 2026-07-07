@@ -115,7 +115,8 @@
       const ys = series.flatMap(s => s.points.map(p => p.y));
       if (ys.length) {
         yMin = Math.max(0, Math.floor(Math.min.apply(null, ys) - 5));
-        yMax = Math.min(110, Math.ceil(Math.max.apply(null, ys) + 5));
+        // 135 headroom: ability×10 reaches 130 on maxLevel-12 games
+        yMax = Math.min(135, Math.ceil(Math.max.apply(null, ys) + 5));
         if (yMax - yMin < 10) { yMax = yMin + 10; }
       }
     }

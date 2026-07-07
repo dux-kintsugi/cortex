@@ -41,8 +41,9 @@
 
     // primary = net correct per minute = (correct − wrong) / minutes.
     norms: { metric: 'netPerMin', mean: 32, sd: 9, higherIsBetter: true },
-    fmtPrimary: s => Math.round(s.primary) + '/min · interference ' +
-      Math.round((s.metrics && s.metrics.interference) || 0) + 'ms',
+    fmtPrimary: s => Math.round(s.primary) + '/min' +
+      (s.metrics && s.metrics.interference != null
+        ? ' · interference ' + Math.round(s.metrics.interference) + 'ms' : ''),
 
     survival: true,
     fmtSurvival: s => Math.round(s.primary) + ' correct before 3 strikes',
@@ -62,7 +63,7 @@
       let correct = 0, wrong = 0, timeouts = 0;
       let trialIdx = 0;         // scored-trial counter for split-half buckets
       const halves = [{ c: 0, w: 0, n: 0 }, { c: 0, w: 0, n: 0 }];
-      const rtCongruent = [], rtIncongruent = []; // correct trials only
+      const rtCongruent = [], rtIncongruent = []; // correct NORMAL-rule trials only (reverse-Stroop excluded)
       let cur = null;          // { word, ink, congruent }
       let lastCombo = '';      // word|ink of previous trial
       let live = false;        // a stimulus is on screen awaiting response
@@ -168,7 +169,10 @@
         trialIdx++; half.n++;
         if (color === (reverseNow ? cur.word : cur.ink)) {
           correct++; half.c++;
-          (cur.congruent ? rtCongruent : rtIncongruent).push(rt);
+          // Interference pools take normal-rule trials only: reverse-Stroop
+          // (levels 11–12) measures a different construct and would corrupt
+          // the interference / medianRT* trends in gamedetail.
+          if (!reverseNow) (cur.congruent ? rtCongruent : rtIncongruent).push(rt);
           ctx.feedback(true);
         } else {
           wrong++; half.w++;
@@ -195,8 +199,10 @@
         const netPerMin = (correct - wrong) / minutes;
         const medCon = rtCongruent.length ? BT.median(rtCongruent) : null;
         const medInc = rtIncongruent.length ? BT.median(rtIncongruent) : null;
+        // null (not 0) when unmeasurable — e.g. all-reverse L11 rounds —
+        // so gamedetail skips the session instead of plotting a bogus 0.
         const interference = medCon != null && medInc != null
-          ? Math.round(medInc - medCon) : 0;
+          ? Math.round(medInc - medCon) : null;
         const total = correct + wrong;
         const acc = total ? correct / total : 0;
         // Split halves: net/min per parity bucket over half the elapsed time.

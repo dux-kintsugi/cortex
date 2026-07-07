@@ -5,8 +5,11 @@
    grid AND a letter is spoken (speechSynthesis). Press POSITION
    (A) when the tile matches the one N steps back; press SOUND
    (L) when the letter does. Both can match on the same step.
-   If speech is unavailable or sound is off, the letter is shown
-   as text under the grid instead (visual-visual fallback).
+   The letter is ALWAYS also rendered as text under the grid:
+   speech audibility is unverifiable from JS (the iOS silent
+   switch mutes speechSynthesis with no signal), so the visual
+   letter is the guaranteed on-time stimulus and speech plays
+   on top of it when available.
    ============================================================ */
 (function () {
   'use strict';
@@ -147,10 +150,15 @@
       const posTargets = posIsT.filter(Boolean).length;
       const sndTargets = sndIsT.filter(Boolean).length;
 
-      // Speech works only if the API exists AND sound is on; otherwise the
-      // letter is rendered as text under the grid (visual-visual fallback).
+      // Speech is attempted only if the API exists AND sound is on — but even
+      // then it may be inaudible (iOS silent switch / volume zero, invisible
+      // to JS) or start late / get cancelled (cold-start latency), so it is
+      // never load-bearing: the letter text under the grid carries the trial.
+      // onstart bookkeeping counts utterances that never actually began —
+      // reported in metrics only, never scored against the player.
       const synth = window.speechSynthesis;
       const speechOk = !!synth && !!(BT.state.settings && BT.state.settings.sound);
+      let speakAttempts = 0, speakStarts = 0;
       if (synth) ctx.onCleanup(() => { try { synth.cancel(); } catch (e) {} });
       function speak(letter) {
         try {
@@ -158,6 +166,8 @@
           const u = new SpeechSynthesisUtterance(letter);
           u.rate = 1.1;
           u.lang = 'en-US';
+          u.onstart = () => { if (ctx.running) speakStarts++; };
+          speakAttempts++;
           synth.speak(u);
         } catch (e) {}
       }
@@ -180,8 +190,8 @@
         tiles.push(t);
         board.appendChild(t);
       }
-      // Letter line under the grid — filled only in fallback mode, but always
-      // present so the layout doesn't jump.
+      // Letter line under the grid — filled EVERY trial: text is the
+      // guaranteed stimulus since speech may be silently muted or delayed.
       const letterEl = el('div', {
         style: 'font-size:2.4rem;font-weight:800;min-height:52px;line-height:52px;text-align:center;',
       });
@@ -214,12 +224,9 @@
         tile.classList.add('lit');
         ctx.timeout(() => tile.classList.remove('lit'), LIT_MS);
         const letter = LETTERS[sndSeq[trial]];
-        if (speechOk) {
-          speak(letter);
-        } else {
-          letterEl.textContent = letter;
-          ctx.timeout(() => { letterEl.textContent = ''; }, LIT_MS);
-        }
+        letterEl.textContent = letter;
+        ctx.timeout(() => { letterEl.textContent = ''; }, LIT_MS);
+        if (speechOk) speak(letter);
         ctx.timeout(endTrial, ISI);
       }
 
@@ -278,6 +285,8 @@
             n: N, trials: TOTAL,
             posTargets, posHits, posMisses, posFA, posScore: Math.round(posScore),
             sndTargets, sndHits, sndMisses, sndFA, sndScore: Math.round(sndScore),
+            speechAttempts: speakAttempts,
+            speechDropped: Math.max(0, speakAttempts - speakStarts),
             half1, half2,
           },
           advance: primary >= 75 ? 'up' : primary < 35 ? 'down' : 'hold',
@@ -286,7 +295,8 @@
 
       ctx.hud.progress(0);
       ctx.hud.stat(N + '-back ×2 · get ready…' +
-        (speechOk ? '' : ' (no speech — letters shown as text)'));
+        (speechOk ? ' (letters spoken + shown as text)'
+          : ' (no speech — letters shown as text)'));
       ctx.timeout(startTrial, 900); // brief lead-in before the first step
     },
   });

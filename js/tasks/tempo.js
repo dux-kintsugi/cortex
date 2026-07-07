@@ -101,7 +101,8 @@
       let phase = 'idle';   // idle | sync | cont | rest
       let beatNum = 0;      // beats fired this cycle
       let cycleStart = 0;   // absolute target time of beat 1
-      let contBase = 0;     // actual time of the final audible beat
+      let contBase = 0;     // perceived time of the final audible beat (latency-calibrated)
+      let syncOffs = [];    // sync-phase tap offsets vs the scheduled beat grid, this cycle
       let cycleFirstIdx = 0;// asyncs index where this cycle's scoring began
       let k = 1;            // next expected continuation interval (1..CONT)
       let lastTapAt = -1e9; // debounce: rapid double-taps must not eat two intervals
@@ -172,6 +173,7 @@
         if (cycle >= CYCLES || ctx.now() - startedAt > ctx.durationMs) return end();
         phase = 'sync';
         beatNum = 0;
+        syncOffs = [];
         cycleFirstIdx = asyncs.length;
         label.textContent = 'Cycle ' + (cycle + 1) + ' of ' + CYCLES + ' — tap along from beat 3';
         setDotIdle();
@@ -196,7 +198,11 @@
         if (beatNum >= BEATS) {
           // Hand off to the silent continuation. Expected taps land at
           // contBase + k·IOI; a tap synced with THIS beat is ignored below.
-          contBase = t;
+          // Anchor the grid to when the player HEARS the beats, not when JS
+          // schedules them: the median offset of their own entrainment taps
+          // self-calibrates audio output latency (~150-250ms on Bluetooth)
+          // plus touch input latency. No sync taps → fall back to schedule time.
+          contBase = t + (syncOffs.length >= 3 ? BT.median(syncOffs) : 0);
           phase = 'cont';
           k = 1;
           label.textContent = 'Keep the beat — ' + CONT + ' taps, no cues';
@@ -247,7 +253,17 @@
         const t = ctx.now();
         if (t - lastTapAt < IOI * 0.35) return; // swallow accidental double-taps
         lastTapAt = t;
-        if (phase === 'sync') { padAck(); return; } // entrainment taps: unscored
+        if (phase === 'sync') {
+          padAck();
+          // Entrainment taps stay unscored, but their offset vs the scheduled
+          // grid calibrates the continuation anchor (wrapped to ±IOI/2).
+          if (beatNum >= 2) {
+            let off = ((t - cycleStart) % IOI + IOI) % IOI;
+            if (off > IOI / 2) off -= IOI;
+            syncOffs.push(off);
+          }
+          return;
+        }
         if (phase !== 'cont' || k > CONT) return;
         if (t < contBase + 0.5 * IOI) { padAck(); return; } // still the final-beat tap
         padAck();

@@ -231,15 +231,25 @@
   BT.CHALLENGE_MODS = {
     sprint:   { name: '⚡ Sprint', blurb: 'Rounds 25% shorter — pure pace.', durationScale: 0.75 },
     marathon: { name: '🏔 Marathon', blurb: 'Rounds 40% longer — hold your focus.', durationScale: 1.4 },
-    highwire: { name: '🎪 High Wire', blurb: 'Every game one level above yours.', levelOffset: 1 },
+    highwire: { name: '🎪 High Wire', blurb: 'Every game one level up (maxed games stay maxed).', levelOffset: 1 },
   };
+
+  // Games whose rounds are genuinely duration-driven — Sprint/Marathon are
+  // no-ops on trial-based games, so those modifiers only draw from this pool.
+  const DURATION_GAMES = ['symbols', 'gonogo', 'search', 'rotation', 'stroop', 'switching',
+    'math', 'flanker', 'trails', 'mot', 'flicker', 'flashcount'];
 
   BT.todaysChallenge = function () {
     const day = BT.dayKey();
     const rnd = BT.rng(BT.hashStr(day + ':challenge'));
-    const ids = BT.shuffle(BT.taskOrder.slice(), rnd).slice(0, 3);
     const roll = rnd();
     const modKey = roll < 0.5 ? null : roll < 0.7 ? 'sprint' : roll < 0.85 ? 'marathon' : 'highwire';
+    let pool = BT.taskOrder.slice();
+    if (modKey === 'sprint' || modKey === 'marathon') {
+      const dur = pool.filter(id => DURATION_GAMES.indexOf(id) !== -1);
+      if (dur.length >= 3) pool = dur;
+    }
+    const ids = BT.shuffle(pool, rnd).slice(0, 3);
     return {
       games: ids.map((id, i) => ({ taskId: id, seed: BT.hashStr(day + ':' + id + ':' + i) })),
       modifier: modKey ? Object.assign({ key: modKey }, BT.CHALLENGE_MODS[modKey]) : null,
@@ -394,8 +404,10 @@
       const anchor = a.domainScores[dk];
       if (anchor == null) continue;
       const ids = BT.tasksByDomain(dk).map(t => t.id);
+      // 'train' rounds only: free play at a self-picked low level (or a
+      // modifier-distorted challenge) must not crater the radar's drift.
       const trains = BT.state.sessions.filter(s =>
-        ids.indexOf(s.taskId) !== -1 && s.mode !== 'assess' && s.ability != null);
+        ids.indexOf(s.taskId) !== -1 && s.mode === 'train' && s.ability != null);
       const since = trains.filter(s => s.ts >= a.ts);
       if (since.length < 3) { out[dk] = anchor; continue; }
       const early = BT.mean(since.slice(0, 3).map(s => s.ability));
