@@ -273,6 +273,35 @@
         rafId = requestAnimationFrame(step);
       }
 
+      // Dots must never fully overlap: an occluded pair makes the pick phase a
+      // coin flip on which center is nearer the tap. Positional push-apart each
+      // frame (with a heading bounce during drift), and a relaxation pass before
+      // picking that GUARANTEES tappable separation.
+      function resolveCollisions(minSep, bounce) {
+        const lo = R + 2, hi = side - R - 2;
+        let moved = false;
+        for (let i = 0; i < dots.length; i++) {
+          for (let j = i + 1; j < dots.length; j++) {
+            const a = dots[i], b = dots[j];
+            let dx = b.x - a.x, dy = b.y - a.y;
+            let d = Math.sqrt(dx * dx + dy * dy);
+            if (d >= minSep) continue;
+            let ux, uy;
+            if (d < 0.001) { const ang = ctx.rng() * TAU; ux = Math.cos(ang); uy = Math.sin(ang); }
+            else { ux = dx / d; uy = dy / d; }
+            const push = (minSep - d) / 2;
+            a.x = BT.clamp(a.x - ux * push, lo, hi); a.y = BT.clamp(a.y - uy * push, lo, hi);
+            b.x = BT.clamp(b.x + ux * push, lo, hi); b.y = BT.clamp(b.y + uy * push, lo, hi);
+            if (bounce) {
+              a.h = Math.atan2(-uy, -ux) + (ctx.rng() - 0.5) * 0.5;
+              b.h = Math.atan2(uy, ux) + (ctx.rng() - 0.5) * 0.5;
+            }
+            moved = true;
+          }
+        }
+        return moved;
+      }
+
       function step(ts) {
         if (!ctx.running || phase !== 'drift') return; // self-terminates after finish/abort
         if (!lastTs) lastTs = ts;
@@ -289,6 +318,7 @@
           if (d.y < lo) { d.y = lo; d.h = -d.h; }
           else if (d.y > hi) { d.y = hi; d.h = -d.h; }
         }
+        resolveCollisions(2 * R + 4, true); // soft repulsion — near-misses stay hard, occlusion never happens
         draw();
         if (!ctx.survival) ctx.hud.progress(BT.clamp((ctx.now() - startedAt) / ctx.durationMs, 0, 1));
         driftLeft -= dt;
@@ -298,6 +328,11 @@
 
       function enterPick() {
         phase = 'pick';
+        // guarantee: at pick time every pair is ≥ 2R+8 apart, so a tap on a
+        // dot's visible disc always resolves to THAT dot.
+        for (let it = 0; it < 40; it++) {
+          if (!resolveCollisions(2 * R + 8, false)) break;
+        }
         msg.textContent = 'Frozen — tap the ' + T + ' dots you tracked.';
         ctx.beep('tick');
         draw();

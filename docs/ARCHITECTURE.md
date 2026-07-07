@@ -376,7 +376,7 @@ norms mean 40 sd 12 higher. advance acc ≥.93/<.75. fmtPrimary `X taps/min`.
 Canvas (square, min(container width, container height − 40px)). Round: T = 2+ceil(level/3)
 targets flash accent for 1.5s among D total dots (D = 7 + level, cap 16, radius ~12px);
 then all identical (muted) and drift for 6+level·0.3 s: constant speed (55+9·level px/s),
-wall bounce, small per-frame heading jitter from ctx.rng, dot-dot collision not required.
+wall bounce, small per-frame heading jitter from ctx.rng. Dots MUST softly repel each other (positional push-apart + heading bounce when centers < 2R+4) and a relaxation pass before the pick phase MUST guarantee all pairs >= 2R+8 apart — overlapping dots make the nearest-center hit test a coin flip on a fair tap.
 Freeze → user taps T dots (nearest-dot hit test ≤ 28px, tapped dots highlight; no re-tap).
 Reveal correct/incorrect, score round = correct picks. Rounds until duration (75/90s).
 primary = 100 · totalCorrectPicks / totalTargets. norms mean 75 sd 15 higher.
