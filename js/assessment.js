@@ -10,7 +10,22 @@
   const BT = window.BT, el = BT.el;
 
   // Order matters: starts light (reaction), alternates load types.
-  BT.BATTERY = ['reaction', 'symbols', 'gonogo', 'nback', 'matrix', 'spatialspan', 'stroop', 'math'];
+  BT.BATTERY = ['reaction', 'symbols', 'gonogo', 'nback', 'matrix', 'spatialspan', 'wordpairs', 'stroop', 'math'];
+
+  /* The comparison anchor: first assessment is 'provisional' (novelty deflates it);
+     once a second exists, compare against that instead. */
+  BT.anchorAssessment = function () {
+    const list = BT.state.assessments;
+    if (!list.length) return null;
+    return list.length > 1 && list[0].provisional ? list[1] : list[0];
+  };
+
+  BT.timeBlockOfHour = function (hour) {
+    if (hour >= 5 && hour < 12) return 'morning';
+    if (hour >= 12 && hour < 17) return 'afternoon';
+    if (hour >= 17 && hour < 22) return 'evening';
+    return 'night';
+  };
 
   BT.computeDomainScores = function (taskScores) {
     const out = {};
@@ -30,12 +45,25 @@
     const battery = BT.BATTERY.filter(id => BT.tasks[id]);
     if (!battery.length) { console.error('[Cortex] no battery tasks registered'); return; }
 
-    const mins = Math.round(battery.length * 1.6);
+    const mins = Math.round(battery.length * 2);
+    // circadian fairness: nudge re-assessments toward the baseline's time of day
+    let todNote = null;
+    const prev = BT.latestAssessment();
+    if (prev) {
+      const baseBlock = BT.timeBlockOfHour(new Date(prev.ts).getHours());
+      const nowBlock = BT.timeBlockOfHour(new Date().getHours());
+      if (baseBlock !== nowBlock) {
+        todNote = el('div', { class: 'notice', style: 'margin-bottom:12px;', text:
+          '⏰ Your last assessment was taken in the ' + baseBlock + ' — for a fair comparison, ' +
+          'consider re-assessing in the ' + baseBlock + ' too. Time of day genuinely moves these scores.' });
+      }
+    }
     const body = el('div', null,
-      el('h3', { text: 'Baseline assessment' }),
+      el('h3', { text: prev ? 'Re-assessment' : 'Baseline assessment' }),
       el('p', { class: 'muted', style: 'margin-bottom:12px;', text:
-        battery.length + ' short games, about ' + mins + ' minutes total. ' +
-        'It maps your performance across all 7 cognitive domains and builds your training plan.' }),
+        battery.length + ' short games, about ' + mins + ' minutes total (each starts with a short unscored warm-up). ' +
+        'It maps your performance across all ' + BT.DOMAIN_KEYS.length + ' cognitive domains and builds your training plan.' }),
+      todNote,
       el('div', { style: 'margin-bottom:14px;' },
         battery.map((id, i) => {
           const t = BT.tasks[id];
@@ -79,6 +107,9 @@
     function finish() {
       const domainScores = BT.computeDomainScores(taskScores);
       const assessment = { ts: Date.now(), taskScores, domainScores };
+      // First-ever battery reads low (task novelty) — mark it provisional so
+      // later comparisons anchor on the confirmation baseline instead.
+      if (!BT.state.assessments.length) assessment.provisional = true;
       BT.state.assessments.push(assessment);
       BT.generatePlan(domainScores);
       BT.save();

@@ -11,6 +11,8 @@
   const BT = window.BT, el = BT.el;
 
   const SHAPES = ['●', '■', '▲', '◆', '⬢'];
+  const CVD_GO_SHAPES = ['●', '■', '▲'];      // filled = GO (redundant shape cue)
+  const CVD_NOGO_SHAPES = ['○', '□', '△'];    // hollow = NO-GO
   const HINT = 'Green → tap · Red/Orange → hold';
 
   BT.registerTask({
@@ -43,10 +45,15 @@
       const stimMs = 650;                                   // stimulus visible
       const windowMs = 950;                                 // response window from onset
       const isiMs = Math.max(1400 - 65 * ctx.level, 750);   // base ISI, ±20% jitter
+      const cvdAssist = !!(BT.state.settings && BT.state.settings.cvdAssist);
       const startedAt = ctx.now();
 
       let goTrials = 0, noGoTrials = 0;
       let hits = 0, misses = 0, falseAlarms = 0, correctRejections = 0;
+      const halves = [ // split-half buckets by scored-trial parity
+        { go: 0, hits: 0, noGo: 0, fa: 0 },
+        { go: 0, hits: 0, noGo: 0, fa: 0 },
+      ];
       const hitRTs = [];
       let noGoStreak = 0;
       let trial = null; // { isGo, onset, open, responded }
@@ -77,7 +84,8 @@
         if (noGoStreak >= 2) isGo = true; // keep the go response prepotent
         noGoStreak = isGo ? 0 : noGoStreak + 1;
 
-        shape.textContent = SHAPES[Math.floor(ctx.rng() * SHAPES.length)];
+        const glyphs = cvdAssist ? (isGo ? CVD_GO_SHAPES : CVD_NOGO_SHAPES) : SHAPES;
+        shape.textContent = glyphs[Math.floor(ctx.rng() * glyphs.length)];
         shape.style.color = isGo ? 'var(--good)'
           : ctx.rng() < 0.5 ? 'var(--bad)' : 'var(--warn)';
         shape.style.opacity = '1';
@@ -97,10 +105,13 @@
         if (!ctx.running || t !== trial || !t.open) return;
         t.open = false;
         shape.style.opacity = '0';
+        const half = halves[(goTrials + noGoTrials) % 2];
         if (t.isGo) {
           goTrials++;
+          half.go++;
           if (t.responded) {
             hits++;
+            half.hits++;
           } else {
             misses++;
             ctx.beep('bad');
@@ -108,7 +119,8 @@
           }
         } else {
           noGoTrials++;
-          if (t.responded) falseAlarms++;
+          half.noGo++;
+          if (t.responded) { falseAlarms++; half.fa++; }
           else correctRejections++;
         }
         updateHud();
@@ -122,10 +134,10 @@
         if (trial.isGo) {
           const rt = ctx.now() - trial.onset;
           hitRTs.push(rt);
-          ctx.flash('good'); ctx.beep('good');
+          ctx.feedback(true);
           label.textContent = Math.round(rt) + ' ms';
         } else {
-          ctx.flash('bad'); ctx.beep('bad');
+          ctx.feedback(false);
           label.textContent = 'That one was a trap!';
         }
       }
@@ -138,11 +150,17 @@
         const hitRate = goTrials ? hits / goTrials : 0;
         const faRate = noGoTrials ? falseAlarms / noGoTrials : 0;
         const netAccuracy = (hitRate - faRate) * 100;
+        const halfNet = h =>
+          ((h.go ? h.hits / h.go : 0) - (h.noGo ? h.fa / h.noGo : 0)) * 100;
+        const bothHalves = halves.every(h => h.go + h.noGo > 0);
         ctx.hud.progress(1);
         ctx.finish({
           primary: netAccuracy,
+          levelProgress: BT.clamp((netAccuracy - 50) / (88 - 50), 0, 1),
           metrics: {
             netAccuracy, hitRate, faRate,
+            half1: bothHalves ? halfNet(halves[0]) : null,
+            half2: bothHalves ? halfNet(halves[1]) : null,
             meanRT: hitRTs.length ? Math.round(BT.mean(hitRTs)) : null,
             hits, misses, falseAlarms, correctRejections, goTrials, noGoTrials,
           },

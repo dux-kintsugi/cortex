@@ -40,6 +40,8 @@
       const startedAt = ctx.now();
 
       let correct = 0, wrong = 0, skipped = 0;
+      const halves = [{ c: 0, w: 0 }, { c: 0, w: 0 }]; // scored submits split by trial parity
+      let trialIdx = 0;
       let problem = null;   // { text, answer }
       let lastText = '';
       let misses = 0;       // wrong submits on the current problem
@@ -54,7 +56,8 @@
           : level <= 4 ? ['add', 'sub', 'mul']
           : ['add', 'sub', 'mul', 'div'];
         const op = ops[ri(0, ops.length - 1)];
-        const hiOp = level === 1 ? 12 : 20;
+        // add/sub operand range grows with level: 12 → 20 → 30 (level 4+)
+        const hiOp = level === 1 ? 12 : level <= 3 ? 20 : 30;
         let a, b;
         if (op === 'add') {
           a = ri(2, hiOp); b = ri(2, hiOp);
@@ -187,8 +190,9 @@
         const val = parseInt(typed, 10);
         if (val === problem.answer) {
           correct++;
+          halves[trialIdx++ % 2].c++;
           accepting = false;
-          ctx.flash('good'); ctx.beep('good');
+          ctx.feedback(true);
           updateHud();
           ctx.timeout(() => {
             if (!ctx.running) return;
@@ -197,7 +201,8 @@
           }, 350);
         } else {
           wrong++; misses++;
-          ctx.flash('bad'); ctx.beep('bad');
+          halves[trialIdx++ % 2].w++;
+          ctx.feedback(false);
           typed = '';
           renderAnswer();
           updateHud();
@@ -228,13 +233,19 @@
         const attempts = correct + wrong;
         const acc = attempts ? correct / attempts : 0;
         const netPerMin = attempts ? (correct - wrong) / minutes : 0;
+        const halfMin = minutes / 2;
+        const hasHalves = halves[0].c + halves[0].w > 0 && halves[1].c + halves[1].w > 0;
         ctx.hud.progress(1);
         ctx.finish({
           primary: netPerMin,
+          // advance rule tests accuracy: down < 0.65, up ≥ 0.90
+          levelProgress: BT.clamp((acc - 0.65) / (0.90 - 0.65), 0, 1),
           metrics: {
             correct, wrong, skipped,
             accuracy: Math.round(acc * 100),
             netPerMin: Math.round(netPerMin * 10) / 10,
+            half1: hasHalves ? Math.round(((halves[0].c - halves[0].w) / halfMin) * 10) / 10 : null,
+            half2: hasHalves ? Math.round(((halves[1].c - halves[1].w) / halfMin) * 10) / 10 : null,
           },
           advance: attempts === 0 ? 'hold'
             : acc >= 0.90 ? 'up'

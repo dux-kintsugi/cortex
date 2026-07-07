@@ -238,3 +238,98 @@ advance: acc ≥ .90 → up; < .65 → down. fmtPrimary: `X problems/min`.
 - [ ] `primary` finite in all cases (empty round → finish with primary 0, not NaN)
 - [ ] `ctx.hud.progress` moves; `ctx.hud.stat` shows live counts
 - [ ] Difficulty genuinely changes with `ctx.level` from 1 to maxLevel
+
+---
+
+# CONTRACT v2 — Honest-measurement & habit update
+
+Engine now provides (tasks may rely on):
+
+- `ctx.practice` (bool) — true during the unscored assessment warm-up. Duration tasks
+  need NO changes (engine shortens `ctx.durationMs` to ~18s). Trial-based tasks
+  (digitspan, spatialspan, matrix, nback, wordpairs) must early-exit via normal
+  `ctx.finish` after ~2 trials/boards when `ctx.practice` is true.
+- `ctx.feedback(correct)` — combo-aware feedback helper (rising-pitch beep + flash +
+  streak floaters). Throughput games (symbols, stroop, switching, math, search,
+  rotation, gonogo) should call this INSTEAD of separate beep+flash pairs for
+  per-trial right/wrong feedback. Span games keep their existing feedback.
+- `ctx.rng` may be a SEEDED generator (daily challenge replays). Tasks must use
+  `ctx.rng()` for ALL stimulus randomness — never `Math.random()` directly.
+
+Tasks must now also provide:
+
+- `summary.levelProgress` (0..1) in `ctx.finish`: how far through the CURRENT level's
+  mastery band the round landed, using the task's own advance thresholds:
+  `clamp((metric − downThreshold) / (upThreshold − downThreshold), 0, 1)` where
+  `metric` is whatever the task's advance rule tests (accuracy or primary).
+  Engine computes ability = level + levelProgress for honest cross-level trends.
+- `summary.metrics.half1` / `half2`: the primary metric computed separately over
+  odd-indexed vs even-indexed scored trials (split-half reliability → noise bands).
+  If a half has no trials, report null for both.
+- CVD assist (`BT.state.settings.cvdAssist`, read at run() time):
+  - gonogo: GO stimuli use FILLED glyphs (● ■ ▲), NO-GO use HOLLOW (○ □ △) — color stays as secondary cue.
+  - reaction: go = filled ●, decoy = hollow ○ (colors stay).
+  - stroop: palette/words become BLUE, YELLOW, WHITE, GRAY (CVD-safe) with matching
+    ink classes `.ink-blue .ink-yellow .ink-white .ink-gray`.
+  - Other tasks: no change required.
+
+### wordpairs.js — “Word Pairs” (NEW task, domain: verbal)
+`BT.DOMAINS.verbal` exists. Paired-associate recognition, fully offline: embed ~300
+concrete common nouns in the file. Study phase: k = 4 + floor(level/2) pairs, each
+shown 2.5s (`.stim` at reduced size, "APPLE — RIVER"). Test phase (order shuffled):
+left word shown, pick its partner from 4 `.choice` buttons: correct, 2 unstudied
+foils, 1 studied-but-mismatched lure. Feedback per answer. primary = correct − 0.5·lureErrors,
+normalized per k: primary = 100·(correct − 0.5·lureErrors)/k. norms mean 62 sd 18 higherIsBetter.
+Trial-based (one study+test cycle per round = 1 "trial"; practice = k=3 single cycle).
+assessLevel 3, maxLevel 10. advance: primary ≥ 85 up, < 45 down. keys 1–4 + taps.
+fmtPrimary: `X of k pairs`. levelProgress from those thresholds. half1/half2 over odd/even test items.
+
+### New standalone modules (each self-contained IIFE, loaded before main.js unless noted)
+
+**js/achievements.js** — defines ~14 HONEST milestones (streaks 3/7/14/30 incl. lite
+days; baseline mapped; first re-assessment; any domain +10 vs baseline at re-assessment;
+all 13 games played; any game to level 5 / 10; 50/100/250 rounds; first shield used;
+challenge completed). Exposes `BT.checkAchievements()` → array of newly-earned
+{id, name, icon, blurb} (idempotent; persists earned in `BT.state.badges = {id: ts}`),
+and `BT.buildAchievementsCard()` → DOM card showing earned + locked. No other globals.
+
+**js/report.js** — exposes `BT.buildWeeklyReportCard()` (Mon–Sun just ended vs prior
+week: days trained full/lite/shield, rounds, per-domain deltas, best score, biggest
+level-up; null unless today is Mon–Wed and there's data; dismiss persists
+`state.lastReportWeek`) and `BT.buildLongReportCard()` (30-day per-domain trend slopes
+pts/week via least squares on daily means, most-improved + flattest game, PR count,
+plateau flags for maxLevel games; null if < 14 days of data). Web Share button when
+`navigator.share` exists (text digest only).
+
+**js/gamedetail.js** — loaded AFTER main.js. Calls `BT.registerScreen('game', fn)`;
+screen params {id}. Shows: score-over-time (assess sessions as separate series),
+level/ability timeline (rec.level + rec.ability), and per-task sub-metric trends
+(stroop: interference; switching: switchCost; gonogo: hitRate/faRate; digitspan:
+fwd/bwd; nback: n level; reaction: medianRT) — pick from rec.metrics keys defensively.
+Uses BT.drawLine. Back button → BT.go('progress').
+
+**js/sync.js** — serverless device sync. `BT.sync.exportCode()` → Promise<string>:
+state → compact columnar payload (sessions as parallel arrays with ts deltas; drop
+per-session metrics except half-free essentials; keep levels/assessments/doneDays/
+streak/badges/dayTags/settings) → deflate-raw via CompressionStream (fallback: plain
+JSON) → base64url with 'CX2.' prefix. `BT.sync.importCode(code)` → Promise<{merged
+summary}>: decode + MERGE (never overwrite): union sessions by (ts,taskId), max levels,
+union doneDays/badges/dayTags (existing wins per key), union assessments by ts, latest
+plan, then RECOMPUTE streak from merged doneDays. `BT.buildSyncCard()` → Settings card
+UI: big "Copy sync code" (navigator.clipboard, Web Share fallback) + paste-textarea →
+"Merge" with confirmation summary. Round-trip MUST be lossless for scores/levels.
+
+### Engine v2 internals (for reviewers)
+- Interrupted rounds (visibilitychange or wall-clock overrun) are VOIDED, never recorded.
+- Wake lock held during rounds; re-acquired on visibility return.
+- mode 'challenge': seeded ctx.rng, NO level adaptation, records sessions normally.
+- rec gains: `ability`, `band` [lo,hi] from half1/half2, `sem`.
+- Splash delta is Reliable-Change gated: shown only when |score − median(last 5 same-task
+  scores)| > 2.33·SEM (else "steady — within your typical range").
+
+### introDemo (optional task field, v2.1)
+`introDemo(box, level) -> stopFn` — renders a small looping animated walkthrough
+inside the instructions screen (`box` is an empty `.intro-demo` div). Return a
+function that stops all animation timers; the engine calls it when the round
+starts or the layer closes. Use plain setInterval here (pre-ctx phase). Keep it
+under ~160px tall. Best for paradigms that text can't explain (n-back).

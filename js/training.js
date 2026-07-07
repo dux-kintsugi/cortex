@@ -1,20 +1,20 @@
 /* ============================================================
-   Cortex — training.js
-   Personalized plan: weight domains by weakness, build a daily
-   4-game session (deterministic per day), run it, track streaks.
+   Cortex — training.js (v2)
+   Personalized plan, daily sessions, two-tier streaks with
+   shields, quick sessions, finale ceremony + day tags, daily
+   challenge, assess-anchored live domain scores.
    ============================================================ */
 (function () {
   'use strict';
-  const BT = window.BT;
+  const BT = window.BT, el = BT.el;
 
   const SESSION_SIZE = 4;
 
-  /* Weakness-weighted plan. Weight ≈ how much a domain needs work. */
+  /* ---------------- Plan ---------------- */
   BT.generatePlan = function (domainScores) {
     const weights = {};
     for (const dk of BT.DOMAIN_KEYS) {
       const s = domainScores[dk];
-      // Unassessed domains get a middling weight so they still show up.
       weights[dk] = BT.clamp(105 - (s == null ? 55 : s), 15, 105);
     }
     const focus = BT.DOMAIN_KEYS
@@ -26,18 +26,14 @@
     return BT.state.plan;
   };
 
-  /* Today's session: deterministic for a given day + plan.
-     Slot 1: weakest domain. Slots 2-3: weighted sample. Slot 4: variety. */
+  /* ---------------- Today's session ---------------- */
   BT.todaysGames = function () {
     const plan = BT.state.plan;
     const allIds = BT.taskOrder.slice();
     if (!allIds.length) return [];
     const rnd = BT.rng(BT.hashStr(BT.dayKey() + ':' + (plan ? plan.generatedAt : 0)));
 
-    if (!plan) {
-      // No assessment yet — rotate through everything.
-      return BT.shuffle(allIds, rnd).slice(0, SESSION_SIZE);
-    }
+    if (!plan) return BT.shuffle(allIds, rnd).slice(0, SESSION_SIZE);
 
     const chosen = [];
     const usedDomains = [];
@@ -50,21 +46,18 @@
       return true;
     }
 
-    // Slot 1: weakest (focus[0]) — guaranteed daily work on the weakest area.
     if (plan.focus.length) pickFromDomain(plan.focus[0]);
 
-    // Slots 2..3: weighted sampling over domains not yet used.
     while (chosen.length < SESSION_SIZE - 1) {
       const candidates = BT.DOMAIN_KEYS.filter(dk => usedDomains.indexOf(dk) === -1);
       if (!candidates.length) break;
-      const total = candidates.reduce((s, dk) => s + plan.weights[dk], 0);
+      const total = candidates.reduce((s, dk) => s + (plan.weights[dk] || 50), 0);
       let r = rnd() * total;
       let picked = candidates[candidates.length - 1];
-      for (const dk of candidates) { r -= plan.weights[dk]; if (r <= 0) { picked = dk; break; } }
-      if (!pickFromDomain(picked)) usedDomains.push(picked); // domain empty/exhausted — skip it
+      for (const dk of candidates) { r -= (plan.weights[dk] || 50); if (r <= 0) { picked = dk; break; } }
+      if (!pickFromDomain(picked)) usedDomains.push(picked);
     }
 
-    // Slot 4: variety — any task not already chosen.
     const rest = allIds.filter(id => chosen.indexOf(id) === -1);
     if (rest.length && chosen.length < SESSION_SIZE) {
       chosen.push(rest[Math.floor(rnd() * rest.length)]);
@@ -72,7 +65,6 @@
     return chosen.slice(0, SESSION_SIZE);
   };
 
-  /* Which of today's games already have a training rep today */
   BT.todaysProgress = function () {
     const games = BT.todaysGames();
     const today = BT.dayKey();
@@ -83,17 +75,84 @@
     return games.map(id => ({ id, done: !!done[id] }));
   };
 
-  /* Run today's remaining games back-to-back.
-     onDone({completed, aborted}) */
+  /* ---------------- Streak v2: two tiers + shields ---------------- */
+  // tier: 'lite' (>=1 game — keeps the streak) | 'full' (whole session) | 'shield'
+  function markDayDone(tier) {
+    const today = BT.dayKey();
+    const st = BT.state.streak;
+    const already = BT.state.doneDays[today];
+
+    if (already === true) BT.state.doneDays[today] = 'full'; // v1 migration
+    if (already) {
+      // upgrade lite -> full; never downgrade
+      if (tier === 'full' && BT.state.doneDays[today] === 'lite') {
+        BT.state.doneDays[today] = 'full';
+        BT.save();
+      }
+      return;
+    }
+
+    BT.state.doneDays[today] = tier;
+    if (st.lastDay && BT.daysBetween(st.lastDay, today) === 1) st.count += 1;
+    else if (st.lastDay !== today) st.count = 1;
+    st.lastDay = today;
+    st.best = Math.max(st.best || 0, st.count);
+    // earn a shield every 7 consecutive days (cap 2)
+    if (st.count > 0 && st.count % 7 === 0) st.shields = Math.min((st.shields || 0) + 1, 2);
+    BT.save();
+  }
+
+  /* Engine hook — runs after every recorded non-assess round.
+     >=1 game today keeps the streak alive (lite); all of today's games = full. */
+  BT.maybeMarkDayDone = function () {
+    const prog = BT.todaysProgress();
+    if (!prog.length) return;
+    if (prog.every(g => g.done)) markDayDone('full');
+    else if (prog.some(g => g.done)) markDayDone('lite');
+  };
+
+  /* Boot-time repair: consume a shield to bridge exactly one missed day. */
+  BT.reconcileStreak = function () {
+    const st = BT.state.streak;
+    if (!st.lastDay) return;
+    const gap = BT.daysBetween(st.lastDay, BT.dayKey());
+    if (gap === 2 && (st.shields || 0) > 0) {
+      const missed = new Date(st.lastDay + 'T12:00');
+      missed.setDate(missed.getDate() + 1);
+      const missedKey = BT.dayKey(missed.getTime());
+      st.shields -= 1;
+      BT.state.doneDays[missedKey] = 'shield';
+      st.lastDay = missedKey;
+      st.count += 1;
+      st.best = Math.max(st.best || 0, st.count);
+      BT.save();
+      return missedKey; // caller may announce the save
+    }
+    return null;
+  };
+
+  BT.currentStreak = function () {
+    const st = BT.state.streak;
+    if (!st.lastDay) return 0;
+    const gap = BT.daysBetween(st.lastDay, BT.dayKey());
+    return gap <= 1 ? st.count : 0;
+  };
+
+  /* ---------------- Sessions ---------------- */
   BT.runTrainingSession = function (onDone) {
     const remaining = BT.todaysProgress().filter(g => !g.done).map(g => g.id);
-    if (!remaining.length) { markDayDone(); if (onDone) onDone({ completed: true, aborted: false }); return; }
+    const streakBefore = BT.currentStreak();
+    if (!remaining.length) {
+      markDayDone('full');
+      showFinale(streakBefore, () => { if (onDone) onDone({ completed: true, aborted: false }); });
+      return;
+    }
     const total = remaining.length;
 
     function runFrom(i) {
       if (i >= remaining.length) {
-        markDayDone(); // engine's maybeMarkDayDone usually beat us here; markDayDone is idempotent
-        if (onDone) onDone({ completed: true, aborted: false });
+        markDayDone('full'); // idempotent; engine hook usually beat us here
+        showFinale(streakBefore, () => { if (onDone) onDone({ completed: true, aborted: false }); });
         return;
       }
       BT.runTask({
@@ -109,51 +168,184 @@
     runFrom(0);
   };
 
-  function markDayDone() {
-    const today = BT.dayKey();
-    if (BT.state.doneDays[today]) return; // already counted
-    BT.state.doneDays[today] = true;
+  /* Quick session: one game (~2 min), keeps the streak on busy days. */
+  BT.runQuickSession = function (onDone) {
+    const prog = BT.todaysProgress();
+    const next = prog.filter(g => !g.done).map(g => g.id)[0];
+    if (!next) { if (onDone) onDone({ completed: true }); return; }
+    const streakBefore = BT.currentStreak();
+    BT.runTask({
+      taskId: next,
+      mode: 'train',
+      onDone: res => {
+        if (!res) { if (onDone) onDone({ completed: false, aborted: true }); return; }
+        showQuickFinale(streakBefore, () => { if (onDone) onDone({ completed: true, aborted: false }); });
+      },
+    });
+  };
 
-    const st = BT.state.streak;
-    if (st.lastDay && BT.daysBetween(st.lastDay, today) === 1) st.count += 1;
-    else if (st.lastDay !== today) st.count = 1;
-    st.lastDay = today;
-    BT.save();
+  /* ---------------- Daily challenge (seeded 3-game gauntlet) ---------------- */
+  BT.todaysChallenge = function () {
+    const day = BT.dayKey();
+    const rnd = BT.rng(BT.hashStr(day + ':challenge'));
+    const ids = BT.shuffle(BT.taskOrder.slice(), rnd).slice(0, 3);
+    return {
+      games: ids.map((id, i) => ({ taskId: id, seed: BT.hashStr(day + ':' + id + ':' + i) })),
+      done: BT.state.challengeDays[day] != null,
+      score: BT.state.challengeDays[day],
+    };
+  };
+
+  BT.runChallenge = function (onDone) {
+    const ch = BT.todaysChallenge();
+    const scores = [];
+
+    function runFrom(i) {
+      if (i >= ch.games.length) {
+        const combined = Math.round(BT.mean(scores.filter(s => s != null)));
+        BT.state.challengeDays[BT.dayKey()] = combined;
+        BT.save();
+        showChallengeFinale(combined, () => { if (onDone) onDone({ completed: true, combined }); });
+        return;
+      }
+      BT.runTask({
+        taskId: ch.games[i].taskId,
+        mode: 'challenge',
+        rngSeed: ch.games[i].seed,
+        seq: { index: i + 1, total: ch.games.length },
+        onDone: res => {
+          if (!res) { if (onDone) onDone({ completed: false, aborted: true }); return; }
+          scores.push(res.score);
+          runFrom(i + 1);
+        },
+      });
+    }
+    runFrom(0);
+  };
+
+  /* ---------------- Finale ceremonies ---------------- */
+  function todaysSessionRows() {
+    const today = BT.dayKey();
+    const rows = [];
+    for (const g of BT.todaysGames()) {
+      const recs = BT.state.sessions.filter(s =>
+        s.taskId === g && s.mode !== 'assess' && BT.dayKey(s.ts) === today && s.score != null);
+      if (!recs.length) continue;
+      const rec = recs[recs.length - 1];
+      const prior = BT.state.sessions.filter(s =>
+        s.taskId === g && s.mode !== 'assess' && s.score != null && s.ts < rec.ts);
+      const prev = prior.length ? prior[prior.length - 1].score : null;
+      rows.push({ id: g, score: rec.score, delta: prev == null ? null : rec.score - prev });
+    }
+    return rows;
   }
 
-  /* Called by the engine after every non-assess round — completing today's
-     games through free play counts toward the streak too. */
-  BT.maybeMarkDayDone = function () {
-    const prog = BT.todaysProgress();
-    if (prog.length && prog.every(g => g.done)) markDayDone();
-  };
-
-  /* Streak that displays as 0 if the chain is actually broken */
-  BT.currentStreak = function () {
-    const st = BT.state.streak;
-    if (!st.lastDay) return 0;
-    const gap = BT.daysBetween(st.lastDay, BT.dayKey());
-    return gap <= 1 ? st.count : 0;
-  };
-
-  /* Rolling domain scores from ALL sessions (assess + train),
-     recency-weighted: recent days count more. Used for the live radar. */
-  BT.liveDomainScores = function () {
-    const now = Date.now();
-    const byDomain = {};
-    for (const s of BT.state.sessions) {
-      const def = BT.tasks[s.taskId];
-      if (!def || s.score == null) continue;
-      const ageDays = (now - s.ts) / 86400000;
-      const w = Math.exp(-ageDays / 14); // half-life ~10 days
-      (byDomain[def.domain] = byDomain[def.domain] || []).push({ v: s.score, w });
+  function tagChips() {
+    const today = BT.dayKey();
+    const tags = BT.state.dayTags[today] = BT.state.dayTags[today] || {};
+    function chip(label, isOn, onToggle) {
+      const b = el('button', { class: 'pill tag-chip' + (isOn() ? ' active' : ''), text: label });
+      b.addEventListener('click', () => { onToggle(); b.classList.toggle('active', isOn()); BT.save(); });
+      return b;
     }
+    const sleepRow = el('div', { class: 'tag-row' }, el('span', { class: 'small muted', text: '😴 Sleep' }),
+      ['bad', 'ok', 'good'].map(v =>
+        chip(v, () => tags.sleep === v, () => { tags.sleep = tags.sleep === v ? undefined : v; sleepRow.querySelectorAll('.tag-chip').forEach((c, i) => c.classList.toggle('active', tags.sleep === ['bad', 'ok', 'good'][i])); })));
+    const boolRow = el('div', { class: 'tag-row' },
+      chip('☕ caffeine', () => !!tags.caffeine, () => { tags.caffeine = !tags.caffeine; }),
+      chip('🏃 exercise', () => !!tags.exercise, () => { tags.exercise = !tags.exercise; }),
+      chip('😰 stress', () => !!tags.stress, () => { tags.stress = !tags.stress; }));
+    return el('div', { class: 'tags-block' },
+      el('div', { class: 'small muted', style: 'margin-bottom:6px;', text: 'How was today? (optional — unlocks correlations)' }),
+      sleepRow, boolRow);
+  }
+
+  function ceremonyLayer(content, onClose) {
+    const layer = el('div', { class: 'task-layer' },
+      el('div', { class: 'task-veil' },
+        el('div', { class: 'task-intro finale' }, content,
+          el('button', {
+            class: 'btn primary big', style: 'margin-top:18px;', text: 'Done',
+            onclick: () => { layer.remove(); document.body.classList.remove('task-open'); onClose(); },
+          }))));
+    document.body.classList.add('task-open');
+    document.body.appendChild(layer);
+  }
+
+  function streakTicker(from) {
+    const to = BT.currentStreak();
+    const n = el('div', { class: 'streak-big', text: '🔥 ' + from });
+    if (to > from) {
+      setTimeout(() => { n.textContent = '🔥 ' + to; n.classList.add('pb-pulse'); BT.beep('best'); }, 700);
+    }
+    const st = BT.state.streak;
+    return el('div', null, n,
+      el('div', { class: 'small muted', text:
+        'day streak' + ((st.shields || 0) > 0 ? ' · 🛡 ×' + st.shields + ' shield' + (st.shields > 1 ? 's' : '') : '') +
+        ((st.best || 0) > to ? ' · record ' + st.best : '') }));
+  }
+
+  function showFinale(streakBefore, onClose) {
+    const rows = todaysSessionRows();
+    const avg = rows.length ? Math.round(BT.mean(rows.map(r => r.score))) : null;
+    ceremonyLayer(el('div', null,
+      el('h2', { text: 'Session complete 🎉' }),
+      avg != null ? el('div', { class: 'streak-big', style: 'font-size:2rem;', text: avg }) : null,
+      avg != null ? el('div', { class: 'small muted', style: 'margin-bottom:12px;', text: 'today’s average score' }) : null,
+      el('div', { style: 'margin:10px 0;text-align:left;' }, rows.map(r => {
+        const t = BT.tasks[r.id];
+        return el('div', { class: 'today-item' },
+          el('span', { class: 't-icon', text: t ? t.icon : '❓' }),
+          el('span', { class: 't-name', text: t ? t.name : r.id }),
+          el('span', { class: 'pill', text: String(r.score) }),
+          r.delta != null && r.delta !== 0
+            ? el('span', { class: 'small', style: 'color:var(--' + (r.delta > 0 ? 'good' : 'bad') + ');', text: (r.delta > 0 ? '▲+' : '▼') + r.delta })
+            : null);
+      })),
+      streakTicker(streakBefore),
+      tagChips()), onClose);
+  }
+
+  function showQuickFinale(streakBefore, onClose) {
+    ceremonyLayer(el('div', null,
+      el('h2', { text: 'Streak kept 🔥' }),
+      el('p', { class: 'muted', style: 'margin-bottom:10px;', text: 'A short day still counts. Come back for the full session if you find the time.' }),
+      streakTicker(streakBefore),
+      tagChips()), onClose);
+  }
+
+  function showChallengeFinale(combined, onClose) {
+    // yesterday's challenge, if any, for comparison
+    const y = new Date(); y.setDate(y.getDate() - 1);
+    const prev = BT.state.challengeDays[BT.dayKey(y.getTime())];
+    ceremonyLayer(el('div', null,
+      el('h2', { text: 'Challenge complete ⚔️' }),
+      el('div', { class: 'streak-big', style: 'font-size:2.2rem;', text: String(combined) }),
+      el('div', { class: 'small muted', text: 'combined score · 3 seeded games — same boards for everyone who plays today' }),
+      prev != null ? el('div', { class: 'r-delta ' + (combined > prev ? 'up' : combined < prev ? 'down' : ''), style: 'margin-top:8px;', text: 'yesterday: ' + prev }) : null),
+      onClose);
+  }
+
+  /* ---------------- Live domain scores (assess-anchored + ability drift) ----------------
+     Percentile scores are only comparable at fixed difficulty, so the radar anchors on
+     the latest assessment and drifts with training-ability change since then (~6 pts
+     per ability level). Honest: no anchor -> no number. */
+  BT.liveDomainScores = function () {
     const out = {};
+    const a = BT.latestAssessment();
+    for (const dk of BT.DOMAIN_KEYS) out[dk] = null;
+    if (!a) return out;
     for (const dk of BT.DOMAIN_KEYS) {
-      const arr = byDomain[dk];
-      if (!arr || !arr.length) { out[dk] = null; continue; }
-      const totW = arr.reduce((s, x) => s + x.w, 0);
-      out[dk] = totW > 0 ? Math.round(arr.reduce((s, x) => s + x.v * x.w, 0) / totW) : null;
+      const anchor = a.domainScores[dk];
+      if (anchor == null) continue;
+      const ids = BT.tasksByDomain(dk).map(t => t.id);
+      const trains = BT.state.sessions.filter(s =>
+        ids.indexOf(s.taskId) !== -1 && s.mode !== 'assess' && s.ability != null);
+      const since = trains.filter(s => s.ts >= a.ts);
+      if (since.length < 3) { out[dk] = anchor; continue; }
+      const early = BT.mean(since.slice(0, 3).map(s => s.ability));
+      const late = BT.mean(since.slice(-3).map(s => s.ability));
+      out[dk] = BT.clamp(Math.round(anchor + (late - early) * 6), 1, 99);
     }
     return out;
   };

@@ -34,7 +34,7 @@
     fmtPrimary: s => 'best pattern: ' + s.primary + ' tiles',
 
     run(ctx) {
-      const BOARDS = 10;
+      const BOARDS = ctx.practice ? 2 : 10; // practice warm-up: 2 boards, then finish normally
       const IDLE_MS = 15000; // no taps for this long during recall = board fails
       const startK = 3 + Math.floor(ctx.level / 3);
       const startedAt = ctx.now();
@@ -165,8 +165,11 @@
         ctx.hud.progress(1);
         ctx.finish({
           primary: bestK,
-          metrics: { bestK, startK, solved, failed, boards: boardsDone },
+          // Staircase halves don't decompose meaningfully — null per contract v2.
+          metrics: { bestK, startK, solved, failed, boards: boardsDone, half1: null, half2: null },
           advance: bestK >= startK + 3 ? 'up' : bestK <= startK ? 'down' : 'hold',
+          // Advance rule tests bestK against startK (down) .. startK + 3 (up).
+          levelProgress: BT.clamp((bestK - startK) / 3, 0, 1),
         });
       }
 

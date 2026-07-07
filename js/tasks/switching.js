@@ -47,6 +47,8 @@
       let deadlineTimer = null;
 
       let trials = 0, correct = 0, wrong = 0, timeouts = 0;
+      // split-half buckets by trial parity (odd/even scored trial index)
+      const h1 = { correct: 0, wrong: 0 }, h2 = { correct: 0, wrong: 0 };
       const rtSwitch = [], rtRepeat = [];
 
       /* ----- DOM ----- */
@@ -107,8 +109,9 @@
         deadlineTimer = ctx.timeout(() => {
           if (!ctx.running || !accepting) return;
           accepting = false;
+          (trials % 2 === 0 ? h1 : h2).wrong++;
           trials++; wrong++; timeouts++;
-          ctx.flash('bad'); ctx.beep('bad');
+          ctx.feedback(false);
           stim.style.opacity = '.25';
           ctx.timeout(nextTrial, 650);
         }, DEADLINE);
@@ -119,15 +122,16 @@
         accepting = false;
         ctx.clearTimer(deadlineTimer);
         const rt = ctx.now() - shownAt;
+        const half = trials % 2 === 0 ? h1 : h2;
         trials++;
         if (side === correctSide) {
-          correct++;
+          correct++; half.correct++;
           if (trialKind === 'switch') rtSwitch.push(rt);
           else if (trialKind === 'repeat') rtRepeat.push(rt);
-          ctx.flash('good'); ctx.beep('good');
+          ctx.feedback(true);
         } else {
-          wrong++;
-          ctx.flash('bad'); ctx.beep('bad');
+          wrong++; half.wrong++;
+          ctx.feedback(false);
         }
         stim.style.opacity = '.25';
         updateHud();
@@ -148,9 +152,15 @@
         const switchCost = (rtSwitch.length && rtRepeat.length)
           ? Math.round(BT.mean(rtSwitch) - BT.mean(rtRepeat))
           : null;
+        // each half's net counts over half the elapsed minutes
+        const n1 = h1.correct + h1.wrong, n2 = h2.correct + h2.wrong;
+        const halfMin = minutes / 2;
+        const half1 = n1 && n2 ? Math.round((h1.correct - h1.wrong) / halfMin * 10) / 10 : null;
+        const half2 = n1 && n2 ? Math.round((h2.correct - h2.wrong) / halfMin * 10) / 10 : null;
         ctx.hud.progress(1);
         ctx.finish({
           primary: netPerMin,
+          levelProgress: BT.clamp((acc - 0.70) / (0.90 - 0.70), 0, 1),
           metrics: {
             netPerMin: Math.round(netPerMin * 10) / 10,
             trials, correct, wrong, timeouts,
@@ -158,6 +168,7 @@
             switchCost,
             meanRTswitch: rtSwitch.length ? Math.round(BT.mean(rtSwitch)) : null,
             meanRTrepeat: rtRepeat.length ? Math.round(BT.mean(rtRepeat)) : null,
+            half1, half2,
           },
           advance: trials === 0 ? 'hold'
             : acc >= 0.90 ? 'up'

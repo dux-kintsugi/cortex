@@ -172,6 +172,8 @@
 
       function nextTrial() {
         if (!ctx.running) return;
+        // practice warm-up: two short-but-real trials, then a normal finish
+        if (ctx.practice && trialsDone >= 2) return end();
         if (len > MAX_LEN || ctx.now() - startedAt > ctx.durationMs) return end();
         seq = makeSeq(len);
         lastTapTile = -1;
@@ -183,7 +185,9 @@
         ctx.hud.progress(1);
         ctx.finish({
           primary: bestLen,
-          metrics: { bestLen, trials: trialsDone, gridSize, reverse },
+          // advance band: down ≤ 4, up ≥ 6 — span halves don't decompose, so null/null
+          levelProgress: BT.clamp((bestLen - 4) / (6 - 4), 0, 1),
+          metrics: { bestLen, trials: trialsDone, gridSize, reverse, half1: null, half2: null },
           advance: bestLen >= 6 ? 'up' : bestLen <= 4 ? 'down' : 'hold',
         });
       }

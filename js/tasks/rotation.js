@@ -41,6 +41,8 @@
       const startedAt = ctx.now();
 
       let correct = 0, wrong = 0;
+      // split-half buckets by trial parity (odd/even scored trial index)
+      const h1 = { correct: 0, wrong: 0 }, h2 = { correct: 0, wrong: 0 };
       let busy = true;       // blocks input during feedback / before first pair
       let ended = false;
       let isMirrored = false; // ground truth for the current pair
@@ -161,8 +163,10 @@
         if (!ctx.running || ended || busy) return;
         busy = true; // rapid double-taps can't double-count
         const ok = saidMirrored === isMirrored;
-        if (ok) { correct++; ctx.flash('good'); ctx.beep('good'); }
-        else { wrong++; ctx.flash('bad'); ctx.beep('bad'); }
+        const half = (correct + wrong) % 2 === 0 ? h1 : h2;
+        if (ok) { correct++; half.correct++; }
+        else { wrong++; half.wrong++; }
+        ctx.feedback(ok);
         updateHud();
         ctx.timeout(nextPair, ok ? 280 : 550);
       }
@@ -188,13 +192,20 @@
         const minutes = Math.max(ctx.now() - startedAt, 1000) / 60000;
         const netPerMin = (correct - wrong) / minutes;
         const acc = attempts ? correct / attempts : 0;
+        // each half's net counts over half the elapsed minutes
+        const n1 = h1.correct + h1.wrong, n2 = h2.correct + h2.wrong;
+        const halfMin = minutes / 2;
+        const half1 = n1 && n2 ? Math.round((h1.correct - h1.wrong) / halfMin * 10) / 10 : null;
+        const half2 = n1 && n2 ? Math.round((h2.correct - h2.wrong) / halfMin * 10) / 10 : null;
         ctx.hud.progress(1);
         ctx.finish({
           primary: netPerMin,
+          levelProgress: BT.clamp((acc - 0.60) / (0.85 - 0.60), 0, 1),
           metrics: {
             netPerMin: Math.round(netPerMin * 10) / 10,
             correct, wrong, pairs: attempts,
             accuracy: Math.round(acc * 100),
+            half1, half2,
           },
           advance: attempts === 0 ? 'hold' : acc >= 0.85 ? 'up' : acc < 0.60 ? 'down' : 'hold',
         });

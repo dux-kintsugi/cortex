@@ -43,11 +43,70 @@
     domain: 'workingMemory',
     tagline: 'Does this tile repeat the one from N steps back?',
     howTo: [
-      'Watch the grid — one tile lights up at a time.',
-      'Press MATCH (or SPACE) when the lit position is the same as N steps back.',
-      '1-back = the previous tile, 2-back = two tiles ago, 3-back = three ago.',
-      'Don’t press for anything else — false alarms cost points.',
+      'Tiles light up one at a time, like a slideshow. Your job: spot repeats.',
+      'In 2-back, compare each tile to the one TWO steps earlier. Corner… middle… corner — that third tile repeats the first ⇒ press MATCH.',
+      'No repeat? Do nothing and keep watching. Wrong presses cost points.',
+      'You’re holding the last few positions in your head, updating as you go — that’s the workout.',
+      'Watch the demo until it clicks 👇',
     ],
+    // Looping animated walkthrough on the instructions screen.
+    introDemo(box, level) {
+      const n = nForLevel(level);
+      // canned sequences with obvious lag-N repeats
+      const seq = n === 1 ? [4, 4, 2, 6, 6] : n === 3 ? [4, 1, 7, 4, 1, 7] : [4, 1, 4, 6, 1, 6];
+      const isMatch = i => i >= n && seq[i] === seq[i - n];
+
+      const tiles = [];
+      const grid = el('div', {
+        class: 'board',
+        style: 'grid-template-columns:repeat(3,1fr);width:150px;margin:0 auto 8px;gap:5px;',
+      });
+      for (let i = 0; i < 9; i++) {
+        const t = el('div', {
+          class: 'tile',
+          style: 'min-width:0;min-height:0;border-radius:8px;cursor:default;font-size:.72rem;color:var(--muted);',
+        });
+        tiles.push(t); grid.appendChild(t);
+      }
+      const caption = el('div', { class: 'task-msg', style: 'font-size:.85rem;min-height:40px;' });
+      box.appendChild(el('div', {
+        class: 'small muted',
+        style: 'text-align:center;margin-bottom:6px;font-weight:700;letter-spacing:.06em;',
+        text: 'LIVE DEMO — ' + n + '-BACK',
+      }));
+      box.appendChild(grid);
+      box.appendChild(caption);
+
+      // Each tile keeps small step-numbers as it lights, so a match is visibly
+      // "this tile lit at 1 and 3 — that's 2 apart".
+      let step = -1;
+      let hist = Array(9).fill('');
+      function tick() {
+        step = (step + 1) % (seq.length + 1);
+        tiles.forEach(t => t.classList.remove('lit', 'good'));
+        if (step === seq.length) {
+          caption.textContent = '…and again from the top.';
+          hist = Array(9).fill('');
+          tiles.forEach(t => { t.textContent = ''; });
+          return;
+        }
+        const pos = seq[step];
+        hist[pos] = hist[pos] ? hist[pos] + '·' + (step + 1) : String(step + 1);
+        tiles[pos].textContent = hist[pos];
+        const match = isMatch(step);
+        tiles[pos].classList.add(match ? 'good' : 'lit');
+        if (match) {
+          caption.textContent = 'Step ' + (step + 1) + ': same tile as step ' + (step + 1 - n) + ' — ' + n + ' apart → MATCH ✅';
+        } else if (step < n) {
+          caption.textContent = 'Step ' + (step + 1) + ': nothing to compare yet — just remember it.';
+        } else {
+          caption.textContent = 'Step ' + (step + 1) + ': different tile than ' + n + ' back — stay quiet.';
+        }
+      }
+      tick();
+      const iv = setInterval(tick, 1500);
+      return () => clearInterval(iv);
+    },
 
     maxLevel: 10,
     assessLevel: 3, // = 2-back
@@ -64,13 +123,16 @@
       const N = nForLevel(ctx.level);
       const ISI = Math.max(2400 - 80 * ctx.level, 1700); // onset-to-onset
       const LIT_MS = 500;
-      const TOTAL = 24 + N;
+      // Practice warm-up: just enough tiles for ~2 scoreable trials.
+      const TOTAL = ctx.practice ? N + 2 : 24 + N;
       const seq = makeSequence(N, TOTAL, ctx.rng);
       const isTarget = seq.map((p, i) => i >= N && p === seq[i - N]);
       const targetCount = isTarget.filter(Boolean).length;
       const startedAt = ctx.now();
 
       let hits = 0, misses = 0, falseAlarms = 0;
+      // Split-half buckets by trial parity (0 = even-indexed, 1 = odd-indexed).
+      const hitsH = [0, 0], faH = [0, 0], targetsH = [0, 0];
       let trial = -1;       // index of the trial currently on screen
       let responded = true; // true blocks input (before first onset / after a press)
 
@@ -84,10 +146,10 @@
         tiles.push(t);
         board.appendChild(t);
       }
-      const matchBtn = el('button', { class: 'choice', text: 'MATCH' },
+      const matchBtn = el('button', { class: 'choice', text: 'MATCH — same as ' + N + ' back' },
         el('span', { class: 'key-hint', text: 'SPACE' }));
       ctx.container.appendChild(el('div', { class: 'stage-center' },
-        el('div', { class: 'task-msg', text: N + '-back — press MATCH when the position repeats.' }),
+        el('div', { class: 'task-msg', text: N + '-back: press when a tile repeats the one from ' + N + ' step' + (N > 1 ? 's' : '') + ' ago.' }),
         board,
         el('div', { class: 'choice-row' }, matchBtn)));
 
@@ -111,6 +173,7 @@
 
       function endTrial() {
         if (!ctx.running) return;
+        if (isTarget[trial]) targetsH[trial % 2]++;
         if (isTarget[trial] && !responded) {
           misses++;
           ctx.beep('bad'); // missed target: sound only, no flash
@@ -123,8 +186,8 @@
       function respond() {
         if (!ctx.running || responded) return;
         responded = true;
-        if (isTarget[trial]) { hits++; ctx.flash('good'); ctx.beep('good'); }
-        else { falseAlarms++; ctx.flash('bad'); ctx.beep('bad'); }
+        if (isTarget[trial]) { hits++; hitsH[trial % 2]++; ctx.flash('good'); ctx.beep('good'); }
+        else { falseAlarms++; faH[trial % 2]++; ctx.flash('bad'); ctx.beep('bad'); }
         updateHud();
       }
 
@@ -135,10 +198,17 @@
         const primary = targetCount > 0
           ? Math.max(-100, (hits - falseAlarms) / targetCount * 100)
           : 0;
+        // Split-half primaries; null for both if either half saw no target.
+        let half1 = null, half2 = null;
+        if (targetsH[0] > 0 && targetsH[1] > 0) {
+          half1 = Math.max(-100, (hitsH[0] - faH[0]) / targetsH[0] * 100);
+          half2 = Math.max(-100, (hitsH[1] - faH[1]) / targetsH[1] * 100);
+        }
         ctx.hud.progress(1);
         ctx.finish({
           primary,
-          metrics: { n: N, trials: TOTAL, targets: targetCount, hits, misses, falseAlarms },
+          levelProgress: BT.clamp((primary - 40) / (80 - 40), 0, 1),
+          metrics: { n: N, trials: TOTAL, targets: targetCount, hits, misses, falseAlarms, half1, half2 },
           advance: primary >= 80 ? 'up' : primary < 40 ? 'down' : 'hold',
         });
       }

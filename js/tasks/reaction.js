@@ -41,6 +41,8 @@
     run(ctx) {
       const el_ = el;
       const TRIALS = ctx.mode === 'assess' ? 12 : 14;
+      // CVD assist: redundant shape coding — go stays filled ●, decoys go hollow ○.
+      const cvd = !!(BT.state.settings && BT.state.settings.cvdAssist);
       // Level knobs: shorter min-delay window & more decoys as level rises.
       const delayMin = 1000;
       const delayMax = Math.max(1800, 3400 - ctx.level * 120);
@@ -48,7 +50,7 @@
       const startedAt = ctx.now();
 
       const rts = [];
-      let falseStarts = 0, decoyErrors = 0;
+      let falseStarts = 0, decoyErrors = 0, timeouts = 0;
       let state = 'idle'; // idle | waiting | decoy | go
       let goAt = 0;
       let trialsDone = 0;
@@ -66,6 +68,7 @@
       }
 
       function setPad(mode) {
+        if (cvd) shape.textContent = mode === 'decoy' ? '○' : '●';
         if (mode === 'wait') {
           pad.style.background = 'var(--panel)';
           shape.style.color = 'var(--muted)'; shape.style.opacity = '.35';
@@ -113,12 +116,16 @@
         goAt = ctx.now();
         setPad('go');
         // stale-go guard: if no response in 1.5s, count as a slow trial (1500ms)
+        // AND as an error — otherwise a fully passive round would advance.
         ctx.timeout(() => {
           if (mySeq !== seq || state !== 'go') return;
           rts.push(1500);
           trialsDone++;
+          timeouts++;
+          state = 'idle'; // brief grace period so a just-late tap isn't a false start
           ctx.beep('bad');
-          nextTrial();
+          label.textContent = 'Too slow!';
+          ctx.timeout(nextTrial, 650);
         }, 1500);
       }
 
@@ -158,14 +165,23 @@
         // contract: primary must be finite. Zero valid trials = worst-case RT,
         // NOT 0 (0 ms would score as superhuman on a lower-is-better metric).
         const medianRT = rts.length ? BT.median(rts) : 1500;
-        const errors = falseStarts + decoyErrors;
+        const errors = falseStarts + decoyErrors + timeouts;
+        // split-half: median RT over odd- vs even-indexed scored trials
+        const h1 = rts.filter((_, i) => i % 2 === 0);
+        const h2 = rts.filter((_, i) => i % 2 === 1);
+        const haveHalves = h1.length > 0 && h2.length > 0;
+        // advance tests the error count: 0 errors → up, 3+ → down
+        const levelProgress = rts.length ? BT.clamp((3 - errors) / 3, 0, 1) : 0;
         ctx.hud.progress(1);
         ctx.finish({
           primary: medianRT,
+          levelProgress,
           metrics: {
             medianRT: rts.length ? BT.median(rts) : null,
             meanRT: rts.length ? Math.round(BT.mean(rts)) : null,
-            trials: rts.length, falseStarts, decoyErrors,
+            half1: haveHalves ? BT.median(h1) : null,
+            half2: haveHalves ? BT.median(h2) : null,
+            trials: rts.length, falseStarts, decoyErrors, timeouts,
           },
           advance: errors === 0 && rts.length >= TRIALS ? 'up'
             : errors >= 3 ? 'down' : 'hold',

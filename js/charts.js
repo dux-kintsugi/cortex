@@ -102,15 +102,23 @@
   }
 
   /* ---------------- Line chart ----------------
-     series: [{label, color?, points:[{x:ts, y:score}]}]
-     opts: {yMin=0, yMax=100}
+     series: [{label, color?, dotsOnly?, points:[{x:ts, y}]}]
+     opts: {yMin=0, yMax=100, autoScale?, markers?: [{x, label}]}
   ----------------------------------------------- */
   BT.drawLine = function (canvas, series, opts) {
     opts = opts || {};
     const { g, w, h } = setup(canvas);
     const padL = 30, padR = 12, padT = 12, padB = 24;
-    const yMin = opts.yMin != null ? opts.yMin : 0;
-    const yMax = opts.yMax != null ? opts.yMax : 100;
+    let yMin = opts.yMin != null ? opts.yMin : 0;
+    let yMax = opts.yMax != null ? opts.yMax : 100;
+    if (opts.autoScale) {
+      const ys = series.flatMap(s => s.points.map(p => p.y));
+      if (ys.length) {
+        yMin = Math.max(0, Math.floor(Math.min.apply(null, ys) - 5));
+        yMax = Math.min(110, Math.ceil(Math.max.apply(null, ys) + 5));
+        if (yMax - yMin < 10) { yMax = yMin + 10; }
+      }
+    }
 
     const line = cssVar('--line', '#2a3154');
     const muted = cssVar('--muted', '#8b93b8');
@@ -146,16 +154,34 @@
     g.textAlign = 'right';
     g.fillText(BT.fmtDate(xMax), w - padR, h - padB + 6);
 
+    // vertical markers (e.g., assessment dates)
+    if (opts.markers) {
+      for (const mk of opts.markers) {
+        if (mk.x < xMin || mk.x > xMax) continue;
+        g.strokeStyle = muted; g.lineWidth = 1;
+        g.setLineDash([4, 4]);
+        g.beginPath(); g.moveTo(X(mk.x), padT); g.lineTo(X(mk.x), h - padB); g.stroke();
+        g.setLineDash([]);
+        if (mk.label) {
+          g.fillStyle = muted; g.textAlign = 'center'; g.textBaseline = 'bottom';
+          g.fillText(mk.label, X(mk.x), padT + 8);
+        }
+      }
+    }
+
     series.forEach((s, si) => {
       const color = s.color || palette[si % palette.length];
       const pts = s.points.slice().sort((a, b) => a.x - b.x);
       if (!pts.length) return;
-      g.strokeStyle = color; g.lineWidth = 2;
-      g.beginPath();
-      pts.forEach((p, i) => { i === 0 ? g.moveTo(X(p.x), Y(p.y)) : g.lineTo(X(p.x), Y(p.y)); });
-      g.stroke();
+      if (!s.dotsOnly) {
+        g.strokeStyle = color; g.lineWidth = 2;
+        g.beginPath();
+        pts.forEach((p, i) => { i === 0 ? g.moveTo(X(p.x), Y(p.y)) : g.lineTo(X(p.x), Y(p.y)); });
+        g.stroke();
+      }
       g.fillStyle = color;
-      for (const p of pts) { g.beginPath(); g.arc(X(p.x), Y(p.y), 3, 0, Math.PI * 2); g.fill(); }
+      const r = s.dotsOnly ? 2.5 : 3;
+      for (const p of pts) { g.beginPath(); g.arc(X(p.x), Y(p.y), r, 0, Math.PI * 2); g.fill(); }
     });
 
     // legend

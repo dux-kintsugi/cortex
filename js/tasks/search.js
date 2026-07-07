@@ -45,6 +45,7 @@
       let targetTile = null;
       let boardStart = 0;
       const findTimes = [];
+      const halfNet = [0, 0], halfN = [0, 0]; // split-half: taps bucketed by attempt parity
       const startedAt = ctx.now();
 
       const board = el('div', {
@@ -63,6 +64,13 @@
           const t = a[i]; a[i] = a[j]; a[j] = t;
         }
         return a;
+      }
+
+      // call BEFORE incrementing solved/errors: their sum is the tap's index
+      function bucket(delta) {
+        const h = (solved + errors) % 2;
+        halfN[h]++;
+        halfNet[h] += delta;
       }
 
       function updateHud() {
@@ -117,18 +125,20 @@
         if (!tile || !board.contains(tile)) return;
         if (tile === targetTile) {
           busy = true;
+          bucket(1);
           solved++;
           findTimes.push(ctx.now() - boardStart);
           tile.classList.add('good');
-          ctx.flash('good'); ctx.beep('good');
+          ctx.feedback(true);
           updateHud();
           ctx.timeout(nextBoard, 350);
         } else if (!tile.classList.contains('bad')) {
           // .bad acts as a debounce: rapid re-taps on the same wrong
           // tile can't double-count while its flash is showing
+          bucket(-1);
           errors++;
           tile.classList.add('bad');
-          ctx.flash('bad'); ctx.beep('bad');
+          ctx.feedback(false);
           updateHud();
           ctx.timeout(() => { tile.classList.remove('bad'); }, 400);
         }
@@ -149,14 +159,19 @@
         const attempts = solved + errors;
         const acc = attempts ? solved / attempts : 1;
         const netPerMin = (solved - errors) / minutes;
+        const bothHalves = halfN[0] > 0 && halfN[1] > 0;
         ctx.hud.progress(1);
         ctx.finish({
           primary: netPerMin,
+          // advance band tests accuracy: down < .75, up = 1.0 (zero errors)
+          levelProgress: attempts ? BT.clamp((acc - 0.75) / (1 - 0.75), 0, 1) : 0,
           metrics: {
             solved, errors,
             accuracy: Math.round(acc * 100) / 100,
             meanFindMs: findTimes.length ? Math.round(BT.mean(findTimes)) : null,
             setSize,
+            half1: bothHalves ? halfNet[0] / (minutes / 2) : null,
+            half2: bothHalves ? halfNet[1] / (minutes / 2) : null,
           },
           advance: errors === 0 && solved >= 8 ? 'up'
             : acc < 0.75 ? 'down' : 'hold',

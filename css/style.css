@@ -27,7 +27,7 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; }
+html, body { height: 100%; overscroll-behavior: none; }
 body {
   background: radial-gradient(1200px 800px at 80% -10%, #141a38 0%, var(--bg) 55%);
   color: var(--text);
@@ -353,6 +353,8 @@ h1, h2, h3 { font-weight: 700; letter-spacing: -0.01em; }
 .ink-blue { color: var(--ink-blue); }
 .ink-green { color: var(--ink-green); }
 .ink-yellow { color: var(--ink-yellow); }
+.ink-white { color: #f2f4ff; }
+.ink-gray { color: #79819f; }
 .fill-red { background: var(--ink-red) !important; border-color: var(--ink-red) !important; }
 .fill-blue { background: var(--ink-blue) !important; border-color: var(--ink-blue) !important; }
 .fill-green { background: var(--ink-green) !important; border-color: var(--ink-green) !important; }
@@ -397,6 +399,50 @@ h1, h2, h3 { font-weight: 700; letter-spacing: -0.01em; }
 }
 .switch input:checked + .slider { background: var(--accent); }
 .switch input:checked + .slider::before { transform: translateX(20px); background: #fff; }
+
+/* ---------------- v2: rounds, ceremonies, combos ---------------- */
+.task-layer { touch-action: none; } /* taps still fire; browser pan/zoom gestures don't */
+.task-layer .tile, .task-layer .tap-pad, .task-layer .choice, .task-layer .key {
+  -webkit-touch-callout: none;
+}
+
+.intro-demo {
+  background: var(--panel-2); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px; margin: 0 auto 18px; max-width: 300px;
+}
+
+.practice-banner {
+  text-align: center; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em;
+  color: var(--warn); padding: 4px 0 0;
+}
+
+.combo-float {
+  position: absolute; left: 50%; top: 38%;
+  transform: translateX(-50%);
+  font-size: 1.4rem; font-weight: 800; color: var(--accent-2);
+  pointer-events: none; z-index: 4;
+  animation: comboRise 1.05s ease-out forwards;
+}
+@keyframes comboRise {
+  0% { opacity: 0; transform: translateX(-50%) translateY(10px) scale(0.8); }
+  20% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1.15); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-46px) scale(1); }
+}
+
+.pb-banner {
+  color: var(--warn); font-weight: 800; font-size: 1.05rem; margin-bottom: 10px;
+  animation: pbIn 0.5s ease-out;
+}
+@keyframes pbIn { 0% { opacity: 0; transform: scale(0.7); } 60% { transform: scale(1.12); } 100% { opacity: 1; transform: scale(1); } }
+.pb-pulse { animation: pbPulse 0.7s ease-out; }
+@keyframes pbPulse { 0% { transform: scale(1); } 35% { transform: scale(1.12); } 100% { transform: scale(1); } }
+
+.task-intro.finale { max-width: 420px; width: 100%; }
+.streak-big { font-size: 2.6rem; font-weight: 800; margin: 8px 0 2px; }
+.tags-block { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 12px; }
+.tag-row { display: flex; gap: 6px; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+.tag-chip { cursor: pointer; border: 1px solid var(--line); background: var(--panel-2); }
+.tag-chip.active { border-color: var(--accent); color: var(--accent); background: rgba(91, 140, 255, 0.12); }
 
 /* Calendar heatmap (Progress → Your patterns) */
 .heatmap { display: flex; gap: 3px; overflow-x: auto; padding: 2px 0 6px; }

@@ -46,6 +46,8 @@
       let digits = BT.shuffle(glyphs.map((g, i) => i + 1), ctx.rng);
 
       let correct = 0, wrong = 0;
+      let trialIdx = 0;         // scored-trial counter for split-half buckets
+      const halves = [{ c: 0, w: 0, n: 0 }, { c: 0, w: 0, n: 0 }];
       let curIdx = -1;          // index of the glyph on screen
       let locked = false;       // brief input lock between trials
       let reshuffled = false;
@@ -103,12 +105,15 @@
       function answer(d) {
         if (!ctx.running || ended || locked) return;
         locked = true; // block rapid double-taps until the next glyph
+        const half = halves[trialIdx % 2];
+        trialIdx++;
+        half.n++;
         if (d === digits[curIdx]) {
-          correct++;
-          ctx.flash('good'); ctx.beep('good');
+          correct++; half.c++;
+          ctx.feedback(true);
         } else {
-          wrong++;
-          ctx.flash('bad'); ctx.beep('bad');
+          wrong++; half.w++;
+          ctx.feedback(false);
         }
         updateStat();
         ctx.timeout(() => {
@@ -143,13 +148,19 @@
         const minutes = Math.max(ctx.now() - startedAt, 1) / 60000;
         const attempts = correct + wrong;
         const acc = attempts ? correct / attempts : 0;
+        // Split halves: net/min per parity bucket over half the elapsed time.
+        const halfMinutes = minutes / 2;
+        const haveHalves = halves[0].n > 0 && halves[1].n > 0;
         ctx.hud.progress(1);
         ctx.finish({
           primary: (correct - wrong) / minutes,
+          levelProgress: BT.clamp((acc - 0.75) / (0.92 - 0.75), 0, 1),
           metrics: {
             correct, wrong, attempts,
             accuracy: Math.round(acc * 100),
             legendSize: N,
+            half1: haveHalves ? (halves[0].c - halves[0].w) / halfMinutes : null,
+            half2: haveHalves ? (halves[1].c - halves[1].w) / halfMinutes : null,
           },
           advance: attempts > 0 && acc >= 0.92 ? 'up'
             : acc < 0.75 ? 'down' : 'hold',

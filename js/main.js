@@ -26,6 +26,9 @@
     window.scrollTo(0, 0);
   };
 
+  // Modules loaded after main.js (e.g. gamedetail) register extra screens here.
+  BT.registerScreen = function (name, fn) { screens[name] = fn; };
+
   function buildTopbar() {
     const bar = document.getElementById('topbar');
     bar.appendChild(el('div', { class: 'logo' },
@@ -85,6 +88,29 @@
   /* ----- HOME ----- */
   screens.home = function (main) {
     const hasBaseline = BT.state.assessments.length > 0;
+    const today = BT.dayKey();
+    const playedToday = BT.state.sessions.some(s => s.mode !== 'assess' && BT.dayKey(s.ts) === today);
+    const st = BT.state.streak;
+    const lapseGap = st.lastDay ? BT.daysBetween(st.lastDay, today) : 0;
+
+    // Weekly report card (js/report.js, if loaded and due)
+    if (hasBaseline && BT.buildWeeklyReportCard) {
+      const rep = BT.buildWeeklyReportCard();
+      if (rep) main.appendChild(rep);
+    }
+
+    // Comeback flow: lapsed ≥3 days — acknowledge, shrink the re-entry ask.
+    if (hasBaseline && lapseGap >= 3 && !playedToday) {
+      main.appendChild(el('div', { class: 'card hero' },
+        el('h1', { text: 'Welcome back 👋' }),
+        el('p', { text: 'It’s been ' + lapseGap + ' days — no guilt, your profile is intact' +
+          ((st.best || 0) > 0 ? ' and your record streak (' + st.best + ' days) still stands' : '') +
+          '. Ease back in with one 2-minute game.' }),
+        el('button', {
+          class: 'btn primary big', text: 'Ease back in (~2 min)',
+          onclick: () => BT.runQuickSession(() => BT.go('home')),
+        })));
+    }
 
     if (!hasBaseline) {
       main.appendChild(el('div', { class: 'card hero' },
@@ -106,10 +132,13 @@
     const live = BT.liveDomainScores();
     const liveVals = BT.DOMAIN_KEYS.map(k => live[k]).filter(v => v != null);
     const overall = liveVals.length ? Math.round(BT.mean(liveVals)) : null;
+    const streakSub = 'day streak' +
+      ((st.shields || 0) > 0 ? ' · 🛡×' + st.shields : '') +
+      (streak === 0 && (st.best || 0) > 0 ? ' · record ' + st.best : '');
 
     main.appendChild(el('div', { class: 'card' },
       el('div', { class: 'stat-strip' },
-        el('div', { class: 'stat-box' }, el('div', { class: 'v', text: (streak > 0 ? '🔥 ' : '') + streak }), el('div', { class: 'l', text: 'day streak' })),
+        el('div', { class: 'stat-box' }, el('div', { class: 'v', text: (streak > 0 ? '🔥 ' : '') + streak }), el('div', { class: 'l', text: streakSub })),
         el('div', { class: 'stat-box' }, el('div', { class: 'v', text: String(totalSessions) }), el('div', { class: 'l', text: 'games played' })),
         el('div', { class: 'stat-box' }, el('div', { class: 'v', text: overall == null ? '—' : String(overall) }), el('div', { class: 'l', text: 'overall score' })))));
 
@@ -135,9 +164,40 @@
         el('button', {
           class: 'btn primary big', text: remaining === prog.length ? 'Start session' : 'Continue session',
           onclick: () => BT.runTrainingSession(() => BT.go('home')),
-        })));
+        }),
+        !playedToday ? el('button', {
+          class: 'btn', text: '⚡ Quick (2 min)', title: 'One game — still keeps the streak',
+          onclick: () => BT.runQuickSession(() => BT.go('home')),
+        }) : null));
     }
     main.appendChild(todayCard);
+
+    // --- daily challenge (after the day's session is done) ---
+    if (remaining === 0 && BT.todaysChallenge) {
+      const ch = BT.todaysChallenge();
+      main.appendChild(el('div', { class: 'card' },
+        el('h2', { text: 'Daily challenge ⚔️' }),
+        ch.done
+          ? el('div', { class: 'sub', text: 'Done — combined score ' + ch.score + '. New gauntlet tomorrow.' })
+          : el('div', null,
+              el('div', { class: 'sub', style: 'margin-bottom:12px;', text:
+                '3 seeded games at your levels: ' + ch.games.map(g => BT.tasks[g.taskId] ? BT.tasks[g.taskId].icon : '❓').join(' ') +
+                ' — the boards are the same for the whole day, so the score is pure you.' }),
+              el('div', { class: 'btn-row', style: 'justify-content:center;' },
+                el('button', { class: 'btn primary', text: 'Take the challenge', onclick: () => BT.runChallenge(() => BT.go('home')) })))));
+    }
+
+    // --- provisional-baseline confirmation nudge ---
+    const firstA = BT.state.assessments[0];
+    if (BT.state.assessments.length === 1 && firstA.provisional &&
+        BT.daysBetween(BT.dayKey(firstA.ts), today) >= 3) {
+      main.appendChild(el('div', { class: 'card' },
+        el('h2', { text: 'Lock in a fair baseline 🎯' }),
+        el('p', { class: 'sub', style: 'margin-bottom:12px;', text:
+          'First-ever runs read low — you were learning the controls, not showing your ability. ' +
+          'Re-assess once now that the games are familiar; future progress is measured against this second, fairer baseline.' }),
+        el('button', { class: 'btn', text: 'Confirm baseline', onclick: startAssessment })));
+    }
 
     // --- radar ---
     const radarCard = el('div', { class: 'card' }, el('h2', { text: 'Your cognitive profile' }));
@@ -145,13 +205,17 @@
     radarCard.appendChild(el('div', { class: 'center small muted', text: 'Rolling scores from recent play · tap Progress for details' }));
     main.appendChild(radarCard);
 
-    // --- reassessment nudge ---
+    // --- reassessment nudge (time-of-day matched for a fair comparison) ---
     const days = BT.daysSinceAssessment();
     if (days != null && days >= 14) {
+      const last = BT.latestAssessment();
+      const baseBlock = BT.timeBlockOfHour(new Date(last.ts).getHours());
+      const nowBlock = BT.timeBlockOfHour(new Date().getHours());
       main.appendChild(el('div', { class: 'card' },
         el('h2', { text: 'Time to re-map 🗺️' }),
         el('p', { class: 'sub', style: 'margin-bottom:12px;', text:
-          'Your baseline is ' + days + ' days old. Re-assess to measure progress and refresh your plan.' }),
+          'Your baseline is ' + days + ' days old. Re-assess to measure progress and refresh your plan.' +
+          (baseBlock !== nowBlock ? ' Tip: your baseline was taken in the ' + baseBlock + ' — re-assess then for the fairest comparison.' : '') }),
         el('button', { class: 'btn', text: 'Re-run assessment', onclick: startAssessment })));
     }
   };
@@ -297,22 +361,86 @@
     return 'Night';
   }
 
-  function buildPatternsCard() {
-    const byDay = {};
-    const byWd = WEEKDAYS.map(() => ({ sum: 0, n: 0 }));
+  /* ----- daily reminder (.ics, floating local time) ----- */
+  function suggestedReminderTime() {
     const byBlock = {};
     for (const b of TIME_BLOCKS) byBlock[b.label] = { sum: 0, n: 0 };
-
     for (const s of BT.state.sessions) {
+      if (s.score == null) continue;
+      const bl = byBlock[blockOf(new Date(s.ts).getHours())];
+      bl.sum += s.score; bl.n++;
+    }
+    const best = TIME_BLOCKS
+      .map(b => ({ label: b.label, n: byBlock[b.label].n, avg: byBlock[b.label].n ? byBlock[b.label].sum / byBlock[b.label].n : 0 }))
+      .filter(b => b.n >= 3)
+      .sort((a, b) => b.avg - a.avg)[0];
+    const mid = { Morning: '08:30', Afternoon: '14:00', Evening: '19:00', Night: '21:30' };
+    if (!best) return { hhmm: '08:30', reason: null };
+    return {
+      hhmm: mid[best.label],
+      reason: 'Your scores say you’re sharpest in the ' + best.label.toLowerCase() + ', so we suggest ' + mid[best.label] + '.',
+    };
+  }
+
+  function buildReminderICS(hhmm) {
+    const parts = hhmm.split(':');
+    const h = String(parseInt(parts[0], 10) || 8).padStart(2, '0');
+    const m = String(parseInt(parts[1], 10) || 0).padStart(2, '0');
+    const d = new Date();
+    const start = d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') +
+      String(d.getDate()).padStart(2, '0') + 'T' + h + m + '00';
+    return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Cortex//Brain Training//EN',
+      'BEGIN:VEVENT', 'UID:cortex-daily-training@local',
+      'DTSTART:' + start, // floating local time — fires at this wall-clock time anywhere
+      'DURATION:PT10M', 'RRULE:FREQ=DAILY',
+      'SUMMARY:🧠 Cortex training',
+      'DESCRIPTION:4 short games\\, ~8 minutes. Streak on the line.',
+      'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:Cortex training', 'TRIGGER:PT0S', 'END:VALARM',
+      'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+  }
+
+  function buildPatternsCard() {
+    // One chronological pass. Raw scores feed the heatmap/meters; the INSIGHT uses
+    // residuals vs a per-task running average (EMA), which removes practice drift
+    // and task-mix confounds — otherwise "your best weekday" is just "whichever
+    // day you happened to play most recently".
+    const byDay = {};
+    const byWd = WEEKDAYS.map(() => ({ sum: 0, n: 0, res: [] }));
+    const byBlock = {};
+    for (const b of TIME_BLOCKS) byBlock[b.label] = { sum: 0, n: 0, res: [] };
+    const dayRes = {}; // dayKey -> [residuals] (for tag correlations)
+    const ema = {};    // taskId -> running average
+
+    const ordered = BT.state.sessions.slice().sort((a, b) => a.ts - b.ts);
+    for (const s of ordered) {
       if (s.score == null) continue;
       const d = new Date(s.ts);
       const day = BT.dayKey(s.ts);
       (byDay[day] = byDay[day] || { sum: 0, n: 0 });
       byDay[day].sum += s.score; byDay[day].n++;
-      const wd = (d.getDay() + 6) % 7; // 0 = Monday
-      byWd[wd].sum += s.score; byWd[wd].n++;
+
+      const prevEma = ema[s.taskId];
+      const residual = prevEma == null ? null : s.score - prevEma;
+      ema[s.taskId] = prevEma == null ? s.score : prevEma + 0.3 * (s.score - prevEma);
+
+      const wd = byWd[(d.getDay() + 6) % 7]; // 0 = Monday
       const bl = byBlock[blockOf(d.getHours())];
+      wd.sum += s.score; wd.n++;
       bl.sum += s.score; bl.n++;
+      if (residual != null) {
+        wd.res.push(residual);
+        bl.res.push(residual);
+        (dayRes[day] = dayRes[day] || []).push(residual);
+      }
+    }
+
+    // residual mean must clear its own standard error to count as a real pattern
+    function resStat(arr) {
+      if (arr.length < 5) return null;
+      const mean = BT.mean(arr);
+      const sd = Math.sqrt(BT.mean(arr.map(x => (x - mean) * (x - mean))));
+      const se = sd / Math.sqrt(arr.length);
+      return { mean, se, n: arr.length, solid: Math.abs(mean) > se };
     }
 
     const card = el('div', { class: 'card' }, el('h2', { text: 'Your patterns' }));
@@ -361,32 +489,85 @@
       return box;
     }
     const wdEntries = WEEKDAYS.map((label, i) => ({
-      label, n: byWd[i].n, avg: byWd[i].n ? Math.round(byWd[i].sum / byWd[i].n) : null,
+      label: label + (byWd[i].n ? ' (' + byWd[i].n + ')' : ''), key: label,
+      n: byWd[i].n, avg: byWd[i].n ? Math.round(byWd[i].sum / byWd[i].n) : null,
+      stat: resStat(byWd[i].res),
     }));
     const blockEntries = TIME_BLOCKS.map(b => ({
-      label: b.label, icon: b.icon, n: byBlock[b.label].n,
+      label: b.label + (byBlock[b.label].n ? ' (' + byBlock[b.label].n + ')' : ''), key: b.label,
+      icon: b.icon, n: byBlock[b.label].n,
       avg: byBlock[b.label].n ? Math.round(byBlock[b.label].sum / byBlock[b.label].n) : null,
+      stat: resStat(byBlock[b.label].res),
     }));
 
     card.appendChild(el('div', { class: 'grid-2' },
       el('div', null, el('div', { class: 'pattern-h', text: 'By day of week' }), meterRows(wdEntries)),
       el('div', null, el('div', { class: 'pattern-h', text: 'By time of day' }), meterRows(blockEntries))));
 
-    /* --- insight line (needs ≥3 sessions in a bucket to count) --- */
-    const bestWd = wdEntries.filter(e => e.n >= 3).sort((a, b) => b.avg - a.avg)[0];
-    const bestBl = blockEntries.filter(e => e.n >= 3).sort((a, b) => b.avg - a.avg)[0];
-    if (bestWd || bestBl) {
-      const FULL = { Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday' };
+    /* --- insight: practice-adjusted, and only when the signal beats its noise --- */
+    const FULL = { Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday' };
+    const solidWd = wdEntries.filter(e => e.stat && e.stat.solid && e.stat.mean > 0)
+      .sort((a, b) => b.stat.mean - a.stat.mean)[0];
+    const solidBl = blockEntries.filter(e => e.stat && e.stat.solid && e.stat.mean > 0)
+      .sort((a, b) => b.stat.mean - a.stat.mean)[0];
+    if (solidWd || solidBl) {
       const parts = [];
-      if (bestWd) parts.push('on ' + FULL[bestWd.label] + 's (avg ' + bestWd.avg + ')');
-      if (bestBl) parts.push('in the ' + bestBl.label.toLowerCase() + ' (avg ' + bestBl.avg + ')');
+      if (solidWd) parts.push('on ' + FULL[solidWd.key] + 's (+' + solidWd.stat.mean.toFixed(1) + ' vs your trend, n=' + solidWd.stat.n + ')');
+      if (solidBl) parts.push('in the ' + solidBl.key.toLowerCase() + ' (+' + solidBl.stat.mean.toFixed(1) + ', n=' + solidBl.stat.n + ')');
       card.appendChild(el('div', { class: 'notice', style: 'margin-top:12px;', text:
-        '💡 You’re sharpest ' + parts.join(' and ') + '. Consider scheduling demanding work — and your training — there.' }));
+        '💡 Adjusted for practice gains, you genuinely run hotter ' + parts.join(' and ') + '. Schedule demanding work — and training — there.' }));
     } else {
       card.appendChild(el('div', { class: 'notice', style: 'margin-top:12px;', text:
-        'Play across a few more days and times to unlock insights about when you perform best.' }));
+        'No reliable when-am-I-sharpest pattern yet — differences so far are within noise. Keep playing across different days and times.' }));
     }
+
+    /* --- day-tag correlations (sleep / caffeine / exercise / stress) --- */
+    const tagCard = buildTagCorrelations(dayRes);
+    if (tagCard) card.appendChild(tagCard);
     return card;
+  }
+
+  function buildTagCorrelations(dayRes) {
+    const tags = BT.state.dayTags || {};
+    const dayMean = {};
+    for (const day of Object.keys(dayRes)) dayMean[day] = BT.mean(dayRes[day]);
+
+    function compare(pick) {
+      const yes = [], no = [];
+      for (const day of Object.keys(dayMean)) {
+        const t = tags[day];
+        if (!t) continue;
+        (pick(t) ? yes : no).push(dayMean[day]);
+      }
+      if (yes.length < 3 || no.length < 3) return null;
+      return { diff: BT.mean(yes) - BT.mean(no), nYes: yes.length, nNo: no.length };
+    }
+
+    const rows = [];
+    const sleepBad = compare(t => t.sleep === 'bad');
+    if (sleepBad) rows.push({ icon: '😴', label: 'Bad-sleep days', r: sleepBad });
+    const sleepGood = compare(t => t.sleep === 'good');
+    if (sleepGood) rows.push({ icon: '🛏️', label: 'Good-sleep days', r: sleepGood });
+    const caff = compare(t => !!t.caffeine);
+    if (caff) rows.push({ icon: '☕', label: 'Caffeine days', r: caff });
+    const exer = compare(t => !!t.exercise);
+    if (exer) rows.push({ icon: '🏃', label: 'Exercise days', r: exer });
+    const stress = compare(t => !!t.stress);
+    if (stress) rows.push({ icon: '😰', label: 'High-stress days', r: stress });
+    if (!rows.length) return null;
+
+    const box = el('div', { style: 'margin-top:14px;' },
+      el('div', { class: 'pattern-h', text: 'What moves your scores' }));
+    for (const row of rows) {
+      const d = row.r.diff;
+      box.appendChild(el('div', { class: 'domain-row', style: 'padding:6px 0;' },
+        el('div', { style: 'min-width:150px;font-weight:600;font-size:.85rem;', text: row.icon + ' ' + row.label }),
+        el('div', { style: 'flex:1;font-size:.85rem;color:var(--' + (d > 1 ? 'good' : d < -1 ? 'bad' : 'muted') + ');', text:
+          (d > 0 ? '+' : '') + d.toFixed(1) + ' vs your trend (n=' + row.r.nYes + ' tagged)' })));
+    }
+    box.appendChild(el('div', { class: 'small muted', style: 'margin-top:4px;', text:
+      'Tag your days after each session to sharpen these. Correlation, not proof — but yours.' }));
+    return box;
   }
 
   /* ----- PROGRESS ----- */
@@ -398,37 +579,39 @@
     let selected = screens.progress._selected || 'all';
 
     function drawTrend() {
-      const daily = {}; // domain -> dayKey -> [scores]
+      // daily mean score + daily mean ability, filtered by selected domain
+      const dayScore = {}, dayAbility = {};
       for (const s of BT.state.sessions) {
         const def = BT.tasks[s.taskId];
         if (!def || s.score == null) continue;
-        const dk = def.domain, day = BT.dayKey(s.ts);
-        ((daily[dk] = daily[dk] || {})[day] = daily[dk][day] || []).push(s.score);
-      }
-      function seriesFor(dk) {
-        const days = daily[dk] || {};
-        return Object.keys(days).sort().map(day => ({
-          x: new Date(day + 'T12:00').getTime(), y: Math.round(BT.mean(days[day])),
-        }));
-      }
-      let series;
-      if (selected === 'all') {
-        const merged = {};
-        for (const dk of Object.keys(daily)) {
-          for (const day of Object.keys(daily[dk])) {
-            (merged[day] = merged[day] || []).push.apply(merged[day], daily[dk][day]);
-          }
+        if (selected !== 'all' && def.domain !== selected) continue;
+        const day = BT.dayKey(s.ts);
+        (dayScore[day] = dayScore[day] || []).push(s.score);
+        if (s.mode !== 'assess' && s.ability != null) {
+          (dayAbility[day] = dayAbility[day] || []).push(s.ability);
         }
-        series = [{
-          label: 'Overall',
-          points: Object.keys(merged).sort().map(day => ({
-            x: new Date(day + 'T12:00').getTime(), y: Math.round(BT.mean(merged[day])),
-          })),
-        }];
-      } else {
-        series = [{ label: BT.DOMAINS[selected].name, points: seriesFor(selected) }];
       }
-      BT.drawLine(canvas, series);
+      const dayKeys = Object.keys(dayScore).sort();
+      const raw = dayKeys.map(day => ({
+        x: new Date(day + 'T12:00').getTime(), y: Math.round(BT.mean(dayScore[day])),
+      }));
+      // 7-point rolling mean smooths task-mix noise into a readable trend
+      const rolling = raw.map((p, i) => {
+        const win = raw.slice(Math.max(0, i - 6), i + 1);
+        return { x: p.x, y: Math.round(BT.mean(win.map(q => q.y))) };
+      });
+      const abilityPts = Object.keys(dayAbility).sort().map(day => ({
+        x: new Date(day + 'T12:00').getTime(), y: Math.round(BT.mean(dayAbility[day]) * 10),
+      }));
+      const series = [
+        { label: 'daily score', dotsOnly: true, color: 'rgba(139,147,184,0.5)', points: raw },
+        { label: 'trend (7-day)', points: rolling },
+      ];
+      if (abilityPts.length >= 3) series.push({ label: 'ability ×10', points: abilityPts });
+      BT.drawLine(canvas, series, {
+        autoScale: true,
+        markers: BT.state.assessments.map((a, i) => ({ x: a.ts, label: 'A' + (i + 1) })),
+      });
     }
 
     function segBtn(key, label) {
@@ -453,19 +636,29 @@
 
     main.appendChild(buildPatternsCard());
 
-    // Assessment comparison
+    // Assessment comparison — anchored to the confirmation baseline, not the
+    // provisional first run (novelty deflates run #1).
     if (BT.state.assessments.length) {
       const a = BT.latestAssessment();
-      const first = BT.state.assessments[0];
+      const anchor = BT.anchorAssessment();
+      const compare = anchor && anchor.ts !== a.ts ? anchor : null;
       const compCard = el('div', { class: 'card' },
         el('h2', { text: 'Assessments' }),
         el('div', { class: 'sub', style: 'margin-bottom:10px;', text:
-          BT.state.assessments.length > 1
-            ? 'Latest (solid) vs first (faint) — ' + BT.state.assessments.length + ' assessments taken'
+          compare
+            ? 'Latest (solid) vs your baseline (faint) — ' + BT.state.assessments.length + ' taken' +
+              (BT.state.assessments[0].provisional && BT.state.assessments.length > 1 ? ' · run #1 was provisional and isn’t the anchor' : '')
             : 'One assessment so far — re-assess every ~2 weeks to see movement.' }));
-      compCard.appendChild(radarCanvas(a.domainScores, BT.state.assessments.length > 1 ? first.domainScores : null, 260));
+      compCard.appendChild(radarCanvas(a.domainScores, compare ? compare.domainScores : null, 260));
       main.appendChild(compCard);
     }
+
+    // Long-range report + achievements (modules loaded after this file)
+    if (BT.buildLongReportCard) {
+      const lr = BT.buildLongReportCard();
+      if (lr) main.appendChild(lr);
+    }
+    if (BT.buildAchievementsCard) main.appendChild(BT.buildAchievementsCard());
 
     // Per-game bests
     const tbl = el('table', { class: 'sessions-table' },
@@ -474,14 +667,20 @@
       const t = BT.tasks[id];
       const plays = BT.sessionsFor(id).length;
       if (!plays) continue;
-      tbl.appendChild(el('tr', null,
+      const tr = el('tr', {
+        style: 'cursor:pointer;',
+        onclick: () => BT.go('game', { id }),
+      },
         el('td', { text: t.icon + ' ' + t.name }),
         el('td', { text: String(BT.taskLevel(id)) }),
         el('td', { text: String(plays) }),
         el('td', { text: String(BT.bestScore(id) == null ? '—' : BT.bestScore(id)) }),
-        el('td', { text: String(BT.lastScore(id) == null ? '—' : BT.lastScore(id)) })));
+        el('td', { text: String(BT.lastScore(id) == null ? '—' : BT.lastScore(id)) + ' ›' }));
+      tbl.appendChild(tr);
     }
-    main.appendChild(el('div', { class: 'card' }, el('h2', { text: 'Games' }), tbl));
+    main.appendChild(el('div', { class: 'card' }, el('h2', { text: 'Games' }),
+      el('div', { class: 'sub small', style: 'margin-bottom:8px;', text: 'Tap a game for its full history — trends, levels, and the hidden sub-metrics.' }),
+      tbl));
 
     // Recent sessions
     const recent = BT.state.sessions.slice(-12).reverse();
@@ -515,14 +714,60 @@
       el('div', null, el('div', { style: 'font-weight:600;', text: 'Sound effects' }),
         el('div', { class: 'small muted', text: 'Beeps for feedback and countdowns' })),
       el('label', { class: 'switch' }, soundInput, el('span', { class: 'slider' }))));
+
+    // color-vision assist
+    const cvdInput = el('input', { type: 'checkbox' });
+    cvdInput.checked = !!BT.state.settings.cvdAssist;
+    cvdInput.addEventListener('change', () => {
+      BT.state.settings.cvdAssist = cvdInput.checked; BT.save();
+    });
+    card.appendChild(el('div', { class: 'toggle-row' },
+      el('div', null, el('div', { style: 'font-weight:600;', text: 'Color-vision assist' }),
+        el('div', { class: 'small muted', text: 'Shape-coded signals + CVD-safe Stroop palette (red-green colorblind friendly)' })),
+      el('label', { class: 'switch' }, cvdInput, el('span', { class: 'slider' }))));
     main.appendChild(card);
+
+    // --- daily reminder (.ics — works with zero servers) ---
+    const bestTime = suggestedReminderTime();
+    const timeInput = el('input', {
+      type: 'time', value: bestTime.hhmm,
+      style: 'background:var(--panel-2);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:8px 10px;font-size:1rem;',
+    });
+    main.appendChild(el('div', { class: 'card' }, el('h2', { text: 'Daily reminder' }),
+      el('p', { class: 'sub', style: 'margin-bottom:12px;', text:
+        (bestTime.reason || 'Pick a time that survives your average Tuesday.') +
+        ' Adding it to your calendar gives you a daily nudge — no notifications server needed.' }),
+      el('div', { style: 'display:flex;gap:10px;align-items:center;flex-wrap:wrap;' },
+        timeInput,
+        el('button', {
+          class: 'btn', text: '📅 Add to Calendar', onclick: () => {
+            const blob = new Blob([buildReminderICS(timeInput.value || bestTime.hhmm)], { type: 'text/calendar' });
+            const url = URL.createObjectURL(blob);
+            const a = el('a', { href: url, download: 'cortex-daily-training.ics' });
+            document.body.appendChild(a); a.click(); a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 5000);
+          },
+        }))));
+
+    // --- device sync (js/sync.js) ---
+    if (BT.buildSyncCard) main.appendChild(BT.buildSyncCard());
 
     // data
     const dataCard = el('div', { class: 'card' }, el('h2', { text: 'Your data' }),
-      el('p', { class: 'sub', style: 'margin-bottom:12px;', text: 'Everything lives in this browser only. Export a backup before clearing browser data or switching devices.' }),
+      el('p', { class: 'sub', style: 'margin-bottom:12px;', text:
+        'Everything lives in this browser only. Export a backup before clearing browser data or switching devices. Storage: ' +
+        (BT.storagePersisted === true ? 'protected ✓' : BT.storagePersisted === false ? 'best-effort (browser may evict — export backups!)' : 'checking…') }),
       el('div', { class: 'btn-row', style: 'justify-content:flex-start;' },
         el('button', {
           class: 'btn', text: '⬇ Export backup', onclick: () => {
+            // share sheet where available (reliable in iOS home-screen apps), else download
+            try {
+              const file = new File([BT.exportJSON()], 'cortex-backup-' + BT.dayKey() + '.json', { type: 'application/json' });
+              if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                navigator.share({ files: [file], title: 'Cortex backup' }).catch(() => {});
+                return;
+              }
+            } catch (e) { /* File constructor or canShare unavailable — fall through */ }
             const blob = new Blob([BT.exportJSON()], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             const a = el('a', { href: url, download: 'cortex-backup-' + BT.dayKey() + '.json' });
@@ -608,8 +853,15 @@
             ts: dayTs + Math.floor(Math.random() * 3600000), taskId: id, mode: 'train',
             level: BT.taskLevel(id), score,
             primary: BT.round1(BT.stats.valueForScore(score, def.norms)),
+            ability: BT.round1(BT.taskLevel(id) + Math.min(1, (days - d) / days + Math.random() * 0.3)),
             metrics: { seeded: true },
           });
+        }
+        if (Math.random() < 0.6) {
+          BT.state.dayTags[BT.dayKey(dayTs)] = {
+            sleep: BT.pick(['bad', 'ok', 'ok', 'good']),
+            caffeine: Math.random() < 0.5, exercise: Math.random() < 0.4, stress: Math.random() < 0.3,
+          };
         }
         BT.state.doneDays[BT.dayKey(dayTs)] = true;
       }
@@ -635,6 +887,7 @@
   /* ---------------- Boot ---------------- */
   function boot() {
     buildTopbar();
+    if (BT.reconcileStreak) BT.reconcileStreak(); // shield auto-repair for a single missed day
     document.body.addEventListener('pointerdown', BT.unlockAudio, { once: true });
     let lastW = window.innerWidth;
     window.addEventListener('resize', () => {

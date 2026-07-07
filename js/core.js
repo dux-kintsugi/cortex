@@ -20,6 +20,7 @@
     visuospatial:  { name: 'Visuospatial',      icon: '🧊', blurb: 'Reasoning about shapes, space and locations.' },
     executive:     { name: 'Executive Control', icon: '🎛️', blurb: 'Inhibiting impulses and switching flexibly between rules.' },
     math:          { name: 'Number Fluency',    icon: '➗', blurb: 'Fast, accurate mental arithmetic.' },
+    verbal:        { name: 'Verbal Memory',     icon: '📖', blurb: 'Learning and recalling word associations.' },
   };
   BT.DOMAIN_KEYS = Object.keys(BT.DOMAINS);
 
@@ -141,13 +142,17 @@
     return {
       version: BT.VERSION,
       createdAt: Date.now(),
-      settings: { sound: true },
+      settings: { sound: true, cvdAssist: false },
       levels: {},        // taskId -> current training level (int)
-      sessions: [],      // {ts, taskId, mode, level, score, primary, metrics}
-      assessments: [],   // {ts, taskScores:{taskId:score}, domainScores:{domain:score}}
+      sessions: [],      // {ts, taskId, mode, level, score, primary, ability, band, metrics}
+      assessments: [],   // {ts, taskScores:{taskId:score}, domainScores:{domain:score}, provisional?}
       plan: null,        // {generatedAt, weights:{domain:w}, focus:[domainKeys]}
-      streak: { count: 0, lastDay: null },
-      doneDays: {},      // dayKey -> true (full training session completed)
+      streak: { count: 0, lastDay: null, best: 0, shields: 0 },
+      doneDays: {},      // dayKey -> 'full' | 'lite' | 'shield' (true from v1 == 'full')
+      badges: {},        // achievementId -> ts earned
+      dayTags: {},       // dayKey -> {sleep:'bad'|'ok'|'good', caffeine:bool, exercise:bool, stress:bool}
+      challengeDays: {}, // dayKey -> combined challenge score
+      lastReportWeek: null,
     };
   }
 
@@ -158,8 +163,8 @@
         const s = JSON.parse(raw);
         // shallow-merge over defaults so new fields appear after upgrades
         return Object.assign(defaults(), s, {
-          settings: Object.assign({ sound: true }, s.settings),
-          streak: Object.assign({ count: 0, lastDay: null }, s.streak),
+          settings: Object.assign({ sound: true, cvdAssist: false }, s.settings),
+          streak: Object.assign({ count: 0, lastDay: null, best: 0, shields: 0 }, s.streak),
         });
       }
     } catch (e) { /* corrupted or blocked storage — start fresh */ }
@@ -260,7 +265,8 @@
       try { actx = new (window.AudioContext || window.webkitAudioContext)(); }
       catch (e) { return null; }
     }
-    if (actx.state === 'suspended') actx.resume();
+    // covers both 'suspended' and iOS's 'interrupted' (call/Siri) states
+    if (actx.state !== 'running') { try { actx.resume(); } catch (e) {} }
     return actx;
   }
   BT.unlockAudio = () => { ac(); }; // call on a user gesture
@@ -277,14 +283,27 @@
     o.start(t); o.stop(t + dur + 0.02);
   }
 
-  BT.beep = function (kind) {
+  // `step` (optional) pitches 'good' up a semitone per combo step (caps at +12)
+  BT.beep = function (kind, step) {
     if (!BT.state.settings.sound) return;
     switch (kind) {
       case 'go':   tone(600, 0.12); break;
-      case 'good': tone(660, 0.09); tone(880, 0.12, 'sine', 0.06, 0.07); break;
+      case 'good': {
+        const mult = Math.pow(2, Math.min(step || 0, 12) / 12);
+        tone(660 * mult, 0.09); tone(880 * mult, 0.12, 'sine', 0.06, 0.07); break;
+      }
       case 'bad':  tone(160, 0.18, 'square', 0.045); break;
       case 'tick': tone(880, 0.05, 'sine', 0.035); break;
       case 'end':  tone(523, 0.12); tone(659, 0.12, 'sine', 0.07, 0.10); tone(784, 0.22, 'sine', 0.07, 0.20); break;
+      case 'best': [523, 659, 784, 1047].forEach((f, i) => tone(f, 0.16, 'sine', 0.08, i * 0.09)); break;
     }
   };
+
+  /* ---------------- Storage durability ---------------- */
+  BT.storagePersisted = null; // null = unknown, true/false once resolved
+  if (navigator.storage && navigator.storage.persist) {
+    try {
+      navigator.storage.persist().then(ok => { BT.storagePersisted = ok; }).catch(() => {});
+    } catch (e) {}
+  }
 })();

@@ -11,8 +11,9 @@
   const BT = window.BT, el = BT.el;
 
   const COLORS = ['red', 'blue', 'green', 'yellow'];
-  const WORDS = { red: 'RED', blue: 'BLUE', green: 'GREEN', yellow: 'YELLOW' };
-  const LABELS = { red: 'Red', blue: 'Blue', green: 'Green', yellow: 'Yellow' };
+  const COLORS_CVD = ['blue', 'yellow', 'white', 'gray']; // colorblind-safe set
+  const WORDS = { red: 'RED', blue: 'BLUE', green: 'GREEN', yellow: 'YELLOW', white: 'WHITE', gray: 'GRAY' };
+  const LABELS = { red: 'Red', blue: 'Blue', green: 'Green', yellow: 'Yellow', white: 'White', gray: 'Gray' };
 
   BT.registerTask({
     id: 'stroop',
@@ -42,8 +43,12 @@
       // Level knobs
       const incongruentP = Math.min(0.4 + 0.04 * ctx.level, 0.8);
       const deadlineMs = ctx.level >= 5 ? Math.max(2600 - 150 * ctx.level, 1100) : 0;
+      // CVD assist: swap to a colorblind-safe word/ink set (read once per round).
+      const colors = (BT.state.settings && BT.state.settings.cvdAssist) ? COLORS_CVD : COLORS;
 
       let correct = 0, wrong = 0, timeouts = 0;
+      let trialIdx = 0;         // scored-trial counter for split-half buckets
+      const halves = [{ c: 0, w: 0, n: 0 }, { c: 0, w: 0, n: 0 }];
       const rtCongruent = [], rtIncongruent = []; // correct trials only
       let cur = null;          // { word, ink, congruent }
       let lastCombo = '';      // word|ink of previous trial
@@ -54,7 +59,7 @@
       const stim = el('div', { class: 'stim' });
       const msg = el('div', { class: 'task-msg', text: 'Answer with the INK color' });
       const row = el('div', { class: 'choice-row' });
-      COLORS.forEach((color, i) => {
+      colors.forEach((color, i) => {
         const btn = el('button', { class: 'choice' },
           LABELS[color],
           el('span', { class: 'key-hint', text: String(i + 1) }));
@@ -67,10 +72,10 @@
         row));
 
       ctx.keys({
-        '1': () => respond(COLORS[0]),
-        '2': () => respond(COLORS[1]),
-        '3': () => respond(COLORS[2]),
-        '4': () => respond(COLORS[3]),
+        '1': () => respond(colors[0]),
+        '2': () => respond(colors[1]),
+        '3': () => respond(colors[2]),
+        '4': () => respond(colors[3]),
       });
 
       const startedAt = ctx.now();
@@ -85,13 +90,13 @@
       function makeStim() {
         // never repeat the same word+ink combo twice in a row
         for (let tries = 0; tries < 30; tries++) {
-          const word = COLORS[Math.floor(ctx.rng() * 4)];
+          const word = colors[Math.floor(ctx.rng() * 4)];
           let ink;
           const congruent = ctx.rng() >= incongruentP;
           if (congruent) {
             ink = word;
           } else {
-            const others = COLORS.filter(c => c !== word);
+            const others = colors.filter(c => c !== word);
             ink = others[Math.floor(ctx.rng() * others.length)];
           }
           if (word + '|' + ink !== lastCombo) {
@@ -100,8 +105,8 @@
           }
         }
         // unreachable in practice; keep the round alive regardless
-        lastCombo = 'red|blue';
-        return { word: 'red', ink: 'blue', congruent: false };
+        lastCombo = colors[0] + '|' + colors[1];
+        return { word: colors[0], ink: colors[1], congruent: false };
       }
 
       function nextTrial() {
@@ -116,8 +121,10 @@
           deadlineTimer = ctx.timeout(() => {
             if (!ctx.running || !live) return;
             live = false;
-            wrong++; timeouts++;
-            ctx.flash('bad'); ctx.beep('bad');
+            const half = halves[trialIdx % 2];
+            trialIdx++; half.n++;
+            wrong++; timeouts++; half.w++;
+            ctx.feedback(false);
             stim.textContent = '';
             updateHud();
             ctx.timeout(nextTrial, 350);
@@ -130,13 +137,15 @@
         live = false;
         if (deadlineTimer != null) { ctx.clearTimer(deadlineTimer); deadlineTimer = null; }
         const rt = ctx.now() - shownAt;
+        const half = halves[trialIdx % 2];
+        trialIdx++; half.n++;
         if (color === cur.ink) {
-          correct++;
+          correct++; half.c++;
           (cur.congruent ? rtCongruent : rtIncongruent).push(rt);
-          ctx.flash('good'); ctx.beep('good');
+          ctx.feedback(true);
         } else {
-          wrong++;
-          ctx.flash('bad'); ctx.beep('bad');
+          wrong++; half.w++;
+          ctx.feedback(false);
         }
         stim.textContent = '';
         updateHud();
@@ -162,15 +171,21 @@
           ? Math.round(medInc - medCon) : 0;
         const total = correct + wrong;
         const acc = total ? correct / total : 0;
+        // Split halves: net/min per parity bucket over half the elapsed time.
+        const halfMinutes = minutes / 2;
+        const haveHalves = halves[0].n > 0 && halves[1].n > 0;
         ctx.hud.progress(1);
         ctx.finish({
           primary: netPerMin,
+          levelProgress: BT.clamp((acc - 0.70) / (0.90 - 0.70), 0, 1),
           metrics: {
             netPerMin, correct, wrong, timeouts, trials: total,
             accuracy: Math.round(acc * 100),
             medianRTCongruent: medCon != null ? Math.round(medCon) : null,
             medianRTIncongruent: medInc != null ? Math.round(medInc) : null,
             interference,
+            half1: haveHalves ? (halves[0].c - halves[0].w) / halfMinutes : null,
+            half2: haveHalves ? (halves[1].c - halves[1].w) / halfMinutes : null,
           },
           advance: total === 0 ? 'hold'
             : acc >= 0.90 ? 'up'

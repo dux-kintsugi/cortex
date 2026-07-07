@@ -1,0 +1,63 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 🧠
+      - text: Cortex
+      - generic [ref=e6]: ·
+    - generic [ref=e7]:
+      - button "Home" [ref=e8] [cursor=pointer]
+      - button "Train" [ref=e9] [cursor=pointer]
+      - button "Games" [ref=e10] [cursor=pointer]
+      - button "Progress" [ref=e11] [cursor=pointer]
+      - button "Settings" [ref=e12] [cursor=pointer]
+  - main [ref=e13]:
+    - generic [ref=e14]:
+      - heading "Map your brain. Then train it." [level=1] [ref=e15]
+      - paragraph [ref=e16]: A short battery of 8 games measures your processing speed, attention, memory, reasoning and more — then Cortex builds a daily training routine aimed at your weakest areas.
+      - button "Start baseline assessment" [ref=e17] [cursor=pointer]
+      - paragraph [ref=e18]: ≈ 13 minutes · results stay on this device
+    - generic [ref=e19]:
+      - heading "What gets measured" [level=2] [ref=e20]
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]: ⚡
+          - generic [ref=e24]:
+            - generic [ref=e25]: Processing Speed
+            - generic [ref=e26]: How quickly you take in information and react to it.
+          - generic [ref=e28]: —
+        - generic [ref=e29]:
+          - generic [ref=e30]: 🎯
+          - generic [ref=e31]:
+            - generic [ref=e32]: Attention
+            - generic [ref=e33]: Sustaining focus, scanning efficiently, resisting distraction.
+          - generic [ref=e35]: —
+        - generic [ref=e36]:
+          - generic [ref=e37]: 🧮
+          - generic [ref=e38]:
+            - generic [ref=e39]: Working Memory
+            - generic [ref=e40]: Holding and juggling information in mind while using it.
+          - generic [ref=e42]: —
+        - generic [ref=e43]:
+          - generic [ref=e44]: 🖼️
+          - generic [ref=e45]:
+            - generic [ref=e46]: Visual Memory
+            - generic [ref=e47]: Encoding and recalling what you just saw.
+          - generic [ref=e49]: —
+        - generic [ref=e50]:
+          - generic [ref=e51]: 🧊
+          - generic [ref=e52]:
+            - generic [ref=e53]: Visuospatial
+            - generic [ref=e54]: Reasoning about shapes, space and locations.
+          - generic [ref=e56]: —
+        - generic [ref=e57]:
+          - generic [ref=e58]: 🎛️
+          - generic [ref=e59]:
+            - generic [ref=e60]: Executive Control
+            - generic [ref=e61]: Inhibiting impulses and switching flexibly between rules.
+          - generic [ref=e63]: —
+        - generic [ref=e64]:
+          - generic [ref=e65]: ➗
+          - generic [ref=e66]:
+            - generic [ref=e67]: Number Fluency
+            - generic [ref=e68]: Fast, accurate mental arithmetic.
+          - generic [ref=e70]: —

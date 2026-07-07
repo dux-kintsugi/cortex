@@ -1,7 +1,7 @@
 /* Cortex service worker — network-first with full-shell cache fallback.
    Fresh files whenever the server is reachable; complete offline play when not.
    Bump CACHE on any release so old caches get purged. */
-const CACHE = 'cortex-v1';
+const CACHE = 'cortex-v2';
 
 const ASSETS = [
   './',
@@ -23,9 +23,14 @@ const ASSETS = [
   './js/tasks/switching.js',
   './js/tasks/matrix.js',
   './js/tasks/math.js',
+  './js/tasks/wordpairs.js',
   './js/assessment.js',
   './js/training.js',
+  './js/achievements.js',
+  './js/report.js',
+  './js/sync.js',
   './js/main.js',
+  './js/gamedetail.js',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/apple-touch-icon.png',

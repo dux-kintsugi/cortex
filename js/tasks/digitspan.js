@@ -41,6 +41,7 @@
       const ON_MS = Math.max(750 - 30 * ctx.level, 450);
       const GAP_MS = 250;
       const MAX_LEN = 10; // safety cap so a perfect run still terminates
+      const startedAt = ctx.now();
 
       let phase = 'fwd';                     // 'fwd' | 'bwd'
       let len = 4;                           // current sequence length
@@ -91,6 +92,8 @@
 
       function nextTrial() {
         if (!ctx.running) return;
+        if (ctx.practice && attempts >= 2) return end(); // warm-up: two attempts are enough
+        if (ctx.now() - startedAt > ctx.durationMs) return end(); // duration end (avoids engine overrun void)
         attemptsInPhase++;
         updateHud();
         state = 'show';
@@ -170,6 +173,7 @@
 
       function endPhase() {
         if (!ctx.running) return;
+        if (ctx.practice) return end(); // warm-up skips the backward phase
         if (phase === 'fwd') {
           phase = 'bwd';
           len = 3;
@@ -195,8 +199,10 @@
         ctx.hud.stat('forward ' + bestForward + ' · backward ' + bestBackward);
         ctx.finish({
           primary,
-          metrics: { bestForward, bestBackward, attempts, correct: passes, misses: totalMisses },
+          // Span halves don't decompose into odd/even trials meaningfully.
+          metrics: { bestForward, bestBackward, attempts, correct: passes, misses: totalMisses, half1: null, half2: null },
           advance: primary >= 6.5 ? 'up' : primary <= 4 ? 'down' : 'hold',
+          levelProgress: BT.clamp((primary - 4) / (6.5 - 4), 0, 1),
         });
       }
 

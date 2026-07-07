@@ -26,19 +26,32 @@ Export/import backups from **Settings** to move progress between devices.
 
 ## How it works
 
-1. **Baseline assessment** (~13 min): 8 short tasks measure Processing Speed, Attention,
-   Working Memory, Visual Memory, Visuospatial ability, Executive Control and Number Fluency.
-   Raw metrics are mapped to 1–99 percentile-style scores against rough reference ranges
-   for web-based testing.
+1. **Baseline assessment** (~18 min): 9 short tasks measure Processing Speed, Attention,
+   Working Memory, Visual Memory, Visuospatial ability, Executive Control, Number Fluency
+   and Verbal Memory. Every task starts with a short **unscored warm-up** (practice effects
+   are the biggest artifact in cognitive testing), and your first-ever battery is marked
+   *provisional* — a confirmation baseline a few days later becomes the real anchor.
 2. **Training plan**: domains are weighted by weakness. Each day you get a 4-game session
    (~8 min) — your weakest domain is always included, the rest rotate with weighted variety.
-3. **Adaptive difficulty**: every game has 10 levels; finish a round strongly and you level
-   up, struggle and it eases off (per-game staircase).
-4. **Re-assessment** every ~2 weeks re-runs the battery and refreshes the plan, so you can
-   see genuine movement against your baseline.
-5. **Performance patterns** (Progress tab): a 16-week calendar heatmap of daily average
-   scores, plus day-of-week and time-of-day breakdowns with automatic "you're sharpest
-   on…" insights once enough data accumulates.
+   No time? A **Quick session** (1 game, ~2 min) still keeps your streak alive.
+3. **Adaptive difficulty**: every game has 10 levels with a per-game staircase. Training
+   trends use an **ability index** (level + progress within level) so charts don't dip as
+   a "reward" for leveling up; percentile scores are reserved for fixed-difficulty assessments.
+4. **Honest numbers**: every round reports a split-half noise band ("±4 typical wobble"),
+   and ▲/▼ deltas only appear when a change beats measurement noise (reliable-change gating).
+   Rounds interrupted by calls or backgrounding are **voided, never recorded**.
+5. **Streaks that forgive**: two-tier days (full/lite), streak shields earned weekly that
+   auto-repair one missed day, a comeback flow after lapses — and a session-end ceremony
+   with day tags (sleep/caffeine/exercise/stress).
+6. **Insights** (Progress tab): 16-week heatmap; practice-adjusted day-of-week and
+   time-of-day patterns (only claimed when the signal beats its standard error);
+   "what moves your scores" correlations from your day tags; weekly report card;
+   30-day trend slopes; per-game deep-dives with sub-metrics (Stroop interference,
+   switch cost, hit/false-alarm rates…). Plus honest achievements and a seeded daily challenge.
+7. **Device sync without a server**: compressed sync codes (Settings) merge progress
+   between phone and Mac — never overwriting either side.
+8. **Accessibility**: color-vision assist mode re-codes the color-dependent games with
+   shapes and a CVD-safe palette; wake-lock keeps the screen alive during watch-only games.
 
 ## The games
 
@@ -56,6 +69,7 @@ Export/import backups from **Settings** to move progress between devices.
 | 🔀 Rule Flip | Executive | Task switching (color/shape) |
 | 🖼️ Memory Matrix | Visual Memory | Pattern recall staircase |
 | ➗ Number Sprint | Number Fluency | Mental arithmetic |
+| 📖 Word Pairs | Verbal Memory | Paired-associate recognition |
 
 ## Honest fine print
 

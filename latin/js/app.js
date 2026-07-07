@@ -1,0 +1,250 @@
+'use strict';
+// Legō — core: persistent state, navigation, dashboard, guide.
+
+(function () {
+  const L = window.Lego;
+  const KEY = 'lego-latin-v1';
+
+  const DEFAULT_STATE = { unlockAll: false, units: {}, srs: {}, xp: 0, streak: 0, lastDay: null };
+
+  L.state = (function load() {
+    try { return Object.assign({}, DEFAULT_STATE, JSON.parse(localStorage.getItem(KEY) || '{}')); }
+    catch (e) { return Object.assign({}, DEFAULT_STATE); }
+  })();
+
+  L.save = () => { try { localStorage.setItem(KEY, JSON.stringify(L.state)); } catch (e) {} };
+
+  L.unitState = id => (L.state.units[id] = L.state.units[id] || { grammar: false, vocab: false, reads: {}, quizBest: 0, done: false });
+  L.isDone = id => !!(L.state.units[id] && L.state.units[id].done);
+  L.isUnlocked = id => id === 1 || L.state.unlockAll || L.isDone(id - 1);
+  L.addXP = n => { L.state.xp += n; };
+
+  function dayStamp(offset = 0) {
+    const d = new Date();
+    d.setDate(d.getDate() + offset);
+    return [d.getFullYear(), d.getMonth() + 1, d.getDate()].join('-');
+  }
+  L.touchStreak = () => {
+    const today = dayStamp();
+    if (L.state.lastDay === today) return;
+    L.state.streak = (L.state.lastDay === dayStamp(-1)) ? L.state.streak + 1 : 1;
+    L.state.lastDay = today;
+  };
+
+  // ---------- utilities ----------
+  L.esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  L.shuffle = arr => {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  };
+  L.stripMacrons = s => s.normalize('NFD').replace(/\u0304/g, '').normalize('NFC');
+
+  // Best-effort audio: an Italian voice reading restored-pronunciation Latin is surprisingly close.
+  L.speak = text => {
+    try {
+      if (!window.speechSynthesis) return;
+      const u = new SpeechSynthesisUtterance(L.stripMacrons(text));
+      const voices = speechSynthesis.getVoices();
+      u.voice = voices.find(v => v.lang && v.lang.startsWith('it')) ||
+                voices.find(v => v.lang && v.lang.startsWith('es')) || null;
+      u.rate = 0.85;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(u);
+    } catch (e) {}
+  };
+
+  L.tableHTML = t => {
+    if (!t || !Array.isArray(t.headers)) return '';
+    const head = t.headers.map(h => `<th>${L.esc(h)}</th>`).join('');
+    const body = (t.rows || []).map(r =>
+      `<tr>${r.map((c, i) => i === 0 ? `<th>${L.esc(c)}</th>` : `<td>${L.esc(c)}</td>`).join('')}</tr>`
+    ).join('');
+    return `<div class="tablewrap"><table class="ptable">${t.caption ? `<caption>${L.esc(t.caption)}</caption>` : ''}<thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+  };
+
+  // ---------- navigation ----------
+  L.current = { view: 'home' };
+  L.go = (view, a, b) => {
+    L.current = { view, a, b };
+    L.render();
+    window.scrollTo(0, 0);
+  };
+
+  document.addEventListener('click', e => {
+    const go = e.target.closest('[data-go]');
+    if (go && !go.disabled) {
+      const [view, a, b] = go.dataset.go.split('|');
+      L.go(view, a !== undefined && a !== '' ? (isNaN(+a) ? a : +a) : undefined, b);
+      return;
+    }
+    const act = e.target.closest('[data-action]');
+    if (act) handleAction(act.dataset.action, act);
+  });
+
+  function handleAction(action, el) {
+    if (action === 'unlock-all') {
+      if (confirm('Unlock all 30 units? The course is designed to be taken in order — use this only if you already know some Latin.')) {
+        L.state.unlockAll = true; L.save(); L.render();
+      }
+    } else if (action === 'reset-progress') {
+      if (confirm('Erase ALL progress (completed units, review deck, streak)? This cannot be undone.')) {
+        localStorage.removeItem(KEY);
+        location.reload();
+      }
+    } else if (action === 'speak') {
+      L.speak(el.dataset.text || '');
+    }
+  }
+
+  // ---------- chrome ----------
+  function renderNav() {
+    const c = L.current.view;
+    const due = L.dueCount ? L.dueCount() : 0;
+    document.getElementById('nav').innerHTML = `
+      <div class="navin">
+        <button class="brand" data-go="home"><span class="brand-main">LEGŌ</span><span class="brand-sub">learn to read Latin</span></button>
+        <nav class="navlinks">
+          <button class="navbtn ${c === 'home' ? 'on' : ''}" data-go="home">Course</button>
+          <button class="navbtn ${c === 'review' ? 'on' : ''}" data-go="review">Review${due ? ` <span class="badge">${due}</span>` : ''}</button>
+          <button class="navbtn ${c === 'reference' ? 'on' : ''}" data-go="reference">Reference</button>
+          <button class="navbtn ${c === 'guide' ? 'on' : ''}" data-go="guide">Guide</button>
+        </nav>
+        <div class="navstats" title="daily streak · words in your review deck">
+          <span>🔥 ${L.state.streak}</span>
+          <span>📜 ${Object.keys(L.state.srs).length}</span>
+        </div>
+      </div>`;
+  }
+
+  L.render = () => {
+    renderNav();
+    const app = document.getElementById('app');
+    const c = L.current;
+    if (c.view === 'home') app.innerHTML = renderHome();
+    else if (c.view === 'unit') L.renderUnit(app, c.a, c.b);
+    else if (c.view === 'review') L.renderReview(app);
+    else if (c.view === 'reference') L.renderReference(app, c.a);
+    else if (c.view === 'guide') app.innerHTML = renderGuide();
+    else app.innerHTML = renderHome();
+  };
+
+  // ---------- dashboard ----------
+  function renderHome() {
+    const doneCount = Object.values(L.state.units).filter(u => u.done).length;
+    const words = Object.keys(L.state.srs).length;
+    const fresh = doneCount === 0 && words === 0;
+    const nextId = (() => {
+      for (let i = 1; i <= L.TOTAL_UNITS; i++) if (!L.isDone(i)) return i;
+      return L.TOTAL_UNITS;
+    })();
+
+    const hero = fresh ? `
+      <section class="hero">
+        <div class="orn">❦</div>
+        <h1>Salvē.</h1>
+        <p>You are thirty units away from reading Latin — real stories from the first page,
+        every word one tap from its meaning, and never a single exercise that asks you to
+        <em>write</em> Latin. You only learn to read it.</p>
+        <button class="btn big" data-go="unit|1">Begin · Unit I</button>
+        <p class="mini"><button class="linkbtn" data-go="guide">How the course works</button></p>
+      </section>` : `
+      <section class="statsrow">
+        <div class="stat"><b>${doneCount}<span>/30</span></b><label>units complete</label></div>
+        <div class="stat"><b>${words}</b><label>words learned</label></div>
+        <div class="stat"><b>${L.state.streak}</b><label>day streak</label></div>
+        <div class="stat"><b>${L.state.xp}</b><label>XP</label></div>
+        <button class="btn big" data-go="unit|${nextId}">Continue · Unit ${L.roman(nextId)}</button>
+      </section>`;
+
+    const stages = L.STAGES.map(s => {
+      const cards = [];
+      for (let id = s.range[0]; id <= s.range[1]; id++) {
+        const u = L.units[id];
+        const us = L.state.units[id];
+        const unlocked = L.isUnlocked(id);
+        const done = !!(us && us.done);
+        const cls = done ? 'done' : unlocked ? 'open' : 'locked';
+        cards.push(`
+          <button class="ucard ${cls}" data-go="unit|${id}" ${unlocked ? '' : 'disabled'}>
+            <span class="unum">${L.roman(id)}</span>
+            <span class="utitle">${L.esc(u ? u.title : '…')}</span>
+            <span class="usub">${L.esc(u ? u.tagline : 'content loading')}</span>
+            <span class="ustat">${done ? `✓ ${us.quizBest}%` : unlocked ? 'open' : '🔒'}</span>
+          </button>`);
+      }
+      return `
+        <section class="stage">
+          <header class="stagehead">
+            <h2><span class="stagenum">${['I', 'II', 'III'][s.n - 1]}</span> ${L.esc(s.title)}</h2>
+            <p>${L.esc(s.sub)}</p>
+          </header>
+          <div class="ugrid">${cards.join('')}</div>
+        </section>`;
+    }).join('');
+
+    return `${hero}${stages}
+      <p class="homefoot">Already know some Latin? <button class="linkbtn" data-action="unlock-all">Unlock every unit</button>.</p>`;
+  }
+
+  // ---------- guide ----------
+  function renderGuide() {
+    return `
+      <article class="prose">
+        <h1>How Legō works</h1>
+        <p><strong>Legō</strong> is Latin for <em>I read</em> — and reading is the only skill this course
+        teaches. You will never be asked to compose, type, or decline anything. Every exercise is
+        recognition: read, tap, choose.</p>
+
+        <h2>The shape of a unit</h2>
+        <p>Each of the 30 units has four steps, in order:</p>
+        <p><strong>1 · Grammar</strong> — a short, plain-English briefing on one new pattern, always angled
+        at reading: <em>when you see this ending, expect that meaning</em>.<br>
+        <strong>2 · Vocabulary</strong> — ~25 new words as flashcards. Grading yourself honestly feeds the
+        spaced-repetition deck that follows you through the course.<br>
+        <strong>3 · Reading</strong> — two connected story passages. Tap any word for its meaning; reveal
+        the full translation when you want to check yourself; answer four comprehension questions.<br>
+        <strong>4 · Quiz</strong> — 14 questions on the unit. Score 80% and the next unit unlocks.</p>
+
+        <h2>The story</h2>
+        <p>The course follows one family — Mārcus the grain merchant, Līvia, their children Quīntus and
+        Paulla, the dog Ferōx, and Uncle Titus the sea captain — from their house in Ostia, to Rome, through
+        a storm at sea, and finally into the pages of real Roman authors. By the last units you are reading
+        lightly-adapted Caesar, Phaedrus's fables, Martial, and the Vulgate.</p>
+
+        <h2>The Review deck</h2>
+        <p>Every word you learn joins a spaced-repetition deck. Words you know keep quiet; words you fumble
+        come back sooner. Visit <strong>Review</strong> whenever the badge shows a number — five minutes a
+        day is worth more than an hour on Sunday.</p>
+
+        <h2>Pronunciation in one minute</h2>
+        <p>You are learning to read, but Latin is meant to be heard. The restored classical pronunciation:
+        every letter is pronounced; <span class="la">c</span> is always hard (<em>k</em>),
+        <span class="la">g</span> always as in <em>go</em>, <span class="la">v</span> sounds like <em>w</em>,
+        <span class="la">ae</span> like the <em>i</em> in <em>high</em>. A macron (<span class="la">ā ē ī ō ū</span>)
+        marks a long vowel — hold it about twice as long. The 🔊 buttons use your device's Italian voice,
+        which lands close enough to be useful. Full details are in the Reference tab.</p>
+
+        <h2>Honest expectations</h2>
+        <p>Finishing all 30 units gives you the complete grammar of Latin (for recognition), roughly 750
+        core words, and the strategies for real texts — enough to read adapted authors comfortably and
+        attack authentic ones with a dictionary. From there, proficiency is simply mileage: the final unit
+        tells you exactly what to read next.</p>
+
+        <h2>Housekeeping</h2>
+        <p>Progress lives in this browser (nothing leaves your machine). You can
+        <button class="linkbtn" data-action="unlock-all">unlock all units</button> if you already know some
+        Latin, or <button class="linkbtn danger" data-action="reset-progress">reset all progress</button> to
+        start fresh.</p>
+      </article>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    try { window.speechSynthesis && speechSynthesis.getVoices(); } catch (e) {}
+    L.render();
+  });
+})();
