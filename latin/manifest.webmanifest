@@ -1,0 +1,15 @@
+{
+  "name": "Legō — Learn to Read Latin",
+  "short_name": "Legō",
+  "description": "A 30-unit course that teaches you to read Latin from scratch — graded stories, tap-to-gloss readings, and spaced-repetition vocabulary.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4eee0",
+  "theme_color": "#8e2b21",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-180.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+  ]
+}

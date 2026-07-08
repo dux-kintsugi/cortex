@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#f4eee0"/>
+  <rect x="6" y="6" width="500" height="500" rx="90" fill="none" stroke="#a8823c" stroke-width="10"/>
+  <rect x="166" y="96" width="180" height="26" rx="13" fill="#a8823c"/>
+  <text x="256" y="408" font-family="Iowan Old Style, Palatino, Georgia, serif" font-size="300" font-weight="bold" fill="#8e2b21" text-anchor="middle">L</text>
+</svg>
