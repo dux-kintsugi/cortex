@@ -220,6 +220,16 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* ---------------- Find books ---------------- */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.chip {
+  border: 1px solid var(--line); background: var(--panel-2);
+  border-radius: 999px; padding: 6px 13px;
+  font-size: 0.85rem; font-weight: 600; color: var(--muted);
+  cursor: pointer; transition: background .15s, color .15s;
+}
+.chip:hover { color: var(--text); background: var(--panel-3); }
+.chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+#btn-find-more { display: block; margin: 2px auto 10px; }
 #find-results { margin: 6px 0 10px; }
 #find-results .book .b-title { font-weight: 500; flex: 1 1 55%; }
 #find-results .book .b-meta { flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; max-width: 45%; }

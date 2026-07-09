@@ -28,6 +28,7 @@
     pairCodeOut: $('pair-code-out'), pairCopy: $('btn-pair-copy'),
     pairCodeIn: $('pair-code-in'), pairIn: $('btn-pair-in'),
     findQ: $('find-q'), findBtn: $('btn-find'), findResults: $('find-results'),
+    findChips: $('find-chips'), findMore: $('btn-find-more'),
     textStats: $('text-stats')
   };
 
@@ -1072,15 +1073,55 @@
      hand-proofed .txt (some have .epub); both feed the existing import
      pipeline. */
 
-  function iaSearch(q) {
-    var query = 'collection:gutenberg AND (title:(' + q + ') OR creator:(' + q + '))';
-    var url = 'https://archive.org/advancedsearch.php?q=' + encodeURIComponent(query) +
-      '&fl=identifier,title,creator,downloads&rows=20&sort%5B%5D=' + encodeURIComponent('downloads desc') +
-      '&output=json';
+  var FIND_SUBJECTS = [
+    ['Fiction', 'fiction'],
+    ['Adventure', 'adventure stories'],
+    ['Mystery', 'detective and mystery stories'],
+    ['Sci-Fi', 'science fiction'],
+    ['Children’s', 'juvenile fiction'],
+    ['Poetry', 'poetry'],
+    ['Philosophy', 'philosophy'],
+    ['History', 'history'],
+    ['Humor', 'humor']
+  ];
+  var findState = { q: '', subject: null, page: 1, shown: 0, total: 0 };
+
+  function iaSearch(state) {
+    var parts = ['collection:gutenberg', 'mediatype:texts'];
+    if (state.q) parts.push('(title:(' + state.q + ') OR creator:(' + state.q + '))');
+    if (state.subject) parts.push('subject:(' + state.subject + ')');
+    var url = 'https://archive.org/advancedsearch.php?q=' + encodeURIComponent(parts.join(' AND ')) +
+      '&fl=identifier,title,creator,downloads&rows=20&page=' + state.page +
+      '&sort%5B%5D=' + encodeURIComponent('downloads desc') + '&output=json';
     return fetch(url).then(function (r) {
       if (!r.ok) throw new Error('Archive search said ' + r.status);
       return r.json();
-    }).then(function (d) { return (d.response && d.response.docs) || []; });
+    }).then(function (d) {
+      return { docs: (d.response && d.response.docs) || [],
+               total: (d.response && d.response.numFound) || 0 };
+    });
+  }
+
+  function renderChips() {
+    el.findChips.innerHTML = '';
+    FIND_SUBJECTS.forEach(function (s) {
+      var c = document.createElement('button');
+      c.className = 'chip' + (findState.subject === s[1] ? ' active' : '');
+      c.textContent = s[0];
+      c.addEventListener('click', function () {
+        findState.subject = findState.subject === s[1] ? null : s[1];
+        findState.page = 1;
+        renderChips();
+        if (!findState.subject && !el.findQ.value.trim()) {
+          el.findResults.innerHTML = '';
+          el.findMore.hidden = true;
+          return;
+        }
+        findState.q = el.findQ.value.trim();
+        loadFinds(false);
+      });
+      el.findChips.appendChild(c);
+    });
   }
 
   // Cut Project Gutenberg's license header/footer and the volunteer credit.
@@ -1142,32 +1183,50 @@
       .then(function () { setBusy(false); });
   }
 
-  function runFind() {
-    var q = el.findQ.value.trim();
-    if (!q) return;
-    el.findBtn.disabled = true;
-    el.findResults.textContent = 'Searching…';
-    iaSearch(q).then(function (docs) {
-      el.findResults.innerHTML = '';
-      if (!docs.length) { el.findResults.textContent = 'Nothing found — try fewer words.'; return; }
-      docs.forEach(function (doc) {
-        if (!doc.title) return;
-        var row = document.createElement('div');
-        row.className = 'book';
-        var title = document.createElement('span');
-        title.className = 'b-title';
-        title.textContent = doc.title;
-        var meta = document.createElement('span');
-        meta.className = 'b-meta';
-        var by = fmtCreator(doc.creator);
-        meta.textContent = (by ? by + ' · ' : '') + (doc.downloads || 0) + ' downloads';
-        row.appendChild(title); row.appendChild(meta);
-        row.addEventListener('click', function () { fetchFoundBook(doc, meta); });
-        el.findResults.appendChild(row);
-      });
+  function renderFoundRows(docs) {
+    docs.forEach(function (doc) {
+      if (!doc.title) return;
+      var row = document.createElement('div');
+      row.className = 'book';
+      var title = document.createElement('span');
+      title.className = 'b-title';
+      title.textContent = doc.title;
+      var meta = document.createElement('span');
+      meta.className = 'b-meta';
+      var by = fmtCreator(doc.creator);
+      meta.textContent = (by ? by + ' · ' : '') + (doc.downloads || 0) + ' downloads';
+      row.appendChild(title); row.appendChild(meta);
+      row.addEventListener('click', function () { fetchFoundBook(doc, meta); });
+      el.findResults.appendChild(row);
+      findState.shown++;
+    });
+  }
+
+  function loadFinds(append) {
+    if (!append) {
+      findState.shown = 0;
+      el.findResults.textContent = 'Searching…';
+      el.findMore.hidden = true;
+    }
+    el.findBtn.disabled = el.findMore.disabled = true;
+    iaSearch(findState).then(function (res) {
+      if (!append) el.findResults.innerHTML = '';
+      findState.total = res.total;
+      renderFoundRows(res.docs);
+      if (!findState.shown) el.findResults.textContent = 'Nothing found — try fewer words.';
+      el.findMore.hidden = !res.docs.length || findState.shown >= findState.total;
     }).catch(function (e) {
       el.findResults.textContent = 'Search failed: ' + ((e && e.message) || e);
-    }).then(function () { el.findBtn.disabled = false; });
+      el.findMore.hidden = true;
+    }).then(function () { el.findBtn.disabled = el.findMore.disabled = false; });
+  }
+
+  function runFind() {
+    findState.q = el.findQ.value.trim();
+    findState.page = 1;
+    // empty search + no category = browse the fiction shelf
+    if (!findState.q && !findState.subject) { findState.subject = FIND_SUBJECTS[0][1]; renderChips(); }
+    loadFinds(false);
   }
 
   /* ---------------- Sync (private GitHub gist) ---------------- */
@@ -1645,6 +1704,10 @@
   el.findQ.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') { e.preventDefault(); runFind(); }
   });
+  el.findMore.addEventListener('click', function () {
+    findState.page++;
+    loadFinds(true);
+  });
 
   document.addEventListener('keydown', function (e) {
     if (/^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return; // typing in any field
@@ -1716,6 +1779,7 @@
   setWpm(wpm);
   setBias(bias * 100);
   renderLibrary();
+  renderChips();
   renderSyncPanel();
   var paired = acceptPairHash(); // its own status messages win over renderSyncPanel's
   if (!paired && ghToken()) syncNow(); // pull other devices' books & positions on open
@@ -1737,7 +1801,7 @@
   // version, and when one activates the page reloads itself once — unless
   // you're mid-read, in which case it applies on the next open.
 
-  var APP_VERSION = 'v8'; // keep in step with CACHE in sw.js
+  var APP_VERSION = 'v9'; // keep in step with CACHE in sw.js
   $('version').textContent = 'presto ' + APP_VERSION;
 
   if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
