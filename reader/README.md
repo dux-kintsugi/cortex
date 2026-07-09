@@ -33,9 +33,12 @@ same way.
 
 **📷 Scan** opens the camera (on the phone) or a file picker (on the Mac),
 runs OCR on the photo **entirely on-device** — the vendored Tesseract engine in
-`vendor/`, ~16 MB, no cloud, nothing uploaded — and starts reading the result.
-Photos are downscaled before recognition and hard line breaks / end-of-line
-hyphenation in the OCR output are repaired automatically. Needs the app served
+`vendor/`, ~11 MB, no cloud, nothing uploaded — and starts reading the result.
+Photos are scaled to 2200px and **adaptively binarized** (Bradley–Roth local
+thresholding, which cancels out the shadows and lighting gradients that ruin
+camera OCR); if the engine's confidence is low it retries on the unfiltered
+photo and keeps the better read. Hard line breaks / end-of-line hyphenation
+in the OCR output are repaired automatically. Needs the app served
 over http (workers don't run from `file://`); the engine loads lazily on first
 scan and is cached after that.
 

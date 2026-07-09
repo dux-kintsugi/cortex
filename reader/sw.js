@@ -1,5 +1,5 @@
 /* Fovea service worker — cache-first so the app works fully offline. */
-var CACHE = 'fovea-v5';
+var CACHE = 'fovea-v6';
 var ASSETS = [
   './',
   './index.html',

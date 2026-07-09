@@ -322,24 +322,74 @@
     });
   }
 
-  // Downscale phone photos before OCR — full-resolution frames are much
-  // slower and no more accurate. ~1600px on the long edge is plenty.
-  function downscale(file) {
+  function loadImageFile(file) {
     return new Promise(function (resolve, reject) {
       var url = URL.createObjectURL(file);
       var img = new Image();
-      img.onload = function () {
-        var k = Math.min(1, 1600 / Math.max(img.width, img.height));
-        var c = document.createElement('canvas');
-        c.width = Math.round(img.width * k);
-        c.height = Math.round(img.height * k);
-        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
-        URL.revokeObjectURL(url);
-        resolve(c);
-      };
+      img.onload = function () { resolve({ img: img, url: url }); };
       img.onerror = function () { URL.revokeObjectURL(url); reject(new Error('could not read that image')); };
       img.src = url;
     });
+  }
+
+  // Camera photos of pages have shadows and uneven lighting; the engine's
+  // internal thresholding is global, so a shadow across the page destroys
+  // half the text. Fix: Bradley–Roth adaptive thresholding — each pixel is
+  // compared to the mean of its neighbourhood (via an integral image), so
+  // lighting gradients cancel out. Returns the plain scaled photo too, as
+  // a fallback for images where binarization hurts (screenshots, screens).
+  function prepareImages(img) {
+    var k = Math.min(1, 2200 / Math.max(img.width, img.height));
+    var w = Math.round(img.width * k), h = Math.round(img.height * k);
+    var base = document.createElement('canvas');
+    base.width = w; base.height = h;
+    base.getContext('2d').drawImage(img, 0, 0, w, h);
+
+    var d = base.getContext('2d').getImageData(0, 0, w, h).data;
+    var n = w * h;
+    var gray = new Uint8ClampedArray(n);
+    var sum = 0;
+    for (var i = 0, j = 0; j < n; i += 4, j++) {
+      gray[j] = d[i] * 0.299 + d[i + 1] * 0.587 + d[i + 2] * 0.114;
+      sum += gray[j];
+    }
+    if (sum / n < 110) { // dark background (screens, slides) — invert to dark-on-light
+      for (j = 0; j < n; j++) gray[j] = 255 - gray[j];
+    }
+
+    // integral image; max total 255*2200*2200 fits in Uint32
+    var integ = new Uint32Array(n);
+    for (var y = 0; y < h; y++) {
+      var rowSum = 0;
+      for (var x = 0; x < w; x++) {
+        rowSum += gray[y * w + x];
+        integ[y * w + x] = rowSum + (y > 0 ? integ[(y - 1) * w + x] : 0);
+      }
+    }
+
+    var half = Math.max(8, Math.round(Math.max(w, h) / 16)); // window ≈ ⅛ of the page
+    var out = document.createElement('canvas');
+    out.width = w; out.height = h;
+    var octx = out.getContext('2d');
+    var oid = octx.createImageData(w, h);
+    var od = oid.data;
+    for (y = 0; y < h; y++) {
+      var y1 = Math.max(0, y - half), y2 = Math.min(h - 1, y + half);
+      for (x = 0; x < w; x++) {
+        var x1 = Math.max(0, x - half), x2 = Math.min(w - 1, x + half);
+        var area = (x2 - x1 + 1) * (y2 - y1 + 1);
+        var s = integ[y2 * w + x2]
+          - (x1 > 0 ? integ[y2 * w + x1 - 1] : 0)
+          - (y1 > 0 ? integ[(y1 - 1) * w + x2] : 0)
+          + (x1 > 0 && y1 > 0 ? integ[(y1 - 1) * w + x1 - 1] : 0);
+        var v = gray[y * w + x] * area < s * 0.87 ? 0 : 255; // 13% below local mean → ink
+        var o = (y * w + x) * 4;
+        od[o] = od[o + 1] = od[o + 2] = v;
+        od[o + 3] = 255;
+      }
+    }
+    octx.putImageData(oid, 0, 0);
+    return { bin: out, base: base };
   }
 
   // OCR output is hard-wrapped at the photo's line breaks: un-hyphenate
@@ -365,16 +415,38 @@
     var worker = null;
     status('Preparing image…');
     loadOcrEngine()
-      .then(function () { return downscale(file); })
-      .then(function (canvas) {
+      .then(function () { return loadImageFile(file); })
+      .then(function (loaded) {
+        var imgs = prepareImages(loaded.img);
+        URL.revokeObjectURL(loaded.url);
         // SIMD build first; retry with the plain build on older devices.
         return createOcrWorker('tesseract-core-simd-lstm.wasm.js', status)
           .catch(function () { return createOcrWorker('tesseract-core-lstm.wasm.js', status); })
-          .then(function (w) { worker = w; return w.recognize(canvas); });
+          .then(function (w) {
+            worker = w;
+            return w.setParameters({ user_defined_dpi: '300' }).catch(function () {});
+          })
+          .then(function () { return worker.recognize(imgs.bin); })
+          .then(function (r1) {
+            // The engine reports mean word confidence (0–100). If the
+            // cleaned-up image scored poorly, try the raw photo and keep
+            // whichever read the engine trusted more.
+            var c1 = (r1.data && r1.data.confidence) || 0;
+            if (c1 >= 70) return r1;
+            status('Hard image — trying a second pass…');
+            return worker.recognize(imgs.base).then(function (r2) {
+              var c2 = (r2.data && r2.data.confidence) || 0;
+              return c2 > c1 ? r2 : r1;
+            });
+          });
       })
       .then(function (ret) {
         var text = cleanOcrText((ret.data && ret.data.text) || '');
-        if (!text) { status('No text found in that photo — try a closer, straighter shot.'); return; }
+        var conf = (ret.data && ret.data.confidence) || 0;
+        if (!text || conf < 35) {
+          status('Couldn’t read that photo. Best results: fill the frame with the text, shoot square-on, avoid shadows.');
+          return;
+        }
         el.text.value = text;
         loadText(text, 0);
         play();
