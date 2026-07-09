@@ -1,5 +1,5 @@
 /* ============================================================
-   Fovea — RSVP speed reader.
+   Presto — RSVP speed reader.
    One word at a time; the ORP (optimal recognition point) letter
    is highlighted and pinned to a fixed screen position so the eye
    never moves. Smart pauses at punctuation, paragraph breaks and
@@ -24,13 +24,27 @@
 
   var LS = {
     get: function (k, d) {
-      try { var v = localStorage.getItem('fovea.' + k); return v === null ? d : JSON.parse(v); }
+      try { var v = localStorage.getItem('presto.' + k); return v === null ? d : JSON.parse(v); }
       catch (e) { return d; }
     },
     set: function (k, v) {
-      try { localStorage.setItem('fovea.' + k, JSON.stringify(v)); } catch (e) {}
+      try { localStorage.setItem('presto.' + k, JSON.stringify(v)); } catch (e) {}
     }
   };
+
+  // One-time migration from when the app was called Fovea.
+  try {
+    var oldKeys = [];
+    for (var ki = 0; ki < localStorage.length; ki++) {
+      var kk = localStorage.key(ki);
+      if (kk && kk.indexOf('fovea.') === 0) oldKeys.push(kk);
+    }
+    oldKeys.forEach(function (k) {
+      var nk = 'presto.' + k.slice(6);
+      if (localStorage.getItem(nk) === null) localStorage.setItem(nk, localStorage.getItem(k));
+      localStorage.removeItem(k);
+    });
+  } catch (e) {}
 
   var SAMPLE = 'The Time Machine, by H. G. Wells. ' +
     'The Time Traveller (for so it will be convenient to speak of him) was expounding a recondite matter to us. ' +
@@ -41,7 +55,7 @@
     '"You must follow me carefully. I shall have to controvert one or two ideas that are almost universally accepted. ' +
     'The geometry, for instance, they taught you at school is founded on a misconception."';
 
-  var INTRO = 'Welcome to Fovea. This app flashes text one word at a time, always at the same spot on the screen. ' +
+  var INTRO = 'Welcome to Presto. This app flashes text one word at a time, always at the same spot on the screen. ' +
     'The red letter marks the optimal recognition point of each word: keep your eyes locked on it and whole words snap into focus with zero eye movement. ' +
     'That is the trick — normal reading spends most of its time on tiny eye jumps between words. Remove the jumps and you read far faster.\n\n' +
     'Press play, or tap the word area. Use the slider or the arrow keys to change speed. ' +

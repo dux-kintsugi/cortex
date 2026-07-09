@@ -1,4 +1,4 @@
-# Fovea — RSVP Speed Reader
+# Presto — RSVP Speed Reader
 
 One word at a time, Spritz-style. Each word's **optimal recognition point** (ORP)
 letter is shown in red and pinned to a fixed spot between two tick marks, so your
@@ -20,13 +20,13 @@ and installs as an offline PWA (Share → Add to Home Screen on iPhone).
 
 Double-click **`macos/Install Right-Click Service.command`** once. From then on,
 select text in any app (browser, Mail, PDFs, Notes…), right-click →
-**Services → Read in Fovea**, and Fovea opens already playing that text.
+**Services → Read in Presto**, and Presto opens already playing that text.
 It prefers the local server on port 8642 when running (same saved settings as
 usual) and falls back to opening `index.html` directly. You can also give it a
 keyboard shortcut in System Settings → Keyboard → Shortcuts → Services.
 
 Under the hood the service opens `index.html#t=<url-encoded text>` — anything
-that can open a URL (bookmarklets, Shortcuts, scripts) can hand Fovea text the
+that can open a URL (bookmarklets, Shortcuts, scripts) can hand Presto text the
 same way.
 
 ## Scan a page (OCR)
@@ -43,7 +43,7 @@ over http (workers don't run from `file://`); the engine loads lazily on first
 scan and is cached after that.
 
 On iPhone, Apple's own Live Text is a great alternative: point the Camera app
-at a page, tap the text icon, copy — then paste into Fovea.
+at a page, tap the text icon, copy — then paste into Presto.
 
 ## Use it
 
@@ -68,4 +68,4 @@ at a page, tap the text icon, copy — then paste into Fovea.
   backgrounding the tab auto-pauses.
 
 Speed, position and the current text are stored in `localStorage` under
-`fovea.*` — all data stays in the browser.
+`presto.*` — all data stays in the browser.

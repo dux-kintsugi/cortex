@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleName</key>
-	<string>Read in Fovea</string>
+	<string>Read in Presto</string>
 	<key>NSServices</key>
 	<array>
 		<dict>
@@ -14,7 +14,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Read in Fovea</string>
+				<string>Read in Presto</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>

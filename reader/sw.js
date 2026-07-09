@@ -1,5 +1,5 @@
-/* Fovea service worker — cache-first so the app works fully offline. */
-var CACHE = 'fovea-v7';
+/* Presto service worker — cache-first so the app works fully offline. */
+var CACHE = 'presto-v1';
 var ASSETS = [
   './',
   './index.html',
