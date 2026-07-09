@@ -87,6 +87,12 @@ button { font-family: inherit; color: inherit; }
 #w-after  { flex: 1 1 0; text-align: left;  min-width: 0; }
 #w-pivot  { flex: 0 0 auto; color: var(--pivot); }
 
+#leadin {
+  height: 1.4em; margin-top: 10px;
+  text-align: center; color: var(--pivot);
+  font-size: 0.95rem; letter-spacing: 5px;
+}
+
 #context {
   margin-top: 14px; text-align: center;
   font-size: 0.95rem; line-height: 1.5;
@@ -193,6 +199,39 @@ footer { text-align: center; padding-top: 6px; }
 body.playing #source,
 body.playing footer,
 body.playing #topbar { opacity: 0.12; pointer-events: none; }
+
+/* ---------------- Reading mode (fullscreen takeover) ---------------- */
+#btn-exit { display: none; }
+body.reading { overflow: hidden; }
+body.reading #topbar,
+body.reading #source,
+body.reading footer { display: none; }
+body.reading #stage {
+  position: fixed; inset: 0; z-index: 50;
+  margin: 0; border: 0; border-radius: 0; box-shadow: none;
+  height: 100vh; height: 100dvh;
+  display: flex; flex-direction: column;
+  padding: calc(16px + env(safe-area-inset-top, 0px))
+           max(20px, env(safe-area-inset-right, 0px))
+           calc(16px + env(safe-area-inset-bottom, 0px))
+           max(20px, env(safe-area-inset-left, 0px));
+  background: radial-gradient(1200px 800px at 80% -10%, #141a38 0%, var(--bg) 55%);
+}
+body.reading #stage > :not(#btn-exit) {
+  width: 100%; max-width: 640px;
+  margin-left: auto; margin-right: auto;
+}
+/* two auto margins split the free space: reticle block centered, controls at bottom */
+body.reading #reticle { margin-top: auto; }
+body.reading #scrub { margin-top: auto; }
+body.reading #btn-exit {
+  display: block; position: absolute;
+  top: calc(10px + env(safe-area-inset-top, 0px)); right: 14px;
+  border: 1px solid var(--line); background: var(--panel-2);
+  border-radius: 50%; width: 40px; height: 40px;
+  font-size: 1rem; color: var(--muted); cursor: pointer;
+}
+body.reading #btn-exit:hover { color: var(--text); background: var(--panel-3); }
 
 @media (max-width: 480px) {
   .panel { padding: 14px; }

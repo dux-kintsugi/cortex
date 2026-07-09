@@ -48,6 +48,10 @@ at a page, tap the text icon, copy — then paste into Fovea.
 ## Use it
 
 - Paste any text, hit **Read this** (or **📋 Paste** straight from the clipboard).
+- Play takes over the full screen with the word centered and counts down
+  **● ● ●** (~1.5 s) before starting, so you have time to settle in — seeking
+  and sentence-jumps resume instantly without the countdown. **✕** or Esc
+  leaves reading mode; pausing stays in it and shows the surrounding sentence.
 - **Space** / tap the word area — play & pause
 - **↑ ↓** or slider — speed, 100–900 wpm in 25 wpm steps
 - **← →** — jump a sentence back / forward

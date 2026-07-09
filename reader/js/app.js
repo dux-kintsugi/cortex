@@ -12,7 +12,7 @@
 
   var el = {
     word: $('word'), before: $('w-before'), pivot: $('w-pivot'), after: $('w-after'),
-    reticle: $('reticle'), context: $('context'),
+    reticle: $('reticle'), context: $('context'), leadin: $('leadin'), exit: $('btn-exit'),
     scrub: $('scrub'), statPos: $('stat-pos'), statLeft: $('stat-left'),
     play: $('btn-play'), back: $('btn-back'), fwd: $('btn-fwd'), restart: $('btn-restart'),
     wpm: $('wpm'), wpmVal: $('wpm-val'), wpmMinus: $('wpm-minus'), wpmPlus: $('wpm-plus'),
@@ -184,7 +184,34 @@
     }, delay);
   }
 
-  function play() {
+  // Fullscreen takeover while reading: word centered mid-screen, controls
+  // at the bottom. Entered on play, left via ✕ / Esc (pausing stays in it).
+  function enterReading() {
+    if (document.body.classList.contains('reading')) return;
+    document.body.classList.add('reading');
+    var de = document.documentElement;
+    if (de.requestFullscreen) {
+      try { de.requestFullscreen().catch(function () {}); } catch (e) {}
+    }
+  }
+
+  function exitReading() {
+    pause();
+    document.body.classList.remove('reading');
+    if (document.fullscreenElement && document.exitFullscreen) {
+      document.exitFullscreen().catch(function () {});
+    }
+  }
+
+  var leadTimers = [];
+  function clearLead() {
+    leadTimers.forEach(clearTimeout);
+    leadTimers = [];
+    el.leadin.textContent = '';
+  }
+
+  // lead=false (internal resume after a seek) skips the countdown.
+  function play(lead) {
     if (playing || !tokens.length) return;
     if (pos >= tokens.length - 1 && tokens.length > 1) pos = 0; // replay from the top
     playing = true;
@@ -192,14 +219,22 @@
     document.body.classList.add('playing');
     el.play.textContent = '❚❚';
     el.context.hidden = true;
+    enterReading();
     requestWakeLock();
-    tick();
+    if (lead === false) { tick(); return; }
+    // ~1.5s lead-in: first word is up, dots count down while you settle in.
+    renderWord(); renderStats(); renderScrub();
+    ['● ● ●', '● ●', '●'].forEach(function (d, i) {
+      leadTimers.push(setTimeout(function () { el.leadin.textContent = d; }, i * 500));
+    });
+    leadTimers.push(setTimeout(function () { clearLead(); tick(); }, 1500));
   }
 
   function pause() {
     if (!playing) return;
     playing = false;
     clearTimeout(timer);
+    clearLead();
     document.body.classList.remove('playing');
     el.play.textContent = '▶';
     releaseWakeLock();
@@ -221,7 +256,7 @@
     ramp = 0;
     renderAll();
     LS.set('pos', pos);
-    if (keepPlaying && wasPlaying) play();
+    if (keepPlaying && wasPlaying) play(false);
   }
 
   function sentenceStart(i) {
@@ -465,6 +500,7 @@
 
   el.play.addEventListener('click', toggle);
   el.reticle.addEventListener('click', toggle);
+  el.exit.addEventListener('click', exitReading);
   el.restart.addEventListener('click', function () { seek(0, false); });
   el.back.addEventListener('click', prevSentence);
   el.fwd.addEventListener('click', nextSentence);
@@ -515,6 +551,7 @@
     else if (e.key === 'ArrowLeft') { e.preventDefault(); prevSentence(); }
     else if (e.key === 'ArrowRight') { e.preventDefault(); nextSentence(); }
     else if (e.key === 'r' || e.key === 'R') { seek(0, false); }
+    else if (e.key === 'Escape') { exitReading(); }
   });
 
   // Pause when the tab is hidden — never lose your place mid-flash.

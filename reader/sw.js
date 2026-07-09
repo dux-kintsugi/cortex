@@ -1,5 +1,5 @@
 /* Fovea service worker — cache-first so the app works fully offline. */
-var CACHE = 'fovea-v6';
+var CACHE = 'fovea-v7';
 var ASSETS = [
   './',
   './index.html',
@@ -13,7 +13,10 @@ var ASSETS = [
 
 self.addEventListener('install', function (e) {
   e.waitUntil(
-    caches.open(CACHE).then(function (c) { return c.addAll(ASSETS); }).then(function () {
+    caches.open(CACHE).then(function (c) {
+      // bypass the HTTP cache so a new version never precaches stale files
+      return c.addAll(ASSETS.map(function (u) { return new Request(u, { cache: 'reload' }); }));
+    }).then(function () {
       return self.skipWaiting();
     })
   );
