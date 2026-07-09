@@ -50,13 +50,19 @@ body text is never eaten.
 On iPhone, Apple's own Live Text is a great alternative: point the Camera app
 at a page, tap the text icon, copy — then paste into Presto.
 
-## Books (PDF) & Library
+## Books (PDF / EPUB / TXT) & Library
 
-**📄 PDF** imports a whole book. PDFs with a real text layer read instantly;
-image-only scans fall back to page-by-page OCR (slow — progress shown, **✕
-Stop** keeps what's done). Page furniture is stripped per page, hyphenated
-words split across page turns are rejoined, and a page ending mid-sentence
-flows into the next.
+**📄 Import** takes a whole book:
+
+- **EPUB** (Project Gutenberg, Standard Ebooks, Humble Bundle, any DRM-free
+  ebook) — instant and exact: chapters extracted in spine order, cover and
+  table-of-contents pages skipped, unzipped natively in the browser (no
+  dependencies). DRM-locked books (Kindle, Libby) cannot be imported.
+- **PDF** — text-layer PDFs read instantly; image-only scans fall back to
+  page-by-page OCR (slow — progress shown, **✕ Stop** keeps what's done).
+  Page furniture is stripped per page, hyphenated words split across page
+  turns are rejoined, and a page ending mid-sentence flows into the next.
+- **Plain text** (.txt) — loaded as-is.
 
 Imported books land in the **Library** (IndexedDB, on-device): tap to continue
 exactly where you left off — the position saves on every pause and when the

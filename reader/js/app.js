@@ -896,20 +896,8 @@
           status('Couldn’t get readable text out of that PDF.');
           return;
         }
-        var book = {
-          id: Date.now().toString(36) + Math.floor(Math.random() * 1e4).toString(36),
-          title: title, text: text, pos: 0, totalWords: 0,
-          addedAt: Date.now(), lastReadAt: Date.now()
-        };
-        el.text.value = text;
-        loadText(text, 0, book);
-        book.totalWords = tokens.length;
-        idbPut(book).then(function () {
-          renderLibrary();
-          if (ghToken()) syncNow(); // push the new book to other devices
-        }).catch(function () {});
+        addBookToLibrary(title, text);
         if (cancelRequested) status('Stopped early — saved the ' + tokens.length + ' words read so far.');
-        play();
       })
       .catch(function (e) {
         status('PDF failed: ' + ((e && e.message) || e));
@@ -919,6 +907,158 @@
         if (pdf) { try { pdf.destroy(); } catch (e) {} }
         setBusy(false);
       });
+  }
+
+  // Save an imported book, open it, and start reading.
+  function addBookToLibrary(title, text) {
+    var book = {
+      id: Date.now().toString(36) + Math.floor(Math.random() * 1e4).toString(36),
+      title: title, text: text, pos: 0, totalWords: 0,
+      addedAt: Date.now(), lastReadAt: Date.now()
+    };
+    el.text.value = text;
+    loadText(text, 0, book);
+    book.totalWords = tokens.length;
+    idbPut(book).then(function () {
+      renderLibrary();
+      if (ghToken()) syncNow(); // push the new book to other devices
+    }).catch(function () {});
+    play();
+    return book;
+  }
+
+  /* ---------------- EPUB import ---------------- */
+  // An EPUB is a zip of XHTML chapters. Browsers can inflate zip entries
+  // natively via DecompressionStream, so no vendored library is needed.
+
+  function readZipEntries(buf) {
+    var dv = new DataView(buf);
+    var u8 = new Uint8Array(buf);
+    // find the End Of Central Directory record (scan back over the comment)
+    var i = buf.byteLength - 22;
+    var min = Math.max(0, i - 65535);
+    while (i >= min && dv.getUint32(i, true) !== 0x06054b50) i--;
+    if (i < min) throw new Error('not an EPUB (zip directory missing)');
+    var count = dv.getUint16(i + 10, true);
+    var p = dv.getUint32(i + 16, true);
+    var td = new TextDecoder();
+    var entries = {};
+    for (var n = 0; n < count; n++) {
+      if (dv.getUint32(p, true) !== 0x02014b50) break;
+      var nameLen = dv.getUint16(p + 28, true);
+      var extraLen = dv.getUint16(p + 30, true);
+      var commentLen = dv.getUint16(p + 32, true);
+      entries[td.decode(u8.subarray(p + 46, p + 46 + nameLen))] = {
+        method: dv.getUint16(p + 10, true),
+        compSize: dv.getUint32(p + 20, true),
+        localOff: dv.getUint32(p + 42, true)
+      };
+      p += 46 + nameLen + extraLen + commentLen;
+    }
+    return entries;
+  }
+
+  function zipExtract(buf, entry) {
+    var dv = new DataView(buf);
+    var off = entry.localOff;
+    if (dv.getUint32(off, true) !== 0x04034b50) return Promise.reject(new Error('corrupt EPUB entry'));
+    var start = off + 30 + dv.getUint16(off + 26, true) + dv.getUint16(off + 28, true);
+    var data = buf.slice(start, start + entry.compSize);
+    if (entry.method === 0) return Promise.resolve(new TextDecoder().decode(data));
+    if (entry.method !== 8) return Promise.reject(new Error('unsupported EPUB compression'));
+    var ds = new DecompressionStream('deflate-raw');
+    return new Response(new Blob([data]).stream().pipeThrough(ds)).text();
+  }
+
+  var BLOCK_SEL = 'p, h1, h2, h3, h4, h5, h6, li, blockquote, dd, dt, figcaption, pre';
+
+  function htmlToText(src) {
+    var doc = new DOMParser().parseFromString(src, 'text/html');
+    if (!doc.body) return '';
+    var out = [];
+    Array.prototype.forEach.call(doc.body.querySelectorAll(BLOCK_SEL), function (b) {
+      if (b.querySelector(BLOCK_SEL)) return; // innermost blocks only — no duplicated text
+      var t = (b.textContent || '').replace(/\s+/g, ' ').trim();
+      if (t) out.push(t);
+    });
+    if (!out.length) return (doc.body.textContent || '').replace(/[ \t]+/g, ' ').trim();
+    return out.join('\n\n');
+  }
+
+  function parseEpub(buf) {
+    var entries = readZipEntries(buf);
+    function fileText(name) {
+      var e = entries[name];
+      if (!e) throw new Error('EPUB is missing ' + name);
+      return zipExtract(buf, e);
+    }
+    var xml = function (s) { return new DOMParser().parseFromString(s, 'application/xml'); };
+    return fileText('META-INF/container.xml').then(function (s) {
+      var rf = xml(s).querySelector('rootfile');
+      var opfPath = rf && rf.getAttribute('full-path');
+      if (!opfPath) throw new Error('EPUB has no package file');
+      var base = opfPath.indexOf('/') === -1 ? '' : opfPath.slice(0, opfPath.lastIndexOf('/') + 1);
+      return fileText(opfPath).then(function (opfSrc) {
+        var opf = xml(opfSrc);
+        var titleEl = opf.getElementsByTagNameNS('http://purl.org/dc/elements/1.1/', 'title')[0];
+        var title = titleEl && titleEl.textContent.trim();
+        var manifest = {};
+        Array.prototype.forEach.call(opf.querySelectorAll('manifest > item'), function (it) {
+          manifest[it.getAttribute('id')] = {
+            href: it.getAttribute('href') || '',
+            props: it.getAttribute('properties') || ''
+          };
+        });
+        var chapters = [];
+        var chain = Promise.resolve();
+        Array.prototype.forEach.call(opf.querySelectorAll('spine > itemref'), function (ir) {
+          var m = manifest[ir.getAttribute('idref')];
+          if (!m || ir.getAttribute('linear') === 'no') return;
+          if (m.props.indexOf('nav') !== -1 || /\b(cover|toc|nav)\b/i.test(m.href)) return;
+          chain = chain.then(function () {
+            var path = decodeURIComponent(base + m.href).split('#')[0];
+            var e = entries[path];
+            if (!e) return;
+            return zipExtract(buf, e).then(function (html) { chapters.push(htmlToText(html)); });
+          });
+        });
+        return chain.then(function () {
+          return { title: title, text: chapters.filter(Boolean).join('\n\n') };
+        });
+      });
+    });
+  }
+
+  function runEpub(file) {
+    if (scanning) return;
+    if (typeof DecompressionStream === 'undefined') {
+      el.textStats.textContent = 'EPUB import needs a newer browser (Safari 16.4+ / any recent Chrome).';
+      return;
+    }
+    setBusy(true);
+    var status = function (m) { el.textStats.textContent = m; };
+    status('Unpacking EPUB…');
+    file.arrayBuffer()
+      .then(parseEpub)
+      .then(function (r) {
+        var text = (r.text || '').trim();
+        if (!text || text.split(/\s+/).length < 20) { status('Couldn’t find readable text in that EPUB.'); return; }
+        addBookToLibrary(r.title || file.name.replace(/\.epub$/i, ''), text);
+      })
+      .catch(function (e) { status('EPUB failed: ' + ((e && e.message) || e)); })
+      .then(function () { setBusy(false); });
+  }
+
+  function runTxt(file) {
+    if (scanning) return;
+    setBusy(true);
+    file.text().then(function (t) {
+      t = (t || '').trim();
+      if (!t) { el.textStats.textContent = 'That file is empty.'; return; }
+      addBookToLibrary(file.name.replace(/\.[a-z0-9]+$/i, ''), t);
+    }).catch(function (e) {
+      el.textStats.textContent = 'Import failed: ' + ((e && e.message) || e);
+    }).then(function () { setBusy(false); });
   }
 
   /* ---------------- Sync (private GitHub gist) ---------------- */
@@ -1236,7 +1376,11 @@
   el.pdfFile.addEventListener('change', function () {
     var f = el.pdfFile.files && el.pdfFile.files[0];
     el.pdfFile.value = '';
-    if (f) runPdf(f);
+    if (!f) return;
+    var name = (f.name || '').toLowerCase();
+    if (/\.epub$/.test(name) || f.type === 'application/epub+zip') runEpub(f);
+    else if (/\.txt$/.test(name) || f.type === 'text/plain') runTxt(f);
+    else runPdf(f);
   });
   el.cancel.addEventListener('click', function () {
     cancelRequested = true;
