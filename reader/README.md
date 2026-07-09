@@ -68,6 +68,15 @@ Imported books land in the **Library** (IndexedDB, on-device): tap to continue
 exactly where you left off — the position saves on every pause and when the
 app closes. 🗑 removes a book.
 
+## Find books
+
+The **Find books** panel searches 60,000+ public-domain classics (Project
+Gutenberg's catalog, served via the Internet Archive — Gutenberg's own
+servers don't send CORS headers, but IA's search, metadata, and `.txt`
+downloads all do). Tap a result and it downloads Gutenberg's clean
+hand-proofed text, strips the license boilerplate and credits, and lands in
+the library playing — and syncs to your other devices like any import.
+
 ## Cross-device sync
 
 The **Sync** panel mirrors the library into a **private GitHub gist** — import

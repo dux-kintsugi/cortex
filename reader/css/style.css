@@ -219,6 +219,12 @@ input[type="range"]::-moz-range-thumb {
   image-rendering: pixelated; width: 220px; height: 220px;
 }
 
+/* ---------------- Find books ---------------- */
+#find-results { margin: 6px 0 10px; }
+#find-results .book .b-title { font-weight: 500; flex: 1 1 55%; }
+#find-results .book .b-meta { flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; max-width: 45%; }
+#discover p { margin-top: 4px; }
+
 /* ---------------- Source text ---------------- */
 textarea {
   width: 100%; resize: vertical;

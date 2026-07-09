@@ -27,6 +27,7 @@
     pairBtn: $('btn-pair'), pairBox: $('pair-box'), pairQr: $('pair-qr'),
     pairCodeOut: $('pair-code-out'), pairCopy: $('btn-pair-copy'),
     pairCodeIn: $('pair-code-in'), pairIn: $('btn-pair-in'),
+    findQ: $('find-q'), findBtn: $('btn-find'), findResults: $('find-results'),
     textStats: $('text-stats')
   };
 
@@ -1064,6 +1065,111 @@
     }).then(function () { setBusy(false); });
   }
 
+  /* ---------------- Find books (Project Gutenberg via Internet Archive) ----------------
+     Gutenberg's own servers don't send CORS headers, but the Internet
+     Archive mirrors the whole collection and is CORS-open end to end:
+     search → item metadata → file download. Items hold Gutenberg's clean
+     hand-proofed .txt (some have .epub); both feed the existing import
+     pipeline. */
+
+  function iaSearch(q) {
+    var query = 'collection:gutenberg AND (title:(' + q + ') OR creator:(' + q + '))';
+    var url = 'https://archive.org/advancedsearch.php?q=' + encodeURIComponent(query) +
+      '&fl=identifier,title,creator,downloads&rows=20&sort%5B%5D=' + encodeURIComponent('downloads desc') +
+      '&output=json';
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw new Error('Archive search said ' + r.status);
+      return r.json();
+    }).then(function (d) { return (d.response && d.response.docs) || []; });
+  }
+
+  // Cut Project Gutenberg's license header/footer and the volunteer credit.
+  function stripGutenberg(t) {
+    var m = t.match(/\*\*\* ?START OF (THE|THIS) PROJECT GUTENBERG EBOOK[^\n]*/i);
+    if (m) t = t.slice(t.indexOf(m[0]) + m[0].length);
+    m = t.match(/\*\*\* ?END OF (THE|THIS) PROJECT GUTENBERG EBOOK/i);
+    if (m) t = t.slice(0, t.indexOf(m[0]));
+    t = t.replace(/^\s*(Produced by|E-text prepared by|Transcribed from)[\s\S]*?\n\s*\n/i, '');
+    return t.trim();
+  }
+
+  // Gutenberg .txt files predate UTF-8 — fall back to Latin-1 when needed.
+  function decodeTextBuf(buf) {
+    try { return new TextDecoder('utf-8', { fatal: true }).decode(buf); }
+    catch (e) { return new TextDecoder('windows-1252').decode(buf); }
+  }
+
+  function fmtCreator(c) {
+    var s = Array.isArray(c) ? c[0] : (c || '');
+    return String(s).replace(/,?\s*\d{4}-\d{0,4}\.?$/, ''); // drop " , 1866-1946"
+  }
+
+  function fetchFoundBook(doc, metaEl) {
+    if (scanning) return;
+    setBusy(true);
+    metaEl.textContent = 'Downloading…';
+    fetch('https://archive.org/metadata/' + encodeURIComponent(doc.identifier))
+      .then(function (r) {
+        if (!r.ok) throw new Error('metadata ' + r.status);
+        return r.json();
+      })
+      .then(function (meta) {
+        var files = (meta.files || []).filter(function (f) { return f.name.indexOf('old/') !== 0; });
+        // IA serves .txt downloads with CORS headers but not .epub — prefer
+        // Gutenberg's clean hand-proofed text, epub only as a last resort.
+        var txts = files.filter(function (f) { return /\.txt$/i.test(f.name) && !/_meta\.txt$/i.test(f.name); })
+          .sort(function (a, b) { return (+b.size || 0) - (+a.size || 0); });
+        var epub = files.filter(function (f) { return /\.epub$/i.test(f.name); })[0];
+        var pick = txts[0] || epub;
+        if (!pick) throw new Error('no readable file in this archive item');
+        var url = 'https://archive.org/download/' + doc.identifier + '/' + encodeURIComponent(pick.name);
+        return fetch(url).then(function (r) {
+          if (!r.ok) throw new Error('download ' + r.status);
+          return r.arrayBuffer();
+        }).then(function (buf) {
+          if (!txts[0]) {
+            return parseEpub(buf).then(function (res) {
+              addBookToLibrary(res.title || doc.title, res.text);
+            });
+          }
+          var text = stripGutenberg(decodeTextBuf(buf));
+          if (text.split(/\s+/).length < 20) throw new Error('file was empty after cleanup');
+          addBookToLibrary(doc.title || pick.name, text);
+        });
+      })
+      .then(function () { metaEl.textContent = 'Added ✓'; })
+      .catch(function (e) { metaEl.textContent = 'Failed: ' + ((e && e.message) || e); })
+      .then(function () { setBusy(false); });
+  }
+
+  function runFind() {
+    var q = el.findQ.value.trim();
+    if (!q) return;
+    el.findBtn.disabled = true;
+    el.findResults.textContent = 'Searching…';
+    iaSearch(q).then(function (docs) {
+      el.findResults.innerHTML = '';
+      if (!docs.length) { el.findResults.textContent = 'Nothing found — try fewer words.'; return; }
+      docs.forEach(function (doc) {
+        if (!doc.title) return;
+        var row = document.createElement('div');
+        row.className = 'book';
+        var title = document.createElement('span');
+        title.className = 'b-title';
+        title.textContent = doc.title;
+        var meta = document.createElement('span');
+        meta.className = 'b-meta';
+        var by = fmtCreator(doc.creator);
+        meta.textContent = (by ? by + ' · ' : '') + (doc.downloads || 0) + ' downloads';
+        row.appendChild(title); row.appendChild(meta);
+        row.addEventListener('click', function () { fetchFoundBook(doc, meta); });
+        el.findResults.appendChild(row);
+      });
+    }).catch(function (e) {
+      el.findResults.textContent = 'Search failed: ' + ((e && e.message) || e);
+    }).then(function () { el.findBtn.disabled = false; });
+  }
+
   /* ---------------- Sync (private GitHub gist) ---------------- */
   // The library lives on-device in IndexedDB; a private gist mirrors it so
   // other devices can pull books and reading positions. One file per book
@@ -1535,8 +1641,13 @@
     });
   });
 
+  el.findBtn.addEventListener('click', runFind);
+  el.findQ.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); runFind(); }
+  });
+
   document.addEventListener('keydown', function (e) {
-    if (e.target === el.text) return; // typing in the textarea
+    if (/^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return; // typing in any field
     if (e.code === 'Space') { e.preventDefault(); toggle(); }
     else if (e.key === 'ArrowUp') { e.preventDefault(); setWpm(wpm + 25); }
     else if (e.key === 'ArrowDown') { e.preventDefault(); setWpm(wpm - 25); }
