@@ -75,12 +75,18 @@ a book on the Mac, continue on the phone at the same word. Everything is
 **encrypted on-device** before upload (AES-256-GCM, key derived from your
 passphrase with PBKDF2) — GitHub only ever stores ciphertext.
 
-Setup per device: create a classic token at github.com/settings/tokens with
-**only the `gist` scope**, make up a sync passphrase, enter both, Connect.
-Use the same pair on every device; both live only in that device's
-localStorage (never in this repo). Lose the passphrase and the gist copy is
-unreadable — books on your devices are unaffected (Disconnect → Connect with
-a new passphrase re-encrypts on the next push).
+Setup on the **first device only**: create a classic token at
+github.com/settings/tokens with **only the `gist` scope**, make up a sync
+passphrase, enter both, Connect. Every other device pairs without touching
+GitHub: hit **Pair device** on the connected device and either scan the QR
+with the new device's camera or copy the pairing code and paste it into the
+new device's **Pairing code** box (for the installed iPhone app use the
+paste route — iOS gives installed apps separate storage from Safari; Mac →
+iPhone paste works via Universal Clipboard). The pairing code contains your
+credentials, so treat it like a password. Everything lives only in each
+device's localStorage (never in this repo). Lose the passphrase and the gist
+copy is unreadable — books on your devices are unaffected (Disconnect →
+Connect with a new passphrase re-encrypts on the next push).
 
 Positions push a few seconds after you pause and pull on every app open;
 merge is per-book newest-wins; deletions propagate via tombstones and always

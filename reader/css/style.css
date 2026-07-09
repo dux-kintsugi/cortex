@@ -211,6 +211,13 @@ input[type="range"]::-moz-range-thumb {
 .field:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
 .sync-row { align-items: center; margin-top: 0; }
 #sync-status { flex: 1; min-width: 0; }
+.pair-hint { margin-top: 14px; }
+#pair-box { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 14px; }
+#pair-qr { display: flex; justify-content: center; margin: 12px 0; }
+#pair-qr img {
+  background: #fff; padding: 12px; border-radius: 12px;
+  image-rendering: pixelated; width: 220px; height: 220px;
+}
 
 /* ---------------- Source text ---------------- */
 textarea {

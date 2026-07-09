@@ -24,6 +24,9 @@
     syncSetup: $('sync-setup'), syncOn: $('sync-on'), syncStatus: $('sync-status'),
     tokenInput: $('gh-token'), passInput: $('gh-pass'), tokenSave: $('btn-token-save'),
     syncNowBtn: $('btn-sync'), syncOff: $('btn-sync-off'),
+    pairBtn: $('btn-pair'), pairBox: $('pair-box'), pairQr: $('pair-qr'),
+    pairCodeOut: $('pair-code-out'), pairCopy: $('btn-pair-copy'),
+    pairCodeIn: $('pair-code-in'), pairIn: $('btn-pair-in'),
     textStats: $('text-stats')
   };
 
@@ -1311,6 +1314,68 @@
       .then(function () { syncing = false; });
   }
 
+  /* ---- Pairing: move the whole sync setup (token + passphrase + gist id)
+     to another device as one opaque code — QR for cameras, copy-paste for
+     the installed iOS app (which has its own storage, separate from
+     Safari's). GitHub is only ever touched once, on the first device. ---- */
+
+  function pairPayload() {
+    return b64(new TextEncoder().encode(JSON.stringify({
+      t: ghToken(), p: syncPass(), g: LS.get('gist', null)
+    })));
+  }
+
+  function parsePairCode(input) {
+    var code = (input || '').trim();
+    var m = code.match(/#pair=([A-Za-z0-9+/=%]+)/); // full link pasted
+    if (m) code = decodeURIComponent(m[1]);
+    try {
+      var o = JSON.parse(new TextDecoder().decode(unb64(code)));
+      return o && o.t && o.p ? o : null;
+    } catch (e) { return null; }
+  }
+
+  function applyPair(o, statusPrefix) {
+    LS.set('ghtoken', o.t);
+    LS.set('syncpass', o.p);
+    if (o.g) LS.set('gist', o.g);
+    LS.set('gistState', null);
+    cryptoKeys = {};
+    renderSyncPanel();
+    setSyncStatus((statusPrefix || 'Paired') + ' — syncing…');
+    return syncNow();
+  }
+
+  var qrScript = null;
+  function loadQrLib() {
+    if (window.qrcode) return Promise.resolve();
+    if (!qrScript) {
+      qrScript = new Promise(function (resolve, reject) {
+        var s = document.createElement('script');
+        s.src = 'vendor/qrcode.js';
+        s.onload = resolve;
+        s.onerror = function () { qrScript = null; reject(new Error('QR library failed to load')); };
+        document.head.appendChild(s);
+      });
+    }
+    return qrScript;
+  }
+
+  function showPairBox() {
+    var payload = pairPayload();
+    var link = location.href.split('#')[0] + '#pair=' + payload;
+    el.pairCodeOut.value = payload;
+    el.pairBox.hidden = false;
+    loadQrLib().then(function () {
+      var qr = window.qrcode(0, 'M');
+      qr.addData(link);
+      qr.make();
+      el.pairQr.innerHTML = qr.createImgTag(4, 8);
+    }).catch(function () {
+      el.pairQr.textContent = 'QR unavailable — use the code below.';
+    });
+  }
+
   // Light path: after a pause, push just the position into the state file.
   function pushPositionSoon() {
     if (!ghToken() || !currentBook) return;
@@ -1419,6 +1484,29 @@
 
   el.syncNowBtn.addEventListener('click', function () { syncNow(); });
 
+  el.pairBtn.addEventListener('click', function () {
+    if (el.pairBox.hidden) showPairBox();
+    else el.pairBox.hidden = true;
+  });
+
+  el.pairCopy.addEventListener('click', function () {
+    var done = function () { el.pairCopy.textContent = 'Copied ✓'; setTimeout(function () { el.pairCopy.textContent = 'Copy'; }, 2000); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(el.pairCodeOut.value).then(done).catch(function () {
+        el.pairCodeOut.select(); document.execCommand('copy'); done();
+      });
+    } else {
+      el.pairCodeOut.select(); document.execCommand('copy'); done();
+    }
+  });
+
+  el.pairIn.addEventListener('click', function () {
+    var o = parsePairCode(el.pairCodeIn.value);
+    if (!o) { alert('That doesn’t look like a pairing code — copy it from the other device’s Pair device panel.'); return; }
+    el.pairCodeIn.value = '';
+    applyPair(o, 'Paired');
+  });
+
   el.syncOff.addEventListener('click', function () {
     if (!confirm('Forget the GitHub token and passphrase on this device? Your books stay here and in the gist.')) return;
     LS.set('ghtoken', null);
@@ -1428,6 +1516,7 @@
     LS.set('gistState', null);
     LS.set('lastSync', 0);
     cryptoKeys = {};
+    el.pairBox.hidden = true;
     renderSyncPanel();
   });
 
@@ -1488,7 +1577,9 @@
     return true;
   }
 
-  window.addEventListener('hashchange', acceptHashText);
+  window.addEventListener('hashchange', function () {
+    if (!acceptPairHash()) acceptHashText();
+  });
 
   function bootFromText() {
     var savedText = LS.get('text', null);
@@ -1501,11 +1592,22 @@
     }
   }
 
+  // Pairing links (#pair=…) arrive via QR scans — apply and strip.
+  function acceptPairHash() {
+    if (location.hash.indexOf('#pair=') !== 0) return false;
+    var o = parsePairCode(location.hash);
+    history.replaceState(null, '', location.pathname + location.search);
+    if (!o) return false;
+    applyPair(o, 'Paired via link');
+    return true;
+  }
+
   setWpm(wpm);
   setBias(bias * 100);
   renderLibrary();
   renderSyncPanel();
-  if (ghToken()) syncNow(); // pull other devices' books & positions on open
+  var paired = acceptPairHash(); // its own status messages win over renderSyncPanel's
+  if (!paired && ghToken()) syncNow(); // pull other devices' books & positions on open
   if (!acceptHashText()) {
     var savedBookId = LS.get('book', null);
     if (savedBookId) {

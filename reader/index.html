@@ -94,12 +94,29 @@
           <input id="gh-pass" class="field" type="password" placeholder="Sync passphrase (same on every device)" autocomplete="off" spellcheck="false">
           <button id="btn-token-save" class="ctl primary">Connect</button>
         </div>
+        <p class="muted small pair-hint">Already connected on another device? Skip all of the above —
+        open <b>Pair device</b> there and paste its pairing code here:</p>
+        <div class="row">
+          <input id="pair-code-in" class="field" type="password" placeholder="Pairing code (or pairing link)" autocomplete="off" spellcheck="false">
+          <button id="btn-pair-in" class="ctl">Pair</button>
+        </div>
       </div>
       <div id="sync-on" hidden>
         <div class="row sync-row">
           <span id="sync-status" class="muted small">…</span>
           <button id="btn-sync" class="ctl">Sync now</button>
+          <button id="btn-pair" class="ctl" title="Connect another device without touching GitHub">Pair device</button>
           <button id="btn-sync-off" class="ctl" title="Forget the token on this device">Disconnect</button>
+        </div>
+        <div id="pair-box" hidden>
+          <p class="muted small">Scan with the other device's camera — or copy the code and paste it
+          into that device's <b>Pairing code</b> box (on iPhone, use the installed app's box; Mac → iPhone
+          copy-paste works via Universal Clipboard). This code contains your sync credentials — keep it private.</p>
+          <div id="pair-qr"></div>
+          <div class="row">
+            <input id="pair-code-out" class="field" readonly>
+            <button id="btn-pair-copy" class="ctl">Copy</button>
+          </div>
         </div>
       </div>
     </section>
