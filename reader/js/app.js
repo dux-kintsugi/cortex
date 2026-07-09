@@ -1731,7 +1731,30 @@
     }
   }
 
+  /* ---------------- Self-updating service worker ---------------- */
+  // iOS home-screen apps resume frozen instead of relaunching, so updates
+  // used to need two deliberate force-quits. Now: resuming checks for a new
+  // version, and when one activates the page reloads itself once — unless
+  // you're mid-read, in which case it applies on the next open.
+
+  var APP_VERSION = 'v8'; // keep in step with CACHE in sw.js
+  $('version').textContent = 'presto ' + APP_VERSION;
+
   if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
     navigator.serviceWorker.register('sw.js').catch(function () {});
+    var hadController = !!navigator.serviceWorker.controller;
+    var swReloaded = false;
+    navigator.serviceWorker.addEventListener('controllerchange', function () {
+      if (!hadController) { hadController = true; return; } // first install, not an update
+      if (swReloaded || playing || scanning) return;
+      swReloaded = true;
+      window.location.reload();
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) return;
+      navigator.serviceWorker.getRegistration()
+        .then(function (r) { if (r) return r.update(); })
+        .catch(function () {});
+    });
   }
 })();

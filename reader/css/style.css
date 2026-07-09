@@ -241,6 +241,7 @@ textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
 #text-stats { margin-top: 10px; }
 
 footer { text-align: center; padding-top: 6px; }
+#version { text-align: center; padding: 10px 0 2px; font-size: 0.7rem; opacity: 0.45; }
 
 /* ---------------- Focus mode while playing ---------------- */
 #source, footer, #topbar { transition: opacity .35s; }
@@ -253,6 +254,10 @@ body.playing #topbar { opacity: 0.12; pointer-events: none; }
 body.reading { overflow: hidden; }
 body.reading #topbar,
 body.reading #source,
+body.reading #library,
+body.reading #discover,
+body.reading #sync,
+body.reading #version,
 body.reading footer { display: none; }
 body.reading #stage {
   position: fixed; inset: 0; z-index: 50;
