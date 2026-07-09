@@ -19,6 +19,8 @@
     bias: $('bias'), biasVal: $('bias-val'),
     text: $('text'), load: $('btn-load'), paste: $('btn-paste'), sample: $('btn-sample'),
     scan: $('btn-scan'), scanFile: $('scan-file'),
+    pdf: $('btn-pdf'), pdfFile: $('pdf-file'), cancel: $('btn-cancel'),
+    library: $('library'), bookList: $('book-list'),
     textStats: $('text-stats')
   };
 
@@ -45,6 +47,59 @@
       localStorage.removeItem(k);
     });
   } catch (e) {}
+
+  /* ---------------- Library storage (IndexedDB — books are too big for localStorage) ---------------- */
+
+  var idbPromise = null;
+  function db() {
+    if (!idbPromise) {
+      idbPromise = new Promise(function (resolve, reject) {
+        var req = indexedDB.open('presto', 1);
+        req.onupgradeneeded = function () { req.result.createObjectStore('books', { keyPath: 'id' }); };
+        req.onsuccess = function () { resolve(req.result); };
+        req.onerror = function () { reject(req.error); };
+      });
+    }
+    return idbPromise;
+  }
+  function idbPut(book) {
+    return db().then(function (d) {
+      return new Promise(function (res, rej) {
+        var tx = d.transaction('books', 'readwrite');
+        tx.objectStore('books').put(book);
+        tx.oncomplete = res;
+        tx.onerror = function () { rej(tx.error); };
+      });
+    });
+  }
+  function idbGet(id) {
+    return db().then(function (d) {
+      return new Promise(function (res, rej) {
+        var rq = d.transaction('books').objectStore('books').get(id);
+        rq.onsuccess = function () { res(rq.result); };
+        rq.onerror = function () { rej(rq.error); };
+      });
+    });
+  }
+  function idbAll() {
+    return db().then(function (d) {
+      return new Promise(function (res, rej) {
+        var rq = d.transaction('books').objectStore('books').getAll();
+        rq.onsuccess = function () { res(rq.result || []); };
+        rq.onerror = function () { rej(rq.error); };
+      });
+    });
+  }
+  function idbDelete(id) {
+    return db().then(function (d) {
+      return new Promise(function (res, rej) {
+        var tx = d.transaction('books', 'readwrite');
+        tx.objectStore('books').delete(id);
+        tx.oncomplete = res;
+        tx.onerror = function () { rej(tx.error); };
+      });
+    });
+  }
 
   var SAMPLE = 'The Time Machine, by H. G. Wells. ' +
     'The Time Traveller (for so it will be convenient to speak of him) was expounding a recondite matter to us. ' +
@@ -125,6 +180,7 @@
 
   var tokens = [];
   var pos = 0;            // index of the word currently displayed
+  var currentBook = null; // library book being read, if any
   var playing = false;
   var timer = null;
   var ramp = 0;           // words shown since last (re)start — eases speed in
@@ -244,6 +300,17 @@
     leadTimers.push(setTimeout(function () { clearLead(); tick(); }, 1500));
   }
 
+  // Persist the reading position — and for library books, into the book
+  // record too, so "continue where you left off" survives across sessions.
+  function savePosition() {
+    LS.set('pos', pos);
+    if (currentBook) {
+      currentBook.pos = pos;
+      currentBook.lastReadAt = Date.now();
+      idbPut(currentBook).then(renderLibrary).catch(function () {});
+    }
+  }
+
   function pause() {
     if (!playing) return;
     playing = false;
@@ -253,12 +320,11 @@
     el.play.textContent = '▶';
     releaseWakeLock();
     renderContext();
-    LS.set('pos', pos);
+    savePosition();
   }
 
   function finish() {
     pause();
-    LS.set('pos', 0);
   }
 
   function toggle() { playing ? pause() : play(); }
@@ -321,8 +387,9 @@
 
   /* ---------------- Loading text ---------------- */
 
-  function loadText(raw, startAt) {
-    pause();
+  function loadText(raw, startAt, book) {
+    pause(); // also saves the outgoing book's position
+    currentBook = book || null;
     tokens = tokenize(raw || '');
     pos = Math.max(0, Math.min(tokens.length - 1, startAt || 0));
     el.scrub.max = Math.max(0, tokens.length - 1);
@@ -334,9 +401,151 @@
     } else {
       el.textStats.textContent = '';
     }
-    LS.set('text', raw);
+    if (book) {
+      // books live in IndexedDB; localStorage just points at the open one
+      LS.set('book', book.id);
+      try { localStorage.removeItem('presto.text'); } catch (e) {}
+    } else {
+      LS.set('book', null);
+      LS.set('text', raw);
+    }
     LS.set('pos', pos);
     renderAll();
+  }
+
+  /* ---------------- Page furniture (headers / footers) ---------------- */
+
+  // Lines are {text, yTop (0=page top, 1=bottom), width, h, para?}, in
+  // reading order. Running heads, chapter headers and page numbers get cut
+  // only when position AND content agree — never eat real paragraphs.
+  function stripFurniture(lines) {
+    if (lines.length < 5) return lines;
+    var sorted = function (arr) { return arr.slice().sort(function (a, b) { return a - b; }); };
+    var medW = sorted(lines.map(function (l) { return l.width; }))[Math.floor(lines.length / 2)];
+    var medH = sorted(lines.map(function (l) { return l.h || 0; }))[Math.floor(lines.length / 2)];
+    function furniture(l) {
+      var t = l.text;
+      if (/^[\s\-–—.·[\]()]*\d{1,4}[\s\-–—.·[\]()]*$/.test(t)) return true; // bare page number
+      if (/^[ivxlcdm]{1,7}$/i.test(t)) return true;                          // roman-numeral folio
+      var words = t.split(/\s+/).length;
+      if (words > 7 || l.width > medW * 0.75) return false;                  // real text line
+      var caps = t.length > 2 && t === t.toUpperCase() && /[A-Z]/.test(t);   // RUNNING HEAD
+      var edgeNum = /^\d{1,4}\s/.test(t) || /\s\d{1,4}$/.test(t);            // "142 THE TIME MACHINE"
+      var bigFont = medH > 0 && l.h > medH * 1.35;                           // chapter heading
+      return caps || edgeNum || bigFont || words <= 3;
+    }
+    var out = lines.slice(), cut = 0;
+    while (out.length > 2 && cut < 2 && out[0].yTop < 0.18 && furniture(out[0])) { out.shift(); cut++; }
+    cut = 0;
+    while (out.length > 2 && cut < 2 && out[out.length - 1].yTop > 0.82 && furniture(out[out.length - 1])) { out.pop(); cut++; }
+    return out;
+  }
+
+  // Rebuild page text from surviving lines: para keys (OCR) or vertical
+  // gaps (PDF text layer) decide paragraph breaks; cleanOcrText later
+  // merges intra-paragraph line wraps.
+  function linesToPageText(lines) {
+    var kept = stripFurniture(lines);
+    if (!kept.length) return '';
+    var parts = [], prev = null;
+    var gaps = [];
+    for (var i = 1; i < kept.length; i++) gaps.push(kept[i].yTop - kept[i - 1].yTop);
+    gaps = gaps.filter(function (g) { return g > 0; }).sort(function (a, b) { return a - b; });
+    var medGap = gaps.length ? gaps[Math.floor(gaps.length / 2)] : 0;
+    kept.forEach(function (l) {
+      var newPara = !prev
+        || (l.para !== undefined && l.para !== prev.para)
+        || (l.para === undefined && medGap > 0 && (l.yTop - prev.yTop) > medGap * 1.75);
+      parts.push(newPara && parts.length ? '\n\n' + l.text : (parts.length ? '\n' + l.text : l.text));
+      prev = l;
+    });
+    return parts.join('');
+  }
+
+  // Flatten the OCR engine's blocks→paragraphs→lines tree.
+  function ocrToLines(data, imgH) {
+    var lines = [];
+    (data.blocks || []).forEach(function (b, bi) {
+      (b.paragraphs || []).forEach(function (pg, pi) {
+        (pg.lines || []).forEach(function (ln) {
+          var t = (ln.text || '').replace(/\s+/g, ' ').trim();
+          if (!t || !ln.bbox) return;
+          lines.push({
+            text: t,
+            yTop: ln.bbox.y0 / imgH,
+            width: ln.bbox.x1 - ln.bbox.x0,
+            h: ln.bbox.y1 - ln.bbox.y0,
+            para: bi + ':' + pi
+          });
+        });
+      });
+    });
+    return lines;
+  }
+
+  function ocrResultToText(ret, imgH) {
+    if (ret.data && ret.data.blocks && ret.data.blocks.length) {
+      var t = linesToPageText(ocrToLines(ret.data, imgH));
+      if (t) return t;
+    }
+    return (ret.data && ret.data.text) || '';
+  }
+
+  // Join per-page texts: un-split hyphenated words across page turns, and
+  // only make a paragraph break when the previous page ended a sentence.
+  function joinPages(pages) {
+    var out = '';
+    pages.forEach(function (p) {
+      p = (p || '').trim();
+      if (!p) return;
+      if (!out) { out = p; return; }
+      if (/[A-Za-z]-$/.test(out)) out = out.replace(/-$/, '') + p;
+      else if (/[.!?…:'"”)\]]$/.test(out)) out += '\n\n' + p;
+      else out += ' ' + p;
+    });
+    return out;
+  }
+
+  /* ---------------- Library ---------------- */
+
+  function renderLibrary() {
+    idbAll().then(function (books) {
+      if (!books.length) { el.library.hidden = true; return; }
+      books.sort(function (a, b) { return (b.lastReadAt || 0) - (a.lastReadAt || 0); });
+      el.bookList.innerHTML = '';
+      books.forEach(function (b) {
+        var row = document.createElement('div');
+        row.className = 'book';
+        var pct = b.totalWords > 1 ? Math.round(100 * (b.pos || 0) / (b.totalWords - 1)) : 0;
+        var title = document.createElement('span');
+        title.className = 'b-title';
+        title.textContent = b.title;
+        var meta = document.createElement('span');
+        meta.className = 'b-meta';
+        meta.textContent = pct >= 99 ? 'finished' : (pct > 0 ? pct + '%' : 'new') + ' · ' + Math.round(b.totalWords / 100) / 10 + 'k words';
+        var del = document.createElement('button');
+        del.className = 'b-del';
+        del.textContent = '🗑';
+        del.title = 'Remove from library';
+        del.addEventListener('click', function (ev) {
+          ev.stopPropagation();
+          if (!confirm('Remove "' + b.title + '" from the library?')) return;
+          idbDelete(b.id).then(function () {
+            if (currentBook && currentBook.id === b.id) currentBook = null;
+            renderLibrary();
+          }).catch(function () {});
+        });
+        row.appendChild(title); row.appendChild(meta); row.appendChild(del);
+        row.addEventListener('click', function () { loadBook(b); });
+        el.bookList.appendChild(row);
+      });
+      el.library.hidden = false;
+    }).catch(function () { el.library.hidden = true; });
+  }
+
+  function loadBook(b) {
+    el.text.value = b.text;
+    loadText(b.text, b.pos || 0, b);
   }
 
   /* ---------------- Scan (OCR) ---------------- */
@@ -452,14 +661,32 @@
       .trim();
   }
 
+  var OCR_OUTPUT = { text: true, blocks: true }; // blocks carry line positions for furniture removal
+
+  function setBusy(busy) {
+    scanning = busy;
+    el.scan.disabled = el.pdf.disabled = busy;
+    el.cancel.hidden = !busy;
+  }
+
+  function makeOcrWorker(status) {
+    // SIMD build first; retry with the plain build on older devices.
+    return createOcrWorker('tesseract-core-simd-lstm.wasm.js', status)
+      .catch(function () { return createOcrWorker('tesseract-core-lstm.wasm.js', status); })
+      .then(function (w) {
+        return w.setParameters({ user_defined_dpi: '300' })
+          .catch(function () {})
+          .then(function () { return w; });
+      });
+  }
+
   function runScan(file) {
     if (scanning) return;
     if (location.protocol === 'file:') {
       el.textStats.textContent = 'Scanning needs the app served over http — use Serve to iPhone, then open via the URL it prints.';
       return;
     }
-    scanning = true;
-    el.scan.disabled = true;
+    setBusy(true);
     var status = function (msg) { el.textStats.textContent = msg; };
     var worker = null;
     status('Preparing image…');
@@ -468,30 +695,24 @@
       .then(function (loaded) {
         var imgs = prepareImages(loaded.img);
         URL.revokeObjectURL(loaded.url);
-        // SIMD build first; retry with the plain build on older devices.
-        return createOcrWorker('tesseract-core-simd-lstm.wasm.js', status)
-          .catch(function () { return createOcrWorker('tesseract-core-lstm.wasm.js', status); })
-          .then(function (w) {
-            worker = w;
-            return w.setParameters({ user_defined_dpi: '300' }).catch(function () {});
-          })
-          .then(function () { return worker.recognize(imgs.bin); })
+        return makeOcrWorker(status)
+          .then(function (w) { worker = w; return w.recognize(imgs.bin, {}, OCR_OUTPUT); })
           .then(function (r1) {
             // The engine reports mean word confidence (0–100). If the
             // cleaned-up image scored poorly, try the raw photo and keep
             // whichever read the engine trusted more.
             var c1 = (r1.data && r1.data.confidence) || 0;
-            if (c1 >= 70) return r1;
+            if (c1 >= 70) return { ret: r1, imgH: imgs.bin.height };
             status('Hard image — trying a second pass…');
-            return worker.recognize(imgs.base).then(function (r2) {
+            return worker.recognize(imgs.base, {}, OCR_OUTPUT).then(function (r2) {
               var c2 = (r2.data && r2.data.confidence) || 0;
-              return c2 > c1 ? r2 : r1;
+              return c2 > c1 ? { ret: r2, imgH: imgs.base.height } : { ret: r1, imgH: imgs.bin.height };
             });
           });
       })
-      .then(function (ret) {
-        var text = cleanOcrText((ret.data && ret.data.text) || '');
-        var conf = (ret.data && ret.data.confidence) || 0;
+      .then(function (best) {
+        var text = cleanOcrText(ocrResultToText(best.ret, best.imgH));
+        var conf = (best.ret.data && best.ret.data.confidence) || 0;
         if (!text || conf < 35) {
           status('Couldn’t read that photo. Best results: fill the frame with the text, shoot square-on, avoid shadows.');
           return;
@@ -505,8 +726,180 @@
       })
       .then(function () {
         if (worker) worker.terminate().catch(function () {});
-        scanning = false;
-        el.scan.disabled = false;
+        setBusy(false);
+      });
+  }
+
+  /* ---------------- PDF import ---------------- */
+
+  var pdfScript = null;
+  var cancelRequested = false;
+
+  function loadPdfEngine() {
+    if (window.pdfjsLib) return Promise.resolve();
+    if (!pdfScript) {
+      pdfScript = new Promise(function (resolve, reject) {
+        var s = document.createElement('script');
+        s.src = 'vendor/pdf.min.js';
+        s.onload = function () {
+          window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'vendor/pdf.worker.min.js';
+          resolve();
+        };
+        s.onerror = function () { pdfScript = null; reject(new Error('PDF engine failed to load')); };
+        document.head.appendChild(s);
+      });
+    }
+    return pdfScript;
+  }
+
+  // Lines with positions from a PDF's embedded text layer (y origin is the
+  // page bottom in PDF space; convert to yTop fractions).
+  function pageTextLines(page) {
+    return page.getTextContent().then(function (tc) {
+      var H = page.view[3] - page.view[1];
+      var items = [];
+      tc.items.forEach(function (it) {
+        if (!it.str || !it.str.trim() || !it.transform) return;
+        items.push({ x: it.transform[4], y: it.transform[5], size: Math.abs(it.transform[0]) || 0, w: it.width || 0, str: it.str });
+      });
+      items.sort(function (a, b) { return b.y - a.y || a.x - b.x; });
+      var rows = [];
+      items.forEach(function (it) {
+        var R = rows[rows.length - 1];
+        if (R && Math.abs(R.y - it.y) < 3) R.parts.push(it);
+        else rows.push({ y: it.y, parts: [it] });
+      });
+      return rows.map(function (R) {
+        R.parts.sort(function (a, b) { return a.x - b.x; });
+        var first = R.parts[0], last = R.parts[R.parts.length - 1];
+        return {
+          text: R.parts.map(function (p) { return p.str; }).join(' ').replace(/\s+/g, ' ').trim(),
+          yTop: 1 - (R.y / H),
+          width: (last.x + last.w) - first.x,
+          h: Math.max.apply(null, R.parts.map(function (p) { return p.size; }))
+        };
+      }).filter(function (l) { return l.text; });
+    });
+  }
+
+  function runPdf(file) {
+    if (scanning) return;
+    if (location.protocol === 'file:') {
+      el.textStats.textContent = 'PDF import needs the app served over http — use Serve to iPhone, then open via the URL it prints.';
+      return;
+    }
+    setBusy(true);
+    cancelRequested = false;
+    var status = function (msg) { el.textStats.textContent = msg; };
+    var worker = null, pdf = null;
+    var title = file.name.replace(/\.pdf$/i, '').replace(/[-_]+/g, ' ').trim() || 'Untitled';
+    status('Opening PDF…');
+    loadPdfEngine()
+      .then(function () { return file.arrayBuffer(); })
+      .then(function (buf) { return window.pdfjsLib.getDocument({ data: buf }).promise; })
+      .then(function (doc) {
+        pdf = doc;
+        return pdf.getMetadata().then(function (m) {
+          var t = m && m.info && m.info.Title;
+          if (t && String(t).trim() && !/^untitled/i.test(String(t).trim())) title = String(t).trim();
+        }).catch(function () {});
+      })
+      .then(function () {
+        // Probe mid-book pages: a real text layer means no OCR needed.
+        var probes = [];
+        [0.3, 0.5, 0.7].forEach(function (f) {
+          var p = Math.max(1, Math.ceil(pdf.numPages * f));
+          if (probes.indexOf(p) === -1) probes.push(p);
+        });
+        return Promise.all(probes.map(function (p) {
+          return pdf.getPage(p).then(pageTextLines).then(function (lines) {
+            return lines.map(function (l) { return l.text; }).join(' ').length;
+          });
+        })).then(function (counts) {
+          counts.sort(function (a, b) { return a - b; });
+          return counts[Math.floor(counts.length / 2)] > 120; // median chars per probed page
+        });
+      })
+      .then(function (hasTextLayer) {
+        var pages = [];
+        var nums = [];
+        for (var i = 1; i <= pdf.numPages; i++) nums.push(i);
+
+        if (hasTextLayer) {
+          return nums.reduce(function (chain, p) {
+            return chain.then(function () {
+              if (cancelRequested) return;
+              if (p === 1 || p % 20 === 0) status('Reading text layer… page ' + p + ' / ' + pdf.numPages);
+              return pdf.getPage(p).then(pageTextLines).then(function (lines) {
+                pages.push(cleanOcrText(linesToPageText(lines)));
+              });
+            });
+          }, Promise.resolve()).then(function () { return pages; });
+        }
+
+        // Scanned book: OCR page by page (slow — progress + cancel).
+        status('Scanned book — OCR will take a while…');
+        return loadOcrEngine()
+          .then(function () { return makeOcrWorker(status); })
+          .then(function (w) {
+            worker = w;
+            return nums.reduce(function (chain, p) {
+              return chain.then(function () {
+                if (cancelRequested) return;
+                status('Scanning page ' + p + ' / ' + pdf.numPages + '…');
+                return pdf.getPage(p).then(function (page) {
+                  var vp = page.getViewport({ scale: 1 });
+                  var scale = Math.max(1, Math.min(3, 2000 / vp.width));
+                  var v2 = page.getViewport({ scale: scale });
+                  var c = document.createElement('canvas');
+                  c.width = Math.round(v2.width); c.height = Math.round(v2.height);
+                  // print intent: display intent schedules on requestAnimationFrame,
+                  // which browsers suppress in hidden/backgrounded tabs — the render
+                  // would hang if the user switches away mid-import.
+                  return page.render({ canvasContext: c.getContext('2d'), viewport: v2, intent: 'print' }).promise
+                    .then(function () {
+                      var imgs = prepareImages(c);
+                      return worker.recognize(imgs.bin, {}, OCR_OUTPUT).then(function (r) {
+                        if (((r.data && r.data.confidence) || 0) < 50) {
+                          return worker.recognize(imgs.base, {}, OCR_OUTPUT).then(function (r2) {
+                            var better = ((r2.data && r2.data.confidence) || 0) > ((r.data && r.data.confidence) || 0) ? r2 : r;
+                            return { ret: better, imgH: imgs.bin.height };
+                          });
+                        }
+                        return { ret: r, imgH: imgs.bin.height };
+                      });
+                    })
+                    .then(function (best) { pages.push(cleanOcrText(ocrResultToText(best.ret, best.imgH))); });
+                });
+              });
+            }, Promise.resolve()).then(function () { return pages; });
+          });
+      })
+      .then(function (pages) {
+        var text = joinPages(pages);
+        if (!text || text.split(/\s+/).length < 20) {
+          status('Couldn’t get readable text out of that PDF.');
+          return;
+        }
+        var book = {
+          id: Date.now().toString(36) + Math.floor(Math.random() * 1e4).toString(36),
+          title: title, text: text, pos: 0, totalWords: 0,
+          addedAt: Date.now(), lastReadAt: Date.now()
+        };
+        el.text.value = text;
+        loadText(text, 0, book);
+        book.totalWords = tokens.length;
+        idbPut(book).then(renderLibrary).catch(function () {});
+        if (cancelRequested) status('Stopped early — saved the ' + tokens.length + ' words read so far.');
+        play();
+      })
+      .catch(function (e) {
+        status('PDF failed: ' + ((e && e.message) || e));
+      })
+      .then(function () {
+        if (worker) worker.terminate().catch(function () {});
+        if (pdf) { try { pdf.destroy(); } catch (e) {} }
+        setBusy(false);
       });
   }
 
@@ -542,6 +935,18 @@
     if (f) runScan(f);
   });
 
+  el.pdf.addEventListener('click', function () { el.pdfFile.click(); });
+  el.pdfFile.addEventListener('change', function () {
+    var f = el.pdfFile.files && el.pdfFile.files[0];
+    el.pdfFile.value = '';
+    if (f) runPdf(f);
+  });
+  el.cancel.addEventListener('click', function () {
+    cancelRequested = true;
+    el.cancel.textContent = 'Stopping…';
+    setTimeout(function () { el.cancel.textContent = '✕ Stop'; }, 2000);
+  });
+
   el.paste.addEventListener('click', function () {
     if (!navigator.clipboard || !navigator.clipboard.readText) {
       el.textStats.textContent = 'Clipboard needs HTTPS or localhost — paste into the box instead.';
@@ -573,7 +978,7 @@
     if (document.hidden) pause();
     else if (playing) requestWakeLock();
   });
-  window.addEventListener('pagehide', function () { LS.set('pos', pos); });
+  window.addEventListener('pagehide', function () { savePosition(); });
 
   /* ---------------- Boot ---------------- */
 
@@ -597,9 +1002,7 @@
 
   window.addEventListener('hashchange', acceptHashText);
 
-  setWpm(wpm);
-  setBias(bias * 100);
-  if (!acceptHashText()) {
+  function bootFromText() {
     var savedText = LS.get('text', null);
     if (savedText) {
       el.text.value = savedText;
@@ -607,6 +1010,21 @@
     } else {
       el.text.value = '';
       loadText(INTRO, 0);
+    }
+  }
+
+  setWpm(wpm);
+  setBias(bias * 100);
+  renderLibrary();
+  if (!acceptHashText()) {
+    var savedBookId = LS.get('book', null);
+    if (savedBookId) {
+      idbGet(savedBookId).then(function (b) {
+        if (b) { el.text.value = b.text; loadText(b.text, LS.get('pos', b.pos || 0), b); }
+        else bootFromText();
+      }).catch(bootFromText);
+    } else {
+      bootFromText();
     }
   }
 

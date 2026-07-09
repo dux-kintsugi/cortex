@@ -1,5 +1,5 @@
 /* Presto service worker — cache-first so the app works fully offline. */
-var CACHE = 'presto-v1';
+var CACHE = 'presto-v2';
 var ASSETS = [
   './',
   './index.html',

@@ -42,8 +42,25 @@ in the OCR output are repaired automatically. Needs the app served
 over http (workers don't run from `file://`); the engine loads lazily on first
 scan and is cached after that.
 
+Scans strip **page furniture** automatically: running heads, chapter headers
+and page numbers are cut when both their position (top/bottom of the page) and
+content (short, ALL-CAPS, numeric…) say so — deliberately conservative, so
+body text is never eaten.
+
 On iPhone, Apple's own Live Text is a great alternative: point the Camera app
 at a page, tap the text icon, copy — then paste into Presto.
+
+## Books (PDF) & Library
+
+**📄 PDF** imports a whole book. PDFs with a real text layer read instantly;
+image-only scans fall back to page-by-page OCR (slow — progress shown, **✕
+Stop** keeps what's done). Page furniture is stripped per page, hyphenated
+words split across page turns are rejoined, and a page ending mid-sentence
+flows into the next.
+
+Imported books land in the **Library** (IndexedDB, on-device): tap to continue
+exactly where you left off — the position saves on every pause and when the
+app closes. 🗑 removes a book.
 
 ## Use it
 

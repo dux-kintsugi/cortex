@@ -58,16 +58,24 @@
       </div>
     </section>
 
+    <section id="library" class="panel" hidden>
+      <h2>Library</h2>
+      <div id="book-list"></div>
+    </section>
+
     <section id="source" class="panel">
       <h2>Text</h2>
       <textarea id="text" rows="7" placeholder="Paste anything here — an article, an email, a chapter…" spellcheck="false"></textarea>
       <div class="row">
         <button id="btn-load" class="ctl primary wide">Read this</button>
         <button id="btn-scan" class="ctl">📷 Scan</button>
+        <button id="btn-pdf" class="ctl">📄 PDF</button>
         <button id="btn-paste" class="ctl">📋 Paste</button>
         <button id="btn-sample" class="ctl">Sample</button>
+        <button id="btn-cancel" class="ctl" hidden>✕ Stop</button>
       </div>
       <input id="scan-file" type="file" accept="image/*" hidden>
+      <input id="pdf-file" type="file" accept="application/pdf,.pdf" hidden>
       <div id="text-stats" class="muted small"></div>
     </section>
 
