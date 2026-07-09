@@ -21,6 +21,9 @@
     scan: $('btn-scan'), scanFile: $('scan-file'),
     pdf: $('btn-pdf'), pdfFile: $('pdf-file'), cancel: $('btn-cancel'),
     library: $('library'), bookList: $('book-list'),
+    syncSetup: $('sync-setup'), syncOn: $('sync-on'), syncStatus: $('sync-status'),
+    tokenInput: $('gh-token'), tokenSave: $('btn-token-save'),
+    syncNowBtn: $('btn-sync'), syncOff: $('btn-sync-off'),
     textStats: $('text-stats')
   };
 
@@ -308,6 +311,7 @@
       currentBook.pos = pos;
       currentBook.lastReadAt = Date.now();
       idbPut(currentBook).then(renderLibrary).catch(function () {});
+      pushPositionSoon();
     }
   }
 
@@ -329,6 +333,12 @@
 
   function toggle() { playing ? pause() : play(); }
 
+  var posSaveTimer = null;
+  function savePositionSoon() { // debounced: slider drags fire dozens of events
+    clearTimeout(posSaveTimer);
+    posSaveTimer = setTimeout(savePosition, 600);
+  }
+
   function seek(i, keepPlaying) {
     var wasPlaying = playing;
     pause();
@@ -336,6 +346,7 @@
     ramp = 0;
     renderAll();
     LS.set('pos', pos);
+    savePositionSoon(); // pause() above no-ops when already paused — persist the new spot too
     if (keepPlaying && wasPlaying) play(false);
   }
 
@@ -529,10 +540,14 @@
         del.title = 'Remove from library';
         del.addEventListener('click', function (ev) {
           ev.stopPropagation();
-          if (!confirm('Remove "' + b.title + '" from the library?')) return;
+          if (!confirm('Remove "' + b.title + '" from the library' + (ghToken() ? ' on all synced devices' : '') + '?')) return;
           idbDelete(b.id).then(function () {
             if (currentBook && currentBook.id === b.id) currentBook = null;
+            var t = LS.get('tombstones', {});
+            t[b.id] = Date.now();
+            LS.set('tombstones', t);
             renderLibrary();
+            if (ghToken()) syncNow();
           }).catch(function () {});
         });
         row.appendChild(title); row.appendChild(meta); row.appendChild(del);
@@ -889,7 +904,10 @@
         el.text.value = text;
         loadText(text, 0, book);
         book.totalWords = tokens.length;
-        idbPut(book).then(renderLibrary).catch(function () {});
+        idbPut(book).then(function () {
+          renderLibrary();
+          if (ghToken()) syncNow(); // push the new book to other devices
+        }).catch(function () {});
         if (cancelRequested) status('Stopped early — saved the ' + tokens.length + ' words read so far.');
         play();
       })
@@ -901,6 +919,202 @@
         if (pdf) { try { pdf.destroy(); } catch (e) {} }
         setBusy(false);
       });
+  }
+
+  /* ---------------- Sync (private GitHub gist) ---------------- */
+  // The library lives on-device in IndexedDB; a private gist mirrors it so
+  // other devices can pull books and reading positions. One file per book
+  // plus a small state file with positions and deletion tombstones. Merge
+  // is per-book last-writer-wins on lastReadAt. The token (gist scope only)
+  // stays in this device's localStorage — never in the repo.
+
+  var GIST_DESC = 'Presto reader library — synced by the Presto app';
+  var STATE_FILE = 'presto-state.json';
+  var syncing = false;
+  var syncTimer = null;
+
+  function ghToken() { return LS.get('ghtoken', null); }
+
+  function ghFetch(url, opts) {
+    opts = opts || {};
+    var headers = { Authorization: 'Bearer ' + ghToken(), Accept: 'application/vnd.github+json' };
+    if (opts.body) headers['Content-Type'] = 'application/json';
+    opts.headers = headers;
+    opts.cache = 'no-store'; // GitHub sends max-age=60 — stale reads break discovery & position sync
+    return fetch(url, opts).then(function (r) {
+      if (!r.ok) throw new Error('GitHub said ' + r.status + (r.status === 401 ? ' — token invalid or expired' : ''));
+      return r.status === 204 ? null : r.json();
+    });
+  }
+
+  function setSyncStatus(msg) { el.syncStatus.textContent = msg; }
+
+  function renderSyncPanel() {
+    var on = !!ghToken();
+    el.syncSetup.hidden = on;
+    el.syncOn.hidden = !on;
+    if (on) {
+      var last = LS.get('lastSync', 0);
+      setSyncStatus(last ? 'Last synced ' + fmtAgo(last) : 'Connected — not synced yet');
+    }
+  }
+
+  function fmtAgo(ts) {
+    var m = Math.round((Date.now() - ts) / 60000);
+    if (m < 1) return 'just now';
+    if (m < 60) return m + ' min ago';
+    var h = Math.round(m / 60);
+    return h < 24 ? h + 'h ago' : Math.round(h / 24) + 'd ago';
+  }
+
+  function bookMeta(b) {
+    return { title: b.title, pos: b.pos || 0, totalWords: b.totalWords || 0,
+             addedAt: b.addedAt || 0, lastReadAt: b.lastReadAt || 0 };
+  }
+
+  function findOrCreateGist() {
+    var gid = LS.get('gist', null);
+    if (gid) return Promise.resolve(gid);
+    return ghFetch('https://api.github.com/gists?per_page=100').then(function (list) {
+      var hits = (list || []).filter(function (g) {
+        return g.description && g.description.indexOf('Presto reader library') === 0;
+      }).sort(function (a, b) { return new Date(a.created_at) - new Date(b.created_at); });
+      var hit = hits[0]; // oldest = the original, if duplicates ever exist
+      if (hit) { LS.set('gist', hit.id); return hit.id; }
+      var empty = JSON.stringify({ books: {}, deleted: {} });
+      return ghFetch('https://api.github.com/gists', {
+        method: 'POST',
+        body: JSON.stringify({ description: GIST_DESC, public: false,
+          files: (function () { var f = {}; f[STATE_FILE] = { content: empty }; return f; })() })
+      }).then(function (g) { LS.set('gist', g.id); return g.id; });
+    });
+  }
+
+  // Gist file contents over ~1MB come back truncated with a raw_url.
+  function fileContent(f) {
+    if (!f) return Promise.resolve(null);
+    if (!f.truncated) return Promise.resolve(f.content);
+    return fetch(f.raw_url).then(function (r) { return r.ok ? r.text() : null; });
+  }
+
+  function syncNow() {
+    if (!ghToken() || syncing) return Promise.resolve();
+    syncing = true;
+    setSyncStatus('Syncing…');
+    var gid, gist, state;
+    return findOrCreateGist()
+      .then(function (id) { gid = id; return ghFetch('https://api.github.com/gists/' + gid); })
+      .then(function (g) {
+        gist = g;
+        return fileContent(g.files[STATE_FILE]).then(function (c) {
+          try { state = JSON.parse(c) || {}; } catch (e) { state = {}; }
+          state.books = state.books || {};
+          state.deleted = state.deleted || {};
+        });
+      })
+      .then(function () { return idbAll(); })
+      .then(function (local) {
+        var tombs = LS.get('tombstones', {});
+        var patch = {};        // gist files to write/remove
+        var stateDirty = false;
+        var pulls = [];        // remote books to download
+
+        // local tombstones → remote
+        Object.keys(tombs).forEach(function (id) {
+          if (!state.deleted[id] || tombs[id] > state.deleted[id]) {
+            state.deleted[id] = tombs[id];
+            delete state.books[id];
+            if (gist.files['book-' + id + '.json']) patch['book-' + id + '.json'] = null;
+            stateDirty = true;
+          }
+        });
+
+        local.forEach(function (b) {
+          // remote deletion wins if it's newer than our last read
+          if (state.deleted[b.id] && state.deleted[b.id] > (b.lastReadAt || 0)) {
+            idbDelete(b.id).catch(function () {});
+            if (currentBook && currentBook.id === b.id) currentBook = null;
+            return;
+          }
+          var r = state.books[b.id];
+          if (!r) { // new local book → push
+            patch['book-' + b.id + '.json'] = { content: JSON.stringify({
+              id: b.id, title: b.title, text: b.text, addedAt: b.addedAt, totalWords: b.totalWords }) };
+            state.books[b.id] = bookMeta(b);
+            stateDirty = true;
+          } else if ((b.lastReadAt || 0) > (r.lastReadAt || 0)) { // local position newer
+            state.books[b.id] = bookMeta(b);
+            stateDirty = true;
+          } else if ((r.lastReadAt || 0) > (b.lastReadAt || 0)) { // remote position newer
+            b.pos = r.pos; b.lastReadAt = r.lastReadAt;
+            idbPut(b).catch(function () {});
+            if (currentBook && currentBook.id === b.id) {
+              currentBook = b;
+              if (!playing) seek(b.pos, false);
+            }
+          }
+        });
+
+        // remote books we don't have yet
+        var localIds = {};
+        local.forEach(function (b) { localIds[b.id] = true; });
+        Object.keys(state.books).forEach(function (id) {
+          if (localIds[id] || state.deleted[id]) return;
+          pulls.push(fileContent(gist.files['book-' + id + '.json']).then(function (c) {
+            if (!c) return;
+            try {
+              var b = JSON.parse(c);
+              b.pos = state.books[id].pos; b.lastReadAt = state.books[id].lastReadAt;
+              return idbPut(b);
+            } catch (e) {}
+          }));
+        });
+
+        return Promise.all(pulls).then(function () {
+          if (stateDirty || Object.keys(patch).length) {
+            patch[STATE_FILE] = { content: JSON.stringify(state) };
+            return ghFetch('https://api.github.com/gists/' + gid, {
+              method: 'PATCH', body: JSON.stringify({ files: patch }) });
+          }
+        });
+      })
+      .then(function () {
+        LS.set('tombstones', {});
+        LS.set('gistState', { books: state.books, deleted: state.deleted });
+        LS.set('lastSync', Date.now());
+        renderLibrary();
+        renderSyncPanel();
+      })
+      .catch(function (e) {
+        setSyncStatus('Sync failed: ' + ((e && e.message) || e));
+        if (String(e).indexOf('404') !== -1) LS.set('gist', null); // gist deleted — rediscover next time
+      })
+      .then(function () { syncing = false; });
+  }
+
+  // Light path: after a pause, push just the position into the state file.
+  function pushPositionSoon() {
+    if (!ghToken() || !currentBook) return;
+    clearTimeout(syncTimer);
+    syncTimer = setTimeout(pushPositionNow, 8000);
+  }
+
+  function pushPositionNow(keepalive) {
+    clearTimeout(syncTimer);
+    var gid = LS.get('gist', null);
+    var cached = LS.get('gistState', null);
+    if (!ghToken() || !gid || !cached || !currentBook) return;
+    if (!cached.books[currentBook.id]) return; // book not pushed yet — full sync will handle it
+    cached.books[currentBook.id] = bookMeta(currentBook);
+    LS.set('gistState', cached);
+    var files = {};
+    files[STATE_FILE] = { content: JSON.stringify({ books: cached.books, deleted: cached.deleted || {} }) };
+    fetch('https://api.github.com/gists/' + gid, {
+      method: 'PATCH',
+      keepalive: !!keepalive,
+      headers: { Authorization: 'Bearer ' + ghToken(), Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ files: files })
+    }).then(function () { LS.set('lastSync', Date.now()); renderSyncPanel(); }).catch(function () {});
   }
 
   /* ---------------- Wire up ---------------- */
@@ -947,6 +1161,41 @@
     setTimeout(function () { el.cancel.textContent = '✕ Stop'; }, 2000);
   });
 
+  el.tokenSave.addEventListener('click', function () {
+    var t = el.tokenInput.value.trim();
+    if (!t) return;
+    el.tokenSave.disabled = true;
+    el.tokenSave.textContent = 'Checking…';
+    fetch('https://api.github.com/user', {
+      headers: { Authorization: 'Bearer ' + t, Accept: 'application/vnd.github+json' }
+    }).then(function (r) {
+      if (!r.ok) throw new Error(r.status === 401 ? 'Token rejected — check it has the gist scope.' : 'GitHub said ' + r.status);
+      return r.json();
+    }).then(function (u) {
+      LS.set('ghtoken', t);
+      el.tokenInput.value = '';
+      renderSyncPanel();
+      setSyncStatus('Connected as ' + u.login + ' — syncing…');
+      return syncNow();
+    }).catch(function (e) {
+      alert((e && e.message) || 'Could not connect.');
+    }).then(function () {
+      el.tokenSave.disabled = false;
+      el.tokenSave.textContent = 'Connect';
+    });
+  });
+
+  el.syncNowBtn.addEventListener('click', function () { syncNow(); });
+
+  el.syncOff.addEventListener('click', function () {
+    if (!confirm('Forget the GitHub token on this device? Your books stay here and in the gist.')) return;
+    LS.set('ghtoken', null);
+    LS.set('gist', null);
+    LS.set('gistState', null);
+    LS.set('lastSync', 0);
+    renderSyncPanel();
+  });
+
   el.paste.addEventListener('click', function () {
     if (!navigator.clipboard || !navigator.clipboard.readText) {
       el.textStats.textContent = 'Clipboard needs HTTPS or localhost — paste into the box instead.';
@@ -978,7 +1227,10 @@
     if (document.hidden) pause();
     else if (playing) requestWakeLock();
   });
-  window.addEventListener('pagehide', function () { savePosition(); });
+  window.addEventListener('pagehide', function () {
+    savePosition();
+    pushPositionNow(true); // keepalive so the position lands even as the tab dies
+  });
 
   /* ---------------- Boot ---------------- */
 
@@ -1016,6 +1268,8 @@
   setWpm(wpm);
   setBias(bias * 100);
   renderLibrary();
+  renderSyncPanel();
+  if (ghToken()) syncNow(); // pull other devices' books & positions on open
   if (!acceptHashText()) {
     var savedBookId = LS.get('book', null);
     if (savedBookId) {

@@ -1,5 +1,5 @@
 /* Presto service worker — cache-first so the app works fully offline. */
-var CACHE = 'presto-v2';
+var CACHE = 'presto-v3';
 var ASSETS = [
   './',
   './index.html',
@@ -34,6 +34,8 @@ self.addEventListener('activate', function (e) {
 
 self.addEventListener('fetch', function (e) {
   if (e.request.method !== 'GET') return;
+  // never cache cross-origin (GitHub API/gist sync must always hit the network)
+  if (e.request.url.indexOf(self.location.origin) !== 0) return;
   e.respondWith(
     caches.match(e.request, { ignoreSearch: true }).then(function (hit) {
       return hit || fetch(e.request).then(function (res) {

@@ -62,6 +62,17 @@ Imported books land in the **Library** (IndexedDB, on-device): tap to continue
 exactly where you left off — the position saves on every pause and when the
 app closes. 🗑 removes a book.
 
+## Cross-device sync
+
+The **Sync** panel mirrors the library into a **private GitHub gist** — import
+a book on the Mac, continue on the phone at the same word. Setup per device:
+create a classic token at github.com/settings/tokens with **only the `gist`
+scope**, paste it in, Connect. The token lives only in that device's
+localStorage (never in this repo); the gist is private to your account.
+Positions push a few seconds after you pause and pull on every app open; merge
+is per-book newest-wins, deletions propagate via tombstones. Note the gist is
+private but not end-to-end encrypted — fine for books, don't sync secrets.
+
 ## Use it
 
 - Paste any text, hit **Read this** (or **📋 Paste** straight from the clipboard).
