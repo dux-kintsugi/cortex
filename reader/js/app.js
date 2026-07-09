@@ -22,7 +22,7 @@
     pdf: $('btn-pdf'), pdfFile: $('pdf-file'), cancel: $('btn-cancel'),
     library: $('library'), bookList: $('book-list'),
     syncSetup: $('sync-setup'), syncOn: $('sync-on'), syncStatus: $('sync-status'),
-    tokenInput: $('gh-token'), tokenSave: $('btn-token-save'),
+    tokenInput: $('gh-token'), passInput: $('gh-pass'), tokenSave: $('btn-token-save'),
     syncNowBtn: $('btn-sync'), syncOff: $('btn-sync-off'),
     textStats: $('text-stats')
   };
@@ -934,6 +934,70 @@
   var syncTimer = null;
 
   function ghToken() { return LS.get('ghtoken', null); }
+  function syncPass() { return LS.get('syncpass', null); }
+
+  /* ---- End-to-end encryption: AES-256-GCM, key from PBKDF2(passphrase).
+     Every blob is self-contained ({v, salt, iv, data}) so devices with
+     different write-salts still read each other; derived keys are cached
+     per salt. GitHub only ever stores ciphertext. ---- */
+
+  var cryptoKeys = {}; // saltB64 → Promise<CryptoKey>
+
+  function b64(buf) {
+    var bytes = new Uint8Array(buf), s = '';
+    for (var i = 0; i < bytes.length; i++) s += String.fromCharCode(bytes[i]);
+    return btoa(s);
+  }
+  function unb64(s) {
+    var bin = atob(s), out = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+
+  function deriveKey(saltB64) {
+    if (!cryptoKeys[saltB64]) {
+      cryptoKeys[saltB64] = crypto.subtle.importKey(
+        'raw', new TextEncoder().encode(syncPass() || ''), 'PBKDF2', false, ['deriveKey']
+      ).then(function (km) {
+        return crypto.subtle.deriveKey(
+          { name: 'PBKDF2', salt: unb64(saltB64), iterations: 200000, hash: 'SHA-256' },
+          km, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
+      });
+      cryptoKeys[saltB64].catch(function () { delete cryptoKeys[saltB64]; });
+    }
+    return cryptoKeys[saltB64];
+  }
+
+  function writeSalt() {
+    var s = LS.get('syncsalt', null);
+    if (!s) { s = b64(crypto.getRandomValues(new Uint8Array(16))); LS.set('syncsalt', s); }
+    return s;
+  }
+
+  function encryptJSON(obj) {
+    var salt = writeSalt();
+    var iv = crypto.getRandomValues(new Uint8Array(12));
+    return deriveKey(salt).then(function (k) {
+      return crypto.subtle.encrypt({ name: 'AES-GCM', iv: iv }, k,
+        new TextEncoder().encode(JSON.stringify(obj)));
+    }).then(function (ct) {
+      return JSON.stringify({ v: 1, salt: salt, iv: b64(iv), data: b64(ct) });
+    });
+  }
+
+  // Decrypts our blobs; passes pre-encryption plaintext JSON through as-is
+  // (it gets re-written encrypted on the next push). Wrong passphrase →
+  // rejects with 'bad-passphrase'.
+  function decryptJSON(str) {
+    var o;
+    try { o = JSON.parse(str); } catch (e) { return Promise.resolve(null); }
+    if (!o || !o.data || !o.iv || !o.salt) return Promise.resolve(o);
+    return deriveKey(o.salt).then(function (k) {
+      return crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(o.iv) }, k, unb64(o.data));
+    }).then(function (buf) {
+      return JSON.parse(new TextDecoder().decode(buf));
+    }).catch(function () { throw new Error('bad-passphrase'); });
+  }
 
   function ghFetch(url, opts) {
     opts = opts || {};
@@ -999,6 +1063,10 @@
 
   function syncNow() {
     if (!ghToken() || syncing) return Promise.resolve();
+    if (!(window.crypto && crypto.subtle)) {
+      setSyncStatus('Sync needs HTTPS — open the github.io address.');
+      return Promise.resolve();
+    }
     syncing = true;
     setSyncStatus('Syncing…');
     var gid, gist, state;
@@ -1006,17 +1074,24 @@
       .then(function (id) { gid = id; return ghFetch('https://api.github.com/gists/' + gid); })
       .then(function (g) {
         gist = g;
-        return fileContent(g.files[STATE_FILE]).then(function (c) {
-          try { state = JSON.parse(c) || {}; } catch (e) { state = {}; }
-          state.books = state.books || {};
-          state.deleted = state.deleted || {};
+        return fileContent(g.files[STATE_FILE]).then(function (raw) {
+          var wasPlain = true;
+          try { var probe = JSON.parse(raw); wasPlain = !(probe && probe.data && probe.iv && probe.salt); } catch (e) {}
+          return decryptJSON(raw).then(function (s) {
+            state = s || {};
+            state.books = state.books || {};
+            state.deleted = state.deleted || {};
+            state._migrate = wasPlain; // legacy plaintext → re-write encrypted this sync
+          });
         });
       })
       .then(function () { return idbAll(); })
       .then(function (local) {
         var tombs = LS.get('tombstones', {});
         var patch = {};        // gist files to write/remove
-        var stateDirty = false;
+        var toEncrypt = [];    // [fileName, plainObject] pushed after encryption
+        var stateDirty = state._migrate;
+        delete state._migrate;
         var pulls = [];        // remote books to download
 
         // local tombstones → remote
@@ -1030,16 +1105,17 @@
         });
 
         local.forEach(function (b) {
-          // remote deletion wins if it's newer than our last read
-          if (state.deleted[b.id] && state.deleted[b.id] > (b.lastReadAt || 0)) {
+          // a tombstone always wins — deleted stays deleted everywhere
+          // (re-importing later is fine: imports get fresh ids)
+          if (state.deleted[b.id]) {
             idbDelete(b.id).catch(function () {});
             if (currentBook && currentBook.id === b.id) currentBook = null;
             return;
           }
           var r = state.books[b.id];
-          if (!r) { // new local book → push
-            patch['book-' + b.id + '.json'] = { content: JSON.stringify({
-              id: b.id, title: b.title, text: b.text, addedAt: b.addedAt, totalWords: b.totalWords }) };
+          if (!r) { // new local book → push (encrypted below)
+            toEncrypt.push(['book-' + b.id + '.json',
+              { id: b.id, title: b.title, text: b.text, addedAt: b.addedAt, totalWords: b.totalWords }]);
             state.books[b.id] = bookMeta(b);
             stateDirty = true;
           } else if ((b.lastReadAt || 0) > (r.lastReadAt || 0)) { // local position newer
@@ -1060,22 +1136,22 @@
         local.forEach(function (b) { localIds[b.id] = true; });
         Object.keys(state.books).forEach(function (id) {
           if (localIds[id] || state.deleted[id]) return;
-          pulls.push(fileContent(gist.files['book-' + id + '.json']).then(function (c) {
-            if (!c) return;
-            try {
-              var b = JSON.parse(c);
-              b.pos = state.books[id].pos; b.lastReadAt = state.books[id].lastReadAt;
-              return idbPut(b);
-            } catch (e) {}
+          pulls.push(fileContent(gist.files['book-' + id + '.json']).then(decryptJSON).then(function (b) {
+            if (!b || !b.id) return;
+            b.pos = state.books[id].pos; b.lastReadAt = state.books[id].lastReadAt;
+            return idbPut(b);
           }));
         });
 
         return Promise.all(pulls).then(function () {
-          if (stateDirty || Object.keys(patch).length) {
-            patch[STATE_FILE] = { content: JSON.stringify(state) };
+          if (!stateDirty && !Object.keys(patch).length && !toEncrypt.length) return;
+          toEncrypt.push([STATE_FILE, state]);
+          return Promise.all(toEncrypt.map(function (pair) {
+            return encryptJSON(pair[1]).then(function (blob) { patch[pair[0]] = { content: blob }; });
+          })).then(function () {
             return ghFetch('https://api.github.com/gists/' + gid, {
               method: 'PATCH', body: JSON.stringify({ files: patch }) });
-          }
+          });
         });
       })
       .then(function () {
@@ -1086,8 +1162,11 @@
         renderSyncPanel();
       })
       .catch(function (e) {
-        setSyncStatus('Sync failed: ' + ((e && e.message) || e));
-        if (String(e).indexOf('404') !== -1) LS.set('gist', null); // gist deleted — rediscover next time
+        var msg = (e && e.message) || String(e);
+        if (msg === 'bad-passphrase') setSyncStatus('Sync passphrase doesn’t match this library — fix it via Disconnect → Connect.');
+        else if (!navigator.onLine || /Failed to fetch|NetworkError|Load failed/i.test(msg)) setSyncStatus('Offline — will sync when reconnected.');
+        else setSyncStatus('Sync failed: ' + msg);
+        if (msg.indexOf('404') !== -1) LS.set('gist', null); // gist deleted — rediscover next time
       })
       .then(function () { syncing = false; });
   }
@@ -1104,16 +1183,20 @@
     var gid = LS.get('gist', null);
     var cached = LS.get('gistState', null);
     if (!ghToken() || !gid || !cached || !currentBook) return;
+    if (!(window.crypto && crypto.subtle)) return;
     if (!cached.books[currentBook.id]) return; // book not pushed yet — full sync will handle it
     cached.books[currentBook.id] = bookMeta(currentBook);
     LS.set('gistState', cached);
-    var files = {};
-    files[STATE_FILE] = { content: JSON.stringify({ books: cached.books, deleted: cached.deleted || {} }) };
-    fetch('https://api.github.com/gists/' + gid, {
-      method: 'PATCH',
-      keepalive: !!keepalive,
-      headers: { Authorization: 'Bearer ' + ghToken(), Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ files: files })
+    // AES-GCM with the cached key is ~1ms, so this completes even from pagehide
+    encryptJSON({ books: cached.books, deleted: cached.deleted || {} }).then(function (blob) {
+      var files = {};
+      files[STATE_FILE] = { content: blob };
+      return fetch('https://api.github.com/gists/' + gid, {
+        method: 'PATCH',
+        keepalive: !!keepalive,
+        headers: { Authorization: 'Bearer ' + ghToken(), Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ files: files })
+      });
     }).then(function () { LS.set('lastSync', Date.now()); renderSyncPanel(); }).catch(function () {});
   }
 
@@ -1163,7 +1246,9 @@
 
   el.tokenSave.addEventListener('click', function () {
     var t = el.tokenInput.value.trim();
-    if (!t) return;
+    var p = el.passInput.value;
+    if (!t || !p) { alert('Both the token and a sync passphrase are needed.'); return; }
+    if (!(window.crypto && crypto.subtle)) { alert('Sync needs HTTPS — open the github.io address.'); return; }
     el.tokenSave.disabled = true;
     el.tokenSave.textContent = 'Checking…';
     fetch('https://api.github.com/user', {
@@ -1173,7 +1258,10 @@
       return r.json();
     }).then(function (u) {
       LS.set('ghtoken', t);
+      LS.set('syncpass', p);
+      cryptoKeys = {}; // fresh passphrase → drop any cached keys
       el.tokenInput.value = '';
+      el.passInput.value = '';
       renderSyncPanel();
       setSyncStatus('Connected as ' + u.login + ' — syncing…');
       return syncNow();
@@ -1188,11 +1276,14 @@
   el.syncNowBtn.addEventListener('click', function () { syncNow(); });
 
   el.syncOff.addEventListener('click', function () {
-    if (!confirm('Forget the GitHub token on this device? Your books stay here and in the gist.')) return;
+    if (!confirm('Forget the GitHub token and passphrase on this device? Your books stay here and in the gist.')) return;
     LS.set('ghtoken', null);
+    LS.set('syncpass', null);
+    LS.set('syncsalt', null);
     LS.set('gist', null);
     LS.set('gistState', null);
     LS.set('lastSync', 0);
+    cryptoKeys = {};
     renderSyncPanel();
   });
 
@@ -1231,6 +1322,7 @@
     savePosition();
     pushPositionNow(true); // keepalive so the position lands even as the tab dies
   });
+  window.addEventListener('online', function () { if (ghToken()) syncNow(); });
 
   /* ---------------- Boot ---------------- */
 

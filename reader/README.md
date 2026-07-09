@@ -65,13 +65,21 @@ app closes. 🗑 removes a book.
 ## Cross-device sync
 
 The **Sync** panel mirrors the library into a **private GitHub gist** — import
-a book on the Mac, continue on the phone at the same word. Setup per device:
-create a classic token at github.com/settings/tokens with **only the `gist`
-scope**, paste it in, Connect. The token lives only in that device's
-localStorage (never in this repo); the gist is private to your account.
-Positions push a few seconds after you pause and pull on every app open; merge
-is per-book newest-wins, deletions propagate via tombstones. Note the gist is
-private but not end-to-end encrypted — fine for books, don't sync secrets.
+a book on the Mac, continue on the phone at the same word. Everything is
+**encrypted on-device** before upload (AES-256-GCM, key derived from your
+passphrase with PBKDF2) — GitHub only ever stores ciphertext.
+
+Setup per device: create a classic token at github.com/settings/tokens with
+**only the `gist` scope**, make up a sync passphrase, enter both, Connect.
+Use the same pair on every device; both live only in that device's
+localStorage (never in this repo). Lose the passphrase and the gist copy is
+unreadable — books on your devices are unaffected (Disconnect → Connect with
+a new passphrase re-encrypts on the next push).
+
+Positions push a few seconds after you pause and pull on every app open;
+merge is per-book newest-wins; deletions propagate via tombstones and always
+win, so a deleted book never resurrects (re-importing it later is fine).
+Offline is handled: sync retries automatically when the connection returns.
 
 ## Use it
 

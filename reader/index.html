@@ -83,10 +83,15 @@
       <h2>Sync</h2>
       <div id="sync-setup">
         <p class="muted small">Sync your library and reading positions between devices through a
-        private GitHub gist. Create a token at <b>github.com/settings/tokens</b> (classic, only the
-        <b>gist</b> scope) and paste it here — it is stored only on this device.</p>
+        private GitHub gist — <b>encrypted on-device</b>, so GitHub only ever stores ciphertext.
+        Create a token at <b>github.com/settings/tokens</b> (classic, only the <b>gist</b> scope),
+        make up a sync passphrase, and use the same pair on every device. Both are stored only on
+        this device.</p>
         <div class="row">
-          <input id="gh-token" class="field" type="password" placeholder="ghp_…" autocomplete="off" spellcheck="false">
+          <input id="gh-token" class="field" type="password" placeholder="GitHub token (ghp_…)" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="row">
+          <input id="gh-pass" class="field" type="password" placeholder="Sync passphrase (same on every device)" autocomplete="off" spellcheck="false">
           <button id="btn-token-save" class="ctl primary">Connect</button>
         </div>
       </div>
