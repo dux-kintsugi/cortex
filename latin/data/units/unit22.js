@@ -88,8 +88,8 @@ registerUnit({
       forms: "manūs, f.",
       pos: "noun (4th decl.)",
       gloss: "hand; band of men",
-      example: "Paulla mātrem manū tenet.",
-      exampleGloss: "Paulla holds her mother by the hand."
+      example: "Paula mātrem manū tenet.",
+      exampleGloss: "Paula holds her mother by the hand."
     },
     {
       latin: "rēs",
@@ -136,8 +136,8 @@ registerUnit({
       forms: "tonitrūs, m.",
       pos: "noun (4th decl.)",
       gloss: "thunder",
-      example: "Ferōx sonum tonitrūs nōn amat.",
-      exampleGloss: "Ferox does not love the sound of thunder."
+      example: "Lupo sonum tonitrūs nōn amat.",
+      exampleGloss: "Lupo does not love the sound of thunder."
     },
     {
       latin: "imber",
@@ -264,27 +264,27 @@ registerUnit({
       forms: "‑a, ‑um",
       pos: "adjective (1st/2nd decl.)",
       gloss: "dead",
-      example: "«Titus nōn mortuus est!» clāmat Quīntus.",
-      exampleGloss: "«Titus is not dead!» shouts Quintus."
+      example: "«Avunculus Ted nōn mortuus est!» clāmat Quinn.",
+      exampleGloss: "«Uncle Ted is not dead!» shouts Quinn."
     },
     {
       latin: "heu",
       forms: "(interj.)",
       pos: "interjection",
       gloss: "alas!",
-      example: "Heu! Nāvis Titī frācta est!",
-      exampleGloss: "Alas! Titus’s ship has been wrecked!"
+      example: "Heu! Nāvis avunculī frācta est!",
+      exampleGloss: "Alas! Uncle’s ship has been wrecked!"
     }
   ],
 
   readings: [
     {
       title: "Nūbēs Ātrae",
-      intro: "Back in Ostia, a bright winter morning turns black: a monster storm breaks over the harbor — with Titus still at sea.",
+      intro: "Back in Ostia, a bright winter morning turns black: a monster storm breaks over the harbor — with Ted still at sea.",
       paragraphs: [
-        "Hiems iam appropinquābat, sed prīmā hōrā diēī caelum clārum erat. Mārcus et Quīntus in portū stābant, nam nāvis Titī hodiē ex Graeciā exspectābātur. Subitō ventus saevus ē marī vēnit, et nūbēs ātrae tōtum caelum tenuērunt.",
+        "Hiems iam appropinquābat, sed prīmā hōrā diēī caelum clārum erat. Mark et Quinn in portū stābant, nam nāvis avunculī Ted hodiē ex Graeciā exspectābātur. Subitō ventus saevus ē marī vēnit, et nūbēs ātrae tōtum caelum tenuērunt.",
         "Tum tempestās maxima facta est. Imber ingēns dē caelō cadēbat; tonitrus terribilis ubīque audītus est; fulmina inter nūbēs ātrās vidēbantur. Flūctūs altī nāvēs parvās iactābant, et ūna nāvicula ad saxa iactāta est et frācta est. Multae rēs — saccī, amphorae, arcae — in mare iactātae sunt et mersae sunt. Nautae perterritī clāmābant: «Fugite! Cāsus malus venit!»",
-        "Mārcus et Quīntus domum properāvērunt, et tōta familia in ātriō sedēbat. Paulla, quae numquam timet, mātrem manū tenēbat; Ferōx quoque perterritus erat, nam canis sonum tonitrūs nōn amat. Per tōtam noctem portae fenestraeque ventō movēbantur; nēmō dormīre poterat. «Titus hāc nocte in marī est», inquit Līvia. «Dī bonī, servāte eum!» Metus magnus omnēs tenēbat."
+        "Mark et Quinn domum properāvērunt, et tōta familia in ātriō sedēbat. Paula, quae numquam timet, mātrem manū tenēbat; Lupo quoque perterritus erat, nam canis sonum tonitrūs nōn amat. Per tōtam noctem portae fenestraeque ventō movēbantur; nēmō dormīre poterat. «Ted hāc nocte in marī est», inquit Julia. «Dī bonī, servāte eum!» Metus magnus omnēs tenēbat."
       ],
       glosses: {
         "hiems": "winter",
@@ -297,15 +297,15 @@ registerUnit({
         "caelum": "sky (subject in «caelum clārum erat»; object in «tōtum caelum tenuērunt»)",
         "clārum": "clear, bright",
         "erat": "was",
-        "mārcus": "Marcus, the father",
+        "mark": "Mark, the father — his name never changes form",
         "et": "and",
-        "quīntus": "Quintus, his son",
+        "quinn": "Quinn, his son — his name never changes form either",
         "in": "in, on; (with acc.) into",
         "portū": "the harbor (abl. — 4th decl.)",
         "stābant": "(they) were standing",
         "nam": "for, because",
         "nāvis": "ship",
-        "titī": "of Titus (gen.)",
+        "avunculī": "of the uncle (gen. — «nāvis avunculī Ted» = Uncle Ted’s ship)",
         "hodiē": "today",
         "ex": "out of, from",
         "graeciā": "Greece (abl.)",
@@ -371,14 +371,14 @@ registerUnit({
         "familia": "family, household",
         "ātriō": "the atrium, main hall (abl.)",
         "sedēbat": "was sitting",
-        "paulla": "Paulla, the daughter",
+        "paula": "Paula, the daughter",
         "quae": "who (fem.)",
         "numquam": "never",
         "timet": "fears, is afraid",
         "mātrem": "her mother (acc.)",
         "manū": "by the hand (abl. of «manus», 4th decl.)",
         "tenēbat": "was holding; (of fear) gripped",
-        "ferōx": "Ferox, the family dog",
+        "lupo": "Lupo, the family dog — quasi lupus, a ‘wolf’ in name only",
         "quoque": "also, too",
         "perterritus": "terrified",
         "canis": "a dog (dogs in general)",
@@ -396,11 +396,11 @@ registerUnit({
         "nēmō": "no one",
         "dormīre": "to sleep",
         "poterat": "was able, could",
-        "titus": "Titus, Livia’s brother, a ship’s captain",
+        "ted": "Ted, Julia’s brother, a ship’s captain",
         "hāc": "this (abl. — with «nocte»)",
         "nocte": "night (abl. — «hāc nocte» = this night)",
         "inquit": "said (used with quoted speech)",
-        "līvia": "Livia, the mother",
+        "julia": "Julia, the mother",
         "dī": "gods! (irregular nom./voc. pl. of «deus»)",
         "bonī": "good (voc. pl.)",
         "servāte": "save! protect! (pl. command)",
@@ -410,21 +410,21 @@ registerUnit({
         "omnēs": "everyone, all (acc.)"
       },
       translation: [
-        "Winter was already approaching, but at the first hour of the day the sky was clear. Marcus and Quintus were standing in the harbor, for Titus’s ship was expected from Greece today. Suddenly a savage wind came off the sea, and black clouds took hold of the whole sky.",
+        "Winter was already approaching, but at the first hour of the day the sky was clear. Mark and Quinn were standing in the harbor, for Uncle Ted’s ship was expected from Greece today. Suddenly a savage wind came off the sea, and black clouds took hold of the whole sky.",
         "Then a huge storm arose. An enormous rain was falling from the sky; terrible thunder was heard everywhere; lightning bolts were seen among the black clouds. High waves were tossing the small ships, and one little boat was hurled against the rocks and broken. Many things — sacks, amphorae, chests — were thrown into the sea and sunk. The terrified sailors were shouting: «Run! Disaster is coming!»",
-        "Marcus and Quintus hurried home, and the whole family sat in the atrium. Paulla, who is never afraid, was holding her mother by the hand; Ferox too was terrified, for a dog does not love the sound of thunder. All night long the doors and windows were shaken by the wind; no one could sleep. «Titus is at sea this night,» said Livia. «Good gods, save him!» Great fear gripped them all."
+        "Mark and Quinn hurried home, and the whole family sat in the atrium. Paula, who is never afraid, was holding her mother by the hand; Lupo too was terrified, for a dog does not love the sound of thunder. All night long the doors and windows were shaken by the wind; no one could sleep. «Ted is at sea this night,» said Julia. «Good gods, save him!» Great fear gripped them all."
       ],
       questions: [
         {
-          q: "Why are Marcus and Quintus standing at the harbor as the story opens?",
+          q: "Why are Mark and Quinn standing at the harbor as the story opens?",
           options: [
             "They are loading a ship bound for Greece",
-            "Titus’s ship was expected from Greece that very day",
+            "Uncle Ted’s ship was expected from Greece that very day",
             "They are buying grain from a merchant",
-            "Quintus has a lesson with the harbor-master"
+            "Quinn has a lesson with the harbor-master"
           ],
           answer: 1,
-          explain: "«nam nāvis Titī hodiē ex Graeciā exspectābātur» — the imperfect passive: the ship ‘was being expected’ today."
+          explain: "«nam nāvis avunculī Ted hodiē ex Graeciā exspectābātur» — the imperfect passive: the ship ‘was being expected’ today."
         },
         {
           q: "In «tonitrus terribilis ubīque audītus est», what does «audītus est» tell you?",
@@ -443,17 +443,17 @@ registerUnit({
             "It is hurled against the rocks and broken",
             "It escapes to the open sea",
             "It is loaded with sacks and amphorae",
-            "Ferōx hides inside it"
+            "Lupo hides inside it"
           ],
           answer: 0,
           explain: "«ūna nāvicula ad saxa iactāta est et frācta est» — two perfect passives in a row: hurled, then broken."
         },
         {
-          q: "Why is Ferox frightened during the night?",
+          q: "Why is Lupo frightened during the night?",
           options: [
-            "He is scolded by Līvia",
+            "He is scolded by Julia",
             "He has lost a sausage",
-            "Paulla is squeezing him too hard",
+            "Paula is squeezing him too hard",
             "The sound of the thunder — a dog does not love «sonum tonitrūs»"
           ],
           answer: 3,
@@ -465,10 +465,10 @@ registerUnit({
       title: "Naufragium",
       intro: "At first light the storm is gone — and the harbor tells a terrible story.",
       paragraphs: [
-        "Prīmā lūce tempestās tandem discessit, et Mārcus cum Quīntō ad portum properāvit. Heu, quantus cāsus ibi vidēbātur! Magna pars portūs dēlēta est; multae nāvēs frāctae sunt; aliae mersae sunt, aliae in terram iactātae sunt. Ubīque rēs perditae iacēbant: saccī frūmentī, amphorae vīnī, vēla frācta, rēmī, fūnēs longī. Multae mercātōrum rēs illā nocte āmissae sunt.",
-        "In portū erat magna turba, et omnēs dē naufragiō clāmābant. Tum nauta fessus, cuius tunica madida erat, ad Mārcum lentē vēnit. «Audī, domine», inquit. «Rēs terribilis facta est. Nāvis magna, quae ex Graeciā veniēbat, prope īnsulam procellā saevā iactāta est; vēla frācta sunt, deinde tōta nāvis flūctibus mersa est. Multī nautae, heu, periērunt; paucī ē marī servātī sunt.»",
-        "Diū Mārcus nihil dīcere poterat; tandem rogāvit: «Cuius nāvis erat?» Nauta oculōs ad terram vertit. «Nāvis Titī erat, domine. Titus, magister nāvis, in eā nāve erat. Ubi nunc est? Nēmō scit. Fortasse mortuus est; fortasse tamen vīvit et in īnsulā parvā auxilium exspectat.»",
-        "Domī Līvia, ubi rem audīvit, diū lacrimābat, et parva Paulla quoque lacrimāvit. Sed Quīntus clāmāvit: «Minimē! Avunculus meus nōn periit! Titus gubernātor optimus est; saepe dē tempestātibus saevīs nārrāvit, semper domum vēnit. Nāvis frācta est, sed Titus fortasse servātus est!» Itaque multōs diēs familia nūntium exspectābat; omnēs spērābant et timēbant. Heu, quam longī sunt diēs, ubi hominēs dē vītā amīcī nihil sciunt!"
+        "Prīmā lūce tempestās tandem discessit, et Mark cum fīliō ad portum properāvit. Heu, quantus cāsus ibi vidēbātur! Magna pars portūs dēlēta est; multae nāvēs frāctae sunt; aliae mersae sunt, aliae in terram iactātae sunt. Ubīque rēs perditae iacēbant: saccī frūmentī, amphorae vīnī, vēla frācta, rēmī, fūnēs longī. Multae mercātōrum rēs illā nocte āmissae sunt.",
+        "In portū erat magna turba, et omnēs dē naufragiō clāmābant. Tum nauta fessus, cuius tunica madida erat, ad Mark lentē vēnit. «Audī, domine», inquit. «Rēs terribilis facta est. Nāvis magna, quae ex Graeciā veniēbat, prope īnsulam procellā saevā iactāta est; vēla frācta sunt, deinde tōta nāvis flūctibus mersa est. Multī nautae, heu, periērunt; paucī ē marī servātī sunt.»",
+        "Diū Mark nihil dīcere poterat; tandem rogāvit: «Cuius nāvis erat?» Nauta oculōs ad terram vertit. «Nāvis magistrī Ted erat, domine. Ted, magister nāvis, in eā nāve erat. Ubi nunc est? Nēmō scit. Fortasse mortuus est; fortasse tamen vīvit et in īnsulā parvā auxilium exspectat.»",
+        "Domī Julia, ubi rem audīvit, diū lacrimābat, et parva Paula quoque lacrimāvit. Sed Quinn clāmāvit: «Minimē! Avunculus meus nōn periit! Ted gubernātor optimus est; saepe dē tempestātibus saevīs nārrāvit, semper domum vēnit. Nāvis frācta est, sed avunculus fortasse servātus est!» Itaque multōs diēs familia nūntium exspectābat; omnēs spērābant et timēbant. Heu, quam longī sunt diēs, ubi hominēs dē vītā amīcī nihil sciunt!"
       ],
       glosses: {
         "prīmā": "first (abl. — «prīmā lūce» = at first light)",
@@ -477,9 +477,9 @@ registerUnit({
         "tandem": "at last",
         "discessit": "departed, went away (perfect)",
         "et": "and",
-        "mārcus": "Marcus, the father",
+        "mark": "Mark, the father — same form whether subject or after «ad»",
         "cum": "with",
-        "quīntō": "Quintus (abl. — after «cum»)",
+        "fīliō": "his son (abl. — after «cum», ‘with his son’)",
         "ad": "to, toward",
         "portum": "the harbor (acc.)",
         "properāvit": "hurried (perfect)",
@@ -532,7 +532,6 @@ registerUnit({
         "cuius": "whose",
         "tunica": "tunic",
         "madida": "soaking wet",
-        "mārcum": "Marcus (acc.)",
         "lentē": "slowly",
         "vēnit": "came (perfect)",
         "audī": "listen! (sg. command)",
@@ -568,8 +567,8 @@ registerUnit({
         "rogāvit": "asked (perfect)",
         "oculōs": "his eyes (acc. pl.)",
         "vertit": "turned (perfect)",
-        "titī": "of Titus (gen.)",
-        "titus": "Titus, Livia’s brother, captain of the ship",
+        "magistrī": "of the captain (gen. — «nāvis magistrī Ted» = Captain Ted’s ship)",
+        "ted": "Ted, Julia’s brother, captain of the ship",
         "magister": "master, captain",
         "eā": "that (abl. fem. — «in eā nāve» = on that ship)",
         "nāve": "ship (abl.)",
@@ -586,16 +585,16 @@ registerUnit({
         "auxilium": "help (acc.)",
         "exspectat": "waits for, awaits",
         "domī": "at home",
-        "līvia": "Livia, the mother",
+        "julia": "Julia, the mother",
         "rem": "the thing, the news (acc. sg. of «rēs», 5th decl.)",
         "audīvit": "heard (perfect)",
         "lacrimābat": "was weeping",
         "parva": "little",
-        "paulla": "Paulla, the daughter",
+        "paula": "Paula, the daughter",
         "quoque": "also, too",
         "lacrimāvit": "wept (perfect)",
         "sed": "but",
-        "quīntus": "Quintus, the son",
+        "quinn": "Quinn, the son",
         "clāmāvit": "shouted (perfect)",
         "minimē": "no! not at all!",
         "avunculus": "uncle",
@@ -626,18 +625,18 @@ registerUnit({
         "sciunt": "(they) know"
       },
       translation: [
-        "At first light the storm at last departed, and Marcus hurried with Quintus to the harbor. Alas, what a disaster was to be seen there! A great part of the harbor was destroyed; many ships were broken — some were sunk, others thrown up onto the land. Everywhere ruined things were lying about: sacks of grain, amphorae of wine, shattered sails, oars, long ropes. Many of the merchants’ goods were lost that night.",
-        "In the harbor there was a great crowd, and everyone was shouting about the shipwreck. Then a weary sailor, whose tunic was soaking wet, came slowly up to Marcus. «Listen, sir,» he said. «A terrible thing has happened. A great ship, which was coming from Greece, was tossed by a savage squall near an island; the sails were shattered, and then the whole ship was sunk by the waves. Many sailors, alas, perished; a few were saved from the sea.»",
-        "For a long time Marcus could say nothing; at last he asked: «Whose ship was it?» The sailor turned his eyes to the ground. «It was Titus’s ship, sir. Titus, the ship’s master, was on that ship. Where is he now? No one knows. Perhaps he is dead; yet perhaps he is alive and waiting for help on some small island.»",
-        "At home Livia, when she heard the news, wept for a long time, and little Paulla wept too. But Quintus shouted: «No! My uncle has not perished! Titus is the best helmsman; he has often told of savage storms, and he has always come home. The ship was wrecked, but perhaps Titus was saved!» And so for many days the family waited for news; everyone hoped and feared. Alas, how long the days are, when people know nothing about the life of a friend!"
+        "At first light the storm at last departed, and Mark hurried with his son to the harbor. Alas, what a disaster was to be seen there! A great part of the harbor was destroyed; many ships were broken — some were sunk, others thrown up onto the land. Everywhere ruined things were lying about: sacks of grain, amphorae of wine, shattered sails, oars, long ropes. Many of the merchants’ goods were lost that night.",
+        "In the harbor there was a great crowd, and everyone was shouting about the shipwreck. Then a weary sailor, whose tunic was soaking wet, came slowly up to Mark. «Listen, sir,» he said. «A terrible thing has happened. A great ship, which was coming from Greece, was tossed by a savage squall near an island; the sails were shattered, and then the whole ship was sunk by the waves. Many sailors, alas, perished; a few were saved from the sea.»",
+        "For a long time Mark could say nothing; at last he asked: «Whose ship was it?» The sailor turned his eyes to the ground. «It was Captain Ted’s ship, sir. Ted, the ship’s master, was on that ship. Where is he now? No one knows. Perhaps he is dead; yet perhaps he is alive and waiting for help on some small island.»",
+        "At home Julia, when she heard the news, wept for a long time, and little Paula wept too. But Quinn shouted: «No! My uncle has not perished! Ted is the best helmsman; he has often told of savage storms, and he has always come home. The ship was wrecked, but perhaps my uncle was saved!» And so for many days the family waited for news; everyone hoped and feared. Alas, how long the days are, when people know nothing about the life of a friend!"
       ],
       questions: [
         {
-          q: "What did Marcus and Quintus find at the harbor at first light?",
+          q: "What did Mark and Quinn find at the harbor at first light?",
           options: [
             "The harbor untouched and busy as usual",
             "A great part of the harbor destroyed, with wrecked ships and cargo everywhere",
-            "Titus waiting for them on the dock",
+            "Ted waiting for them on the dock",
             "A fleet arriving safely from Greece"
           ],
           answer: 1,
@@ -666,15 +665,15 @@ registerUnit({
           explain: "«servātī sunt» is perfect passive: they WERE saved — a completed rescue, not an ongoing or future one."
         },
         {
-          q: "How does Quintus react to the news about Titus?",
+          q: "How does Quinn react to the news about Ted?",
           options: [
-            "He weeps quietly with Līvia and Paulla",
+            "He weeps quietly with Julia and Paula",
             "He runs back to the harbor to search alone",
-            "He refuses to believe Titus has perished and insists he may have been saved",
+            "He refuses to believe Ted has perished and insists he may have been saved",
             "He blames the sailor for the wreck"
           ],
           answer: 2,
-          explain: "«Avunculus meus nōn periit! … Titus fortasse servātus est!» — Quintus answers grief with stubborn hope."
+          explain: "«Avunculus meus nōn periit! … avunculus fortasse servātus est!» — Quinn answers grief with stubborn hope."
         }
       ]
     }
@@ -721,7 +720,7 @@ registerUnit({
       explain: "The 4th declension genitive singular ends in long ‑ūs: «pars portūs» = a part OF the harbor. The subject is «pars», shown by «dēlēta est» (fem. sg.)."
     },
     {
-      prompt: "In «Paulla mātrem manū tenēbat», what does «manū» express?",
+      prompt: "In «Paula mātrem manū tenēbat», what does «manū» express?",
       options: [
         "The subject — the hand was doing the holding",
         "The direct object — she was holding the hand",

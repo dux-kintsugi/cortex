@@ -80,8 +80,8 @@ registerUnit({
       forms: "gubernāre, gubernāvī, gubernātum",
       pos: "verb (1st conj.)",
       gloss: "steer, pilot",
-      example: "Quīntus nāvem suam per undās gubernat.",
-      exampleGloss: "Quintus steers his own ship through the waves."
+      example: "Quinn nāvem suam per undās gubernat.",
+      exampleGloss: "Quinn steers his own ship through the waves."
     },
     {
       latin: "pergō",
@@ -192,8 +192,8 @@ registerUnit({
       forms: "pāginae, f.",
       pos: "noun (1st decl.)",
       gloss: "page",
-      example: "Quīntus prīmam pāginam librī legit.",
-      exampleGloss: "Quintus reads the first page of the book."
+      example: "Quinn prīmam pāginam librī legit.",
+      exampleGloss: "Quinn reads the first page of the book."
     },
     {
       latin: "ōtium",
@@ -208,8 +208,8 @@ registerUnit({
       forms: "‑a, ‑um",
       pos: "adjective (1st/2nd decl.)",
       gloss: "distant, far-off",
-      example: "Titus dē terrīs longinquīs fābulās nārrat.",
-      exampleGloss: "Titus tells stories about far-off lands."
+      example: "Avunculus Ted dē terrīs longinquīs fābulās nārrat.",
+      exampleGloss: "Uncle Ted tells stories about far-off lands."
     },
     {
       latin: "acūtus",
@@ -256,17 +256,17 @@ registerUnit({
   readings: [
     {
       title: "In Puppe",
-      intro: "Epilogue, many years later: Quintus — now a ship’s captain like his uncle — takes an hour of leisure on deck with Philo’s parting gift, the epigrams of Martial.",
+      intro: "Epilogue, many years later: Quinn — now a ship’s captain like his uncle — takes an hour of leisure on deck with Phil’s parting gift, the epigrams of Martial.",
       paragraphs: [
-        "Multī annī praeteriērunt. Quīntus iam vir est et magister nāvis, sīcut avunculus Titus ōlim erat. Mare tranquillum est; ventus secundus nāvem lēniter gubernat; nautae ōtium habent. Quīntus in puppe sedet et parvum librum tenet, quem Philō eī discēdentī dōnāverat.",
-        "In prīmā pāginā Philō scrīpserat: «Discipulō meō epigrammata Mārtiālis poētae dō. Sī aliquis librum sēcum habet, numquam sōlus est. Scrīptor acūtus est: cavē, lēctor!» Quīntus rīdet et legit. Ecce prīmum epigramma: «Quem recitās, meus est, ō Fīdentīne, libellus: sed male cum recitās, incipit esse tuus.»",
-        "«Quam acūtus est hic iocus!» clāmat, et rīsus eius per nāvem sonat. Deinde alterum epigramma legit: «Nōn amō tē, Sabidī, nec possum dīcere quārē: hoc tantum possum dīcere: nōn amō tē.» «Ō Mārtiālis», inquit Quīntus, «paucīs verbīs multum dīcis! Tālia epigrammata quisque lēctor amat; haec verba usque ad fīnem temporum legentur.»"
+        "Multī annī praeteriērunt. Quinn iam vir est et magister nāvis, sīcut avunculus Ted ōlim erat. Mare tranquillum est; ventus secundus nāvem lēniter gubernat; nautae ōtium habent. Quinn in puppe sedet et parvum librum tenet, quem Phil eī discēdentī dōnāverat.",
+        "In prīmā pāginā Phil scrīpserat: «Discipulō meō epigrammata Mārtiālis poētae dō. Sī aliquis librum sēcum habet, numquam sōlus est. Scrīptor acūtus est: cavē, lēctor!» Quinn rīdet et legit. Ecce prīmum epigramma: «Quem recitās, meus est, ō Fīdentīne, libellus: sed male cum recitās, incipit esse tuus.»",
+        "«Quam acūtus est hic iocus!» clāmat, et rīsus eius per nāvem sonat. Deinde alterum epigramma legit: «Nōn amō tē, Sabidī, nec possum dīcere quārē: hoc tantum possum dīcere: nōn amō tē.» «Ō Mārtiālis», inquit Quinn, «paucīs verbīs multum dīcis! Tālia epigrammata quisque lēctor amat; haec verba usque ad fīnem temporum legentur.»"
       ],
       glosses: {
         "multī": "many",
         "annī": "years (nom. pl.)",
         "praeteriērunt": "have passed, have gone by (perfect of «praetereō»)",
-        "quīntus": "Quintus — once the boy of our story, now a grown man",
+        "quinn": "Quinn — once the boy of our story, now a grown man (his name never changes form)",
         "iam": "now, by now",
         "vir": "a man",
         "est": "is",
@@ -275,7 +275,7 @@ registerUnit({
         "nāvis": "of a ship (gen. — «magister nāvis» = ship’s captain)",
         "sīcut": "just as, like",
         "avunculus": "uncle",
-        "titus": "Titus, Livia’s brother — the sea-captain who survived the storm",
+        "ted": "Ted, Julia’s brother — the sea-captain who survived the storm",
         "ōlim": "once, long ago",
         "erat": "was",
         "mare": "the sea",
@@ -295,7 +295,7 @@ registerUnit({
         "librum": "book (acc.)",
         "tenet": "holds",
         "quem": "which (acc. — the book)",
-        "philō": "Philo, the Greek tutor of Stage 3",
+        "phil": "Phil, the Greek tutor of Stage 3",
         "eī": "to him (dat.)",
         "discēdentī": "as he was departing (present participle, dat., agreeing with «eī»)",
         "dōnāverat": "had given (pluperfect)",
@@ -371,32 +371,32 @@ registerUnit({
         "legentur": "will be read (future passive)"
       },
       translation: [
-        "Many years have passed. Quintus is now a man and a ship’s captain, just as his uncle Titus once was. The sea is calm; a favorable wind gently steers the ship; the sailors have time off. Quintus sits on the after-deck and holds a small book, which Philo had given him as he was leaving.",
-        "On the first page Philo had written: «To my student I give the epigrams of the poet Martial. If a person has a book with him, he is never alone. The writer is sharp: reader, beware!» Quintus smiles and reads. Here is the first epigram: «The little book you are reciting, Fidentinus, is mine: but when you recite it badly, it begins to be yours.»",
-        "«How sharp this joke is!» he exclaims, and his laughter rings through the ship. Then he reads a second epigram: «I do not like you, Sabidius, and I cannot say why: only this much can I say — I do not like you.» «O Martial,» says Quintus, «in a few words you say so much! Every reader loves such epigrams; these words will be read all the way to the end of time.»"
+        "Many years have passed. Quinn is now a man and a ship’s captain, just as his uncle Ted once was. The sea is calm; a favorable wind gently steers the ship; the sailors have time off. Quinn sits on the after-deck and holds a small book, which Phil had given him as he was leaving.",
+        "On the first page Phil had written: «To my student I give the epigrams of the poet Martial. If a person has a book with him, he is never alone. The writer is sharp: reader, beware!» Quinn smiles and reads. Here is the first epigram: «The little book you are reciting, Fidentinus, is mine: but when you recite it badly, it begins to be yours.»",
+        "«How sharp this joke is!» he exclaims, and his laughter rings through the ship. Then he reads a second epigram: «I do not like you, Sabidius, and I cannot say why: only this much can I say — I do not like you.» «O Martial,» says Quinn, «in a few words you say so much! Every reader loves such epigrams; these words will be read all the way to the end of time.»"
       ],
       questions: [
         {
-          q: "How much time has passed since the main story, and what is Quintus now?",
+          q: "How much time has passed since the main story, and what is Quinn now?",
           options: [
-            "A few weeks — he is still Philō’s pupil",
+            "A few weeks — he is still Phil’s pupil",
             "Many years — he is a grown man and captain of his own ship",
             "One year — he works in his father’s warehouse",
             "Many years — he has become an epigram-poet in Rome"
           ],
           answer: 1,
-          explain: "«Multī annī praeteriērunt. Quīntus iam vir est et magister nāvis» — many years have passed; the boy who wanted to be a sailor now commands his own ship, like Titus before him."
+          explain: "«Multī annī praeteriērunt. Quinn iam vir est et magister nāvis» — many years have passed; the boy who wanted to be a sailor now commands his own ship, like his uncle Ted before him."
         },
         {
-          q: "What do we learn about the little book Quintus is holding?",
+          q: "What do we learn about the little book Quinn is holding?",
           options: [
             "He bought it in a harbor town",
-            "Titus left it to him in his will",
-            "Philō gave it to him as he was leaving",
-            "Līvia sent it from Ostia"
+            "Ted left it to him in his will",
+            "Phil gave it to him as he was leaving",
+            "Julia sent it from Ostia"
           ],
           answer: 2,
-          explain: "«quem Philō eī discēdentī dōnāverat» — the present participle «discēdentī» agrees with «eī»: Philo had given it ‘to him as he was departing’."
+          explain: "«quem Phil eī discēdentī dōnāverat» — the present participle «discēdentī» agrees with «eī»: Phil had given it ‘to him as he was departing’."
         },
         {
           q: "In the first epigram, when does the book ‘begin to be’ Fidentinus’s own?",
@@ -424,24 +424,24 @@ registerUnit({
     },
     {
       title: "Fīlius Perditus",
-      intro: "The second scroll holds a story from the East — the parable of the lost son. Quintus reads, and hears his own family in it.",
+      intro: "The second scroll holds a story from the East — the parable of the lost son. Quinn reads, and hears his own family in it.",
       paragraphs: [
-        "Deinde Quīntus alterum volūmen prōmit. In pāginā prīmā Philō scrīpserat: «Haec fābula nōn Rōmāna est, sed omnium fābulārum quās sciō pulcherrima est. Lege usque ad fīnem: intellegēs.»",
+        "Deinde Quinn alterum volūmen prōmit. In pāginā prīmā Phil scrīpserat: «Haec fābula nōn Rōmāna est, sed omnium fābulārum quās sciō pulcherrima est. Lege usque ad fīnem: intellegēs.»",
         "Homō quīdam duōs fīliōs habēbat. Fīlius minor patrī dīxit: «Pater, dā mihi meam partem patrimōniī.» Itaque pater patrimōnium inter fīliōs dīvīsit. Mox fīlius minor in regiōnem longinquam profectus est, ubi patrimōnium inter epulās et iocōs perdidit. Postquam omnia perdita sunt, famēs magna in eā regiōne facta est, et fīlius miser porcōs cīvis cuiusdam pāscēbat. Tanta erat famēs ut cibum porcōrum dēvorāre cuperet; sed nēmō eī quidquam dabat.",
         "Dēnique sēcum cōgitāvit: «Quot servī patris meī satis cibī habent; ego autem hīc famē pereō! Surgam et ad patrem meum pergam, et eī dīcam: Pater, peccāvī in caelum et contrā tē; iam nōn sum dignus vocārī fīlius tuus.» Itaque surrēxit et ad patrem perrēxit.",
         "Cum autem fīlius adhūc longē abesset, pater eum cōnspexit et, misericordiā mōtus, accurrit; fīlium amplexus est et ōsculum eī dedit. «Pater», inquit fīlius, «peccāvī; ignōsce mihi!» Sed pater servīs clāmāvit: «Tunicam optimam prōferte! Vitulum optimum parāte! Epulās magnās celebrābimus, quia hic fīlius meus mortuus erat et iterum vīvit: perditus erat — et inventus est.»",
-        "Quīntus librum pōnit et diū tacet; dē Titō cōgitat, quī ōlim ē marī servātus est, et dē omnibus quī amant et ignōscunt. Dēnique «Pergam» inquit. «Quisque diēs novam pāginam dat.» Et nāvis plēnīs vēlīs per mare pergit."
+        "Quinn librum pōnit et diū tacet; dē avunculō Ted cōgitat, quī ōlim ē marī servātus est, et dē omnibus quī amant et ignōscunt. Dēnique «Pergam» inquit. «Quisque diēs novam pāginam dat.» Et nāvis plēnīs vēlīs per mare pergit."
       ],
       glosses: {
         "deinde": "then, next",
-        "quīntus": "Quintus",
+        "quinn": "Quinn",
         "alterum": "the other, the second (acc.)",
         "volūmen": "scroll, book-roll (acc.)",
         "prōmit": "takes out, brings out",
         "in": "in, on; (with acc.) into, against",
         "pāginā": "page (abl.)",
         "prīmā": "first (abl.)",
-        "philō": "Philo, the Greek tutor",
+        "phil": "Phil, the Greek tutor",
         "scrīpserat": "had written (pluperfect)",
         "haec": "this (fem.)",
         "fābula": "story",
@@ -581,7 +581,8 @@ registerUnit({
         "diū": "for a long time",
         "tacet": "is silent",
         "dē": "about, concerning",
-        "titō": "Titus (abl. — after «dē»)",
+        "avunculō": "(his) uncle (abl. — after «dē»)",
+        "ted": "Ted — the indeclinable name sits in apposition; «avunculō» carries the case",
         "cōgitat": "thinks",
         "quī": "who",
         "ōlim": "once, long ago",
@@ -604,11 +605,11 @@ registerUnit({
         "pergit": "keeps going, sails on"
       },
       translation: [
-        "Then Quintus takes out the other scroll. On the first page Philo had written: «This story is not Roman, but of all the stories I know it is the most beautiful. Read all the way to the end: you will understand.»",
+        "Then Quinn takes out the other scroll. On the first page Phil had written: «This story is not Roman, but of all the stories I know it is the most beautiful. Read all the way to the end: you will understand.»",
         "A certain man had two sons. The younger son said to his father: «Father, give me my share of the inheritance.» And so the father divided the inheritance between his sons. Soon the younger son set out for a far-off region, where he squandered the inheritance on feasts and amusements. After everything was gone, a great famine arose in that region, and the wretched son was feeding the pigs of a certain citizen. So great was his hunger that he longed to devour the pigs’ food; but no one would give him anything.",
         "At last he thought to himself: «How many of my father’s servants have food enough — but I am dying of hunger here! I will get up and make my way to my father, and I will say to him: Father, I have sinned against heaven and against you; I am no longer worthy to be called your son.» And so he got up and made his way to his father.",
         "But while the son was still far away, his father caught sight of him and, moved by compassion, ran to him; he embraced his son and gave him a kiss. «Father,» said the son, «I have sinned; forgive me!» But the father shouted to his slaves: «Bring out the finest tunic! Prepare the best calf! We shall hold a great feast, because this son of mine was dead and is alive again: he had been lost — and he has been found.»",
-        "Quintus puts the book down and is silent for a long time; he thinks of Titus, who long ago was saved from the sea, and of all who love and forgive. At last he says: «I shall keep going. Each day gives a new page.» And the ship, under full sail, keeps going across the sea."
+        "Quinn puts the book down and is silent for a long time; he thinks of his uncle Ted, who long ago was saved from the sea, and of all who love and forgive. At last he says: «I shall keep going. Each day gives a new page.» And the ship, under full sail, keeps going across the sea."
       ],
       questions: [
         {
@@ -645,15 +646,15 @@ registerUnit({
           explain: "«Cum autem fīlius adhūc longē abesset … misericordiā mōtus, accurrit; fīlium amplexus est et ōsculum eī dedit» — the forgiveness outruns the apology."
         },
         {
-          q: "Why does this story strike Quintus so deeply?",
+          q: "Why does this story strike Quinn so deeply?",
           options: [
-            "It reminds him of Titus, once lost at sea and found alive — «perditus erat — et inventus est»",
+            "It reminds him of his uncle Ted, once lost at sea and found alive — «perditus erat — et inventus est»",
             "He once squandered his own inheritance",
             "He is angry that the father forgave so easily",
             "He recognizes the far-off region from his voyages"
           ],
           answer: 0,
-          explain: "«dē Titō cōgitat, quī ōlim ē marī servātus est» — his family lived this story: someone lost was found again. Even the word «perditus» echoes unit 10, «Ferōx Perditus»."
+          explain: "«dē avunculō Ted cōgitat, quī ōlim ē marī servātus est» — his family lived this story: someone lost was found again. Even the word «perditus» echoes unit 10, «Lupo Perditus»."
         }
       ]
     }
@@ -689,26 +690,26 @@ registerUnit({
       explain: "Perfect passive participle + «erat» = pluperfect passive: he HAD BEEN lost — before the joyful «inventus est»."
     },
     {
-      prompt: "«Philō dīcit Quīntum bene legere.» What is Philo saying?",
+      prompt: "«Phil dīcit discipulum bene legere.» What is Phil saying?",
       options: [
-        "Philō tells Quintus to read well",
-        "Philō says that Quintus reads well",
-        "Philō reads better than Quintus",
-        "Philō asks whether Quintus reads well"
+        "Phil tells his student to read well",
+        "Phil says that his student reads well",
+        "Phil reads better than his student",
+        "Phil asks whether his student reads well"
       ],
       answer: 1,
-      explain: "Accusative + infinitive (unit 25): «Quīntum … legere» = THAT Quintus reads. A command would be «Lege bene!»; an indirect question would take the subjunctive."
+      explain: "Accusative + infinitive (unit 25): «discipulum … legere» = THAT his student reads. A command would be «Lege bene!»; an indirect question would take the subjunctive."
     },
     {
-      prompt: "«Philō vēnit ut Quīntum docēret.» The ut-clause tells you…",
+      prompt: "«Phil vēnit ut puerum docēret.» The ut-clause tells you…",
       options: [
         "the result of his coming",
         "the time when he came",
-        "the purpose — he came so that he might teach Quintus",
-        "a wish — if only he taught Quintus!"
+        "the purpose — he came so that he might teach the boy",
+        "a wish — if only he taught the boy!"
       ],
       answer: 2,
-      explain: "«ut» + imperfect subjunctive («docēret») after a verb of motion is a purpose clause (unit 26): he came IN ORDER TO teach Quintus."
+      explain: "«ut» + imperfect subjunctive («docēret») after a verb of motion is a purpose clause (unit 26): he came IN ORDER TO teach the boy."
     },
     {
       prompt: "Which of these is a deponent — passive in form but active in meaning?",

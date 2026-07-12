@@ -57,16 +57,48 @@
   L.stripMacrons = s => s.normalize('NFD').replace(/\u0304/g, '').normalize('NFC');
 
   // Best-effort audio: an Italian voice reading restored-pronunciation Latin is surprisingly close.
+  // Voices are ranked (enhanced/premium Italian first); the learner can override in Guide → Audio.
+  function voiceScore(v) {
+    let s = 0;
+    const lang = (v.lang || '').toLowerCase();
+    if (lang.startsWith('it')) s += 100;
+    else if (lang.startsWith('es')) s += 60;
+    else if (lang.startsWith('pt')) s += 40;
+    else if (lang.startsWith('ro')) s += 30;
+    else return 0;
+    if (/premium|enhanced|natural|neural/i.test(v.name)) s += 30;
+    if (/alice|federica|luca|emma|elsa|paola|isabela|serena/i.test(v.name)) s += 10;
+    if (v.localService) s += 5;
+    return s;
+  }
+  L.voiceList = () => {
+    try {
+      return speechSynthesis.getVoices()
+        .filter(v => voiceScore(v) > 0)
+        .sort((a, b) => voiceScore(b) - voiceScore(a));
+    } catch (e) { return []; }
+  };
+  L.pickVoice = () => {
+    const list = L.voiceList();
+    const wanted = L.state.settings && L.state.settings.voice;
+    return list.find(v => v.voiceURI === wanted) || list[0] || null;
+  };
   L.speak = text => {
     try {
       if (!window.speechSynthesis) return;
-      const u = new SpeechSynthesisUtterance(L.stripMacrons(text));
-      const voices = speechSynthesis.getVoices();
-      u.voice = voices.find(v => v.lang && v.lang.startsWith('it')) ||
-                voices.find(v => v.lang && v.lang.startsWith('es')) || null;
-      u.rate = 0.85;
       speechSynthesis.cancel();
-      speechSynthesis.speak(u);
+      const voice = L.pickVoice();
+      const rate = (L.state.settings && L.state.settings.rate) || 0.85;
+      // speak sentence by sentence — natural pauses instead of one robotic run-on
+      const chunks = L.stripMacrons(text).match(/[^.!?;:]+[.!?;:]*\s*/g) || [L.stripMacrons(text)];
+      for (const chunk of chunks) {
+        if (!chunk.trim()) continue;
+        const u = new SpeechSynthesisUtterance(chunk.trim());
+        if (voice) { u.voice = voice; u.lang = voice.lang; }
+        u.rate = rate;
+        u.pitch = 1;
+        speechSynthesis.speak(u);
+      }
     } catch (e) {}
   };
 
@@ -112,6 +144,38 @@
       L.speak(el.dataset.text || '');
     }
   }
+
+  // audio settings controls (rendered in Guide)
+  document.addEventListener('change', e => {
+    if (e.target.id === 'voicesel') {
+      L.state.settings = L.state.settings || {};
+      L.state.settings.voice = e.target.value;
+      L.save();
+    } else if (e.target.id === 'ratesel') {
+      L.state.settings = L.state.settings || {};
+      L.state.settings.rate = +e.target.value;
+      L.save();
+      const label = document.getElementById('ratelabel');
+      if (label) label.textContent = e.target.value + '×';
+    }
+  });
+
+  function voiceOptionsHTML() {
+    const list = L.voiceList();
+    if (!list.length) return '<option value="">(no suitable voice found — see the tip below)</option>';
+    const chosen = L.pickVoice();
+    return list.map((v, i) =>
+      `<option value="${L.esc(v.voiceURI)}" ${chosen && v.voiceURI === chosen.voiceURI ? 'selected' : ''}>${L.esc(v.name)} — ${L.esc(v.lang)}${i === 0 ? ' (recommended)' : ''}</option>`).join('');
+  }
+
+  try {
+    if (window.speechSynthesis) {
+      speechSynthesis.onvoiceschanged = () => {
+        const sel = document.getElementById('voicesel');
+        if (sel) sel.innerHTML = voiceOptionsHTML();
+      };
+    }
+  } catch (e) {}
 
   // ---------- chrome ----------
   function renderNav() {
@@ -305,10 +369,12 @@
         <strong>4 · Quiz</strong> — 14 questions on the unit. Score 80% and the next unit unlocks.</p>
 
         <h2>The story</h2>
-        <p>The course follows one family — Mārcus the grain merchant, Līvia, their children Quīntus and
-        Paulla, the dog Ferōx, and Uncle Titus the sea captain — from their house in Ostia, to Rome, through
-        a storm at sea, and finally into the pages of real Roman authors. By the last units you are reading
-        lightly-adapted Caesar, Phaedrus's fables, Martial, and the Vulgate.</p>
+        <p>The course follows one family — Mark the grain merchant, Julia, their children Quinn and
+        Paula, the dog Lupo, and Uncle Ted the sea captain — from their house in Ostia, to Rome, through
+        a storm at sea, and finally into the pages of real Roman authors (with Phil the Greek tutor
+        arriving in Stage III). Names keep the same shape in every sentence — like foreign names in the
+        Latin Bible — so you can always tell a person from a vocabulary word. By the last units you are
+        reading lightly-adapted Caesar, Phaedrus's fables, Martial, and the Vulgate.</p>
 
         <h2>The Review deck</h2>
         <p>Every word you learn joins a spaced-repetition deck. Words you know keep quiet; words you fumble
@@ -320,8 +386,26 @@
         every letter is pronounced; <span class="la">c</span> is always hard (<em>k</em>),
         <span class="la">g</span> always as in <em>go</em>, <span class="la">v</span> sounds like <em>w</em>,
         <span class="la">ae</span> like the <em>i</em> in <em>high</em>. A macron (<span class="la">ā ē ī ō ū</span>)
-        marks a long vowel — hold it about twice as long. The 🔊 buttons use your device's Italian voice,
-        which lands close enough to be useful. Full details are in the Reference tab.</p>
+        marks a long vowel — hold it about twice as long. Full details are in the Reference tab.</p>
+
+        <h2>Audio &amp; voice</h2>
+        <p>The 🔊 buttons speak Latin with the best Italian voice on your device — Italian is the closest
+        living relative of the classical sound. Pick a different voice or speed here:</p>
+        <p class="audiorow">
+          <select id="voicesel">${voiceOptionsHTML()}</select>
+          <label class="ratewrap">Speed
+            <input type="range" id="ratesel" min="0.6" max="1.1" step="0.05"
+              value="${(L.state.settings && L.state.settings.rate) || 0.85}">
+            <span id="ratelabel">${(L.state.settings && L.state.settings.rate) || 0.85}×</span>
+          </label>
+          <button class="btn ghost" data-action="speak"
+            data-text="Salvē! Ecce familia. Mark pater est, Julia māter est, et Lupo — canis optimus — semper dormit.">🔊 Test the voice</button>
+        </p>
+        <p class="mini"><strong>Make it sound much better:</strong> your device likely has far nicer voices
+        than the default, just not downloaded. On a Mac: System Settings → Accessibility → Spoken Content →
+        System Voice → Manage Voices… → download an Italian voice marked <em>Enhanced</em> or
+        <em>Premium</em> (Alice, Federica, or Emma). On iPhone: Settings → Accessibility → Spoken Content →
+        Voices → Italian. New voices appear in the menu above automatically — pick one and hit Test.</p>
 
         <h2>Honest expectations</h2>
         <p>Finishing all 30 units gives you the complete grammar of Latin (for recognition), roughly 750

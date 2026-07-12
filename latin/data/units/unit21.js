@@ -135,8 +135,8 @@ registerUnit({
       forms: "sociī, m.",
       pos: "noun (2nd decl.)",
       gloss: "partner, ally",
-      example: "Titus multōs sociōs habet.",
-      exampleGloss: "Titus has many partners."
+      example: "Avunculus Ted multōs sociōs habet.",
+      exampleGloss: "Uncle Ted has many partners."
     },
     {
       latin: "merx",
@@ -239,36 +239,36 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "adverb",
       gloss: "for a long time",
-      example: "Quīntus nāvēs diū spectat.",
-      exampleGloss: "Quintus watches the ships for a long time."
+      example: "Quinn nāvēs diū spectat.",
+      exampleGloss: "Quinn watches the ships for a long time."
     },
     {
       latin: "intereā",
       forms: "(indēcl.)",
       pos: "adverb",
       gloss: "meanwhile",
-      example: "Intereā Ferōx in culīnā dormit.",
-      exampleGloss: "Meanwhile Ferox sleeps in the kitchen."
+      example: "Intereā canis Lupo in culīnā dormit.",
+      exampleGloss: "Meanwhile Lupo the dog sleeps in the kitchen."
     },
     {
       latin: "quia",
       forms: "(conj.)",
       pos: "conjunction",
       gloss: "because",
-      example: "Paulla laeta est, quia canis domum redit.",
-      exampleGloss: "Paulla is happy because the dog is coming home."
+      example: "Paula laeta est, quia canis domum redit.",
+      exampleGloss: "Paula is happy because the dog is coming home."
     }
   ],
 
   readings: [
     {
       title: "Omnia moventur",
-      intro: "Back home in Ostia, Marcus and Quintus watch the harbor wake up — where everything is being done by somebody.",
+      intro: "Back home in Ostia, Mark and Quinn watch the harbor wake up — where everything is being done by somebody.",
       paragraphs: [
-        "Familia Fabia iterum in Ostiā est. Prīmā hōrā Mārcus et Quīntus ad portum properant, quia nāvis Titī hodiē onerātur. Quīntus laetus est: portum enim amat, et omnia spectāre cupit.",
-        "In portū labor ubīque est. Frūmentum ā servīs in saccōs pōnitur; saccī in plaustra impōnuntur; plaustra ad horrea lentē moventur. Māchina magna amphorās tollit: fūnēs ā fabrīs tenentur, et amphorae in nāvēs impōnuntur. «Spectā māchinam!» clāmat Quīntus. «Amphorae sine labōre tolluntur!»",
-        "Prope horreum stat cūstōs validus, quī mercēs cūstōdit. «Cūr semper hīc stās?» rogat Quīntus. «Officium meum est,» respondet cūstōs. «Merx enim pretiōsa ā malīs virīs saepe petitur; itaque horreum ā mē diū cūstōdītur.»",
-        "Intereā Paulla cum Ferōce ad patrem currit. «Cūr omnēs virī tam occupātī sunt?» rogat. Mārcus respondet: «Magnum negōtium hodiē geritur, mea fīlia. Nāvis Titī onerātur, quia crās Titus in Graeciam nāvigābit. Opus iam incipitur!»"
+        "Familia Fabia iterum in Ostiā est. Prīmā hōrā Mark et Quinn ad portum properant, quia nāvis avunculī Ted hodiē onerātur. Quinn laetus est: portum enim amat, et omnia spectāre cupit.",
+        "In portū labor ubīque est. Frūmentum ā servīs in saccōs pōnitur; saccī in plaustra impōnuntur; plaustra ad horrea lentē moventur. Māchina magna amphorās tollit: fūnēs ā fabrīs tenentur, et amphorae in nāvēs impōnuntur. «Spectā māchinam!» clāmat Quinn. «Amphorae sine labōre tolluntur!»",
+        "Prope horreum stat cūstōs validus, quī mercēs cūstōdit. «Cūr semper hīc stās?» rogat Quinn. «Officium meum est,» respondet cūstōs. «Merx enim pretiōsa ā malīs virīs saepe petitur; itaque horreum ā mē diū cūstōdītur.»",
+        "Intereā Paula cum cane Lupo ad patrem currit. «Cūr omnēs virī tam occupātī sunt?» rogat. Mark respondet: «Magnum negōtium hodiē geritur, mea fīlia. Nāvis avunculī onerātur, quia crās avunculus Ted in Graeciam nāvigābit. Opus iam incipitur!»"
       ],
       glosses: {
         "familia": "family",
@@ -279,15 +279,16 @@ registerUnit({
         "est": "is",
         "prīmā": "first (abl., with «hōrā»)",
         "hōrā": "hour («prīmā hōrā»: at the first hour)",
-        "mārcus": "Marcus, the father, a grain merchant",
+        "mark": "Mark, the father, a grain merchant (his name never changes form)",
         "et": "and",
-        "quīntus": "Quintus, the son",
+        "quinn": "Quinn, the son (his name never changes form)",
         "ad": "to, toward (+ acc.)",
         "portum": "harbor (acc.)",
         "properant": "(they) hurry",
         "quia": "because",
         "nāvis": "ship",
-        "titī": "of Titus (gen.)",
+        "avunculī": "of (their) uncle (gen. — the case ending sits on «avunculī», since the name «Ted» never changes)",
+        "ted": "Ted, the uncle, Julia’s brother — his name never changes form",
         "hodiē": "today",
         "onerātur": "is being loaded (present passive)",
         "laetus": "happy",
@@ -352,9 +353,10 @@ registerUnit({
         "diū": "for a long time",
         "cūstōdītur": "is guarded (present passive)",
         "intereā": "meanwhile",
-        "paulla": "Paulla, the daughter",
+        "paula": "Paula, the daughter",
         "cum": "with (+ abl.)",
-        "ferōce": "Ferox, the family dog (abl., after «cum»)",
+        "cane": "dog (abl., after «cum»)",
+        "lupo": "Lupo, the family dog — quasi lupus! (his name never changes form)",
         "patrem": "father (acc.)",
         "currit": "runs",
         "omnēs": "all",
@@ -367,7 +369,7 @@ registerUnit({
         "geritur": "is being carried on, is being done (present passive)",
         "mea": "my (vocative — he is speaking to her)",
         "fīlia": "daughter",
-        "titus": "Titus, Livia’s brother, a ship’s captain",
+        "avunculus": "uncle (nom.)",
         "graeciam": "Greece (acc. — «in Graeciam»: to Greece)",
         "nāvigābit": "will sail (future)",
         "opus": "the work, the task",
@@ -376,22 +378,22 @@ registerUnit({
         "crās": "tomorrow"
       },
       translation: [
-        "The Fabius family is in Ostia again. At the first hour Marcus and Quintus hurry to the harbor, because Titus’s ship is being loaded today. Quintus is happy: he loves the harbor, you see, and wants to watch everything.",
-        "In the harbor there is work everywhere. Grain is put into sacks by slaves; the sacks are loaded onto wagons; the wagons are slowly moved to the warehouses. A great crane lifts the amphorae: the ropes are held by workmen, and the amphorae are loaded onto the ships. «Look at the crane!» shouts Quintus. «The amphorae are lifted without any toil!»",
-        "Near the warehouse stands a sturdy watchman, who guards the goods. «Why are you always standing here?» asks Quintus. «It is my duty,» the watchman replies. «Valuable merchandise, you see, is often gone after by bad men; and so the warehouse is guarded by me for a long time.»",
-        "Meanwhile Paulla runs with Ferox to her father. «Why are all the men so busy?» she asks. Marcus replies: «Great business is being done today, my daughter. Titus’s ship is being loaded, because tomorrow Titus will sail to Greece. The work is already beginning!»"
+        "The Fabius family is in Ostia again. At the first hour Mark and Quinn hurry to the harbor, because their uncle Ted’s ship is being loaded today. Quinn is happy: he loves the harbor, you see, and wants to watch everything.",
+        "In the harbor there is work everywhere. Grain is put into sacks by slaves; the sacks are loaded onto wagons; the wagons are slowly moved to the warehouses. A great crane lifts the amphorae: the ropes are held by workmen, and the amphorae are loaded onto the ships. «Look at the crane!» shouts Quinn. «The amphorae are lifted without any toil!»",
+        "Near the warehouse stands a sturdy watchman, who guards the goods. «Why are you always standing here?» asks Quinn. «It is my duty,» the watchman replies. «Valuable merchandise, you see, is often gone after by bad men; and so the warehouse is guarded by me for a long time.»",
+        "Meanwhile Paula runs with the dog Lupo to her father. «Why are all the men so busy?» she asks. Mark replies: «Great business is being done today, my daughter. Your uncle’s ship is being loaded, because tomorrow Uncle Ted will sail to Greece. The work is already beginning!»"
       ],
       questions: [
         {
-          q: "Why do Marcus and Quintus hurry to the harbor at the first hour?",
+          q: "Why do Mark and Quinn hurry to the harbor at the first hour?",
           options: [
-            "Titus’s ship is being loaded today",
+            "Their uncle Ted’s ship is being loaded today",
             "A storm is coming in from the sea",
-            "Ferox has run off to the harbor again",
-            "Marcus must buy grain at the market"
+            "Lupo has run off to the harbor again",
+            "Mark must buy grain at the market"
           ],
           answer: 0,
-          explain: "«quia nāvis Titī hodiē onerātur» — because Titus’s ship is being loaded today. Note the passive «onerātur»: the ship is having something done to it."
+          explain: "«quia nāvis avunculī Ted hodiē onerātur» — because their uncle Ted’s ship is being loaded today. Note the passive «onerātur»: the ship is having something done to it."
         },
         {
           q: "In «Frūmentum ā servīs in saccōs pōnitur», who is doing the placing?",
@@ -407,10 +409,10 @@ registerUnit({
         {
           q: "How does the watchman explain his long hours by the warehouse?",
           options: [
-            "He is waiting for Titus’s ship to arrive",
+            "He is waiting for Ted’s ship to arrive",
             "It is his duty, since valuable goods are often targeted by bad men",
             "He is paid a denarius for every hour he stands there",
-            "He is guarding Ferox, who keeps stealing sausages"
+            "He is guarding Lupo, who keeps stealing sausages"
           ],
           answer: 1,
           explain: "«Officium meum est… merx pretiōsa ā malīs virīs saepe petitur; itaque horreum ā mē diū cūstōdītur.» Duty, valuable goods, bad men — hence the guarding."
@@ -424,28 +426,29 @@ registerUnit({
       ]
     },
     {
-      title: "Nāvis Titī onerātur",
-      intro: "All day long Titus’s ship is loaded for tomorrow’s voyage to Greece — and Ferox commits one more crime.",
+      title: "Nāvis avunculī onerātur",
+      intro: "All day long Uncle Ted’s ship is loaded for tomorrow’s voyage to Greece — and Lupo commits one more crime.",
       paragraphs: [
-        "Multās hōrās nāvis Titī onerābātur, quia crās Titus in Graeciam nāvigābit. Frūmentum Mārcī ā servīs ad portum vehēbātur; intereā amphorae vīnī et oleī ā fabrīs ex horreīs portābantur. Labor magnus erat, sed omnēs fortiter labōrābant.",
-        "Titus, magister nāvis, in mediō portū stābat et omnia spectābat. «Age, sociī!» clāmābat. «Cūr plaustrum tam lentē movētur? Necesse est omnēs mercēs ante noctem impōnere! Opus ante noctem perficiētur!» Sociī itaque fūnēs trahēbant, et amphorae gravēs māchinā tollēbantur. Deinde saccī frūmentī ā servīs Titō trādēbantur.",
-        "Subitō magnus clāmor audītur: Ferōx botulum ē corbe rapit et per portum fugit! «Tenē canem!» clāmat faber īrātus. Sed Ferōx nōn capitur; celerior enim est quam omnēs fabrī. Paulla rīdet: «Ecce! Botulus ā cane meō domum portātur!»",
-        "Post multās hōrās opus tandem perficitur; nāvis plēna est. Crās prīmā hōrā Titus vēla dabit et in Graeciam nāvigābit. Līvia tamen sollicita est. «Mare magnum est,» inquit, «et ventī saepe validī sunt.» Titus rīdet: «Cūr timēs, soror? Nāvis mea nova et valida est. Mox iterum ad vōs redībō, et tum multae fābulae mīrae ā mē nārrābuntur!»"
+        "Multās hōrās nāvis avunculī onerābātur, quia crās avunculus Ted in Graeciam nāvigābit. Frūmentum patris ā servīs ad portum vehēbātur; intereā amphorae vīnī et oleī ā fabrīs ex horreīs portābantur. Labor magnus erat, sed omnēs fortiter labōrābant.",
+        "Ted, magister nāvis, in mediō portū stābat et omnia spectābat. «Age, sociī!» clāmābat. «Cūr plaustrum tam lentē movētur? Necesse est omnēs mercēs ante noctem impōnere! Opus ante noctem perficiētur!» Sociī itaque fūnēs trahēbant, et amphorae gravēs māchinā tollēbantur. Deinde saccī frūmentī ā servīs magistrō trādēbantur.",
+        "Subitō magnus clāmor audītur: Lupo botulum ē corbe rapit et per portum fugit! «Tenē canem!» clāmat faber īrātus. Sed Lupo nōn capitur; celerior enim est quam omnēs fabrī. Paula rīdet: «Ecce! Botulus ā cane meō domum portātur!»",
+        "Post multās hōrās opus tandem perficitur; nāvis plēna est. Crās prīmā hōrā avunculus Ted vēla dabit et in Graeciam nāvigābit. Julia tamen sollicita est. «Mare magnum est,» inquit, «et ventī saepe validī sunt.» Ted rīdet: «Cūr timēs, soror? Nāvis mea nova et valida est. Mox iterum ad vōs redībō, et tum multae fābulae mīrae ā mē nārrābuntur!»"
       ],
       glosses: {
         "multās": "many (acc. pl.)",
         "hōrās": "hours (acc.; bare «multās hōrās»: for many hours — duration; after «post»: after many hours)",
         "nāvis": "ship",
-        "titī": "of Titus (gen.)",
+        "avunculī": "of (their) uncle (gen. — the case ending sits on «avunculī»)",
         "onerābātur": "was being loaded (imperfect passive)",
         "quia": "because",
         "crās": "tomorrow",
-        "titus": "Titus, Livia’s brother, the ship’s captain",
+        "avunculus": "uncle (nom.)",
+        "ted": "Ted, the uncle, Julia’s brother, the ship’s captain — his name never changes form",
         "in": "in (+ abl.); to, into (+ acc.)",
         "graeciam": "Greece (acc. — «in Graeciam»: to Greece)",
         "nāvigābit": "will sail (future)",
         "frūmentum": "grain",
-        "mārcī": "of Marcus (gen.)",
+        "patris": "of (their) father (gen.)",
         "ā": "by (+ abl. — marks the agent); from",
         "servīs": "slaves (abl. — the agents, with «ā»)",
         "ad": "to, toward (+ acc.)",
@@ -496,12 +499,12 @@ registerUnit({
         "deinde": "then, next",
         "saccī": "sacks (nom. pl.)",
         "frūmentī": "of grain (gen.)",
-        "titō": "to Titus (dat.)",
+        "magistrō": "to the captain (dat. — the receiver)",
         "trādēbantur": "were being handed over (imperfect passive)",
         "subitō": "suddenly",
         "clāmor": "shout, uproar",
         "audītur": "is heard (present passive)",
-        "ferōx": "Ferox, the family dog",
+        "lupo": "Lupo, the family dog — quasi lupus! (his name never changes form)",
         "botulum": "sausage (acc.)",
         "ē": "out of (+ abl.)",
         "corbe": "basket (abl.)",
@@ -519,7 +522,7 @@ registerUnit({
         "enim": "for, you see (never the first word)",
         "quam": "than",
         "fabrī": "workmen (nom. pl.)",
-        "paulla": "Paulla, the daughter",
+        "paula": "Paula, the daughter",
         "rīdet": "laughs",
         "ecce": "look!",
         "botulus": "the sausage (nom. — now the subject!)",
@@ -537,7 +540,7 @@ registerUnit({
         "hōrā": "hour («prīmā hōrā»: at the first hour)",
         "vēla": "sails (acc. — «vēla dare»: to set sail)",
         "dabit": "will give (future; «vēla dabit»: he will set sail)",
-        "līvia": "Livia, the mother",
+        "julia": "Julia, the mother — her name declines like «puella»",
         "tamen": "however, nevertheless",
         "sollicita": "worried, anxious",
         "mare": "sea",
@@ -564,22 +567,22 @@ registerUnit({
         "nārrābuntur": "will be told (future passive)"
       },
       translation: [
-        "For many hours Titus’s ship was being loaded, because tomorrow Titus will sail to Greece. Marcus’s grain was being carted to the harbor by slaves; meanwhile amphorae of wine and olive oil were being carried out of the warehouses by workmen. The work was great, but everyone was working hard.",
-        "Titus, the ship’s captain, was standing in the middle of the harbor, watching everything. «Come on, mates!» he kept shouting. «Why is that wagon being moved so slowly? All the goods must be loaded on before night! The work will be completed before night!» So his partners hauled the ropes, and the heavy amphorae were lifted by the crane. Then the sacks of grain were handed over to Titus by the slaves.",
-        "Suddenly a great uproar is heard: Ferox snatches a sausage from a basket and flees through the harbor! «Catch the dog!» shouts an angry workman. But Ferox is not caught; he is faster, you see, than all the workmen. Paulla laughs: «Look! The sausage is being carried home by my dog!»",
-        "After many hours the work is at last finished; the ship is full. Tomorrow at the first hour Titus will set sail and voyage to Greece. Livia, however, is worried. «The sea is big,» she says, «and the winds are often strong.» Titus laughs: «Why are you afraid, sister? My ship is new and strong. Soon I shall come back to you again — and then many amazing stories will be told by me!»"
+        "For many hours their uncle’s ship was being loaded, because tomorrow Uncle Ted will sail to Greece. Their father’s grain was being carted to the harbor by slaves; meanwhile amphorae of wine and olive oil were being carried out of the warehouses by workmen. The work was great, but everyone was working hard.",
+        "Ted, the ship’s captain, was standing in the middle of the harbor, watching everything. «Come on, mates!» he kept shouting. «Why is that wagon being moved so slowly? All the goods must be loaded on before night! The work will be completed before night!» So his partners hauled the ropes, and the heavy amphorae were lifted by the crane. Then the sacks of grain were handed over to the captain by the slaves.",
+        "Suddenly a great uproar is heard: Lupo snatches a sausage from a basket and flees through the harbor! «Catch the dog!» shouts an angry workman. But Lupo is not caught; he is faster, you see, than all the workmen. Paula laughs: «Look! The sausage is being carried home by my dog!»",
+        "After many hours the work is at last finished; the ship is full. Tomorrow at the first hour Uncle Ted will set sail and voyage to Greece. Julia, however, is worried. «The sea is big,» she says, «and the winds are often strong.» Ted laughs: «Why are you afraid, sister? My ship is new and strong. Soon I shall come back to you again — and then many amazing stories will be told by me!»"
       ],
       questions: [
         {
           q: "For how long was the ship being loaded, and why?",
           options: [
-            "For many hours, because Titus sails for Greece tomorrow",
+            "For many hours, because Uncle Ted sails for Greece tomorrow",
             "For one hour, because the cargo was small",
             "All night, because the crane had broken",
             "For two days, because of a storm at sea"
           ],
           answer: 0,
-          explain: "«Multās hōrās nāvis Titī onerābātur, quia crās Titus in Graeciam nāvigābit» — accusative of duration plus «quia» giving the reason."
+          explain: "«Multās hōrās nāvis avunculī onerābātur, quia crās avunculus Ted in Graeciam nāvigābit» — accusative of duration plus «quia» giving the reason."
         },
         {
           q: "In «amphorae gravēs māchinā tollēbantur», why is there no «ā» before «māchinā»?",
@@ -593,22 +596,22 @@ registerUnit({
           explain: "People get «ā/ab» (agent); tools and things stand in the bare ablative (means). The crane is a thing — mighty, but still a thing."
         },
         {
-          q: "What happens after Ferox snatches the sausage?",
+          q: "What happens after Lupo snatches the sausage?",
           options: [
             "He is caught by the angry workman",
             "He drops it into the sea",
             "He is not caught — he is faster than all the workmen",
-            "Titus throws him off the ship"
+            "Ted throws him off the ship"
           ],
           answer: 2,
-          explain: "«Sed Ferōx nōn capitur; celerior enim est quam omnēs fabrī» — not caught, being faster than the whole workforce. As usual."
+          explain: "«Sed Lupo nōn capitur; celerior enim est quam omnēs fabrī» — not caught, being faster than the whole workforce. As usual."
         },
         {
-          q: "What does Titus promise will happen when he returns?",
+          q: "What does Ted promise will happen when he returns?",
           options: [
             "Gifts of gold and silver will be given to everyone",
             "Many amazing stories will be told by him",
-            "A new ship will be built for Quintus",
+            "A new ship will be built for Quinn",
             "He will never sail again"
           ],
           answer: 1,

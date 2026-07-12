@@ -7,7 +7,7 @@ registerUnit({
   grammar: [
     {
       heading: "A third family of nouns",
-      body: "<p>So far every noun you’ve met has belonged to one of two tidy families: the 1st declension (<span class=\"la\">epistula, epistulam, epistulae…</span>) and the 2nd (<span class=\"la\">oculus, oculum, oculī…</span>). Titus’s letter is full of nouns from a third family — the <strong>3rd declension</strong> — and its members refuse to match: <span class=\"la\">rēx</span>, <span class=\"la\">urbs</span>, <span class=\"la\">homō</span>, <span class=\"la\">nox</span>, <span class=\"la\">corpus</span>. No shared nominative ending at all.</p><p>The trick: the nominative is a disguise, and the <strong>genitive</strong> pulls it off. <span class=\"la\">rēx, rēgis</span> — drop the <span class=\"la\">-is</span> and you have the stem <span class=\"la\">rēg-</span>, the base on which every other form is built. That is why the vocabulary list always gives you the pair.</p>",
+      body: "<p>So far every noun you’ve met has belonged to one of two tidy families: the 1st declension (<span class=\"la\">epistula, epistulam, epistulae…</span>) and the 2nd (<span class=\"la\">oculus, oculum, oculī…</span>). Ted’s letter is full of nouns from a third family — the <strong>3rd declension</strong> — and its members refuse to match: <span class=\"la\">rēx</span>, <span class=\"la\">urbs</span>, <span class=\"la\">homō</span>, <span class=\"la\">nox</span>, <span class=\"la\">corpus</span>. No shared nominative ending at all.</p><p>The trick: the nominative is a disguise, and the <strong>genitive</strong> pulls it off. <span class=\"la\">rēx, rēgis</span> — drop the <span class=\"la\">-is</span> and you have the stem <span class=\"la\">rēg-</span>, the base on which every other form is built. That is why the vocabulary list always gives you the pair.</p>",
       table: {
         caption: "The nominative disguises, the genitive reveals",
         headers: ["Nominative", "Genitive", "Stem", "Meaning"],
@@ -56,7 +56,7 @@ registerUnit({
     },
     {
       heading: "Look-alikes: reading around the ambiguity",
-      body: "<p>Two endings pull double duty. <span class=\"la\">-ēs</span> is both nominative <em>and</em> accusative plural: in <span class=\"la\">mīlitēs videō</span> the soldiers are being seen (the verb says ‘I see’), but in <span class=\"la\">mīlitēs ambulant</span> they are the subject. Let the verb — its person and its number — cast the deciding vote.</p><p>A few nouns also wear <span class=\"la\">-is</span> in the nominative itself: <span class=\"la\">cīvis</span> (citizen), <span class=\"la\">auris</span> (ear), <span class=\"la\">nāvis</span> (ship) — yes, your old friend from the harbor was 3rd declension all along. And some genitive plurals add an i: <span class=\"la\">cīvium</span>, <span class=\"la\">montium</span>, <span class=\"la\">partium</span>. The <span class=\"la\">-um</span> at the end still means ‘of the …s’.</p><p>One more look-alike, and Titus’s letter leans on it: on a 3rd-declension noun, <span class=\"la\">-ī</span> is the <strong>dative</strong> singular — ‘to/for’. <span class=\"la\">Imperātōrī clāmant</span>: they shout <em>to</em> the emperor. That same <span class=\"la\">-ī</span> has meant ‘of’ on 2nd-declension nouns ever since <span class=\"la\">epistula Titī</span> — but a 3rd-declension noun does its ‘of’ work with <span class=\"la\">-is</span> (<span class=\"la\">imperātōris</span>, ‘of the emperor’). So check the noun’s family: if its genitive ends in <span class=\"la\">-is</span>, then <span class=\"la\">-ī</span> on it means ‘to/for’, not ‘of’.</p>",
+      body: "<p>Two endings pull double duty. <span class=\"la\">-ēs</span> is both nominative <em>and</em> accusative plural: in <span class=\"la\">mīlitēs videō</span> the soldiers are being seen (the verb says ‘I see’), but in <span class=\"la\">mīlitēs ambulant</span> they are the subject. Let the verb — its person and its number — cast the deciding vote.</p><p>A few nouns also wear <span class=\"la\">-is</span> in the nominative itself: <span class=\"la\">cīvis</span> (citizen), <span class=\"la\">auris</span> (ear), <span class=\"la\">nāvis</span> (ship) — yes, your old friend from the harbor was 3rd declension all along. And some genitive plurals add an i: <span class=\"la\">cīvium</span>, <span class=\"la\">montium</span>, <span class=\"la\">partium</span>. The <span class=\"la\">-um</span> at the end still means ‘of the …s’.</p><p>One more look-alike, and Ted’s letter leans on it: on a 3rd-declension noun, <span class=\"la\">-ī</span> is the <strong>dative</strong> singular — ‘to/for’. <span class=\"la\">Imperātōrī clāmant</span>: they shout <em>to</em> the emperor. That same <span class=\"la\">-ī</span> has meant ‘of’ on 2nd-declension nouns ever since <span class=\"la\">epistula avunculī</span> — but a 3rd-declension noun does its ‘of’ work with <span class=\"la\">-is</span> (<span class=\"la\">imperātōris</span>, ‘of the emperor’). So check the noun’s family: if its genitive ends in <span class=\"la\">-is</span>, then <span class=\"la\">-ī</span> on it means ‘to/for’, not ‘of’.</p>",
       tip: "Don’t panic over an ambiguous ending — Romans didn’t read word by word, and neither should you. Hold both possibilities, read on, and the verb will settle it."
     }
   ],
@@ -67,8 +67,8 @@ registerUnit({
       forms: "epistulae, f.",
       pos: "noun (1st decl.)",
       gloss: "letter (correspondence)",
-      example: "Titus epistulam ad familiam mittit.",
-      exampleGloss: "Titus sends a letter to the family."
+      example: "Ted epistulam ad familiam mittit.",
+      exampleGloss: "Ted sends a letter to the family."
     },
     {
       latin: "urbs",
@@ -147,24 +147,24 @@ registerUnit({
       forms: "capitis, n.",
       pos: "noun (3rd decl., neuter)",
       gloss: "head",
-      example: "Paulla caput pūpae tenet.",
-      exampleGloss: "Paulla is holding the doll’s head."
+      example: "Paula caput pūpae tenet.",
+      exampleGloss: "Paula is holding the doll’s head."
     },
     {
       latin: "pēs",
       forms: "pedis, m.",
       pos: "noun (3rd decl.)",
       gloss: "foot",
-      example: "Ferōx pedem Mārcī tenet.",
-      exampleGloss: "Ferox has hold of Marcus’s foot."
+      example: "Lupo pedem patris tenet.",
+      exampleGloss: "Lupo has hold of father’s foot."
     },
     {
       latin: "oculus",
       forms: "oculī, m.",
       pos: "noun (2nd decl.)",
       gloss: "eye",
-      example: "Oculī Paullae sunt pulchrī.",
-      exampleGloss: "Paulla’s eyes are beautiful."
+      example: "Oculī Paulae sunt pulchrī.",
+      exampleGloss: "Paula’s eyes are beautiful."
     },
     {
       latin: "auris",
@@ -179,8 +179,8 @@ registerUnit({
       forms: "cordis, n.",
       pos: "noun (3rd decl., neuter)",
       gloss: "heart",
-      example: "Cor Quīntī laetum est.",
-      exampleGloss: "Quintus’s heart is glad."
+      example: "Cor puerī laetum est.",
+      exampleGloss: "The boy’s heart is glad."
     },
     {
       latin: "vōx",
@@ -195,8 +195,8 @@ registerUnit({
       forms: "nōminis, n.",
       pos: "noun (3rd decl., neuter)",
       gloss: "name",
-      example: "Nōmen canis est Ferōx.",
-      exampleGloss: "The dog’s name is Ferox."
+      example: "Nōmen canis est Lupo.",
+      exampleGloss: "The dog’s name is Lupo."
     },
     {
       latin: "lūx",
@@ -243,8 +243,8 @@ registerUnit({
       forms: "salūtis, f.",
       pos: "noun (3rd decl.)",
       gloss: "safety, health; greeting",
-      example: "Titus familiae salūtem mittit.",
-      exampleGloss: "Titus sends the family a greeting."
+      example: "Ted familiae salūtem mittit.",
+      exampleGloss: "Ted sends the family a greeting."
     },
     {
       latin: "mittō",
@@ -269,9 +269,9 @@ registerUnit({
       title: "Homō ad portam",
       intro: "A knock at the door of the Fabius house: someone has come a long way with something to deliver.",
       paragraphs: [
-        "Familia Fabia in ātriō sedet. Māter fīliaque tunicās parant; Quīntus litterās scrībit; Ferōx dormit. Subitō canis clāmat: homō ad portam stat! Homō epistulam magnam tenet.",
-        "«Salvē!» inquit homō. «Epistulam portō. Epistula ex urbe Rōmā est.» Mārcus properat et epistulam accipit. Ecce — epistula Titī est! Titus, frāter Līviae, iam in urbe magnā habitat.",
-        "Familia laeta est. Māter vōcem hominis audit: homō «Valēte!» clāmat et ambulat. Quīntus epistulam tenet, quod puer in lūdō litterās discit et bene legit. Māter et pater et soror audiunt; Ferōx quoque nōn dormit, sed sedet et audit — canis aurēs bonās habet. Quīntus epistulam legit."
+        "Familia Fabia in ātriō sedet. Māter fīliaque tunicās parant; Quinn litterās scrībit; Lupo dormit. Subitō canis clāmat: homō ad portam stat! Homō epistulam magnam tenet.",
+        "«Salvē!» inquit homō. «Epistulam portō. Epistula ex urbe Rōmā est.» Mark properat et epistulam accipit. Ecce — epistula avunculī est! Ted, frāter Juliae, iam in urbe magnā habitat.",
+        "Familia laeta est. Māter vōcem hominis audit: homō «Valēte!» clāmat et ambulat. Quinn epistulam tenet, quod puer in lūdō litterās discit et bene legit. Māter et pater et soror audiunt; Lupo quoque nōn dormit, sed sedet et audit — canis aurēs bonās habet. Quinn epistulam legit."
       ],
       glosses: {
         "familia": "the family",
@@ -283,10 +283,10 @@ registerUnit({
         "fīliaque": "and the daughter (-que = and)",
         "tunicās": "tunics (acc. pl. — object)",
         "parant": "(they) prepare, get ready",
-        "quīntus": "Quintus (the son)",
+        "quinn": "Quinn (the son — his name never changes form)",
         "litterās": "letters of the alphabet (acc. pl.)",
         "scrībit": "writes",
-        "ferōx": "Ferox (the dog)",
+        "lupo": "Lupo (the dog — his name never changes form; quasi lupus, ‘wolf’!)",
         "dormit": "sleeps",
         "subitō": "suddenly",
         "canis": "the dog",
@@ -306,15 +306,15 @@ registerUnit({
         "urbe": "the city (abl. after «ex»/«in»)",
         "rōmā": "Rome (abl. — «urbe Rōmā», the city of Rome)",
         "est": "is",
-        "mārcus": "Marcus (the father)",
+        "mark": "Mark (the father — his name never changes form)",
         "properat": "hurries",
         "et": "and",
         "accipit": "receives, takes",
         "ecce": "look!",
-        "titī": "of Titus, Titus’s (gen.)",
-        "titus": "Titus (Livia’s brother, a ship’s captain)",
+        "avunculī": "of the uncle, the uncle’s (gen. — the 2nd-decl. -ī ‘of’ ending)",
+        "ted": "Ted (Julia’s brother, a ship’s captain — his name never changes form)",
         "frāter": "the brother",
-        "līviae": "of Livia (gen.)",
+        "juliae": "of Julia (gen. — the -ae ‘of’ ending)",
         "iam": "now, by now",
         "magnā": "great (abl., agreeing with «urbe»)",
         "habitat": "lives, dwells",
@@ -341,9 +341,9 @@ registerUnit({
         "habet": "has"
       },
       translation: [
-        "The Fabius family is sitting in the atrium. Mother and daughter are getting tunics ready; Quintus is writing his letters; Ferox is asleep. Suddenly the dog barks: a man is standing at the door! The man is holding a big letter.",
-        "«Hello!» says the man. «I’m carrying a letter. The letter is from the city of Rome.» Marcus hurries over and takes the letter. Look — it is Titus’s letter! Titus, Livia’s brother, is now living in the great city.",
-        "The family is delighted. Mother hears the man’s voice: the man calls «Farewell!» and walks off. Quintus holds the letter, because the boy is learning his letters at school and reads well. Mother, father, and sister listen; Ferox, too, is not sleeping but sits and listens — the dog has good ears. Quintus reads the letter."
+        "The Fabius family is sitting in the atrium. Mother and daughter are getting tunics ready; Quinn is writing his letters; Lupo is asleep. Suddenly the dog barks: a man is standing at the door! The man is holding a big letter.",
+        "«Hello!» says the man. «I’m carrying a letter. The letter is from the city of Rome.» Mark hurries over and takes the letter. Look — it is their uncle’s letter! Ted, Julia’s brother, is now living in the great city.",
+        "The family is delighted. Mother hears the man’s voice: the man calls «Farewell!» and walks off. Quinn holds the letter, because the boy is learning his letters at school and reads well. Mother, father, and sister listen; Lupo, too, is not sleeping but sits and listens — the dog has good ears. Quinn reads the letter."
       ],
       questions: [
         {
@@ -355,31 +355,31 @@ registerUnit({
             "Walking to the harbor"
           ],
           answer: 1,
-          explain: "«Familia Fabia in ātriō sedet» — mother and daughter prepare tunics, Quintus writes, and Ferox (of course) sleeps."
+          explain: "«Familia Fabia in ātriō sedet» — mother and daughter prepare tunics, Quinn writes, and Lupo (of course) sleeps."
         },
         {
           q: "Who is the first to notice the man at the door?",
-          options: ["Marcus", "Quintus", "Ferox the dog", "Livia"],
+          options: ["Mark", "Quinn", "Lupo the dog", "Julia"],
           answer: 2,
           explain: "«Subitō canis clāmat» — the dog suddenly barks, and only then do we learn a man is standing at the door."
         },
         {
-          q: "In «epistula Titī est», what does the ending of «Titī» tell you?",
+          q: "In «epistula avunculī est», what does the ending of «avunculī» tell you?",
           options: [
-            "Titus is the subject of the sentence",
-            "The letter was sent to Titus",
-            "The letter belongs to Titus — it is his letter",
-            "Titus is the direct object"
+            "The uncle is the subject of the sentence",
+            "The letter was sent to the uncle",
+            "The letter belongs to the uncle — it is his letter",
+            "The uncle is the direct object"
           ],
           answer: 2,
-          explain: "«Titī» is genitive — ‘of Titus’. The letter is Titus’s own."
+          explain: "«avunculī» is genitive — ‘of the uncle’. The letter is Uncle Ted’s own."
         },
         {
-          q: "Why is it Quintus, rather than his parents, who takes the letter?",
+          q: "Why is it Quinn, rather than his parents, who takes the letter?",
           options: [
             "He is learning his letters at school and reads well",
             "He is the oldest child in the family",
-            "Marcus and Livia refuse to touch it",
+            "Mark and Julia refuse to touch it",
             "The letter is addressed only to him"
           ],
           answer: 0,
@@ -388,21 +388,21 @@ registerUnit({
       ]
     },
     {
-      title: "Epistula Titī",
-      intro: "Quintus reads Titus’s letter aloud — greetings from the greatest city in the world.",
+      title: "Epistula Avunculī",
+      intro: "Quinn reads his uncle Ted’s letter aloud — greetings from the greatest city in the world.",
       paragraphs: [
-        "Titus Mārcō et Līviae et Quīntō et Paullae salūtem mittit. Ego iam in urbe Rōmā habitō. Rōma nōn est oppidum, sed urbs magna: multī hominēs hīc habitant.",
+        "Ted Juliae et Mark et Quinn et Paulae salūtem mittit. Ego iam in urbe Rōmā habitō. Rōma nōn est oppidum, sed urbs magna: multī hominēs hīc habitant.",
         "Ego per viās urbis saepe ambulō et hominēs spectō. Mīlitēs videō et senātōrēs; senātōrēs togās pulchrās habent. In forō cīvēs stant, et vōcēs cīvium magnae sunt. Etiam imperātōrem videō! Nōmen imperātōris est Trāiānus. Multī mīlitēs cum imperātōre ambulant, et cīvēs imperātōrī clāmant: «Salvē, imperātor!»",
         "Urbs septem montēs habet; in montibus templa magna stant. Ego cum nautīs per pontēs urbis ambulō et nāvēs spectō. Pars urbis nova semper oculōs dēlectat!",
-        "Sed nox in urbe nōn est grāta: hominēs per noctem clāmant et cantant, et ego male dormiō — oculī fessī sunt! Mox tamen ad vōs nāvigō et dōna multa portō, et botulum magnum Ferōcī! Valēte."
+        "Sed nox in urbe nōn est grāta: hominēs per noctem clāmant et cantant, et ego male dormiō — oculī fessī sunt! Mox tamen ad vōs nāvigō et dōna multa portō, et botulum magnum canī Lupo! Valēte."
       ],
       glosses: {
-        "titus": "Titus (writing from Rome)",
-        "mārcō": "to Marcus (dat. — a recipient of the letter)",
+        "ted": "Ted (writing from Rome — his name never changes form)",
+        "juliae": "to Julia (dat. — the -ae ‘to/for’ ending marks a recipient of the letter)",
         "et": "and",
-        "līviae": "to Livia (dat.)",
-        "quīntō": "to Quintus (dat.)",
-        "paullae": "to Paulla (dat.)",
+        "mark": "Mark (the father — his name never changes form; a recipient like the others: ‘to Mark’)",
+        "quinn": "Quinn (the son — never changes form; ‘to Quinn’)",
+        "paulae": "to Paula (dat.)",
         "salūtem": "a greeting (acc. — «salūtem mittit», ‘sends a greeting’: the standard Roman letter opening)",
         "mittit": "sends",
         "ego": "I",
@@ -484,18 +484,19 @@ registerUnit({
         "portō": "I carry, I bring",
         "botulum": "a sausage (acc. — object)",
         "magnum": "big (agreeing with «botulum»)",
-        "ferōcī": "for Ferox (dat. — Ferōx, Ferōcis declines like a 3rd decl. noun)",
+        "canī": "for the dog (dat. — the 3rd-decl. -ī ‘to/for’ ending of «canis»)",
+        "lupo": "Lupo (the dog’s name, in apposition — it never changes form)",
         "valēte": "farewell! (the standard way to close a Roman letter)"
       },
       translation: [
-        "Titus sends greetings to Marcus and Livia and Quintus and Paulla. I am now living in the city of Rome. Rome is not a town but a great city: many people live here.",
+        "Ted sends greetings to Julia and Mark and Quinn and Paula. I am now living in the city of Rome. Rome is not a town but a great city: many people live here.",
         "I often walk through the streets of the city and watch the people. I see soldiers and senators; the senators have beautiful togas. In the forum citizens stand about, and the voices of the citizens are loud. I even see the emperor! The emperor’s name is Trajan. Many soldiers walk with the emperor, and the citizens shout to the emperor: «Hail, emperor!»",
         "The city has seven hills; on the hills stand great temples. I walk with sailors across the city’s bridges and watch the ships. Some new part of the city is always delighting my eyes!",
-        "But night in the city is not pleasant: people shout and sing all through the night, and I sleep badly — my eyes are tired! Soon, however, I am sailing to you, and I am bringing many gifts — and a big sausage for Ferox! Farewell."
+        "But night in the city is not pleasant: people shout and sing all through the night, and I sleep badly — my eyes are tired! Soon, however, I am sailing to you, and I am bringing many gifts — and a big sausage for Lupo the dog! Farewell."
       ],
       questions: [
         {
-          q: "How does Titus open his letter?",
+          q: "How does Ted open his letter?",
           options: [
             "With a complaint about the noise",
             "By sending a greeting to each family member by name",
@@ -503,7 +504,7 @@ registerUnit({
             "By asking the family for money"
           ],
           answer: 1,
-          explain: "«Titus Mārcō et Līviae et Quīntō et Paullae salūtem mittit» — the classic Roman letter opening, with every recipient in the dative."
+          explain: "«Ted Juliae et Mark et Quinn et Paulae salūtem mittit» — the classic Roman letter opening, with the recipients in the dative: «Juliae» and «Paulae» show the -ae ending, while Mark and Quinn never change form."
         },
         {
           q: "In «vōcēs cīvium magnae sunt», what does «cīvium» mean?",
@@ -528,7 +529,7 @@ registerUnit({
           explain: "Third-declension -ī is the dative singular — the citizens shout TO the emperor."
         },
         {
-          q: "What is Titus’s one complaint about life in Rome?",
+          q: "What is Ted’s one complaint about life in Rome?",
           options: [
             "The food is terrible",
             "The bridges are dangerous",
@@ -584,10 +585,10 @@ registerUnit({
       explain: "«imperātōrem» wears the accusative -em (object), so «mīlitēs» must be the nominative plural — and the plural verb «spectant» agrees with it."
     },
     {
-      prompt: "In «Titus senātōribus fābulās nārrat», what does «senātōribus» mean?",
+      prompt: "In «Ted senātōribus fābulās nārrat», what does «senātōribus» mean?",
       options: ["the senators (subject)", "of the senators", "to the senators", "with one senator"],
       answer: 2,
-      explain: "-ibus is the dative or ablative plural; with a verb of telling («nārrat»), read it as dative — Titus tells stories TO the senators."
+      explain: "-ibus is the dative or ablative plural; with a verb of telling («nārrat»), read it as dative — Ted tells stories TO the senators."
     },
     {
       prompt: "In «Cīvis in viā stat», the word «cīvis» is…",

@@ -101,8 +101,8 @@ registerUnit({
       forms: "velle, voluī",
       pos: "verb (irreg.)",
       gloss: "want, wish",
-      example: "Quīntus fābulam dē lupā audīre vult.",
-      exampleGloss: "Quintus wants to hear the story about the she-wolf."
+      example: "Quinn fābulam dē lupā audīre vult.",
+      exampleGloss: "Quinn wants to hear the story about the she-wolf."
     },
     {
       latin: "nōlō",
@@ -117,8 +117,8 @@ registerUnit({
       forms: "mālle, māluī",
       pos: "verb (irreg.)",
       gloss: "prefer",
-      example: "Ferōx dormīre māvult quam labōrāre.",
-      exampleGloss: "Ferox prefers sleeping to working."
+      example: "Canis Lupo dormīre māvult quam labōrāre.",
+      exampleGloss: "The dog Lupo prefers sleeping to working."
     },
     {
       latin: "fīō",
@@ -133,8 +133,8 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "conjunction",
       gloss: "if",
-      example: "Sī Ferōx cibum videt, statim rapit.",
-      exampleGloss: "If Ferox sees food, he grabs it immediately."
+      example: "Sī Lupo cibum videt, statim rapit.",
+      exampleGloss: "If Lupo sees food, he grabs it immediately."
     },
     {
       latin: "nisi",
@@ -229,8 +229,8 @@ registerUnit({
       forms: "orīginis, f.",
       pos: "noun (3rd decl.)",
       gloss: "origin, beginning",
-      example: "Philō dē orīgine urbis Rōmae nārrat.",
-      exampleGloss: "Philo tells about the origin of the city of Rome."
+      example: "Phil dē orīgine urbis Rōmae nārrat.",
+      exampleGloss: "Phil tells about the origin of the city of Rome."
     },
     {
       latin: "condō",
@@ -269,8 +269,8 @@ registerUnit({
       forms: "salīre, saluī",
       pos: "verb (4th conj.)",
       gloss: "leap, jump",
-      example: "Ferōx in mēnsam salit et botulum rapit!",
-      exampleGloss: "Ferox leaps onto the table and grabs a sausage!"
+      example: "Lupo in mēnsam salit et botulum rapit!",
+      exampleGloss: "Lupo leaps onto the table and grabs a sausage!"
     },
     {
       latin: "interficiō",
@@ -293,17 +293,17 @@ registerUnit({
   readings: [
     {
       title: "Geminī et Lupa",
-      intro: "Philo sets the animal fables aside: today Quintus and Paulla hear how Rome began — with a usurper, a river, and a she-wolf.",
+      intro: "Phil sets the animal fables aside: today Quinn and Paula hear how Rome began — with a usurper, a river, and a she-wolf.",
       paragraphs: [
-        "Posterō diē Philō «hodiē» inquit «nōn dē animālibus, sed dē orīgine urbis Rōmae nārrāre volō». Quīntus laetus fit; fābulās enim dē rēgibus quam dē rānīs audīre māvult.",
+        "Posterō diē Phil «hodiē» inquit «nōn dē animālibus, sed dē orīgine urbis Rōmae nārrāre volō». Quinn laetus fit; fābulās enim dē rēgibus quam dē rānīs audīre māvult.",
         "«In urbe Albā Longā» inquit «ōlim Numitor rēx erat. Sed frāter eius Amūlius, cupidus rēgnandī, eī rēgnum rapuit. Fīliam quoque Numitōris, Rhēam Silviam, sacerdōtem fēcit, nē fīliōs habēret. Illa tamen ā deō Mārte geminōs peperit, Rōmulum Remumque.»",
         "«Rēx, īrā ārdēns, servō imperāvit ut īnfantēs in flūmen iaceret. Servus tamen, quī puerōs innocentēs interficere nōlēbat, eōs in arcā exposuit. ‹Sī dī eōs amant›, inquit, ‹vīvent.› Flūmen arcam lēniter tulit et tandem in siccō relīquit.»",
-        "«Tum lupa, quae dē montibus dēscenderat, vāgītūs puerōrum audīvit. Īnfantēs nōn dēvorāvit, sed quasi māter aluit. Mox Faustulus pāstor geminōs invēnit et in casam suam tulit. ‹Sī lupa eōs aluit›, inquit, ‹ad magna fāta nātī sunt.›» «Fortis lupa!» clāmat Paulla. «Ferōx nihil alit; botulōs tantum rapit.»"
+        "«Tum lupa, quae dē montibus dēscenderat, vāgītūs puerōrum audīvit. Īnfantēs nōn dēvorāvit, sed quasi māter aluit. Mox Faustulus pāstor geminōs invēnit et in casam suam tulit. ‹Sī lupa eōs aluit›, inquit, ‹ad magna fāta nātī sunt.›» «Fortis lupa!» clāmat Paula. «Lupo noster nihil alit; botulōs tantum rapit.»"
       ],
       glosses: {
         "posterō": "(on the) next",
         "diē": "day (abl. — «posterō diē», on the next day)",
-        "philō": "Philo, the Greek tutor",
+        "phil": "Phil, the Greek tutor (his name never changes form)",
         "hodiē": "today",
         "inquit": "says, said (used with quotations)",
         "nōn": "not",
@@ -315,7 +315,7 @@ registerUnit({
         "rōmae": "of Rome",
         "nārrāre": "to tell",
         "volō": "I want",
-        "quīntus": "Quintus, the son",
+        "quinn": "Quinn, the son (his name never changes form)",
         "laetus": "happy",
         "fit": "becomes (from «fīō»)",
         "fābulās": "stories (acc. pl.)",
@@ -413,8 +413,9 @@ registerUnit({
         "sunt": "(they) are — with «nātī»: were born",
         "fortis": "brave",
         "clāmat": "shouts",
-        "paulla": "Paulla, the daughter",
-        "ferōx": "Ferox, the family dog",
+        "paula": "Paula, the daughter",
+        "lupo": "Lupo, the family dog (quasi lupus — but not the she-wolf!)",
+        "noster": "our",
         "nihil": "nothing",
         "alit": "nourishes, rears",
         "botulōs": "sausages (acc. pl.)",
@@ -422,10 +423,10 @@ registerUnit({
         "rapit": "snatches, steals"
       },
       translation: [
-        "On the next day Philo said: «Today I want to tell you not about animals, but about the origin of the city of Rome.» Quintus becomes happy, for he prefers to hear stories about kings rather than about frogs.",
+        "On the next day Phil said: «Today I want to tell you not about animals, but about the origin of the city of Rome.» Quinn becomes happy, for he prefers to hear stories about kings rather than about frogs.",
         "«In the city of Alba Longa,» he said, «Numitor was once king. But his brother Amulius, greedy for ruling, seized the kingdom from him. He also made Numitor's daughter, Rhea Silvia, a priestess, so that she would have no sons. She, however, bore twins by the god Mars — Romulus and Remus.»",
         "«The king, burning with anger, ordered a slave to throw the infants into the river. But the slave, who did not want to kill the innocent boys, set them out in a chest. ‹If the gods love them,› he said, ‹they will live.› The river carried the chest gently and at last left it on dry ground.»",
-        "«Then a she-wolf, who had come down from the mountains, heard the boys' wailing. She did not devour the infants but nourished them like a mother. Soon the shepherd Faustulus found the twins and carried them into his cottage. ‹If a she-wolf has nourished them,› he said, ‹they were born for a great destiny.›» «Brave wolf!» shouts Paulla. «Ferox rears nothing — he only steals sausages.»"
+        "«Then a she-wolf, who had come down from the mountains, heard the boys' wailing. She did not devour the infants but nourished them like a mother. Soon the shepherd Faustulus found the twins and carried them into his cottage. ‹If a she-wolf has nourished them,› he said, ‹they were born for a great destiny.›» «Brave wolf!» shouts Paula. «Our Lupo rears nothing — he only steals sausages.»"
       ],
       questions: [
         {
@@ -476,13 +477,13 @@ registerUnit({
     },
     {
       title: "Urbs Conditur",
-      intro: "The twins grow up, take back a kingdom, and found a city — then Philo adds the tale of a girl as fearless as Paulla herself.",
+      intro: "The twins grow up, take back a kingdom, and found a city — then Phil adds the tale of a girl as fearless as Paula herself.",
       paragraphs: [
         "Geminī inter pāstōrēs crēscēbant, puerī audācēs et validī. Ubi iuvenēs factī sunt, Faustulus eīs vēram orīginem exposuit: ‹Fīliī Rhēae Silviae estis; Amūlius rēgnum avī vestrī tenet.› Tum frātrēs, quī iniūriam ferre nōlēbant, ad avum iuvandum Albam properāvērunt, Amūlium interfēcērunt, rēgnumque Numitōrī reddidērunt.",
         "Deinde novam urbem condere voluērunt eō locō ubi expositī erant. Sed uter rēx fierī dēbēbat? ‹Avēs spectēmus›, inquit Rōmulus; ‹sī dī mē rēgnāre volunt, ōmen mihi dabunt.› Remus prior sex vulturēs vīdit; Rōmulus autem duodecim. Ita Rōmulus, ōmine dīvīnō cōnfirmātus, imperium accēpit.",
         "Rōmulus ad urbem condendam moenia aedificāre coepit. Remus tamen, quī īram suam ferre nōn poterat, moenia nova rīsit: ‹Nisi meliōra moenia aedificās, urbem tuam nōn dēfendēs!› Et rīdēns super moenia saluit. Tum Rōmulus, īrā ārdēns, frātrem interfēcit et clāmāvit: ‹Sīc pereat quīcumque trāns moenia mea saliet!› Ita urbs nova ā Rōmulō Rōma appellāta est.",
-        "Quīntus tacēbat; fābula enim trīstis eī vidēbātur. ‹Nōlī maerēre›, inquit Philō. ‹Sīc urbēs magnae fīunt; sed aliam fābulam tibi nārrābō — dē puellā audācī, quae Paullae nostrae similis erat.› ‹Nārrā!› clāmat Paulla.",
-        "‹Ōlim, cum Porsenna, rēx Etrūscōrum, urbem Rōmam armīs premeret, Cloelia, virgō Rōmāna, inter obsidēs data erat. Illa tamen custōdēs fefellit et, multīs puellīs sē sequentibus, Tiberim trānatāvit. Rōmānī eam laudāvērunt; etiam hostēs virtūtem eius mīrātī sunt. Sī puella tanta facere potuit, quid nōs facere possumus?› Paulla surrēxit: ‹Ego quoque natāre possum!›"
+        "Quinn tacēbat; fābula enim trīstis eī vidēbātur. ‹Nōlī maerēre›, inquit Phil. ‹Sīc urbēs magnae fīunt; sed aliam fābulam tibi nārrābō — dē puellā audācī, quae Paulae nostrae similis erat.› ‹Nārrā!› clāmat Paula.",
+        "‹Ōlim, cum Porsenna, rēx Etrūscōrum, urbem Rōmam armīs premeret, Cloelia, virgō Rōmāna, inter obsidēs data erat. Illa tamen custōdēs fefellit et, multīs puellīs sē sequentibus, Tiberim trānatāvit. Rōmānī eam laudāvērunt; etiam hostēs virtūtem eius mīrātī sunt. Sī puella tanta facere potuit, quid nōs facere possumus?› Paula surrēxit: ‹Ego quoque natāre possum!›"
       ],
       glosses: {
         "geminī": "the twins",
@@ -602,7 +603,7 @@ registerUnit({
         "rōma": "Rome (the name given to the city)",
         "appellāta": "called, named — «appellāta est», was named",
         "est": "is — «appellāta est», was named",
-        "quīntus": "Quintus",
+        "quinn": "Quinn, the son",
         "tacēbat": "was silent",
         "fābula": "story",
         "enim": "for, you see",
@@ -611,7 +612,7 @@ registerUnit({
         "vidēbātur": "seemed (passive of «videō»)",
         "nōlī": "don't! («nōlī» + infinitive = negative command)",
         "maerēre": "to grieve",
-        "philō": "Philo, the tutor",
+        "phil": "Phil, the tutor",
         "urbēs": "cities (nom. pl.)",
         "magnae": "great (nom. pl.)",
         "fīunt": "come into being, are made (from «fīō»)",
@@ -623,12 +624,12 @@ registerUnit({
         "puellā": "girl (abl.)",
         "audācī": "fearless, bold (abl.)",
         "quae": "who (feminine)",
-        "paullae": "to Paulla (dat. — similar *to Paulla*)",
+        "paulae": "to Paula (dat. — similar *to Paula*; her name declines)",
         "nostrae": "our (dat.)",
         "similis": "similar, like (+ dat.)",
         "nārrā": "tell (it)! (imperative)",
         "clāmat": "shouts",
-        "paulla": "Paulla, the daughter",
+        "paula": "Paula, the daughter",
         "ōlim": "once, long ago",
         "cum": "when (+ subjunctive: a «cum»-clause)",
         "porsenna": "Porsenna, an Etruscan king who besieged Rome",
@@ -676,8 +677,8 @@ registerUnit({
         "The twins grew up among the shepherds, bold and sturdy boys. When they became young men, Faustulus revealed to them their true origin: ‹You are the sons of Rhea Silvia; Amulius holds your grandfather's kingdom.› Then the brothers, who were unwilling to bear the injustice, hurried to Alba to help their grandfather, killed Amulius, and gave the kingdom back to Numitor.",
         "Next they wanted to found a new city in the place where they had been set out. But which of the two ought to become king? ‹Let us watch the birds,› said Romulus; ‹if the gods want me to rule, they will give me an omen.› Remus saw six vultures first; Romulus, however, saw twelve. So Romulus, confirmed by the divine omen, received the command.",
         "Romulus began to build walls for founding the city. But Remus, who could not bear his anger, laughed at the new walls: ‹Unless you build better walls, you will not defend your city!› And, laughing, he leaped over the walls. Then Romulus, burning with anger, killed his brother and shouted: ‹So may whoever leaps across my walls perish!› Thus the new city was named Rome by Romulus.",
-        "Quintus was silent, for the story seemed sad to him. ‹Don't grieve,› said Philo. ‹This is how great cities come into being; but I shall tell you another story — about a fearless girl, who was like our Paulla.› ‹Tell it!› shouts Paulla.",
-        "‹Once, when Porsenna, king of the Etruscans, was pressing the city of Rome hard with arms, Cloelia, a Roman maiden, had been given among the hostages. She, however, tricked her guards and — with many girls following her — swam across the Tiber. The Romans praised her; even the enemy admired her courage. If a girl was able to do so much, what can we do?› Paulla jumped up: ‹I can swim too!›"
+        "Quinn was silent, for the story seemed sad to him. ‹Don't grieve,› said Phil. ‹This is how great cities come into being; but I shall tell you another story — about a fearless girl, who was like our Paula.› ‹Tell it!› shouts Paula.",
+        "‹Once, when Porsenna, king of the Etruscans, was pressing the city of Rome hard with arms, Cloelia, a Roman maiden, had been given among the hostages. She, however, tricked her guards and — with many girls following her — swam across the Tiber. The Romans praised her; even the enemy admired her courage. If a girl was able to do so much, what can we do?› Paula jumped up: ‹I can swim too!›"
       ],
       questions: [
         {
@@ -736,7 +737,7 @@ registerUnit({
       explain: "«volunt» is 3rd person plural. «vult» = he/she wants, «volumus» = we want, «vultis» = you (pl.) want."
     },
     {
-      prompt: "In «Quīntus fābulās quam cēnam māvult», what does «māvult» mean?",
+      prompt: "In «Quinn fābulās quam cēnam māvult», what does «māvult» mean?",
       options: ["he refuses", "he prefers", "he carries", "he becomes"],
       answer: 1,
       explain: "«mālō» = magis + volō, ‘want more’ — that is, prefer, usually paired with «quam» (‘rather than’)."

@@ -7,7 +7,7 @@ registerUnit({
   grammar: [
     {
       heading: "The perfect: the «it happened» tense",
-      body: "<p>Last unit you met the imperfect — the tense of background, of <em>was doing</em>. Now comes its partner, the <strong>perfect</strong>: the tense of events. <span class=\"la\">Nāvis nāvigābat</span> — the ship <em>was sailing</em> (scene-setting, camera panning). <span class=\"la\">Quīntus urbem cōnspexit</span> — Quintus <em>caught sight of</em> the city (click — it happened, once, done).</p><p>English renders the Latin perfect two ways, and both are right: <span class=\"la\">vīdī</span> can be <em>I saw</em> or <em>I have seen</em>. Context decides; don't agonize. The endings are unlike anything you have met so far — which is good news, because that makes them unmistakable.</p>",
+      body: "<p>Last unit you met the imperfect — the tense of background, of <em>was doing</em>. Now comes its partner, the <strong>perfect</strong>: the tense of events. <span class=\"la\">Nāvis nāvigābat</span> — the ship <em>was sailing</em> (scene-setting, camera panning). <span class=\"la\">Quinn urbem cōnspexit</span> — Quinn <em>caught sight of</em> the city (click — it happened, once, done).</p><p>English renders the Latin perfect two ways, and both are right: <span class=\"la\">vīdī</span> can be <em>I saw</em> or <em>I have seen</em>. Context decides; don't agonize. The endings are unlike anything you have met so far — which is good news, because that makes them unmistakable.</p>",
       table: {
         caption: "The perfect endings — «vīdī» (I saw, I have seen)",
         headers: ["Latin", "Who?", "English"],
@@ -39,7 +39,7 @@ registerUnit({
     },
     {
       heading: "«Fuī» and «potuī» — was and could, as events",
-      body: "<p><span class=\"la\">Sum</span> and <span class=\"la\">possum</span> have perfects too. <span class=\"la\">Fuī</span> is <em>I was / I have been</em>, viewed as a completed fact: <span class=\"la\">hodiē in urbe fuimus!</span> — <em>today we were (actually) in the city!</em> <span class=\"la\">Potuī</span> is <em>I was able, I could</em>: <span class=\"la\">Quīntus dormīre nōn potuit</span> — <em>Quintus could not sleep</em> (he tried, it is over, he failed).</p><p>Compare the imperfects from last unit: <span class=\"la\">erat</span> paints the scene (<em>it was night</em>), <span class=\"la\">fuit</span> reports the fact (<em>he was there — done</em>).</p>",
+      body: "<p><span class=\"la\">Sum</span> and <span class=\"la\">possum</span> have perfects too. <span class=\"la\">Fuī</span> is <em>I was / I have been</em>, viewed as a completed fact: <span class=\"la\">hodiē in urbe fuimus!</span> — <em>today we were (actually) in the city!</em> <span class=\"la\">Potuī</span> is <em>I was able, I could</em>: <span class=\"la\">Quinn dormīre nōn potuit</span> — <em>Quinn could not sleep</em> (he tried, it is over, he failed).</p><p>Compare the imperfects from last unit: <span class=\"la\">erat</span> paints the scene (<em>it was night</em>), <span class=\"la\">fuit</span> reports the fact (<em>he was there — done</em>).</p>",
       table: {
         caption: "sum → fuī, possum → potuī",
         headers: ["sum → fuī", "possum → potuī", "Who?"],
@@ -90,8 +90,8 @@ registerUnit({
       forms: "cōnspicere, cōnspexī, cōnspectum",
       pos: "verb (3rd conj. -iō)",
       gloss: "catch sight of",
-      example: "Paulla statuam magnam cōnspexit.",
-      exampleGloss: "Paulla caught sight of a great statue."
+      example: "Paula statuam magnam cōnspexit.",
+      exampleGloss: "Paula caught sight of a great statue."
     },
     {
       latin: "stupeō",
@@ -106,16 +106,16 @@ registerUnit({
       forms: "gaudēre",
       pos: "verb (2nd conj.)",
       gloss: "rejoice, be glad",
-      example: "Paulla gaudet et rīdet.",
-      exampleGloss: "Paulla is glad and laughs."
+      example: "Paula gaudet et rīdet.",
+      exampleGloss: "Paula is glad and laughs."
     },
     {
       latin: "mīrus",
       forms: "-a, -um",
       pos: "adjective (1st/2nd decl.)",
       gloss: "amazing, wonderful",
-      example: "Fābula Titī mīra erat.",
-      exampleGloss: "Titus's story was amazing."
+      example: "Fābula avunculī mīra erat.",
+      exampleGloss: "The uncle's story was amazing."
     },
     {
       latin: "tantus",
@@ -162,8 +162,8 @@ registerUnit({
       forms: "thermārum, f. pl.",
       pos: "noun (1st decl., pl. only)",
       gloss: "public baths",
-      example: "Mārcus in thermīs natāvit.",
-      exampleGloss: "Marcus swam in the public baths."
+      example: "Mark in thermīs natāvit.",
+      exampleGloss: "Mark swam in the public baths."
     },
     {
       latin: "columna",
@@ -226,8 +226,8 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "adverb",
       gloss: "immediately",
-      example: "Ferōx botulum statim dēvorāvit.",
-      exampleGloss: "Ferox immediately devoured the sausage."
+      example: "Lupo botulum statim dēvorāvit.",
+      exampleGloss: "Lupo immediately devoured the sausage."
     },
     {
       latin: "numquam",
@@ -266,11 +266,11 @@ registerUnit({
   readings: [
     {
       title: "Ad Portās Rōmae",
-      intro: "After days on the river, Titus's boat brings the family to Rome at last — just as night falls.",
+      intro: "After days on the river, Ted's boat brings the family to Rome at last — just as night falls.",
       paragraphs: [
-        "Herī familia Fabia ad urbem Rōmam tandem pervēnit. Nāvis per flūmen lentē nāvigābat; Quīntus et Paulla in nāve stābant et rīpās spectābant. Subitō Quīntus turrēs et templa procul cōnspexit. «Ecce!» clāmāvit. «Urbem videō! Rōmam videō!» Paulla gaudēbat; Ferōx lātrābat.",
-        "Postquam nāvis ad rīpam vēnit, Mārcus et Līvia et puerī ē nāve discessērunt. Titus tamen in nāve mānsit, quod nauta bonus semper prope nāvem manet. Ferōx statim in terram fūgit; canis nāvēs nōn amat.",
-        "Iam nox erat. Familia fessa per portam urbis ambulāvit et caupōnam prope forum invēnit. Ibi cēnam bonam habuērunt; deinde puerī in lectīs statim dormīvērunt. Quīntus tamen dormīre nōn potuit, quod sonōs urbis audiēbat: clāmōrēs, sonōs mīrōs. Tandem somnus vēnit."
+        "Herī familia Fabia ad urbem Rōmam tandem pervēnit. Nāvis per flūmen lentē nāvigābat; Quinn et Paula in nāve stābant et rīpās spectābant. Subitō Quinn turrēs et templa procul cōnspexit. «Ecce!» clāmāvit. «Urbem videō! Rōmam videō!» Paula gaudēbat; canis Lupo lātrābat.",
+        "Postquam nāvis ad rīpam vēnit, Mark et Julia et puerī ē nāve discessērunt. Avunculus Ted tamen in nāve mānsit, quod nauta bonus semper prope nāvem manet. Lupo statim in terram fūgit; canis nāvēs nōn amat.",
+        "Iam nox erat. Familia fessa per portam urbis ambulāvit et caupōnam prope forum invēnit. Ibi cēnam bonam habuērunt; deinde puerī in lectīs statim dormīvērunt. Quinn tamen dormīre nōn potuit, quod sonōs urbis audiēbat: clāmōrēs, sonōs mīrōs. Tandem somnus vēnit."
       ],
       glosses: {
         "herī": "yesterday",
@@ -286,9 +286,9 @@ registerUnit({
         "flūmen": "river",
         "lentē": "slowly",
         "nāvigābat": "was sailing (imperfect — background)",
-        "quīntus": "Quintus (the son)",
+        "quinn": "Quinn (the son — his name never changes form)",
         "et": "and",
-        "paulla": "Paulla (the daughter)",
+        "paula": "Paula (the daughter — her name declines: Paula, Paulae, Paulam…)",
         "in": "in, on; (+ acc.) into, onto",
         "nāve": "ship (abl. after «in»)",
         "stābant": "were standing (imperfect)",
@@ -303,17 +303,18 @@ registerUnit({
         "clāmāvit": "shouted (perfect)",
         "videō": "I see",
         "gaudēbat": "was overjoyed (imperfect)",
-        "ferōx": "Ferox (the dog)",
+        "lupo": "Lupo (the dog — quasi lupus! his name never changes form)",
         "lātrābat": "was barking (imperfect)",
         "postquam": "after",
         "rīpam": "bank (acc.)",
         "vēnit": "came (perfect — long ē; «venit» would be present)",
-        "mārcus": "Marcus (the father)",
-        "līvia": "Livia (the mother)",
+        "mark": "Mark (the father — his name never changes form)",
+        "julia": "Julia (the mother — her name declines: Julia, Juliae, Juliam…)",
         "puerī": "the children (nom. pl.)",
         "ē": "out of, off",
         "discessērunt": "departed, went off (perfect of «discēdō»)",
-        "titus": "Titus (Livia's brother, the ship's captain)",
+        "avunculus": "uncle (mother's brother)",
+        "ted": "Ted (Julia's brother, the ship's captain)",
         "tamen": "however",
         "mānsit": "stayed (perfect of «maneō»)",
         "quod": "because",
@@ -356,9 +357,9 @@ registerUnit({
         "somnus": "sleep (nom.)"
       },
       translation: [
-        "Yesterday the Fabius family at last arrived at the city of Rome. The ship was sailing slowly along the river; Quintus and Paulla were standing on the ship and watching the banks. Suddenly Quintus caught sight of towers and temples in the distance. «Look!» he shouted. «I see the city! I see Rome!» Paulla was overjoyed; Ferox was barking.",
-        "After the ship came to the bank, Marcus and Livia and the children went off the ship. Titus, however, stayed on the ship, because a good sailor always stays near his ship. Ferox immediately fled onto dry land; the dog does not love ships.",
-        "By now it was night. The tired family walked through the city gate and found an inn near the forum. There they had a good dinner; then the children fell asleep at once in their beds. Quintus, however, could not sleep, because he kept hearing the sounds of the city: shouts, strange sounds. At last sleep came."
+        "Yesterday the Fabius family at last arrived at the city of Rome. The ship was sailing slowly along the river; Quinn and Paula were standing on the ship and watching the banks. Suddenly Quinn caught sight of towers and temples in the distance. «Look!» he shouted. «I see the city! I see Rome!» Paula was overjoyed; Lupo the dog was barking.",
+        "After the ship came to the bank, Mark and Julia and the children went off the ship. Uncle Ted, however, stayed on the ship, because a good sailor always stays near his ship. Lupo immediately fled onto dry land; the dog does not love ships.",
+        "By now it was night. The tired family walked through the city gate and found an inn near the forum. There they had a good dinner; then the children fell asleep at once in their beds. Quinn, however, could not sleep, because he kept hearing the sounds of the city: shouts, strange sounds. At last sleep came."
       ],
       questions: [
         {
@@ -368,20 +369,20 @@ registerUnit({
           explain: "«Herī familia … pervēnit» — the adverb «herī» (yesterday) plus the perfect «pervēnit» (they arrived — done)."
         },
         {
-          q: "Why did Titus stay on the boat?",
+          q: "Why did Uncle Ted stay on the boat?",
           options: ["He was too tired to walk", "A good sailor always stays near his ship", "He was afraid of the crowds", "He wanted to guard the dinner"],
           answer: 1,
           explain: "«nauta bonus semper prope nāvem manet» — a good sailor always stays near the ship. Note the present tense for a general truth."
         },
         {
-          q: "«Cōnspexit» tells you that Quintus…",
+          q: "«Cōnspexit» tells you that Quinn…",
           options: ["was gazing at the banks for a long time", "is catching sight of them right now", "wants to catch sight of them", "caught sight of them — a single completed event"],
           answer: 3,
           explain: "«cōnspexit» has the -x- perfect stem (cōnspiciō → cōnspexī): a snapshot event, not ongoing background."
         },
         {
-          q: "Why couldn't Quintus fall asleep?",
-          options: ["The bed was hard", "Ferox was barking all night", "He kept hearing the sounds of the city", "He was hungry"],
+          q: "Why couldn't Quinn fall asleep?",
+          options: ["The bed was hard", "Lupo was barking all night", "He kept hearing the sounds of the city", "He was hungry"],
           answer: 2,
           explain: "«dormīre nōn potuit, quod sonōs urbis audiēbat» — he could not sleep because he kept hearing (imperfect!) the city's sounds."
         }
@@ -389,15 +390,15 @@ registerUnit({
     },
     {
       title: "Multa Mīra",
-      intro: "The next morning Marcus leads everyone out into the city for a day of firsts.",
+      intro: "The next morning Mark leads everyone out into the city for a day of firsts.",
       paragraphs: [
-        "Mārcus familiam per viās urbis dūxit. In forō Rōmānō stetērunt et stupuērunt: templa alta, columnae albae, statuae deōrum ibi erant; turba tanta per forum properābat. «Numquam tanta aedificia vīdī!» inquit Quīntus. «Templa Ostiae parva sunt; templa Rōmāna vērō tanta sunt!»",
-        "Deinde ad amphitheātrum vēnērunt, aedificium tantum. Quīntus stupuit et rogāvit: «Habitantne deī in aedificiō tantō?» Mārcus rīsit et respondit: «Minimē! Ibi Rōmānī spectācula spectant.» Mox in circō equōs cōnspexērunt; equī celeriter currēbant.",
-        "Tum puerī montem Palātīnum ascendērunt et palātium imperātōris cōnspexērunt. «Estne domus?» rogāvit Paulla. «Ita,» inquit Mārcus, «domus imperātōris est. Imperātor in domō parvā nōn habitat!» Mārcus fessus in thermās intrāvit. Ferōx quoque in thermās fūgit — et in aquā natāvit! Virī Rōmānī clāmāvērunt; Paulla rīsit; Mārcus īrātus canem ex aquā trāxit.",
-        "Tandem nox vēnit et familia fessa ad caupōnam ambulāvit. «Vīdistīne umquam tantam urbem?» rogāvit Quīntus. «Minimē, numquam!» respondit Paulla. «Hodiē multa mīra vīdimus: forum, amphitheātrum, circum, palātium — et canem in thermīs!» Mārcus rīsit: «Herī urbem procul vīdimus; hodiē in mediā urbe fuimus!» Ferōx dormiēbat: canis quoque fessus erat."
+        "Mark familiam per viās urbis dūxit. In forō Rōmānō stetērunt et stupuērunt: templa alta, columnae albae, statuae deōrum ibi erant; turba tanta per forum properābat. «Numquam tanta aedificia vīdī!» inquit Quinn. «Templa Ostiae parva sunt; templa Rōmāna vērō tanta sunt!»",
+        "Deinde ad amphitheātrum vēnērunt, aedificium tantum. Quinn stupuit et rogāvit: «Habitantne deī in aedificiō tantō?» Mark rīsit et respondit: «Minimē! Ibi Rōmānī spectācula spectant.» Mox in circō equōs cōnspexērunt; equī celeriter currēbant.",
+        "Tum puerī montem Palātīnum ascendērunt et palātium imperātōris cōnspexērunt. «Estne domus?» rogāvit Paula. «Ita,» inquit Mark, «domus imperātōris est. Imperātor in domō parvā nōn habitat!» Pater fessus in thermās intrāvit. Lupo quoque in thermās fūgit — et in aquā natāvit! Virī Rōmānī clāmāvērunt; Paula rīsit; Mark īrātus canem ex aquā trāxit.",
+        "Tandem nox vēnit et familia fessa ad caupōnam ambulāvit. «Vīdistīne umquam tantam urbem?» rogāvit Quinn. «Minimē, numquam!» respondit Paula. «Hodiē multa mīra vīdimus: forum, amphitheātrum, circum, palātium — et canem in thermīs!» Mark rīsit: «Herī urbem procul vīdimus; hodiē in mediā urbe fuimus!» Lupo dormiēbat: canis quoque fessus erat."
       ],
       glosses: {
-        "mārcus": "Marcus (the father)",
+        "mark": "Mark (the father)",
         "familiam": "family (acc.)",
         "per": "through",
         "viās": "streets (acc. pl.)",
@@ -425,7 +426,7 @@ registerUnit({
         "aedificia": "buildings (acc. pl.)",
         "vīdī": "I have seen (perfect of «videō»)",
         "inquit": "he/she says, said (with quotations)",
-        "quīntus": "Quintus (the son)",
+        "quinn": "Quinn (the son)",
         "ostiae": "of Ostia (gen.)",
         "parva": "small (n. pl.)",
         "sunt": "(they) are",
@@ -466,7 +467,8 @@ registerUnit({
         "imperātōris": "of the emperor (gen.)",
         "estne": "is it…? («est» + «-ne»)",
         "domus": "a house",
-        "paulla": "Paulla (the daughter)",
+        "paula": "Paula (the daughter)",
+        "pater": "father",
         "ita": "yes",
         "est": "it is",
         "imperātor": "the emperor",
@@ -477,7 +479,7 @@ registerUnit({
         "fessus": "tired",
         "thermās": "the public baths (acc. — «in» + acc. = into)",
         "intrāvit": "entered, went into (perfect)",
-        "ferōx": "Ferox (the dog)",
+        "lupo": "Lupo (the dog)",
         "quoque": "also, too",
         "fūgit": "dashed, ran off (perfect — long ū marks it)",
         "aquā": "water (abl.)",
@@ -514,17 +516,17 @@ registerUnit({
         "erat": "was (imperfect)"
       },
       translation: [
-        "Marcus led the family through the streets of the city. In the Roman Forum they stopped and were stunned: tall temples, white columns, statues of the gods were there; a huge crowd was hurrying through the forum. «I have never seen such great buildings!» said Quintus. «The temples of Ostia are small; Roman temples are truly enormous!»",
-        "Next they came to the amphitheater, so large a building. Quintus was stunned and asked: «Do gods live in so great a building?» Marcus laughed and answered: «Not at all! There the Romans watch shows.» Soon they caught sight of horses in the racetrack; the horses were running fast.",
-        "Then the children climbed the Palatine hill and caught sight of the emperor's palace. «Is it a house?» asked Paulla. «Yes,» said Marcus, «it is the emperor's house. The emperor does not live in a small house!» A tired Marcus went into the public baths. Ferox dashed into the baths too — and swam in the water! Roman men shouted; Paulla laughed; an angry Marcus dragged the dog out of the water.",
-        "At last night came, and the tired family walked back to the inn. «Have you ever seen so great a city?» asked Quintus. «No, never!» answered Paulla. «Today we saw many amazing things: the forum, the amphitheater, the racetrack, the palace — and a dog in the public baths!» Marcus laughed: «Yesterday we saw the city from afar; today we have been in the very middle of the city!» Ferox was already sleeping: the dog, too, was tired."
+        "Mark led the family through the streets of the city. In the Roman Forum they stopped and were stunned: tall temples, white columns, statues of the gods were there; a huge crowd was hurrying through the forum. «I have never seen such great buildings!» said Quinn. «The temples of Ostia are small; Roman temples are truly enormous!»",
+        "Next they came to the amphitheater, so large a building. Quinn was stunned and asked: «Do gods live in so great a building?» Mark laughed and answered: «Not at all! There the Romans watch shows.» Soon they caught sight of horses in the racetrack; the horses were running fast.",
+        "Then the children climbed the Palatine hill and caught sight of the emperor's palace. «Is it a house?» asked Paula. «Yes,» said Mark, «it is the emperor's house. The emperor does not live in a small house!» The tired father went into the public baths. Lupo dashed into the baths too — and swam in the water! Roman men shouted; Paula laughed; an angry Mark dragged the dog out of the water.",
+        "At last night came, and the tired family walked back to the inn. «Have you ever seen so great a city?» asked Quinn. «No, never!» answered Paula. «Today we saw many amazing things: the forum, the amphitheater, the racetrack, the palace — and a dog in the public baths!» Mark laughed: «Yesterday we saw the city from afar; today we have been in the very middle of the city!» Lupo was already sleeping: the dog, too, was tired."
       ],
       questions: [
         {
-          q: "What did Quintus wonder about the amphitheater?",
-          options: ["Whether gods lived in it", "Whether it was the emperor's palace", "How much it had cost to build", "Whether Titus had ever seen it"],
+          q: "What did Quinn wonder about the amphitheater?",
+          options: ["Whether gods lived in it", "Whether it was the emperor's palace", "How much it had cost to build", "Whether Uncle Ted had ever seen it"],
           answer: 0,
-          explain: "«Habitantne deī in aedificiō tantō?» — do gods live in so great a building? Marcus laughs: no, the Romans watch shows there."
+          explain: "«Habitantne deī in aedificiō tantō?» — do gods live in so great a building? Mark laughs: no, the Romans watch shows there."
         },
         {
           q: "«Stetērunt et stupuērunt» tells you that the family…",
@@ -533,13 +535,13 @@ registerUnit({
           explain: "Both verbs end in -ērunt, the perfect «they» ending: two snapshot events in a row — they halted, they were stunned."
         },
         {
-          q: "What did Ferox do at the baths?",
+          q: "What did Lupo do at the baths?",
           options: ["He stole a bather's tunic", "He dashed in and swam in the water", "He fell asleep at the door", "He bit a Roman"],
           answer: 1,
-          explain: "«Ferōx quoque in thermās fūgit — et in aquā natāvit!» — he dashed into the baths and swam. Hence the shouting Romans and the angry Marcus."
+          explain: "«Lupo quoque in thermās fūgit — et in aquā natāvit!» — he dashed into the baths and swam. Hence the shouting Romans and the angry Mark."
         },
         {
-          q: "«Hodiē in mediā urbe fuimus» — Marcus means that…",
+          q: "«Hodiē in mediā urbe fuimus» — Mark means that…",
           options: ["they will be in the city today", "today they have actually been in the middle of the city", "they lived in the city long ago, as children", "they can visit the city today"],
           answer: 1,
           explain: "«fuimus» is the perfect of «sum»: we were / we have been — a completed fact, contrasted with «herī … procul vīdimus» (yesterday we only saw it from afar)."

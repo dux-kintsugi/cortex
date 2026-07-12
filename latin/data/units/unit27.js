@@ -2,7 +2,7 @@ registerUnit({
   id: 27,
   stage: 3,
   title: "Fābulae",
-  tagline: "Cum-clauses, indirect questions, and the last two subjunctives — Philo opens the fables of Phaedrus",
+  tagline: "Cum-clauses, indirect questions, and the last two subjunctives — Phil opens the fables of Phaedrus",
 
   grammar: [
     {
@@ -50,7 +50,7 @@ registerUnit({
     },
     {
       heading: "Reading a fable: «fābula docet»",
-      body: "<p>Phaedrus, a freedman in the household of Augustus, turned Aesop’s Greek animal tales into short Latin poems — the first book of fables in Latin. The animals are masks: the wolf is every bully who invents a pretext, the crow every soul too pleased by praise, the frog every neighbor consumed by envy. That is why Philo calls the fables lessons in <span class=\"la\">mōrēs hominum</span> — the character of human beings. One honest note before you read: Phaedrus wrote these fables in verse, but Philō retells them here in prose — so when you meet the originals one day, the words will look reshuffled, though the story will be exactly the one you already know.</p><p>Every fable snaps shut with a moral, often introduced by the formula <span class=\"la\">fābula docet</span> — ‘the story teaches’. Read the story for the plot; then slow down at the moral, because that is where this unit’s grammar likes to gather: <span class=\"la\">Fābula docet: homō malus, ubi nocēre cōnstituit, causam semper invenit.</span></p>",
+      body: "<p>Phaedrus, a freedman in the household of Augustus, turned Aesop’s Greek animal tales into short Latin poems — the first book of fables in Latin. The animals are masks: the wolf is every bully who invents a pretext, the crow every soul too pleased by praise, the frog every neighbor consumed by envy. That is why Phil calls the fables lessons in <span class=\"la\">mōrēs hominum</span> — the character of human beings. One honest note before you read: Phaedrus wrote these fables in verse, but Phil retells them here in prose — so when you meet the originals one day, the words will look reshuffled, though the story will be exactly the one you already know.</p><p>Every fable snaps shut with a moral, often introduced by the formula <span class=\"la\">fābula docet</span> — ‘the story teaches’. Read the story for the plot; then slow down at the moral, because that is where this unit’s grammar likes to gather: <span class=\"la\">Fābula docet: homō malus, ubi nocēre cōnstituit, causam semper invenit.</span></p>",
       tip: "When the narrative stops and «fābula docet» appears, the writer is looking straight at you. Everything after the colon is the point."
     }
   ],
@@ -229,8 +229,8 @@ registerUnit({
       forms: "mordēre, momordī, morsum",
       pos: "verb (2nd conj.)",
       gloss: "bite",
-      example: "Ferōx nēminem mordet, sed botulōs rapit.",
-      exampleGloss: "Ferox bites no one — but he does snatch sausages."
+      example: "Canis Lupo nēminem mordet, sed botulōs rapit.",
+      exampleGloss: "Lupo the dog bites no one — but he does snatch sausages."
     },
     {
       latin: "dēspiciō",
@@ -261,17 +261,17 @@ registerUnit({
   readings: [
     {
       title: "Lupus et Agnus",
-      intro: "Philo opens the book of Phaedrus for Quintus: the first fable — a wolf, a lamb, and the logic of the powerful.",
+      intro: "Phil opens the book of Phaedrus for Quinn: the first fable — a wolf, a lamb, and the logic of the powerful.",
       paragraphs: [
-        "Philō et Quīntus in hortō sedēbant. «Hodiē», inquit paedagōgus, «fābulās legēmus quās Phaedrus poēta dē animālibus scrīpsit. Scīsne cūr animālia in fābulīs loquantur? Quod fābulae, dum dē animālibus nārrant, mōrēs hominum vērē docent.»",
+        "Phil et Quinn in hortō sedēbant. «Hodiē», inquit paedagōgus, «fābulās legēmus quās Phaedrus poēta dē animālibus scrīpsit. Scīsne cūr animālia in fābulīs loquantur? Quod fābulae, dum dē animālibus nārrant, mōrēs hominum vērē docent.»",
         "Ōlim lupus et agnus ad rīvum vēnerant. Superiōre locō stābat lupus, īnferiōre agnus humilis. Lupus, cum agnum innocentem cōnspexisset, causam iniūriae quaerēbat. «Cūr», inquit īrātus, «aquam meam turbāvistī?» Agnus perterritus respondit: «Quōmodo aquam tuam turbāre potuī? Aqua ā tē ad mē dēcurrit.»",
         "Tum lupus aliam culpam quaesīvit: «Ante sex mēnsēs dē mē male dīxistī.» «Tum nōndum nātus eram», respondit agnus. «Igitur pater tuus dē mē male dīxit!» clāmāvit lupus, et agnum miserum rapuit et dēvorāvit. Fābula docet: homō malus, ubi nocēre cōnstituit, causam iniūriae semper invenit.",
-        "Quīntus, cum fābulam audīvisset, diū tacēbat. Tandem rogāvit num omnēs lupī tam malī essent. Philō rīsit. «Dē lupīs vērīs nesciō», inquit; «sed hominēs quī lupīs similēs sunt ubīque inveniuntur.»"
+        "Quinn, cum fābulam audīvisset, diū tacēbat. Tandem rogāvit num omnēs lupī tam malī essent. Phil rīsit. «Dē lupīs vērīs nesciō», inquit; «sed hominēs quī lupīs similēs sunt ubīque inveniuntur.»"
       ],
       glosses: {
-        "philō": "Philo, the Greek tutor",
+        "phil": "Phil, the Greek tutor (his name never changes form)",
         "et": "and",
-        "quīntus": "Quintus, the son",
+        "quinn": "Quinn, the son (his name never changes form)",
         "in": "in, on",
         "hortō": "the garden (abl.)",
         "sedēbant": "(they) were sitting",
@@ -386,14 +386,14 @@ registerUnit({
         "inveniuntur": "are found (present passive)"
       },
       translation: [
-        "Philo and Quintus were sitting in the garden. «Today,» said the tutor, «we shall read the fables that the poet Phaedrus wrote about animals. Do you know why animals speak in fables? Because fables, while they tell about animals, truly teach the character of human beings.»",
+        "Phil and Quinn were sitting in the garden. «Today,» said the tutor, «we shall read the fables that the poet Phaedrus wrote about animals. Do you know why animals speak in fables? Because fables, while they tell about animals, truly teach the character of human beings.»",
         "Once upon a time a wolf and a lamb had come to a stream. The wolf stood in the higher spot, the humble lamb in the lower. The wolf, when he had caught sight of the innocent lamb, went looking for a pretext for an injustice. «Why,» he said angrily, «have you muddied my water?» The terrified lamb replied: «How could I have muddied your water? The water runs down from you to me.»",
         "Then the wolf hunted for another charge: «Six months ago you spoke ill of me.» «I had not yet been born then,» the lamb replied. «Then your father spoke ill of me!» shouted the wolf, and he seized the poor lamb and devoured him. The story teaches: a wicked man, once he has decided to do harm, always finds a pretext for the injustice.",
-        "Quintus, when he had heard the fable, was silent for a long time. At last he asked whether all wolves were so wicked. Philo laughed. «About real wolves I do not know,» he said; «but human beings who are like wolves are found everywhere.»"
+        "Quinn, when he had heard the fable, was silent for a long time. At last he asked whether all wolves were so wicked. Phil laughed. «About real wolves I do not know,» he said; «but human beings who are like wolves are found everywhere.»"
       ],
       questions: [
         {
-          q: "According to Philo, why do fables put animals on stage?",
+          q: "According to Phil, why do fables put animals on stage?",
           options: [
             "Because Romans loved animals more than people",
             "Because while telling about animals, fables truly teach the character of human beings",
@@ -426,7 +426,7 @@ registerUnit({
           explain: "«Tum nōndum nātus eram» — ‘I had not yet been born then.’ The wolf’s charges cannot be true — and he does not care."
         },
         {
-          q: "In «rogāvit num omnēs lupī tam malī essent», what is Quintus asking?",
+          q: "In «rogāvit num omnēs lupī tam malī essent», what is Quinn asking?",
           options: [
             "Whether all wolves are so wicked",
             "Why wolves eat lambs",
@@ -439,18 +439,18 @@ registerUnit({
       ]
     },
     {
-      title: "Corvus, Rāna, Ferōx",
-      intro: "Paulla joins the lesson, and Philo tells two more fables — flattery from a fox, and a frog with a fatal ambition. Ferox supplies a third.",
+      title: "Corvus, Rāna, Lupo",
+      intro: "Paula joins the lesson, and Phil tells two more fables — flattery from a fox, and a frog with a fatal ambition. Lupo supplies a third.",
       paragraphs: [
-        "Posterō diē Paulla quoque in hortum vēnit, nam fābulās audīre cupiēbat. «Nārrā nōbīs fābulam novam!» inquit. Philō igitur dē vulpe et corvō nārrāre coepit.",
+        "Posterō diē Paula quoque in hortum vēnit, nam fābulās audīre cupiēbat. «Nārrā nōbīs fābulam novam!» inquit. Phil igitur dē vulpe et corvō nārrāre coepit.",
         "Corvus cāseum in ōre tenēbat et in altā arbore sedēbat. Vulpēs, quae cāseum cupiēbat, sub arbore stetit et avem laudāre coepit: «Quam pulchrae sunt pennae tuae! Quam pulchra est fōrma tua! Ūnum tantum nesciō: quālis sit vōx tua.» Corvus superbus, cum haec verba dulcia audīvisset, cantāre cōnstituit. Sed cum ōs aperuisset, cāseus ad terram cecidit, et vulpēs eum statim rapuit. «Vōx tua pulchra est», inquit vulpēs rīdēns, «sed mēns tua parva.» Ita corvus stultus fraude dēceptus est.",
-        "Deinde Philō alteram fābulam nārrāvit. Rāna parva in prātō bovem ingentem cōnspexit et invidiā mōta est. «Quam magnus est bōs!» inquit. «Sed ego quoque tam magna esse possum.» Tum sē īnflāre coepit et fīliōs rogāvit num iam maior esset quam bōs. «Minimē, māter», respondērunt. Iterum sē īnflāvit rāna superba; iterum rogāvit num bovem magnitūdine superāvisset. Tandem, dum iterum sē īnflat, rupta est. Fābula docet: invidia superbōs ad mortem dūcit.",
-        "Dum Philō dē rānā nārrat, Ferōx in hortum cucurrit; botulum, quem ē culīnā rapuerat, sub mēnsā dēvorāvit. «Ecce fābula nova!» rīsit Paulla. «Dē cane et botulō!» Sed Quīntus: «Nesciō», inquit, «utrum Ferōx lupus an vulpēs sit: rapit ut lupus, sed dēcipit ut vulpēs.» Omnēs rīsērunt; Ferōx autem, quī iam alterum botulum quaerēbat, laetissimus omnium erat."
+        "Deinde Phil alteram fābulam nārrāvit. Rāna parva in prātō bovem ingentem cōnspexit et invidiā mōta est. «Quam magnus est bōs!» inquit. «Sed ego quoque tam magna esse possum.» Tum sē īnflāre coepit et fīliōs rogāvit num iam maior esset quam bōs. «Minimē, māter», respondērunt. Iterum sē īnflāvit rāna superba; iterum rogāvit num bovem magnitūdine superāvisset. Tandem, dum iterum sē īnflat, rupta est. Fābula docet: invidia superbōs ad mortem dūcit.",
+        "Dum Phil dē rānā nārrat, canis Lupo in hortum cucurrit; botulum, quem ē culīnā rapuerat, sub mēnsā dēvorāvit. «Ecce fābula nova!» rīsit Paula. «Dē cane et botulō!» Sed Quinn: «Nesciō», inquit, «utrum canis noster lupus an vulpēs sit: rapit ut lupus, sed dēcipit ut vulpēs.» Omnēs rīsērunt; Lupo autem, quī iam alterum botulum quaerēbat, laetissimus omnium erat."
       ],
       glosses: {
         "posterō": "the next («posterō diē» = on the next day)",
         "diē": "day (abl. of «diēs» — time when)",
-        "paulla": "Paulla, the daughter",
+        "paula": "Paula, the daughter",
         "quoque": "also, too",
         "in": "in, on; (with acc.) into",
         "hortum": "the garden (acc. — after «in», into)",
@@ -464,7 +464,7 @@ registerUnit({
         "fābulam": "a fable, story (acc.)",
         "novam": "new (acc.)",
         "inquit": "said (used with quoted speech)",
-        "philō": "Philo, the Greek tutor",
+        "phil": "Phil, the Greek tutor",
         "igitur": "and so, therefore",
         "dē": "about, concerning",
         "vulpe": "the fox (abl. — after «dē»)",
@@ -571,7 +571,8 @@ registerUnit({
         "dūcit": "leads",
         "rānā": "the frog (abl. — after «dē»)",
         "nārrat": "is telling",
-        "ferōx": "Ferox, the family dog",
+        "canis": "the dog",
+        "lupo": "Lupo, the family dog — quasi lupus! (his name never changes form; not to be confused with the wolf «lupus»)",
         "cucurrit": "ran (perfect of «currō»)",
         "botulum": "a sausage (acc.)",
         "quem": "which (acc. — relative)",
@@ -585,7 +586,8 @@ registerUnit({
         "rīsit": "laughed (perfect)",
         "cane": "the Dog (abl. — after «dē»)",
         "botulō": "the Sausage (abl. — after «dē»)",
-        "quīntus": "Quintus, the son",
+        "quinn": "Quinn, the son",
+        "noster": "our",
         "utrum": "whether («utrum … an» = whether … or)",
         "lupus": "a wolf",
         "an": "or («utrum … an» = whether … or)",
@@ -603,10 +605,10 @@ registerUnit({
         "erat": "was"
       },
       translation: [
-        "On the next day Paulla too came into the garden, for she wanted to hear the fables. «Tell us a new story!» she said. So Philo began to tell about the fox and the crow.",
+        "On the next day Paula too came into the garden, for she wanted to hear the fables. «Tell us a new story!» she said. So Phil began to tell about the fox and the crow.",
         "A crow was holding a cheese in his beak and sitting in a tall tree. A fox, who wanted the cheese, took a stand under the tree and began to praise the bird: «How beautiful your feathers are! How beautiful your figure! One thing only I do not know: what your voice is like.» The proud crow, when he had heard these sweet words, decided to sing. But when he had opened his beak, the cheese fell to the ground, and the fox snatched it at once. «Your voice is beautiful,» said the fox, laughing, «but your mind is small.» Thus the foolish crow was deceived by trickery.",
-        "Then Philo told a second fable. A little frog caught sight of a huge ox in a meadow and was seized by envy. «How big the ox is!» she said. «But I too can be that big.» Then she began to puff herself up, and asked her sons whether she was now bigger than the ox. «No, mother,» they answered. Again the proud frog puffed herself up; again she asked whether she had surpassed the ox in size. At last, while she was puffing herself up yet again, she burst. The story teaches: envy leads the proud to death.",
-        "While Philo was telling about the frog, Ferox ran into the garden; under the table he devoured a sausage which he had snatched from the kitchen. «Look, a new fable!» laughed Paulla. «About the Dog and the Sausage!» But Quintus said: «I do not know whether Ferox is a wolf or a fox: he snatches like a wolf, but he deceives like a fox.» Everyone laughed; and Ferox, who was already looking for a second sausage, was the happiest of them all."
+        "Then Phil told a second fable. A little frog caught sight of a huge ox in a meadow and was seized by envy. «How big the ox is!» she said. «But I too can be that big.» Then she began to puff herself up, and asked her sons whether she was now bigger than the ox. «No, mother,» they answered. Again the proud frog puffed herself up; again she asked whether she had surpassed the ox in size. At last, while she was puffing herself up yet again, she burst. The story teaches: envy leads the proud to death.",
+        "While Phil was telling about the frog, Lupo the dog ran into the garden; under the table he devoured a sausage which he had snatched from the kitchen. «Look, a new fable!» laughed Paula. «About the Dog and the Sausage!» But Quinn said: «I do not know whether our dog is a wolf or a fox: he snatches like a wolf, but he deceives like a fox.» Everyone laughed; and Lupo, who was already looking for a second sausage, was the happiest of them all."
       ],
       questions: [
         {
@@ -643,15 +645,15 @@ registerUnit({
           explain: "«dum iterum sē īnflat, rupta est» — the perfect passive «rupta est» delivers the pop."
         },
         {
-          q: "What does Quintus say he does not know about Ferox?",
+          q: "What does Quinn say he does not know about Lupo?",
           options: [
-            "Whether Ferōx is a wolf or a fox — «utrum lupus an vulpēs sit»",
-            "Where Ferōx found the sausage",
-            "Whether Ferōx will ever be trained",
-            "Why Ferōx is afraid of thunder"
+            "Whether the dog is a wolf or a fox — «utrum lupus an vulpēs sit»",
+            "Where Lupo found the sausage",
+            "Whether Lupo will ever be trained",
+            "Why Lupo is afraid of thunder"
           ],
           answer: 0,
-          explain: "«Nesciō utrum Ferōx lupus an vulpēs sit» — a double indirect question: he snatches like a wolf but deceives like a fox."
+          explain: "«Nesciō utrum canis noster lupus an vulpēs sit» — a double indirect question: he snatches like a wolf but deceives like a fox."
         }
       ]
     }
@@ -698,7 +700,7 @@ registerUnit({
       explain: "The direct question «Quid tenet?» becomes indirect after «rogat», and Latin marks that shift with the subjunctive: «quid … teneat». Translate it as an ordinary question."
     },
     {
-      prompt: "In «Nesciō utrum Ferōx lupus an vulpēs sit», what does «utrum … an» signal?",
+      prompt: "In «Nesciō utrum canis noster lupus an vulpēs sit», what does «utrum … an» signal?",
       options: [
         "A comparison: ‘more … than’",
         "A double indirect question: ‘whether … or’",
@@ -731,10 +733,10 @@ registerUnit({
       explain: "«superbōs» is masculine accusative plural, an adjective used substantively (unit 10): envy leads ‘proud people’ to death. The subject is «invidia»."
     },
     {
-      prompt: "«Quīntus rogāvit cūr lupus īrātus esset.» When was the wolf angry?",
+      prompt: "«Quinn rogāvit cūr lupus īrātus esset.» When was the wolf angry?",
       options: [
         "At the same time as the asking — the imperfect subjunctive marks same-time in the past",
-        "Before Quintus asked — the anger was already over",
+        "Before Quinn asked — the anger was already over",
         "In the future, after the question",
         "The sentence does not say the wolf was angry at all"
       ],

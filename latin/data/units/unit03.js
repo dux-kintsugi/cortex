@@ -7,7 +7,7 @@ registerUnit({
   grammar: [
     {
       heading: "Verbs at last: ‑t and ‑nt",
-      body: "<p>For two units the family has mostly just <em>been</em> things — <span class=\"la\">Ferōx est canis</span>, <span class=\"la\">hortus magnus est</span>. Now the household starts <em>doing</em> things. A Latin action verb carries its subject on its tail: <strong>‑t</strong> means <em>one</em> person or thing does it, <strong>‑nt</strong> means <em>more than one</em>.</p><p><span class=\"la\">Labōrat</span> is a complete sentence all by itself: “he works,” “she works,” or “it works.” Latin needs no pronoun — the <strong>‑t</strong> already says it. And one Latin form covers three English ones: <span class=\"la\">cantat</span> is “she sings,” “she is singing,” and “she does sing.” Pick whichever English fits the story.</p>",
+      body: "<p>For two units the family has mostly just <em>been</em> things — <span class=\"la\">Lupo est canis</span>, <span class=\"la\">hortus magnus est</span>. Now the household starts <em>doing</em> things. A Latin action verb carries its subject on its tail: <strong>‑t</strong> means <em>one</em> person or thing does it, <strong>‑nt</strong> means <em>more than one</em>.</p><p><span class=\"la\">Labōrat</span> is a complete sentence all by itself: “he works,” “she works,” or “it works.” Latin needs no pronoun — the <strong>‑t</strong> already says it. And one Latin form covers three English ones: <span class=\"la\">cantat</span> is “she sings,” “she is singing,” and “she does sing.” Pick whichever English fits the story.</p>",
       table: {
         caption: "Present tense, third person — the verbs of this unit",
         headers: ["One doer (‑t)", "Meaning", "Several doers (‑nt)", "Meaning"],
@@ -23,7 +23,7 @@ registerUnit({
     },
     {
       heading: "Two verb families",
-      body: "<p>Listen to the vowel at the heart of the verb. Verbs of the <strong>first family</strong> hum on <strong>a</strong>: <span class=\"la\">labōrat, cantat, vocat, portat, ambulat</span>. Verbs of the <strong>second family</strong> hum on <strong>e</strong>: <span class=\"la\">videt, sedet, tenet, habet</span>. Same tails, different hum — and the meaning of <strong>‑t</strong> and <strong>‑nt</strong> never changes.</p><p>One sleepy exception sneaks in with the vocabulary: <span class=\"la\">dormiō</span> (sleep) belongs to a family you will meet properly much later. For now you only need to recognize <span class=\"la\">dormit</span> (one sleeper — usually Ferox) and <span class=\"la\">dormiunt</span> (several sleepers).</p><p>The <strong>a</strong>-family is what dictionaries call the <strong>1st conjugation</strong>, the <strong>e</strong>-family the <strong>2nd conjugation</strong> — just numbered names for the two families you have already heard humming. (The <span class=\"la\">‑āre</span> form, as in <span class=\"la\">cantāre</span>, is the verb’s dictionary name — you will meet it properly in Unit 11.)</p>",
+      body: "<p>Listen to the vowel at the heart of the verb. Verbs of the <strong>first family</strong> hum on <strong>a</strong>: <span class=\"la\">labōrat, cantat, vocat, portat, ambulat</span>. Verbs of the <strong>second family</strong> hum on <strong>e</strong>: <span class=\"la\">videt, sedet, tenet, habet</span>. Same tails, different hum — and the meaning of <strong>‑t</strong> and <strong>‑nt</strong> never changes.</p><p>One sleepy exception sneaks in with the vocabulary: <span class=\"la\">dormiō</span> (sleep) belongs to a family you will meet properly much later. For now you only need to recognize <span class=\"la\">dormit</span> (one sleeper — usually Lupo) and <span class=\"la\">dormiunt</span> (several sleepers).</p><p>The <strong>a</strong>-family is what dictionaries call the <strong>1st conjugation</strong>, the <strong>e</strong>-family the <strong>2nd conjugation</strong> — just numbered names for the two families you have already heard humming. (The <span class=\"la\">‑āre</span> form, as in <span class=\"la\">cantāre</span>, is the verb’s dictionary name — you will meet it properly in Unit 11.)</p>",
       table: {
         caption: "The family vowel (heard in full in the dictionary forms: cantāre, habēre)",
         headers: ["Family", "Vowel", "One doer", "Several doers"],
@@ -36,8 +36,8 @@ registerUnit({
     },
     {
       heading: "The verb likes to come last",
-      body: "<p>English nails its verb down between subject and object; Latin loves to save the verb for the end: <span class=\"la\">Ancilla semper cantat</span> — literally “the maid always sings.” So don’t panic in the middle of a Latin sentence. Hold the subject in your mind, collect the little words as they come, and expect the action to land at the period.</p><p>But because the <em>endings</em> — not the word order — tell you who does what, Latin can also push the verb to the front for drama: <span class=\"la\">dormit Ferōx!</span> means exactly what <span class=\"la\">Ferōx dormit</span> means. Word order moves the spotlight; it never changes the facts.</p>",
-      tip: "Reading tip: a verb at the start of a sentence is a drumroll, not a new rule. Read «dormit Ferōx» as “asleep — that’s our Ferox.”"
+      body: "<p>English nails its verb down between subject and object; Latin loves to save the verb for the end: <span class=\"la\">Ancilla semper cantat</span> — literally “the maid always sings.” So don’t panic in the middle of a Latin sentence. Hold the subject in your mind, collect the little words as they come, and expect the action to land at the period.</p><p>But because the <em>endings</em> — not the word order — tell you who does what, Latin can also push the verb to the front for drama: <span class=\"la\">dormit Lupo!</span> means exactly what <span class=\"la\">Lupo dormit</span> means. Word order moves the spotlight; it never changes the facts.</p>",
+      tip: "Reading tip: a verb at the start of a sentence is a drumroll, not a new rule. Read «dormit Lupo» as “asleep — that’s our Lupo.”"
     },
     {
       heading: "Little words that run the clock",
@@ -95,8 +95,8 @@ registerUnit({
       forms: "vocāre, vocāvī, vocātum",
       pos: "verb (1st conj.)",
       gloss: "call",
-      example: "Māter vocat: «Paulla! Paulla!»",
-      exampleGloss: "Mother calls: «Paulla! Paulla!»"
+      example: "Māter vocat: «Paula! Paula!»",
+      exampleGloss: "Mother calls: «Paula! Paula!»"
     },
     {
       latin: "cantō",
@@ -111,8 +111,8 @@ registerUnit({
       forms: "amāre, amāvī, amātum",
       pos: "verb (1st conj.)",
       gloss: "love, like",
-      example: "Ecce cibus! Ferōx amat.",
-      exampleGloss: "Look — food! Ferox loves it."
+      example: "Ecce cibus! Lupo amat.",
+      exampleGloss: "Look — food! Lupo loves it."
     },
     {
       latin: "habitō",
@@ -135,8 +135,8 @@ registerUnit({
       forms: "spectāre, spectāvī, spectātum",
       pos: "verb (1st conj.)",
       gloss: "look at, watch",
-      example: "Ferōx dormit; Paulla spectat.",
-      exampleGloss: "Ferox is sleeping; Paulla is watching."
+      example: "Lupo dormit; Paula spectat.",
+      exampleGloss: "Lupo is sleeping; Paula is watching."
     },
     {
       latin: "videō",
@@ -151,8 +151,8 @@ registerUnit({
       forms: "habēre, habuī, habitum",
       pos: "verb (2nd conj.)",
       gloss: "have, hold",
-      example: "Cibus? Ferōx iam habet!",
-      exampleGloss: "Food? Ferox already has some!"
+      example: "Cibus? Lupo iam habet!",
+      exampleGloss: "Food? Lupo already has some!"
     },
     {
       latin: "sedeō",
@@ -167,8 +167,8 @@ registerUnit({
       forms: "tenēre, tenuī, tentum",
       pos: "verb (2nd conj.)",
       gloss: "hold",
-      example: "Paulla tenet — et Ferōx quoque tenet!",
-      exampleGloss: "Paulla holds on — and Ferox holds on too! (a tug-of-war)"
+      example: "Paula tenet — et Lupo quoque tenet!",
+      exampleGloss: "Paula holds on — and Lupo holds on too! (a tug-of-war)"
     },
     {
       latin: "dormiō",
@@ -215,8 +215,8 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "adverb",
       gloss: "often",
-      example: "Paulla saepe cantat.",
-      exampleGloss: "Paulla often sings."
+      example: "Paula saepe cantat.",
+      exampleGloss: "Paula often sings."
     },
     {
       latin: "iam",
@@ -231,8 +231,8 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "adverb",
       gloss: "always",
-      example: "Ferōx semper dormit.",
-      exampleGloss: "Ferox is always sleeping."
+      example: "Lupo semper dormit.",
+      exampleGloss: "Lupo is always sleeping."
     },
     {
       latin: "deinde",
@@ -265,10 +265,10 @@ registerUnit({
       title: "Familia labōrat",
       intro: "Early morning at the Fabius house in Ostia. The whole household is getting up — well, almost the whole household.",
       paragraphs: [
-        "Ecce domus! Familia Fabia habitat. Iam familia nōn dormit: pater et māter nōn dormiunt, fīlius fīliaque nōn dormiunt. Sed Ferōx dormit!",
-        "Mārcus est mercātor: vir bonus est. Iam dominus vocat: «Servī! Servī!» Sed servī nōn labōrant, et dominus īrātus est. Deinde servī ambulant, labōrant, portant — mox dominus laetus est.",
-        "Ecce culīna! Ancilla parat et cantat; semper cantat ancilla, quod laeta est. Cēna mox parāta est. Līvia quoque labōrat: domina bona est.",
-        "Et Ferōx? Ferōx nōn labōrat, nōn portat, nōn cantat: canis semper dormit, quod semper «fessus» est. Ō Ferōx!"
+        "Ecce domus! Familia Fabia habitat. Iam familia nōn dormit: pater et māter nōn dormiunt, fīlius fīliaque nōn dormiunt. Sed Lupo dormit!",
+        "Mark est mercātor: vir bonus est. Iam dominus vocat: «Servī! Servī!» Sed servī nōn labōrant, et dominus īrātus est. Deinde servī ambulant, labōrant, portant — mox dominus laetus est.",
+        "Ecce culīna! Ancilla parat et cantat; semper cantat ancilla, quod laeta est. Cēna mox parāta est. Julia quoque labōrat: domina bona est.",
+        "Et Lupo? Lupo nōn labōrat, nōn portat, nōn cantat: canis semper dormit, quod semper «fessus» est. Ō Lupo!"
       ],
       glosses: {
         "ecce": "look!",
@@ -286,13 +286,13 @@ registerUnit({
         "fīlius": "son",
         "fīliaque": "and the daughter (fīlia + ‑que)",
         "sed": "but",
-        "ferōx": "Ferox, the family dog",
-        "mārcus": "Marcus, the father",
+        "lupo": "Lupo, the family dog — quasi lupus! (his name never changes form)",
+        "mark": "Mark, the father (his name never changes form)",
         "est": "is",
         "mercātor": "merchant, trader",
         "vir": "man",
         "bonus": "good",
-        "dominus": "master of the household (that is, Marcus)",
+        "dominus": "master of the household (that is, Mark)",
         "vocat": "(he/she) calls, calls out",
         "servī": "slaves; (in «Servī!») slaves! — calling them",
         "labōrant": "(they) work, are working",
@@ -311,7 +311,7 @@ registerUnit({
         "laeta": "happy (of a woman)",
         "cēna": "dinner",
         "parāta": "ready, prepared",
-        "līvia": "Livia, the mother",
+        "julia": "Julia, the mother",
         "quoque": "also, too",
         "domina": "mistress of the household",
         "bona": "good (of a woman)",
@@ -322,27 +322,27 @@ registerUnit({
         "ō": "oh!"
       },
       translation: [
-        "Look — the house! The Fabius family lives here. The family is not asleep now: father and mother are not sleeping, the son and the daughter are not sleeping. But Ferox is sleeping!",
-        "Marcus is a merchant: he is a good man. Now the master calls: «Slaves! Slaves!» But the slaves are not working, and the master is angry. Then the slaves get moving, work, and carry their loads — soon the master is happy.",
-        "Look — the kitchen! The maid is preparing the meal and singing; the maid is always singing, because she is happy. Dinner will soon be ready. Livia is working too: she is a good mistress of the house.",
-        "And Ferox? Ferox is not working, not carrying, not singing: the dog is always sleeping, because he is always “tired.” Oh, Ferox!"
+        "Look — the house! The Fabius family lives here. The family is not asleep now: father and mother are not sleeping, the son and the daughter are not sleeping. But Lupo is sleeping!",
+        "Mark is a merchant: he is a good man. Now the master calls: «Slaves! Slaves!» But the slaves are not working, and the master is angry. Then the slaves get moving, work, and carry their loads — soon the master is happy.",
+        "Look — the kitchen! The maid is preparing the meal and singing; the maid is always singing, because she is happy. Dinner will soon be ready. Julia is working too: she is a good mistress of the house.",
+        "And Lupo? Lupo is not working, not carrying, not singing: the dog is always sleeping, because he is always “tired.” Oh, Lupo!"
       ],
       questions: [
         {
           q: "Who is still asleep while the whole household is up?",
-          options: ["Marcus", "The slave-woman", "Ferōx the dog", "Paulla"],
+          options: ["Mark", "The slave-woman", "Lupo the dog", "Paula"],
           answer: 2,
-          explain: "«Sed Ferōx dormit!» — everyone else is up, but the dog sleeps on. He is, after all, always «fessus»."
+          explain: "«Sed Lupo dormit!» — everyone else is up, but the dog sleeps on. He is, after all, always «fessus»."
         },
         {
-          q: "Why is Marcus angry at first?",
-          options: ["Dinner is not ready", "The slaves are not working", "Ferōx has stolen food", "The kitchen is empty"],
+          q: "Why is Mark angry at first?",
+          options: ["Dinner is not ready", "The slaves are not working", "Lupo has stolen food", "The kitchen is empty"],
           answer: 1,
           explain: "«Sed servī nōn labōrant, et dominus īrātus est» — he calls them, and they are not (yet) working."
         },
         {
           q: "Why does the maid keep singing?",
-          options: ["Because she is happy", "Because she is tired", "Because Livia orders it", "Because dinner is already ready"],
+          options: ["Because she is happy", "Because she is tired", "Because Julia orders it", "Because dinner is already ready"],
           answer: 0,
           explain: "«semper cantat ancilla, quod laeta est» — «quod» gives the reason: she is happy."
         },
@@ -358,14 +358,14 @@ registerUnit({
       title: "Cēna parāta est",
       intro: "Later the same day: the children have their tasks too, and at dinnertime a very sleepy dog finally makes his move.",
       paragraphs: [
-        "Quīntus nōn labōrat: puer sedet et spectat. «Quīntus nōn labōrat!» inquit Paulla. Māter videt: puer sedet, nōn labōrat! Deinde māter vocat; iam Quīntus nōn sedet, sed labōrat.",
-        "Paulla nōn est fessa: puella parva est, sed semper labōrat. Aqua? Paulla portat! Herba? Paulla portat! Saepe cantat puella, quod laeta est.",
-        "Et Ferōx? Cantat māter: dormit Ferōx. Portant servī: dormit Ferōx. Paulla vocat: «Ferōx! Ferōx!» — puella tenet et tenet, sed canis semper dormit!",
-        "Deinde cēna parāta est; ancilla vocat: «Cēna! Cēna!» Familia intrat et sedet: pater sedet, māter sedet, puer puellaque sedent. Mārcus fessus est, sed laetus, quod cēna bona est.",
-        "Ecce — iam Ferōx nōn dormit! Canis intrat; canis quoque sedet. Ferōx nōn labōrat, nōn portat — sed cēna? Ferōx amat! Paulla spectat: cibus? Ferōx iam habet! Rīdet familia: Ferōx semper Ferōx est."
+        "Quinn nōn labōrat: puer sedet et spectat. «Quinn nōn labōrat!» inquit Paula. Māter videt: puer sedet, nōn labōrat! Deinde māter vocat; iam Quinn nōn sedet, sed labōrat.",
+        "Paula nōn est fessa: puella parva est, sed semper labōrat. Aqua? Paula portat! Herba? Paula portat! Saepe cantat puella, quod laeta est.",
+        "Et Lupo? Cantat māter: dormit Lupo. Portant servī: dormit Lupo. Paula vocat: «Lupo! Lupo!» — puella tenet et tenet, sed canis semper dormit!",
+        "Deinde cēna parāta est; ancilla vocat: «Cēna! Cēna!» Familia intrat et sedet: pater sedet, māter sedet, puer puellaque sedent. Mark fessus est, sed laetus, quod cēna bona est.",
+        "Ecce — iam Lupo nōn dormit! Canis intrat; canis quoque sedet. Lupo nōn labōrat, nōn portat — sed cēna? Lupo amat! Paula spectat: cibus? Lupo iam habet! Rīdet familia: Lupo semper Lupo est."
       ],
       glosses: {
-        "quīntus": "Quintus, the son (twelve years old)",
+        "quinn": "Quinn, the son (twelve years old — his name never changes form)",
         "nōn": "not",
         "labōrat": "(he/she) works, is working",
         "puer": "boy",
@@ -373,7 +373,7 @@ registerUnit({
         "et": "and",
         "spectat": "(he/she) watches, stares",
         "inquit": "says (used with direct speech)",
-        "paulla": "Paulla, the daughter (eight years old)",
+        "paula": "Paula, the daughter (eight years old)",
         "māter": "mother",
         "videt": "(she) sees (it)",
         "deinde": "then, next",
@@ -392,7 +392,7 @@ registerUnit({
         "cantat": "(he/she) sings, is singing",
         "quod": "because",
         "laeta": "happy (of a girl/woman)",
-        "ferōx": "Ferox, the dog; (in «Ferōx!») Ferox! — calling him",
+        "lupo": "Lupo, the dog; (in «Lupo!») Lupo! — calling him",
         "dormit": "(he) sleeps, is asleep",
         "portant": "(they) carry (loads)",
         "servī": "the slaves",
@@ -406,7 +406,7 @@ registerUnit({
         "pater": "father",
         "puellaque": "and the girl (puella + ‑que)",
         "sedent": "(they) sit",
-        "mārcus": "Marcus, the father",
+        "mark": "Mark, the father",
         "fessus": "tired",
         "laetus": "happy, glad",
         "bona": "good (of the dinner)",
@@ -418,30 +418,30 @@ registerUnit({
         "rīdet": "(it: the family) laughs"
       },
       translation: [
-        "Quintus is not working: the boy is sitting and staring. «Quintus isn’t working!» says Paulla. Mother sees it: the boy is sitting, not working! Then mother calls; now Quintus is not sitting — he is working.",
-        "Paulla is not tired: she is a little girl, but she always works. Water? Paulla carries it! Herbs? Paulla carries them! The girl often sings, because she is happy.",
-        "And Ferox? Mother sings: Ferox sleeps. The slaves carry their loads: Ferox sleeps. Paulla calls: «Ferox! Ferox!» — the girl takes hold of him and holds on and on, but the dog just keeps on sleeping!",
-        "Then dinner is ready; the maid calls: «Dinner! Dinner!» The family comes in and sits down: father sits, mother sits, the boy and the girl sit. Marcus is tired but happy, because dinner is good.",
-        "Look — now Ferox is not asleep! The dog comes in; the dog sits down too. Ferox does not work, does not carry — but dinner? That Ferox loves! Paulla looks: the food? Ferox already has some! The family laughs: Ferox is always Ferox."
+        "Quinn is not working: the boy is sitting and staring. «Quinn isn’t working!» says Paula. Mother sees it: the boy is sitting, not working! Then mother calls; now Quinn is not sitting — he is working.",
+        "Paula is not tired: she is a little girl, but she always works. Water? Paula carries it! Herbs? Paula carries them! The girl often sings, because she is happy.",
+        "And Lupo? Mother sings: Lupo sleeps. The slaves carry their loads: Lupo sleeps. Paula calls: «Lupo! Lupo!» — the girl takes hold of him and holds on and on, but the dog just keeps on sleeping!",
+        "Then dinner is ready; the maid calls: «Dinner! Dinner!» The family comes in and sits down: father sits, mother sits, the boy and the girl sit. Mark is tired but happy, because dinner is good.",
+        "Look — now Lupo is not asleep! The dog comes in; the dog sits down too. Lupo does not work, does not carry — but dinner? That Lupo loves! Paula looks: the food? Lupo already has some! The family laughs: Lupo is always Lupo."
       ],
       questions: [
         {
-          q: "What is Quintus doing instead of working?",
+          q: "What is Quinn doing instead of working?",
           options: ["Sleeping in his bed", "Sitting and staring", "Carrying water", "Singing in the kitchen"],
           answer: 1,
           explain: "«puer sedet et spectat» — he sits and stares (daydreaming), until his mother calls him back to work."
         },
         {
-          q: "How does Paulla try to wake Ferox?",
+          q: "How does Paula try to wake Lupo?",
           options: ["She brings him food", "She sings to him", "She calls his name and takes hold of him", "She opens the window"],
           answer: 2,
-          explain: "«Paulla vocat: ‘Ferōx! Ferōx!’ — puella tenet et tenet» — she calls and takes hold of him, but he sleeps on."
+          explain: "«Paula vocat: ‘Lupo! Lupo!’ — puella tenet et tenet» — she calls and takes hold of him, but he sleeps on."
         },
         {
-          q: "What finally gets Ferox out of bed?",
-          options: ["Marcus getting angry", "Dinner", "The slaves at work", "Paulla taking hold of him"],
+          q: "What finally gets Lupo out of bed?",
+          options: ["Mark getting angry", "Dinner", "The slaves at work", "Paula taking hold of him"],
           answer: 1,
-          explain: "Only when «cēna parāta est» does the dog appear: «iam Ferōx nōn dormit! Canis intrat» — and soon he even has food."
+          explain: "Only when «cēna parāta est» does the dog appear: «iam Lupo nōn dormit! Canis intrat» — and soon he even has food."
         },
         {
           q: "In «puer puellaque sedent», what does the ‑que on «puellaque» do?",
@@ -462,15 +462,15 @@ registerUnit({
     },
     {
       prompt: "Which sentence says that several people are working?",
-      options: ["Servus labōrat.", "Ancilla cantat.", "Servī labōrant.", "Ferōx nōn labōrat."],
+      options: ["Servus labōrat.", "Ancilla cantat.", "Servī labōrant.", "Lupo nōn labōrat."],
       answer: 2,
       explain: "«Servī labōrant» — plural subject «servī» matched by the plural tail ‑nt."
     },
     {
-      prompt: "«Servī labōrant, sed Ferōx dormit.» What is Ferox doing?",
+      prompt: "«Servī labōrant, sed Lupo dormit.» What is Lupo doing?",
       options: ["Working", "Carrying", "Barking", "Sleeping"],
       answer: 3,
-      explain: "«dormit» = he is sleeping; «sed» (but) sets him against the hard-working slaves. Classic Ferox."
+      explain: "«dormit» = he is sleeping; «sed» (but) sets him against the hard-working slaves. Classic Lupo."
     },
     {
       prompt: "Which verb means «they see»?",
@@ -479,10 +479,10 @@ registerUnit({
       explain: "«vident» = vide‑ (see) + the plural tail ‑nt: they see. «videt» = he/she sees, «vocant» = they call, «sedent» = they sit."
     },
     {
-      prompt: "«Dormit Ferōx.» The verb comes first here. What does the sentence mean?",
-      options: ["Ferox is sleeping", "Sleep, Ferox!", "Ferox was sleeping", "The bed belongs to Ferox"],
+      prompt: "«Dormit Lupo.» The verb comes first here. What does the sentence mean?",
+      options: ["Lupo is sleeping", "Sleep, Lupo!", "Lupo was sleeping", "The bed belongs to Lupo"],
       answer: 0,
-      explain: "Word order moves the emphasis, never the meaning: ‑t still marks one doer, and «Ferōx» is still the subject. It is simply a dramatic way to say he is asleep."
+      explain: "Word order moves the emphasis, never the meaning: ‑t still marks one doer, and «Lupo» is still the subject. It is simply a dramatic way to say he is asleep."
     },
     {
       prompt: "«Ancilla cantat, quod laeta est.» Why is the maid singing?",

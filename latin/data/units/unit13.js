@@ -7,7 +7,7 @@ registerUnit({
   grammar: [
     {
       heading: "The tense that remembers",
-      body: "<p>Until now, every story has happened right in front of you, in the present tense. But in this unit the boat glides past old fields, and Marcus begins to remember — and for remembering, Latin switches to the <strong>imperfect tense</strong>: <span class=\"la\">habitābat</span> — <em>he used to live</em>, <span class=\"la\">cantābat</span> — <em>she was singing</em>.</p><p>The recipe is friendly: verb stem + <span class=\"la\">bā</span> + the person endings you already know. One tiny change: for <em>I</em>, the imperfect ends in <span class=\"la\">-m</span> instead of <span class=\"la\">-ō</span>. The imperfect paints the past as <strong>ongoing, repeated, or habitual</strong> — <em>was doing</em>, <em>kept doing</em>, <em>used to do</em>.</p>",
+      body: "<p>Until now, every story has happened right in front of you, in the present tense. But in this unit the boat glides past old fields, and Mark begins to remember — and for remembering, Latin switches to the <strong>imperfect tense</strong>: <span class=\"la\">habitābat</span> — <em>he used to live</em>, <span class=\"la\">cantābat</span> — <em>she was singing</em>.</p><p>The recipe is friendly: verb stem + <span class=\"la\">bā</span> + the person endings you already know. One tiny change: for <em>I</em>, the imperfect ends in <span class=\"la\">-m</span> instead of <span class=\"la\">-ō</span>. The imperfect paints the past as <strong>ongoing, repeated, or habitual</strong> — <em>was doing</em>, <em>kept doing</em>, <em>used to do</em>.</p>",
       table: {
         caption: "«cantāre» (to sing) in the imperfect — all six persons",
         headers: ["Latin", "Who?", "English"],
@@ -145,8 +145,8 @@ registerUnit({
       forms: "iuvenis, m.",
       pos: "noun (3rd decl.)",
       gloss: "young man, youth",
-      example: "Titus tum iuvenis erat.",
-      exampleGloss: "Titus was a young man then."
+      example: "Avunculus Ted tum iuvenis erat.",
+      exampleGloss: "Uncle Ted was a young man then."
     },
     {
       latin: "memoria",
@@ -161,8 +161,8 @@ registerUnit({
       forms: "(memoriā + teneō)",
       pos: "phrase (idiom)",
       gloss: "to remember (literally ‘to hold in memory’)",
-      example: "Mārcus aviam memoriā tenet.",
-      exampleGloss: "Marcus remembers his grandmother."
+      example: "Mark aviam memoriā tenet.",
+      exampleGloss: "Mark remembers his grandmother."
     },
     {
       latin: "lūdō",
@@ -177,16 +177,16 @@ registerUnit({
       forms: "pilae, f.",
       pos: "noun (1st decl.)",
       gloss: "ball",
-      example: "Paulla pilam parvam habet.",
-      exampleGloss: "Paulla has a little ball."
+      example: "Paula pilam parvam habet.",
+      exampleGloss: "Paula has a little ball."
     },
     {
       latin: "rūs",
       forms: "rūris, n.",
       pos: "noun (3rd decl.)",
       gloss: "countryside",
-      example: "Mārcus rūs amābat.",
-      exampleGloss: "Marcus loved the countryside."
+      example: "Mark rūs amābat.",
+      exampleGloss: "Mark loved the countryside."
     },
     {
       latin: "ager",
@@ -241,16 +241,16 @@ registerUnit({
       forms: "umbrae, f.",
       pos: "noun (1st decl.)",
       gloss: "shade, shadow",
-      example: "Ferōx in umbrā dormiēbat.",
-      exampleGloss: "Ferox was sleeping in the shade."
+      example: "Lupo in umbrā dormiēbat.",
+      exampleGloss: "Lupo was sleeping in the shade."
     },
     {
       latin: "parvulus",
       forms: "parvula, parvulum",
       pos: "adjective (1st/2nd decl.)",
       gloss: "tiny, very small",
-      example: "Quīntus tum parvulus erat.",
-      exampleGloss: "Quintus was tiny then."
+      example: "Quinn tum parvulus erat.",
+      exampleGloss: "Quinn was tiny then."
     },
     {
       latin: "iūcundus",
@@ -273,24 +273,25 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "adverb phrase",
       gloss: "no longer",
-      example: "Mārcus nōn iam puer est.",
-      exampleGloss: "Marcus is no longer a boy."
+      example: "Mark nōn iam puer est.",
+      exampleGloss: "Mark is no longer a boy."
     }
   ],
 
   readings: [
     {
       title: "Agrī in rīpīs",
-      intro: "The boat glides up the Tiber, and the fields along the banks wake old memories in Marcus.",
+      intro: "The boat glides up the Tiber, and the fields along the banks wake old memories in Mark.",
       paragraphs: [
-        "Nāvis Titī lentē per flūmen nāvigat. Vēla plēna sunt; nautae labōrant et cantant. Ferōx in umbrā vēlī dormit.",
-        "In rīpīs flūminis agrī et silvae sunt. Agricolae in agrīs labōrant. Subitō Paulla clāmat: «Ecce! Equus albus inter agrōs currit!» Puella equum laeta spectat.",
-        "Mārcus quoque agrōs spectat, sed nōn clāmat. Quīntus patrem rogat: «Pater, esne fessus?» «Minimē,» respondet Mārcus. «Agrōs spectō et multa memoriā teneō: ōlim avus in vīllā prope flūmen habitābat. Tum ego puer parvulus eram.»",
-        "«Potesne fābulam nārrāre?» rogat Paulla. «Ita,» inquit Mārcus. «Fābulam dē avō et dē aviā nārrāre possum. Audītisne?» «Ita!» clāmant puerī."
+        "Nāvis avunculī Ted lentē per flūmen nāvigat. Vēla plēna sunt; nautae labōrant et cantant. Lupo in umbrā vēlī dormit.",
+        "In rīpīs flūminis agrī et silvae sunt. Agricolae in agrīs labōrant. Subitō Paula clāmat: «Ecce! Equus albus inter agrōs currit!» Puella equum laeta spectat.",
+        "Mark quoque agrōs spectat, sed nōn clāmat. Quinn patrem rogat: «Pater, esne fessus?» «Minimē,» respondet Mark. «Agrōs spectō et multa memoriā teneō: ōlim avus in vīllā prope flūmen habitābat. Tum ego puer parvulus eram.»",
+        "«Potesne fābulam nārrāre?» rogat Paula. «Ita,» inquit Mark. «Fābulam dē avō et dē aviā nārrāre possum. Audītisne?» «Ita!» clāmant puerī."
       ],
       glosses: {
         "nāvis": "the ship, boat",
-        "titī": "of Titus, Titus's (gen. — Livia's brother, the ship's captain)",
+        "avunculī": "of the uncle, the uncle's (gen. — the genitive ending sits on «avunculus», since the name Ted never changes form)",
+        "ted": "Ted (Julia's brother, the ship's captain — his name never changes form)",
         "lentē": "slowly",
         "per": "along, through (+ acc.)",
         "flūmen": "the river (the Tiber)",
@@ -302,7 +303,7 @@ registerUnit({
         "labōrant": "(they) work, are working",
         "et": "and",
         "cantant": "(they) sing",
-        "ferōx": "Ferox, the family dog",
+        "lupo": "Lupo, the family dog (quasi lupus! — his name never changes form)",
         "in": "in, on (+ abl.)",
         "umbrā": "shade (abl. after «in»)",
         "vēlī": "of the sail (gen.)",
@@ -314,7 +315,7 @@ registerUnit({
         "agricolae": "farmers (nom. pl.)",
         "agrīs": "fields (abl. pl. after «in»)",
         "subitō": "suddenly",
-        "paulla": "Paulla, the daughter, 8 years old",
+        "paula": "Paula, the daughter, 8 years old",
         "clāmat": "(she) shouts",
         "ecce": "look!",
         "equus": "a horse",
@@ -324,13 +325,13 @@ registerUnit({
         "currit": "(it) runs, is running",
         "puella": "the girl",
         "equum": "the horse (acc. — direct object)",
-        "laeta": "happy (describing Paulla — ‘happily’)",
+        "laeta": "happy (describing Paula — ‘happily’)",
         "spectat": "(she/he) watches",
-        "mārcus": "Marcus, the father",
+        "mark": "Mark (the father — his name never changes form)",
         "quoque": "also, too",
         "sed": "but",
         "nōn": "not",
-        "quīntus": "Quintus, the son, 12 years old",
+        "quinn": "Quinn, the son, 12 years old (his name never changes form)",
         "patrem": "father (acc. — the one being asked)",
         "rogat": "(he/she) asks",
         "pater": "father (here addressed: ‘father!’)",
@@ -343,7 +344,7 @@ registerUnit({
         "memoriā": "in memory (abl. — «memoriā tenēre» = to hold in memory, to remember)",
         "teneō": "(I) hold",
         "ōlim": "once, long ago",
-        "avus": "grandfather (Marcus's grandfather)",
+        "avus": "grandfather (Mark's grandfather)",
         "vīllā": "a farmhouse (abl. after «in»)",
         "prope": "near (+ acc.)",
         "habitābat": "(he) used to live (imperfect — the ‑bā‑ marks the past)",
@@ -366,14 +367,14 @@ registerUnit({
         "puerī": "the children (Latin «puerī» can cover boys and girls together)"
       },
       translation: [
-        "Titus's boat sails slowly along the river. The sails are full; the sailors are working and singing. Ferox is asleep in the shade of the sail.",
-        "On the banks of the river there are fields and woods. Farmers are working in the fields. Suddenly Paulla shouts: ‘Look! A white horse is running among the fields!’ The girl watches the horse happily.",
-        "Marcus is watching the fields too, but he does not shout. Quintus asks his father: ‘Father, are you tired?’ ‘Not at all,’ Marcus answers. ‘I am watching the fields and remembering many things: long ago my grandfather lived in a farmhouse near the river. At that time I was a tiny boy.’",
-        "‘Can you tell us the story?’ asks Paulla. ‘Yes,’ says Marcus. ‘I can tell you a story about grandfather and about grandmother. Are you all listening?’ ‘Yes!’ shout the children."
+        "Uncle Ted's boat sails slowly along the river. The sails are full; the sailors are working and singing. Lupo is asleep in the shade of the sail.",
+        "On the banks of the river there are fields and woods. Farmers are working in the fields. Suddenly Paula shouts: ‘Look! A white horse is running among the fields!’ The girl watches the horse happily.",
+        "Mark is watching the fields too, but he does not shout. Quinn asks his father: ‘Father, are you tired?’ ‘Not at all,’ Mark answers. ‘I am watching the fields and remembering many things: long ago my grandfather lived in a farmhouse near the river. At that time I was a tiny boy.’",
+        "‘Can you tell us the story?’ asks Paula. ‘Yes,’ says Mark. ‘I can tell you a story about grandfather and about grandmother. Are you all listening?’ ‘Yes!’ shout the children."
       ],
       questions: [
         {
-          q: "What is Ferox doing while the boat sails up the river?",
+          q: "What is Lupo doing while the boat sails up the river?",
           options: [
             "Barking at the farmers on the bank",
             "Sleeping in the shade of the sail",
@@ -381,21 +382,21 @@ registerUnit({
             "Swimming behind the boat"
           ],
           answer: 1,
-          explain: "«Ferōx in umbrā vēlī dormit» — the genitive «vēlī» tells you whose shade it is: the sail's."
+          explain: "«Lupo in umbrā vēlī dormit» — the genitive «vēlī» tells you whose shade it is: the sail's."
         },
         {
-          q: "What does Paulla spot on the riverbank?",
+          q: "What does Paula spot on the riverbank?",
           options: [
             "Grandfather's farmhouse",
             "A temple on a hill",
             "A white horse running among the fields",
-            "Uncle Titus's second ship"
+            "Uncle Ted's second ship"
           ],
           answer: 2,
           explain: "«Equus albus inter agrōs currit!» — a white horse running among the fields; «inter» takes the accusative «agrōs»."
         },
         {
-          q: "When Quintus asks «esne fessus?», what does Marcus say he is really doing?",
+          q: "When Quinn asks «esne fessus?», what does Mark say he is really doing?",
           options: [
             "He is tired and wants to sleep",
             "He is watching the fields and remembering",
@@ -420,16 +421,16 @@ registerUnit({
     },
     {
       title: "Vīlla inter agrōs",
-      intro: "Marcus tells the story of his boyhood at grandfather's farm — where the dog, it turns out, was already a menace.",
+      intro: "Mark tells the story of his boyhood at grandfather's farm — where the dog, it turns out, was already a menace.",
       paragraphs: [
-        "Mārcus fābulam nārrat: «Ōlim avus et avia prope flūmen habitābant. Vīlla inter agrōs et silvam stābat: parva erat, sed iūcunda. Avus quondam mīles erat, deinde agricola; cotīdiē in agrīs labōrābat. Avia cēnam parābat et semper cantābat.»",
+        "Mark fābulam nārrat: «Ōlim avus et avia prope flūmen habitābant. Vīlla inter agrōs et silvam stābat: parva erat, sed iūcunda. Avus quondam mīles erat, deinde agricola; cotīdiē in agrīs labōrābat. Avia cēnam parābat et semper cantābat.»",
         "«Tum ego īnfāns eram. Deinde puer eram: cotīdiē cum cane avī in silvā errābam, in flūmine natābam, pilā lūdēbam. Saepe cum avō piscēs capiēbam. Vīta tum iūcunda erat!»",
-        "«Avus canem magnum habēbat. Canis bonus erat, sed cibum semper rapiēbat: botulōs, cāseum, ōva!» Quīntus rīdet et Ferōcem spectat: «Audīsne, Ferōx? Tū nōn novus es!»",
-        "«In umbrā silvae saepe sedēbāmus,» inquit Mārcus, «et avia fābulās dē deīs nārrābat. Rūs amābam — et rūs adhūc amō! Avus et avia nōn iam in vīllā habitant; vīlla tamen adhūc inter agrōs stat, et vīllam memoriā semper teneō.»",
-        "Titus quoque nārrat: «Ego ōlim iuvenis eram et in nāve cotīdiē labōrābam; nunc magister nāvis sum!» Deinde nautae cēnam parant. Subitō Ferōx piscem magnum rapit et dēvorat! «Ferōx!» clāmat Paulla, sed canis laetus est. Mox puerī dormiunt; Mārcus tamen nōn dormit, sed vīllam avī memoriā tenet."
+        "«Avus canem magnum habēbat. Canis bonus erat, sed cibum semper rapiēbat: botulōs, cāseum, ōva!» Quinn rīdet et canem Lupo spectat: «Audīsne, Lupo? Tū nōn novus es!»",
+        "«In umbrā silvae saepe sedēbāmus,» inquit Mark, «et avia fābulās dē deīs nārrābat. Rūs amābam — et rūs adhūc amō! Avus et avia nōn iam in vīllā habitant; vīlla tamen adhūc inter agrōs stat, et vīllam memoriā semper teneō.»",
+        "Avunculus Ted quoque nārrat: «Ego ōlim iuvenis eram et in nāve cotīdiē labōrābam; nunc magister nāvis sum!» Deinde nautae cēnam parant. Subitō Lupo piscem magnum rapit et dēvorat! «Lupo!» clāmat Paula, sed canis laetus est. Mox puerī dormiunt; Mark tamen nōn dormit, sed vīllam avī memoriā tenet."
       ],
       glosses: {
-        "mārcus": "Marcus, the father",
+        "mark": "Mark, the father (his name never changes form)",
         "fābulam": "the story (acc.)",
         "nārrat": "(he) tells",
         "ōlim": "once, long ago",
@@ -489,12 +490,11 @@ registerUnit({
         "botulōs": "sausages (acc. pl.)",
         "cāseum": "cheese (acc.)",
         "ōva": "eggs (acc. pl.)",
-        "quīntus": "Quintus, the son",
+        "quinn": "Quinn, the son",
         "rīdet": "(he) laughs",
-        "ferōcem": "Ferox (acc. — the one being looked at)",
         "spectat": "(he) looks at",
         "audīsne": "do you hear…? («audīs» + question ‑ne)",
-        "ferōx": "Ferox, the family dog",
+        "lupo": "Lupo, the family dog (in «canem Lupo» the acc. ending sits on «canem» — Lupo never changes form)",
         "tū": "you (emphatic)",
         "nōn": "not",
         "novus": "new",
@@ -519,7 +519,8 @@ registerUnit({
         "vīllam": "the farmhouse (acc.)",
         "memoriā": "in memory (abl. — «memoriā tenēre» = to remember)",
         "teneō": "(I) hold",
-        "titus": "Titus, Livia's brother, the ship's captain",
+        "avunculus": "the uncle (mother's brother)",
+        "ted": "Ted, Julia's brother, the ship's captain",
         "quoque": "also, too",
         "iuvenis": "a young man",
         "nāve": "a ship (abl. after «in»)",
@@ -535,7 +536,7 @@ registerUnit({
         "rapit": "(he) snatches (present — it is happening right now!)",
         "dēvorat": "(he) devours",
         "clāmat": "(she) shouts",
-        "paulla": "Paulla, the daughter",
+        "paula": "Paula, the daughter",
         "laetus": "happy",
         "est": "(he) is",
         "mox": "soon",
@@ -545,11 +546,11 @@ registerUnit({
         "tenet": "(he) holds"
       },
       translation: [
-        "Marcus tells the story: ‘Long ago grandfather and grandmother lived near the river. The farmhouse stood between the fields and the wood: it was small, but delightful. Grandfather was once a soldier, then a farmer; every day he worked in the fields. Grandmother prepared dinner and was always singing.’",
+        "Mark tells the story: ‘Long ago grandfather and grandmother lived near the river. The farmhouse stood between the fields and the wood: it was small, but delightful. Grandfather was once a soldier, then a farmer; every day he worked in the fields. Grandmother prepared dinner and was always singing.’",
         "‘At that time I was a baby. Then I was a boy: every day I wandered in the wood with grandfather's dog, I swam in the river, I played ball. I often caught fish with grandfather. Life was delightful then!’",
-        "‘Grandfather had a big dog. The dog was good, but he was always snatching food: sausages, cheese, eggs!’ Quintus laughs and looks at Ferox: ‘Do you hear, Ferox? You are nothing new!’",
-        "‘We often used to sit in the shade of the wood,’ says Marcus, ‘and grandmother would tell stories about the gods. I loved the countryside — and I still love it! Grandfather and grandmother no longer live in the farmhouse; but the farmhouse still stands among the fields, and I always hold it in my memory.’",
-        "Titus tells a story too: ‘Once I was a young man, and I worked on a ship every day; now I am a ship's captain!’ Then the sailors prepare dinner. Suddenly Ferox snatches a big fish and devours it! ‘Ferox!’ shouts Paulla, but the dog is happy. Soon the children are asleep; Marcus, however, does not sleep, but holds grandfather's farmhouse in his memory."
+        "‘Grandfather had a big dog. The dog was good, but he was always snatching food: sausages, cheese, eggs!’ Quinn laughs and looks at the dog Lupo: ‘Do you hear, Lupo? You are nothing new!’",
+        "‘We often used to sit in the shade of the wood,’ says Mark, ‘and grandmother would tell stories about the gods. I loved the countryside — and I still love it! Grandfather and grandmother no longer live in the farmhouse; but the farmhouse still stands among the fields, and I always hold it in my memory.’",
+        "Uncle Ted tells a story too: ‘Once I was a young man, and I worked on a ship every day; now I am a ship's captain!’ Then the sailors prepare dinner. Suddenly Lupo snatches a big fish and devours it! ‘Lupo!’ shouts Paula, but the dog is happy. Soon the children are asleep; Mark, however, does not sleep, but holds grandfather's farmhouse in his memory."
       ],
       questions: [
         {
@@ -559,7 +560,7 @@ registerUnit({
           explain: "«Avus quondam mīles erat, deinde agricola» — «quondam» = formerly: first a soldier, afterwards a farmer."
         },
         {
-          q: "Which of these was NOT part of young Marcus's daily life at the villa?",
+          q: "Which of these was NOT part of young Mark's daily life at the villa?",
           options: [
             "Swimming in the river",
             "Playing ball",
@@ -570,26 +571,26 @@ registerUnit({
           explain: "«in silvā errābam, in flūmine natābam, pilā lūdēbam» — wandering, swimming, and ball, all in the imperfect of habit. No horse-racing anywhere."
         },
         {
-          q: "Why does Quintus laugh and say «Audīsne, Ferōx? Tū nōn novus es!»?",
+          q: "Why does Quinn laugh and say «Audīsne, Lupo? Tū nōn novus es!»?",
           options: [
-            "Because Ferox is snoring through the story",
-            "Because grandfather's dog also stole food all the time — Ferox is nothing new",
-            "Because Ferox is afraid of the fish",
-            "Because Titus tells bad jokes"
+            "Because Lupo is snoring through the story",
+            "Because grandfather's dog also stole food all the time — Lupo is nothing new",
+            "Because Lupo is afraid of the fish",
+            "Because Ted tells bad jokes"
           ],
           answer: 1,
-          explain: "Grandfather's dog «cibum semper rapiēbat» — kept snatching food, just like Ferox. Food-thieving dogs, it seems, are a family tradition."
+          explain: "Grandfather's dog «cibum semper rapiēbat» — kept snatching food, just like Lupo. Food-thieving dogs, it seems, are a family tradition."
         },
         {
-          q: "At the very end, while the children sleep, Marcus…",
+          q: "At the very end, while the children sleep, Mark…",
           options: [
-            "steers the ship for Titus",
+            "steers the ship for Ted",
             "prepares dinner with the sailors",
             "holds grandfather's farmhouse in his memory",
             "writes a letter to grandmother"
           ],
           answer: 2,
-          explain: "«Mārcus tamen nōn dormit, sed vīllam avī memoriā tenet» — the unit's idiom «memoriā tenēre», to hold in memory."
+          explain: "«Mark tamen nōn dormit, sed vīllam avī memoriā tenet» — the unit's idiom «memoriā tenēre», to hold in memory."
         }
       ]
     }
@@ -648,12 +649,12 @@ registerUnit({
       explain: "«poterās» is the imperfect of «possum» (you could), plus infinitive «natāre» and question ‑ne: ‘Were you able to swim?’"
     },
     {
-      prompt: "«Ferōx nōn iam dormit» means…",
+      prompt: "«Lupo nōn iam dormit» means…",
       options: [
-        "Ferox is not yet asleep",
-        "Ferox never sleeps",
-        "Ferox is still sleeping",
-        "Ferox is no longer sleeping"
+        "Lupo is not yet asleep",
+        "Lupo never sleeps",
+        "Lupo is still sleeping",
+        "Lupo is no longer sleeping"
       ],
       answer: 3,
       explain: "«nōn iam» = no longer: the sleeping has stopped. (Its opposite number «adhūc» would mean he is STILL asleep.)"

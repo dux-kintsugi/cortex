@@ -7,7 +7,7 @@ registerUnit({
   grammar: [
     {
       heading: "Who's doing what to whom",
-      body: "<p>Until now, nearly every noun you've met has been a subject — the one doing the action or being described. (The odd exception: a noun after <span class=\"la\">est</span> that completes the thought, as in <span class=\"la\">Līvia māter est</span> — Livia <em>is a mother</em>.) This unit adds the other half of the sentence: the <strong>direct object</strong>, the thing the action lands on. Latin doesn't mark the object with word order, the way English does; it changes the noun's <strong>ending</strong>.</p><p>Watch: <span class=\"la\">ūva</span> is a grape sitting there being a subject. The moment somebody buys it, sees it, or (this being Ostia) devours it, it becomes <span class=\"la\">ūvam</span>: <span class=\"la\">Līvia ūvam emit</span> — Livia buys the grape. Same trick in the 2nd declension: <span class=\"la\">botulus</span> becomes <span class=\"la\">botulum</span> — <span class=\"la\">Mercātor botulum vēndit</span>, the merchant sells the sausage.</p><p>These forms are called <strong>cases</strong> — a case is a costume a noun wears to show its job in the sentence: same noun, different ending, different job. The subject form is called the <strong>nominative</strong>; this new object form is the <strong>accusative</strong>. One wrinkle: neuter nouns like <span class=\"la\">ōvum</span> are lazy — their nominative and accusative are identical.</p>",
+      body: "<p>Until now, nearly every noun you've met has been a subject — the one doing the action or being described. (The odd exception: a noun after <span class=\"la\">est</span> that completes the thought, as in <span class=\"la\">Julia māter est</span> — Julia <em>is a mother</em>.) This unit adds the other half of the sentence: the <strong>direct object</strong>, the thing the action lands on. Latin doesn't mark the object with word order, the way English does; it changes the noun's <strong>ending</strong>.</p><p>Watch: <span class=\"la\">ūva</span> is a grape sitting there being a subject. The moment somebody buys it, sees it, or (this being Ostia) devours it, it becomes <span class=\"la\">ūvam</span>: <span class=\"la\">Julia ūvam emit</span> — Julia buys the grape. Same trick in the 2nd declension: <span class=\"la\">botulus</span> becomes <span class=\"la\">botulum</span> — <span class=\"la\">Mercātor botulum vēndit</span>, the merchant sells the sausage.</p><p>These forms are called <strong>cases</strong> — a case is a costume a noun wears to show its job in the sentence: same noun, different ending, different job. The subject form is called the <strong>nominative</strong>; this new object form is the <strong>accusative</strong>. One wrinkle: neuter nouns like <span class=\"la\">ōvum</span> are lazy — their nominative and accusative are identical.</p>",
       table: {
         caption: "Accusative singular (1st & 2nd declension)",
         headers: ["Declension", "Nominative (doer)", "Accusative (done-to)"],
@@ -21,7 +21,7 @@ registerUnit({
     },
     {
       heading: "Shopping in the plural",
-      body: "<p>Markets deal in plurals — nobody buys one olive. In the plural the accusative is just as recognizable: 1st-declension <span class=\"la\">‑ae</span> becomes <span class=\"la\">‑ās</span>, and 2nd-declension <span class=\"la\">‑ī</span> becomes <span class=\"la\">‑ōs</span>.</p><p><span class=\"la\">Mercātor botulōs vēndit</span> — the merchant sells sausages. <span class=\"la\">Paulla ūvās spectat</span> — Paulla eyes the grapes. Long <span class=\"la\">‑ās</span> and long <span class=\"la\">‑ōs</span> are the two loudest object-signals in this unit.</p><p>Neuters stay lazy: <span class=\"la\">ōva</span> is both ‘eggs’ doing something and ‘eggs’ having something done to them. When you meet <span class=\"la\">Līvia ōva emit</span>, ask who is doing the buying — Livia, clearly — and the eggs settle into the object slot by themselves.</p>",
+      body: "<p>Markets deal in plurals — nobody buys one olive. In the plural the accusative is just as recognizable: 1st-declension <span class=\"la\">‑ae</span> becomes <span class=\"la\">‑ās</span>, and 2nd-declension <span class=\"la\">‑ī</span> becomes <span class=\"la\">‑ōs</span>.</p><p><span class=\"la\">Mercātor botulōs vēndit</span> — the merchant sells sausages. <span class=\"la\">Paula ūvās spectat</span> — Paula eyes the grapes. Long <span class=\"la\">‑ās</span> and long <span class=\"la\">‑ōs</span> are the two loudest object-signals in this unit.</p><p>Neuters stay lazy: <span class=\"la\">ōva</span> is both ‘eggs’ doing something and ‘eggs’ having something done to them. When you meet <span class=\"la\">Julia ōva emit</span>, ask who is doing the buying — Julia, clearly — and the eggs settle into the object slot by themselves.</p>",
       table: {
         caption: "Accusative plural (1st & 2nd declension)",
         headers: ["Declension", "Nominative", "Accusative"],
@@ -35,12 +35,12 @@ registerUnit({
     },
     {
       heading: "Word order is a suggestion",
-      body: "<p>English says <em>the dog steals the sausage</em>, and if you flip the words, the sausage turns thief. Latin is free of this anxiety: the endings carry the roles, so the words can move. <span class=\"la\">Ferōx botulum rapit</span>, <span class=\"la\">botulum Ferōx rapit</span>, <span class=\"la\">botulum rapit Ferōx</span> — three word orders, one crime.</p><p>Latin does have a favorite arrangement: subject first, object in the middle, <strong>verb last</strong>. So train your eye to hold the nouns in memory, sorted by ending, until the verb arrives to tie the scene together.</p><p>One extra helper: a describing word wears the same ending as its noun. In <span class=\"la\">botulum magnum rapit</span>, the matching <span class=\"la\">‑um</span> tells you <em>big</em> belongs to <em>sausage</em> — one big sausage, snatched.</p>",
+      body: "<p>English says <em>the dog steals the sausage</em>, and if you flip the words, the sausage turns thief. Latin is free of this anxiety: the endings carry the roles, so the words can move. <span class=\"la\">Canis botulum rapit</span>, <span class=\"la\">botulum canis rapit</span>, <span class=\"la\">botulum rapit canis</span> — three word orders, one crime.</p><p>Latin does have a favorite arrangement: subject first, object in the middle, <strong>verb last</strong>. So train your eye to hold the nouns in memory, sorted by ending, until the verb arrives to tie the scene together.</p><p>One extra helper: a describing word wears the same ending as its noun. In <span class=\"la\">botulum magnum rapit</span>, the matching <span class=\"la\">‑um</span> tells you <em>big</em> belongs to <em>sausage</em> — one big sausage, snatched.</p>",
       tip: "Reading tip: don't translate word-by-word as you go. Collect the endings first, then let the final verb tell you what happened."
     },
     {
       heading: "mālum, malum — the macron matters",
-      body: "<p>Two of this unit's words are near-twins: <span class=\"la\">mālum</span> with a long ā is an <em>apple</em>; <span class=\"la\">malus, mala, malum</span> with a short a means <em>bad, wicked</em>. The macron is not decoration — it is part of the word's identity, and Romans heard the difference clearly.</p><p>Both star in this unit's story: Paulla wants a <span class=\"la\">mālum</span>, and Ferox is — briefly, and in one merchant's furious opinion — a <span class=\"la\">canis malus</span>. Roman jokers loved this pair; you are now equipped to groan at their puns.</p>",
+      body: "<p>Two of this unit's words are near-twins: <span class=\"la\">mālum</span> with a long ā is an <em>apple</em>; <span class=\"la\">malus, mala, malum</span> with a short a means <em>bad, wicked</em>. The macron is not decoration — it is part of the word's identity, and Romans heard the difference clearly.</p><p>Both star in this unit's story: Paula wants a <span class=\"la\">mālum</span>, and Lupo is — briefly, and in one merchant's furious opinion — a <span class=\"la\">canis malus</span>. Roman jokers loved this pair; you are now equipped to groan at their puns.</p>",
       tip: "Reading tip: when a familiar word seems wildly wrong in context, check the macrons — Latin has several of these near-twin pairs."
     }
   ],
@@ -67,8 +67,8 @@ registerUnit({
       forms: "gen. pecūniae, f.",
       pos: "noun (1st decl.)",
       gloss: "money",
-      example: "Līvia pecūniam portat.",
-      exampleGloss: "Livia carries the money."
+      example: "Julia pecūniam portat.",
+      exampleGloss: "Julia carries the money."
     },
     {
       latin: "dēnārius",
@@ -91,8 +91,8 @@ registerUnit({
       forms: "gen. ūvae, f.",
       pos: "noun (1st decl.)",
       gloss: "grape",
-      example: "Paulla ūvās dēvorat.",
-      exampleGloss: "Paulla devours the grapes."
+      example: "Paula ūvās dēvorat.",
+      exampleGloss: "Paula devours the grapes."
     },
     {
       latin: "mālum",
@@ -107,16 +107,16 @@ registerUnit({
       forms: "gen. ōvī, n.",
       pos: "noun (2nd decl.)",
       gloss: "egg",
-      example: "Līvia ōva emit.",
-      exampleGloss: "Livia buys eggs."
+      example: "Julia ōva emit.",
+      exampleGloss: "Julia buys eggs."
     },
     {
       latin: "botulus",
       forms: "gen. botulī, m.",
       pos: "noun (2nd decl.)",
       gloss: "sausage",
-      example: "Ferōx botulum spectat.",
-      exampleGloss: "Ferox is eyeing the sausage."
+      example: "Lupo botulum spectat.",
+      exampleGloss: "Lupo is eyeing the sausage."
     },
     {
       latin: "cāseus",
@@ -131,8 +131,8 @@ registerUnit({
       forms: "gen. vīnī, n.",
       pos: "noun (2nd decl.)",
       gloss: "wine",
-      example: "Mārcus vīnum amat.",
-      exampleGloss: "Marcus loves wine."
+      example: "Pater vīnum amat.",
+      exampleGloss: "The father loves wine."
     },
     {
       latin: "oleum",
@@ -195,16 +195,16 @@ registerUnit({
       forms: "dēvorāre, dēvorāvī, dēvorātum",
       pos: "verb (1st conj.)",
       gloss: "devour, gulp down",
-      example: "Ferōx cibum dēvorat.",
-      exampleGloss: "Ferox devours the food."
+      example: "Lupo cibum dēvorat.",
+      exampleGloss: "Lupo devours the food."
     },
     {
       latin: "rīdeō",
       forms: "rīdēre, rīsī, rīsum",
       pos: "verb (2nd conj.)",
       gloss: "laugh",
-      example: "Paulla laeta rīdet.",
-      exampleGloss: "Paulla laughs happily."
+      example: "Paula laeta rīdet.",
+      exampleGloss: "Paula laughs happily."
     },
     {
       latin: "optō",
@@ -235,8 +235,8 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "adverb",
       gloss: "nevertheless, still",
-      example: "Māla cāra sunt; Līvia tamen māla emit.",
-      exampleGloss: "The apples are expensive; nevertheless Livia buys the apples."
+      example: "Māla cāra sunt; Julia tamen māla emit.",
+      exampleGloss: "The apples are expensive; nevertheless Julia buys the apples."
     },
     {
       latin: "subitō",
@@ -251,20 +251,20 @@ registerUnit({
   readings: [
     {
       title: "Ad macellum",
-      intro: "Livia and Paulla head to the market with the shopping money — and Ferox, uninvited, with an appetite.",
+      intro: "Julia and Paula head to the market with the shopping money — and Lupo, uninvited, with an appetite.",
       paragraphs: [
-        "Līvia et Paulla ad macellum ambulant. Ferōx quoque ambulat: canis cibum semper amat. Macellum est magnum et plēnum; multae sunt tabernae, multī virī fēminaeque.",
-        "Ecce taberna! Semprōnius mercātor botulōs cāseōsque vēndit. «Botulōs! Cāseōs!» clāmat. Ferōx botulōs spectat et botulōs amat. Canis nōn ambulat: sedet et spectat.",
-        "Līvia ōva et cāseum emit. Paulla ūvās mālaque spectat. Māla optat, sed māla cāra sunt. Līvia tamen māla emit, quod Paullam amat. Paulla laeta est et rīdet."
+        "Julia et Paula ad macellum ambulant. Lupo quoque ambulat: canis cibum semper amat. Macellum est magnum et plēnum; multae sunt tabernae, multī virī fēminaeque.",
+        "Ecce taberna! Semprōnius mercātor botulōs cāseōsque vēndit. «Botulōs! Cāseōs!» clāmat. Lupo botulōs spectat et botulōs amat. Canis nōn ambulat: sedet et spectat.",
+        "Julia ōva et cāseum emit. Paula ūvās mālaque spectat. Māla optat, sed māla cāra sunt. Julia tamen māla emit, quod Paulam amat. Paula laeta est et rīdet."
       ],
       glosses: {
-        "līvia": "Livia (the mother)",
+        "julia": "Julia (the mother)",
         "et": "and",
-        "paulla": "Paulla (the daughter, eight years old)",
+        "paula": "Paula (the daughter, eight years old)",
         "ad": "to, toward (read «ad macellum» as one chunk: to the market)",
         "macellum": "the food market",
         "ambulant": "(they) walk",
-        "ferōx": "Ferox, the family dog",
+        "lupo": "Lupo, the family dog — his name never changes form (it only sounds like «lupus», a wolf)",
         "quoque": "also, too",
         "ambulat": "(he) walks",
         "canis": "the dog (nom. = nominative, the subject form)",
@@ -303,26 +303,26 @@ registerUnit({
         "cāra": "expensive (with «māla»)",
         "tamen": "nevertheless, anyway",
         "quod": "because",
-        "paullam": "Paulla (acc. — the one being loved)",
+        "paulam": "Paula (acc. — the one being loved)",
         "laeta": "happy",
         "rīdet": "(she) laughs"
       },
       translation: [
-        "Livia and Paulla walk to the food market. Ferox walks along too: the dog always loves food. The market is big and full; there are many stalls, many men and women.",
-        "Look — a stall! Sempronius the merchant sells sausages and cheeses. «Sausages! Cheeses!» he shouts. Ferox watches the sausages, and the sausages he loves. The dog is not walking anywhere: he sits, and he watches.",
-        "Livia buys eggs and cheese. Paulla eyes the grapes and the apples. She wishes for apples, but the apples are expensive. Livia buys the apples anyway, because she loves Paulla. Paulla is happy and laughs."
+        "Julia and Paula walk to the food market. Lupo walks along too: the dog always loves food. The market is big and full; there are many stalls, many men and women.",
+        "Look — a stall! Sempronius the merchant sells sausages and cheeses. «Sausages! Cheeses!» he shouts. Lupo watches the sausages, and the sausages he loves. The dog is not walking anywhere: he sits, and he watches.",
+        "Julia buys eggs and cheese. Paula eyes the grapes and the apples. She wishes for apples, but the apples are expensive. Julia buys the apples anyway, because she loves Paula. Paula is happy and laughs."
       ],
       questions: [
         {
-          q: "Why does Ferox tag along to the market?",
+          q: "Why does Lupo tag along to the market?",
           options: [
             "He always loves food",
-            "He is guarding Paulla",
-            "Livia calls him",
+            "He is guarding Paula",
+            "Julia calls him",
             "He is afraid to stay home alone"
           ],
           answer: 0,
-          explain: "«canis cibum semper amat» — the dog always loves food. Ferox has his priorities in order."
+          explain: "«canis cibum semper amat» — the dog always loves food. Lupo has his priorities in order."
         },
         {
           q: "What does Sempronius sell at his stall?",
@@ -336,37 +336,37 @@ registerUnit({
           explain: "«botulōs cāseōsque vēndit» — sausages and cheeses, both wearing the accusative ‑ōs, with the little ‑que gluing on the ‘and’."
         },
         {
-          q: "In «quod Paullam amat», what does the ‑am ending on «Paullam» tell you?",
+          q: "In «quod Paulam amat», what does the ‑am ending on «Paulam» tell you?",
           options: [
-            "Paulla is doing the loving",
-            "Paulla is the one being loved",
-            "There is more than one Paulla",
-            "Paulla is being spoken to directly"
+            "Paula is doing the loving",
+            "Paula is the one being loved",
+            "There is more than one Paula",
+            "Paula is being spoken to directly"
           ],
           answer: 1,
-          explain: "‑am is the accusative singular ending: Paulla is the object. Livia does the loving; Paulla receives it."
+          explain: "‑am is the accusative singular ending: Paula is the object. Julia does the loving; Paula receives it."
         },
         {
-          q: "Why does Livia buy the apples even though they are expensive?",
+          q: "Why does Julia buy the apples even though they are expensive?",
           options: [
             "Sempronius lowers the price",
-            "Because she loves Paulla",
-            "Because Marcus asked for them",
+            "Because she loves Paula",
+            "Because Mark asked for them",
             "She doesn't actually buy them"
           ],
           answer: 1,
-          explain: "«Līvia tamen māla emit, quod Paullam amat» — she buys them anyway, because she loves Paulla."
+          explain: "«Julia tamen māla emit, quod Paulam amat» — she buys them anyway, because she loves Paula."
         }
       ]
     },
     {
       title: "Canis malus",
-      intro: "Back at the sausage stall, Ferox commits the crime of the season — and a small donkey saves the day.",
+      intro: "Back at the sausage stall, Lupo commits the crime of the season — and a small donkey saves the day.",
       paragraphs: [
-        "Semprōnius botulōs habet: botulī magnī sunt, et nōn cārī. Līvia botulum optat, quod Mārcus botulōs amat. Fēmina pecūniam parat: dēnāriōs tenet.",
-        "Ferōx quoque botulōs spectat. Canis nōn dormit — canis labōrat! Subitō Ferōx botulum magnum rapit et botulum dēvorat. Iam botulus nōn est! «Malus canis!» clāmat Semprōnius. «Canis malus botulum rapit!»",
-        "Līvia īrāta est. «Ferōx! Canis malus!» clāmat. Fēmina tamen dēnāriōs parat et botulum emit. Semprōnius iam nōn īrātus est: mercātor rīdet, quod pecūniam habet.",
-        "Deinde Paulla asinum videt. Asinus parvus oleum et vīnum portat; asinus fessus est. Paulla asinum amat et mālum tenet: asinus mālum dēvorat. Paulla rīdet, Līvia quoque rīdet. Ferōx nōn rīdet: canis plēnus est et iam dormit. Fēminae laetae domum ambulant."
+        "Semprōnius botulōs habet: botulī magnī sunt, et nōn cārī. Julia botulum optat, quod Mark botulōs amat. Fēmina pecūniam parat: dēnāriōs tenet.",
+        "Lupo quoque botulōs spectat. Canis nōn dormit — canis labōrat! Subitō Lupo botulum magnum rapit et botulum dēvorat. Iam botulus nōn est! «Malus canis!» clāmat Semprōnius. «Canis malus botulum rapit!»",
+        "Julia īrāta est. «Lupo! Canis malus!» clāmat. Fēmina tamen dēnāriōs parat et botulum emit. Semprōnius iam nōn īrātus est: mercātor rīdet, quod pecūniam habet.",
+        "Deinde Paula asinum videt. Asinus parvus oleum et vīnum portat; asinus fessus est. Paula asinum amat et mālum tenet: asinus mālum dēvorat. Paula rīdet, Julia quoque rīdet. Lupo nōn rīdet: canis plēnus est et iam dormit. Fēminae laetae domum ambulant."
       ],
       glosses: {
         "semprōnius": "Sempronius, the sausage-seller",
@@ -378,18 +378,18 @@ registerUnit({
         "et": "and",
         "nōn": "not",
         "cārī": "expensive (with «botulī»)",
-        "līvia": "Livia (the mother)",
+        "julia": "Julia (the mother)",
         "botulum": "a sausage (acc. sg. — object)",
         "optat": "(she) wishes for, wants",
         "quod": "because",
-        "mārcus": "Marcus (the father, a merchant himself)",
+        "mark": "Mark (the father, a merchant himself — his name never changes form)",
         "amat": "(he/she) loves",
         "fēmina": "the woman (nom.)",
         "pecūniam": "money (acc. — object of «parat»)",
         "parat": "(she) gets ready, prepares",
         "dēnāriōs": "denarii, silver coins (acc. pl.)",
         "tenet": "(she) holds",
-        "ferōx": "Ferox, the dog",
+        "lupo": "Lupo, the dog",
         "quoque": "also, too",
         "spectat": "(he) watches",
         "canis": "the dog (nom. — subject)",
@@ -404,14 +404,14 @@ registerUnit({
         "est": "is",
         "malus": "bad, wicked (with «canis» — short a!)",
         "clāmat": "(he/she) shouts",
-        "īrāta": "angry (describing Livia)",
+        "īrāta": "angry (describing Julia)",
         "tamen": "nevertheless, all the same",
         "emit": "(she) buys",
         "īrātus": "angry (describing Sempronius)",
         "mercātor": "the merchant (nom.)",
         "rīdet": "(he/she) laughs",
         "deinde": "then, next",
-        "paulla": "Paulla (the daughter)",
+        "paula": "Paula (the daughter)",
         "asinum": "the donkey (acc. — object)",
         "videt": "(she) sees",
         "asinus": "the donkey (nom. — subject)",
@@ -428,28 +428,28 @@ registerUnit({
         "ambulant": "(they) walk"
       },
       translation: [
-        "Sempronius has sausages: the sausages are big, and not expensive. Livia wants a sausage, because Marcus loves sausages. The woman gets her money ready: she is holding the denarii.",
-        "Ferox is watching the sausages too. The dog is not asleep — the dog is on the job! Suddenly Ferox snatches a big sausage and devours it. Now there is no sausage! «Bad dog!» shouts Sempronius. «The wicked dog is stealing a sausage!»",
-        "Livia is furious. «Ferox! Bad dog!» she shouts. All the same, the woman gets out her denarii and buys the sausage. Sempronius is no longer angry: the merchant laughs, because he has his money.",
-        "Then Paulla sees a donkey. The little donkey is carrying oil and wine; the donkey is tired. Paulla loves the donkey and holds out an apple: the donkey devours the apple. Paulla laughs, and Livia laughs too. Ferox is not laughing: the dog is full and already asleep. The happy women walk home."
+        "Sempronius has sausages: the sausages are big, and not expensive. Julia wants a sausage, because Mark loves sausages. The woman gets her money ready: she is holding the denarii.",
+        "Lupo is watching the sausages too. The dog is not asleep — the dog is on the job! Suddenly Lupo snatches a big sausage and devours it. Now there is no sausage! «Bad dog!» shouts Sempronius. «The wicked dog is stealing a sausage!»",
+        "Julia is furious. «Lupo! Bad dog!» she shouts. All the same, the woman gets out her denarii and buys the sausage. Sempronius is no longer angry: the merchant laughs, because he has his money.",
+        "Then Paula sees a donkey. The little donkey is carrying oil and wine; the donkey is tired. Paula loves the donkey and holds out an apple: the donkey devours the apple. Paula laughs, and Julia laughs too. Lupo is not laughing: the dog is full and already asleep. The happy women walk home."
       ],
       questions: [
         {
-          q: "What does Ferox do the moment he snatches the sausage?",
+          q: "What does Lupo do the moment he snatches the sausage?",
           options: [
             "Runs home with it",
             "Buries it behind a stall",
             "Devours it on the spot",
-            "Gives it to Paulla"
+            "Gives it to Paula"
           ],
           answer: 2,
           explain: "«botulum dēvorat. Iam botulus nōn est!» — he devours it; the sausage instantly ceases to exist."
         },
         {
-          q: "In «Subitō Ferōx botulum magnum rapit», which words are accusative — the thing snatched?",
+          q: "In «Subitō Lupo botulum magnum rapit», which words are accusative — the thing snatched?",
           options: [
-            "Subitō Ferōx",
-            "Ferōx botulum",
+            "Subitō Lupo",
+            "Lupo botulum",
             "botulum magnum",
             "magnum rapit"
           ],
@@ -459,8 +459,8 @@ registerUnit({
         {
           q: "Why does Sempronius end up laughing?",
           options: [
-            "Ferox performs a trick",
-            "Livia pays for the stolen sausage",
+            "Lupo performs a trick",
+            "Julia pays for the stolen sausage",
             "The donkey brays at him",
             "He was never really angry"
           ],
@@ -496,26 +496,26 @@ registerUnit({
       explain: "2nd-declension nominative plural ‑ī switches to ‑ōs for the object case. «botulae» isn't a form of this word at all."
     },
     {
-      prompt: "«Botulum Ferōx rapit.» Who snatches what?",
+      prompt: "«Botulum canis rapit.» Who snatches what?",
       options: [
-        "The sausage snatches Ferox",
-        "Ferox snatches the sausage",
-        "Ferox and the sausage both act",
+        "The sausage snatches the dog",
+        "The dog snatches the sausage",
+        "The dog and the sausage both act",
         "Impossible to tell from this order"
       ],
       answer: 1,
-      explain: "The order is scrambled but the endings don't lie: «Ferōx» is nominative (the doer), «botulum» is accusative (the done-to)."
+      explain: "The order is scrambled but the endings don't lie: «canis» is nominative (the doer — as an object it would be «canem»), «botulum» is accusative (the done-to)."
     },
     {
-      prompt: "In «Līvia ōva emit», is «ōva» subject or object — and how can you tell?",
+      prompt: "In «Julia ōva emit», is «ōva» subject or object — and how can you tell?",
       options: [
         "Subject — it could come first",
-        "Object — «Līvia» is the subject, and «emit» needs something bought",
+        "Object — «Julia» is the subject, and «emit» needs something bought",
         "Subject — neuter nouns are always subjects",
         "Object — every word after the first is an object"
       ],
       answer: 1,
-      explain: "Neuter ‑a looks the same in both cases, so context decides: Livia is doing the buying, so the eggs are being bought."
+      explain: "Neuter ‑a looks the same in both cases, so context decides: Julia is doing the buying, so the eggs are being bought."
     },
     {
       prompt: "What is the difference between «mālum» and «malum»?",
@@ -526,7 +526,7 @@ registerUnit({
         "«mālum» is simply the plural of «malum»"
       ],
       answer: 1,
-      explain: "The macron is part of the word. Long ā: the fruit. Short a: wickedness. Ferox supplies the malum, the market the mālum."
+      explain: "The macron is part of the word. Long ā: the fruit. Short a: wickedness. Lupo supplies the malum, the market the mālum."
     },
     {
       prompt: "«Mercātor olīvās vēndit» means:",
@@ -551,10 +551,10 @@ registerUnit({
       explain: "‑ōs is the accusative plural: more than one donkey, on the receiving end of whatever verb is coming."
     },
     {
-      prompt: "In «Līvia et Paulla macellum amant», why does the verb end in ‑nt?",
+      prompt: "In «Julia et Paula macellum amant», why does the verb end in ‑nt?",
       options: [
         "Because «macellum» is neuter",
-        "Because the subject — Livia and Paulla together — is plural",
+        "Because the subject — Julia and Paula together — is plural",
         "Because the sentence is a question",
         "Because the object comes right before the verb"
       ],

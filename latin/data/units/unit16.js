@@ -7,7 +7,7 @@ registerUnit({
   grammar: [
     {
       heading: "The question words: Latin’s interview kit",
-      body: "<p>Until now, most questions you have met wore the little tag <span class=\"la\">‑ne</span>, which asks only ‘yes or no?’. Today Quintus needs real information — who? where? how? — and Latin has a crisp little word for each. Like their English cousins, they stand at the front of the sentence and announce: a question is coming.</p><p><span class=\"la\">Quis</span> (who?) and <span class=\"la\">quid</span> (what?) decline: expect <span class=\"la\">quem</span> for ‘whom?’ and your old friend <span class=\"la\">cuius</span> (whose?) from Unit 5. The rest — <span class=\"la\">cūr, ubi, quō, unde, quandō, quōmodo</span> — never change shape at all. <span class=\"la\">Quantus, quanta, quantum</span> (how big?) is an ordinary adjective and agrees with its noun: <span class=\"la\">quanta urbs!</span></p>",
+      body: "<p>Until now, most questions you have met wore the little tag <span class=\"la\">‑ne</span>, which asks only ‘yes or no?’. Today Quinn needs real information — who? where? how? — and Latin has a crisp little word for each. Like their English cousins, they stand at the front of the sentence and announce: a question is coming.</p><p><span class=\"la\">Quis</span> (who?) and <span class=\"la\">quid</span> (what?) decline: expect <span class=\"la\">quem</span> for ‘whom?’ and your old friend <span class=\"la\">cuius</span> (whose?) from Unit 5. The rest — <span class=\"la\">cūr, ubi, quō, unde, quandō, quōmodo</span> — never change shape at all. <span class=\"la\">Quantus, quanta, quantum</span> (how big?) is an ordinary adjective and agrees with its noun: <span class=\"la\">quanta urbs!</span></p>",
       table: {
         caption: "The question words",
         headers: ["Latin", "It asks…", "Example"],
@@ -60,18 +60,18 @@ registerUnit({
     },
     {
       heading: "Calling names: the vocative",
-      body: "<p>When Romans call out to someone, the name slips into the <strong>vocative</strong> case — the calling case. The rule is friendly: for almost every word in the language, the vocative looks exactly like the nominative — <span class=\"la\">Paulla!</span> <span class=\"la\">māter!</span> <span class=\"la\">Ferōx!</span></p><p>The one exception is the 2nd declension. Names and nouns in <span class=\"la\">‑us</span> switch to <span class=\"la\">‑e</span>: <span class=\"la\">Quīntus → Quīnte!</span> Those in <span class=\"la\">‑ius</span> end in plain <span class=\"la\">‑ī</span>: <span class=\"la\">fīlius → fīlī!</span> Even the adjective <span class=\"la\">meus</span> has a special vocative, <span class=\"la\">mī</span>: <span class=\"la\">fīlī mī!</span> — ‘my son!’</p>",
+      body: "<p>When Romans call out to someone, the name slips into the <strong>vocative</strong> case — the calling case. The rule is friendly: for almost every word in the language, the vocative looks exactly like the nominative — <span class=\"la\">Paula!</span> <span class=\"la\">māter!</span> <span class=\"la\">canis!</span> Foreign names like <span class=\"la\">Quinn</span> and <span class=\"la\">Mark</span> never change shape at all: call them exactly as they are.</p><p>The one exception is the 2nd declension. Names and nouns in <span class=\"la\">‑us</span> switch to <span class=\"la\">‑e</span>: <span class=\"la\">dominus → domine!</span> <span class=\"la\">amīcus → amīce!</span> Those in <span class=\"la\">‑ius</span> end in plain <span class=\"la\">‑ī</span>: <span class=\"la\">fīlius → fīlī!</span> Even the adjective <span class=\"la\">meus</span> has a special vocative, <span class=\"la\">mī</span>: <span class=\"la\">fīlī mī!</span> — ‘my son!’</p>",
       table: {
         caption: "Vocative: the calling case",
         headers: ["Nominative", "Vocative", "Meaning"],
         rows: [
-          ["Quīntus", "Quīnte!", "Quintus!"],
+          ["dominus", "domine!", "sir! master!"],
           ["bonus canis", "bone canis!", "good dog!"],
           ["fīlius meus", "fīlī mī!", "my son!"],
-          ["Paulla, māter, Ferōx", "Paulla! māter! Ferōx!", "unchanged — same as the nominative"]
+          ["Paula, māter, Quinn", "Paula! māter! Quinn!", "unchanged — same as the nominative"]
         ]
       },
-      tip: "Reading tip: an ‑e ending on a familiar ‑us name is not a new word — somebody is being spoken to. «Quīnte!» means someone wants Quintus’s attention, usually loudly."
+      tip: "Reading tip: an ‑e ending on a familiar ‑us noun is not a new word — somebody is being spoken to. «Domine!» means someone wants the master’s attention, usually loudly."
     }
   ],
 
@@ -81,24 +81,24 @@ registerUnit({
       forms: "quid (n.); acc. quem",
       pos: "pronoun (interrogative)",
       gloss: "who?",
-      example: "Quis es? Ego Quīntus sum.",
-      exampleGloss: "Who are you? I am Quintus."
+      example: "Quis es? Ego Quinn sum.",
+      exampleGloss: "Who are you? I am Quinn."
     },
     {
       latin: "quid",
       forms: "(neut. of quis)",
       pos: "pronoun (interrogative)",
       gloss: "what?",
-      example: "Quid Ferōx in culīnā facit?",
-      exampleGloss: "What is Ferox doing in the kitchen?"
+      example: "Quid canis Lupo in culīnā facit?",
+      exampleGloss: "What is the dog Lupo doing in the kitchen?"
     },
     {
       latin: "cūr",
       forms: "(indēcl.)",
       pos: "adverb (interrogative)",
       gloss: "why?",
-      example: "Cūr lacrimās, Paulla?",
-      exampleGloss: "Why are you crying, Paulla?"
+      example: "Cūr lacrimās, Paula?",
+      exampleGloss: "Why are you crying, Paula?"
     },
     {
       latin: "ubi",
@@ -113,8 +113,8 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "adverb (interrogative)",
       gloss: "where to?",
-      example: "Quō īs, Quīnte?",
-      exampleGloss: "Where are you going, Quintus?"
+      example: "Quō īs, Quinn?",
+      exampleGloss: "Where are you going, Quinn?"
     },
     {
       latin: "unde",
@@ -153,8 +153,8 @@ registerUnit({
       forms: "īre, iī, itum",
       pos: "verb (irregular)",
       gloss: "go",
-      example: "Ad forum eō; Paulla quoque it.",
-      exampleGloss: "I am going to the forum; Paulla is going too."
+      example: "Ad forum eō; Paula quoque it.",
+      exampleGloss: "I am going to the forum; Paula is going too."
     },
     {
       latin: "redeō",
@@ -185,8 +185,8 @@ registerUnit({
       forms: "timēre, timuī",
       pos: "verb (2nd conj.)",
       gloss: "fear, be afraid",
-      example: "Quīntus turbam magnam timet.",
-      exampleGloss: "Quintus is afraid of the big crowd."
+      example: "Quinn turbam magnam timet.",
+      exampleGloss: "Quinn is afraid of the big crowd."
     },
     {
       latin: "dexter",
@@ -273,19 +273,19 @@ registerUnit({
       forms: "(interj.; pl. agite)",
       pos: "interjection",
       gloss: "come on! well then!",
-      example: "Age, Quīnte, domum īmus!",
-      exampleGloss: "Come on, Quintus, we are going home!"
+      example: "Age, Quinn, domum īmus!",
+      exampleGloss: "Come on, Quinn, we are going home!"
     }
   ],
 
   readings: [
     {
       title: "Ubi est familia mea?",
-      intro: "One beautiful statue too many: Quintus stops to look, and the family walks on without him.",
+      intro: "One beautiful statue too many: Quinn stops to look, and the family walks on without him.",
       paragraphs: [
-        "Hodiē familia Fabia per viās urbis ambulat; ubīque turba magna est. Quīntus statuam pulchram spectat et stat. Familia autem nōn stat, sed ambulat. Subitō puer circumspectat: «Ubi est pater? Ubi est māter? Ubi es, Paulla?» Nēmō respondet. Familia iam longē est: Quīntus sōlus in mediā urbe stat.",
-        "Quīntus perterritus est. «Quid faciō? Quō eō? Viam ad caupōnam nesciō. Quanta est haec urbs!» Puer timet. Tandem clāmat: «Age, Quīnte! Puerī Rōmānī nōn lacrimant. Viātōrēs interrogāre possum.»",
-        "Puer ad tabernam it; ibi mercātor māla vēndit. «Dīc mihi,» inquit Quīntus, «ubi est caupōna prope forum?» Mercātor respondet: «Nesciō. Caupōnae enim multae in hāc urbe sunt. Quis es, puer? Unde venīs?» «Quīntus sum; Ostiā venīmus. Sed quōmodo domum eō? Familiam meam nusquam videō!»"
+        "Hodiē familia Fabia per viās urbis ambulat; ubīque turba magna est. Quinn statuam pulchram spectat et stat. Familia autem nōn stat, sed ambulat. Subitō puer circumspectat: «Ubi est pater? Ubi est māter? Ubi es, Paula?» Nēmō respondet. Familia iam longē est: Quinn sōlus in mediā urbe stat.",
+        "Quinn perterritus est. «Quid faciō? Quō eō? Viam ad caupōnam nesciō. Quanta est haec urbs!» Puer timet. Tandem clāmat: «Age, Quinn! Puerī Rōmānī nōn lacrimant. Viātōrēs interrogāre possum.»",
+        "Puer ad tabernam it; ibi mercātor māla vēndit. «Dīc mihi, domine,» inquit Quinn, «ubi est caupōna prope forum?» Mercātor respondet: «Nesciō. Caupōnae enim multae in hāc urbe sunt. Quis es, puer? Unde venīs?» «Quinn sum; Ostiā venīmus. Sed quōmodo domum eō? Familiam meam nusquam videō!»"
       ],
       glosses: {
         "hodiē": "today",
@@ -299,7 +299,7 @@ registerUnit({
         "turba": "crowd",
         "magna": "big, great",
         "est": "is",
-        "quīntus": "Quintus, the son, 12 years old",
+        "quinn": "Quinn, the son, 12 years old — his name never changes form, even when he talks to himself",
         "statuam": "statue (acc. — object)",
         "pulchram": "beautiful (with «statuam»)",
         "spectat": "(he) looks at, watches",
@@ -315,7 +315,7 @@ registerUnit({
         "pater": "father",
         "māter": "mother",
         "es": "(you) are",
-        "paulla": "Paulla, the sister, 8 years old",
+        "paula": "Paula, the sister, 8 years old",
         "nēmō": "no one",
         "respondet": "(he/she) answers",
         "iam": "already, by now",
@@ -340,7 +340,6 @@ registerUnit({
         "tandem": "at last",
         "clāmat": "(he) shouts",
         "age": "come on! (a fossilized command)",
-        "quīnte": "Quintus! (vocative — he is talking to himself)",
         "puerī": "boys",
         "rōmānī": "Roman (with «puerī»)",
         "lacrimant": "(they) cry",
@@ -355,6 +354,7 @@ registerUnit({
         "vēndit": "(he) sells",
         "dīc": "say! tell! (imperative of «dīcere»)",
         "mihi": "to me (a form of «ego»)",
+        "domine": "sir! (vocative of «dominus» — the ‑us switches to ‑e when someone is addressed)",
         "inquit": "says (with quoted speech)",
         "caupōna": "inn",
         "prope": "near (+ acc.)",
@@ -378,24 +378,24 @@ registerUnit({
         "videō": "(I) see"
       },
       translation: [
-        "Today the Fabian family is walking through the streets of the city; everywhere there is a great crowd. Quintus looks at a beautiful statue and stands still. The family, however, does not stand still, but walks on. Suddenly the boy looks around: ‘Where is father? Where is mother? Where are you, Paulla?’ No one answers. The family is already far away: Quintus stands alone in the middle of the city.",
-        "Quintus is terrified. ‘What do I do? Where do I go? I don’t know the way to the inn. How big this city is!’ The boy is afraid. At last he shouts: ‘Come on, Quintus! Roman boys don’t cry. I can question the passers-by.’",
-        "The boy goes to a shop; there a merchant is selling apples. ‘Tell me,’ says Quintus, ‘where is the inn near the forum?’ The merchant answers: ‘I don’t know. There are many inns in this city, you see. Who are you, boy? Where do you come from?’ ‘I am Quintus; we have come from Ostia. But how do I get home? I see my family nowhere!’"
+        "Today the Fabian family is walking through the streets of the city; everywhere there is a great crowd. Quinn looks at a beautiful statue and stands still. The family, however, does not stand still, but walks on. Suddenly the boy looks around: ‘Where is father? Where is mother? Where are you, Paula?’ No one answers. The family is already far away: Quinn stands alone in the middle of the city.",
+        "Quinn is terrified. ‘What do I do? Where do I go? I don’t know the way to the inn. How big this city is!’ The boy is afraid. At last he shouts: ‘Come on, Quinn! Roman boys don’t cry. I can question the passers-by.’",
+        "The boy goes to a shop; there a merchant is selling apples. ‘Tell me, sir,’ says Quinn, ‘where is the inn near the forum?’ The merchant answers: ‘I don’t know. There are many inns in this city, you see. Who are you, boy? Where do you come from?’ ‘I am Quinn; we have come from Ostia. But how do I get home? I see my family nowhere!’"
       ],
       questions: [
         {
-          q: "How does Quintus come to be separated from his family?",
+          q: "How does Quinn come to be separated from his family?",
           options: [
             "He stops to look at a statue while the family walks on",
-            "Ferox drags him away through the crowd",
+            "Lupo drags him away through the crowd",
             "He runs ahead to the harbor",
             "He falls asleep in the forum"
           ],
           answer: 0,
-          explain: "«Quīntus statuam pulchram spectat et stat. Familia autem nōn stat, sed ambulat» — he stands still, they keep walking."
+          explain: "«Quinn statuam pulchram spectat et stat. Familia autem nōn stat, sed ambulat» — he stands still, they keep walking."
         },
         {
-          q: "In «Quō eō?», what exactly is Quintus asking himself?",
+          q: "In «Quō eō?», what exactly is Quinn asking himself?",
           options: [
             "‘Where am I (standing)?’",
             "‘Where do I go (to)?’",
@@ -410,22 +410,22 @@ registerUnit({
           options: [
             "Exact directions to the inn",
             "He does not know — there are many inns in the city",
-            "That Quintus should sail back to Ostia",
+            "That Quinn should sail back to Ostia",
             "That the inn burned down"
           ],
           answer: 1,
           explain: "«Nesciō. Caupōnae enim multae in hāc urbe sunt» — no luck: too many inns to guess."
         },
         {
-          q: "Quintus tells himself «Age, Quīnte!». Why «Quīnte» and not «Quīntus»?",
+          q: "Quinn says «Dīc mihi, domine» to the merchant. Why «domine» and not «dominus»?",
           options: [
-            "It is the vocative — the calling form of names in ‑us",
-            "It is the accusative — Quintus is the object",
+            "It is the vocative — the calling form of nouns in ‑us",
+            "It is the accusative — the merchant is the object",
             "It is a spelling mistake",
             "It is the plural form"
           ],
           answer: 0,
-          explain: "2nd-declension names in ‑us take ‑e when addressed: Quīntus → Quīnte. He is giving himself a pep talk."
+          explain: "2nd-declension nouns in ‑us take ‑e when someone is addressed: dominus → domine, ‘sir!’ Quinn is being polite to the merchant."
         }
       ]
     },
@@ -433,10 +433,10 @@ registerUnit({
       title: "Ī rēctā, deinde ad dextram",
       intro: "A kind traveler gives directions, the streets tangle them up — and the best nose in the family gets to work.",
       paragraphs: [
-        "Tum viātor appropinquat. «Quid quaeris, puer? Cūr perterritus es?» Quīntus fābulam suam nārrat: «Auxilium petō. Quōmodo domum redīre possum?» «Age,» inquit viātor, «caupōnam illam sciō. Audī: ī rēctā per hunc vīcum, deinde ad dextram. Tum per viam longam ambulā et ad sinistram ī: ibi forum est. Properā!»",
-        "Quīntus per vīcum currit — sed vīcī multī sunt, et puer mox errat. «Quōmodo viam inveniō? Ad dextram eō an ad sinistram?» Fēminam interrogat; fēmina respondet: «Rēctā ī, puer: mox forum vidēs.»",
-        "Intereā familia Quīntum quaerit. «Quīnte! Quīnte!» clāmat Līvia. «Ubi es, fīlī mī?» Nēmō respondet. Subitō Ferōx lātrat et per turbam currit. «Ecce!» clāmat Paulla. «Canis noster viam scit! Age, currite!» Ferōx currit; familia quoque currit.",
-        "Prope forum Ferōx Quīntum invenit. «Ferōx! Bone canis!» clāmat puer. Mox tōta familia ibi est. Līvia fīlium tenet: «Quīnte! Salvusne es?» «Salvus sum, māter. Nōn lacrimāvī: viātōrēs interrogāvī!» «Bene fēcistī,» inquit Mārcus. «Age, domum īmus! Et tū, bone canis, botulum accipis.» «Age!» clāmat Paulla. «Quandō cēnāmus?» Laeta familia ad caupōnam redit; Ferōx laetus botulum suum portat."
+        "Tum viātor appropinquat. «Quid quaeris, puer? Cūr perterritus es?» Quinn fābulam suam nārrat: «Auxilium petō. Quōmodo domum redīre possum?» «Age,» inquit viātor, «caupōnam illam sciō. Audī: ī rēctā per hunc vīcum, deinde ad dextram. Tum per viam longam ambulā et ad sinistram ī: ibi forum est. Properā!»",
+        "Quinn per vīcum currit — sed vīcī multī sunt, et puer mox errat. «Quōmodo viam inveniō? Ad dextram eō an ad sinistram?» Fēminam interrogat; fēmina respondet: «Rēctā ī, puer: mox forum vidēs.»",
+        "Intereā familia fīlium quaerit. «Quinn! Quinn!» clāmat Julia. «Ubi es, fīlī mī?» Nēmō respondet. Subitō canis Lupo lātrat et per turbam currit. «Ecce!» clāmat Paula. «Canis noster viam scit! Age, currite!» Lupo currit; familia quoque currit.",
+        "Prope forum Lupo puerum invenit. «Lupo! Bone canis!» clāmat puer. Mox tōta familia ibi est. Julia fīlium tenet: «Quinn! Salvusne es?» «Salvus sum, māter. Nōn lacrimāvī: viātōrēs interrogāvī!» «Bene fēcistī,» inquit Mark pater. «Age, domum īmus! Et tū, bone canis, botulum accipis.» «Age!» clāmat Paula. «Quandō cēnāmus?» Laeta familia ad caupōnam redit; Lupo laetus botulum suum portat."
       ],
       glosses: {
         "tum": "then",
@@ -448,7 +448,7 @@ registerUnit({
         "cūr": "why?",
         "perterritus": "terrified",
         "es": "(you) are",
-        "quīntus": "Quintus, the son",
+        "quinn": "Quinn, the son — his name never changes form, whatever the sentence does to him",
         "fābulam": "story (acc.)",
         "suam": "his own (with «fābulam»)",
         "nārrat": "(he) tells",
@@ -498,27 +498,26 @@ registerUnit({
         "vidēs": "(you) see",
         "intereā": "meanwhile",
         "familia": "the family",
-        "quīntum": "Quintus (acc. — object)",
         "quaerit": "(it) searches for — the family searches",
-        "quīnte": "Quintus! (vocative)",
         "clāmat": "(she/he) shouts",
-        "līvia": "Livia, the mother",
+        "julia": "Julia, the mother",
         "ubi": "where?",
         "fīlī": "son! (vocative of «fīlius»)",
         "mī": "my! (vocative of «meus» — «fīlī mī», my son!)",
         "nēmō": "no one",
         "subitō": "suddenly",
-        "ferōx": "Ferox, the family dog — a menace, but a useful one",
+        "lupo": "Lupo, the family dog — a menace, but a useful one (quasi lupus! — but not the word «lupus», wolf)",
         "lātrat": "(he) barks",
         "turbam": "crowd (acc. after «per»)",
         "ecce": "look!",
-        "paulla": "Paulla, the daughter, 8 years old",
+        "paula": "Paula, the daughter, 8 years old",
         "canis": "dog; (in address) dog!",
         "noster": "our (with «canis»)",
         "scit": "(he) knows",
         "currite": "run! (imperative — to more than one person)",
         "quoque": "also, too",
         "prope": "near (+ acc.)",
+        "puerum": "the boy (acc. — object; the ‑um shows who gets found)",
         "invenit": "(he) finds",
         "bone": "good (vocative of «bonus» — ‘good dog!’)",
         "tōta": "the whole (with «familia»)",
@@ -534,7 +533,8 @@ registerUnit({
         "interrogāvī": "(I) questioned (perfect)",
         "bene": "well",
         "fēcistī": "(you) did (perfect of «faciō» — ‘well done!’)",
-        "mārcus": "Marcus, the father",
+        "mark": "Mark, the father — his name never changes form; «Mark pater» = Mark, the father",
+        "pater": "father — here in apposition: «Mark pater», Mark the father",
         "īmus": "(we) go",
         "tū": "you (emphatic)",
         "botulum": "a sausage (acc.)",
@@ -543,19 +543,19 @@ registerUnit({
         "cēnāmus": "(we) have dinner («cēnāre», to dine)",
         "laeta": "happy (with «familia»)",
         "redit": "(it) returns — the family returns",
-        "laetus": "happy (with «Ferōx»)",
+        "laetus": "happy (with «Lupo»)",
         "suum": "his own (with «botulum» — earned, not stolen!)",
         "portat": "(he) carries"
       },
       translation: [
-        "Then a traveler comes up. ‘What are you looking for, boy? Why are you terrified?’ Quintus tells his story: ‘I’m asking for help. How can I get back home?’ ‘Well then,’ says the traveler, ‘I know that inn. Listen: go straight along this street, then to the right. Then walk along a long street and go to the left: the forum is there. Hurry!’",
-        "Quintus runs along the street — but there are many streets, and the boy soon goes astray. ‘How do I find the way? Do I go to the right or to the left?’ He questions a woman; the woman answers: ‘Go straight ahead, boy: soon you’ll see the forum.’",
-        "Meanwhile the family is searching for Quintus. ‘Quintus! Quintus!’ shouts Livia. ‘Where are you, my son?’ No one answers. Suddenly Ferox barks and runs through the crowd. ‘Look!’ shouts Paulla. ‘Our dog knows the way! Come on, run!’ Ferox runs; the family runs too.",
-        "Near the forum Ferox finds Quintus. ‘Ferox! Good dog!’ shouts the boy. Soon the whole family is there. Livia hugs her son: ‘Quintus! Are you safe?’ ‘I am safe, mother. I didn’t cry: I questioned the passers-by!’ ‘Well done,’ says Marcus. ‘Come on, we’re going home! And you, good dog, get a sausage.’ ‘Come on!’ shouts Paulla. ‘When do we eat?’ Happily the family returns to the inn; Ferox, delighted, carries his very own sausage."
+        "Then a traveler comes up. ‘What are you looking for, boy? Why are you terrified?’ Quinn tells his story: ‘I’m asking for help. How can I get back home?’ ‘Well then,’ says the traveler, ‘I know that inn. Listen: go straight along this street, then to the right. Then walk along a long street and go to the left: the forum is there. Hurry!’",
+        "Quinn runs along the street — but there are many streets, and the boy soon goes astray. ‘How do I find the way? Do I go to the right or to the left?’ He questions a woman; the woman answers: ‘Go straight ahead, boy: soon you’ll see the forum.’",
+        "Meanwhile the family is searching for their son. ‘Quinn! Quinn!’ shouts Julia. ‘Where are you, my son?’ No one answers. Suddenly Lupo the dog barks and runs through the crowd. ‘Look!’ shouts Paula. ‘Our dog knows the way! Come on, run!’ Lupo runs; the family runs too.",
+        "Near the forum Lupo finds the boy. ‘Lupo! Good dog!’ shouts the boy. Soon the whole family is there. Julia hugs her son: ‘Quinn! Are you safe?’ ‘I am safe, mother. I didn’t cry: I questioned the passers-by!’ ‘Well done,’ says Mark, his father. ‘Come on, we’re going home! And you, good dog, get a sausage.’ ‘Come on!’ shouts Paula. ‘When do we eat?’ Happily the family returns to the inn; Lupo, delighted, carries his very own sausage."
       ],
       questions: [
         {
-          q: "What directions does the traveler give Quintus?",
+          q: "What directions does the traveler give Quinn?",
           options: [
             "Straight along the street, then right, then along a long street, and finally left",
             "Left at the temple, then right at the harbor",
@@ -577,18 +577,18 @@ registerUnit({
           explain: "Each is a bare-stem imperative addressed to one person: listen! walk! hurry! Directions are wall-to-wall commands."
         },
         {
-          q: "Who actually finds Quintus in the end?",
+          q: "Who actually finds Quinn in the end?",
           options: [
             "The apple merchant",
             "The kind traveler",
-            "Ferox, the family dog",
+            "Lupo, the family dog",
             "A Roman soldier"
           ],
           answer: 2,
-          explain: "«Prope forum Ferōx Quīntum invenit» — the dog’s nose beats everyone’s directions."
+          explain: "«Prope forum Lupo puerum invenit» — the dog’s nose beats everyone’s directions."
         },
         {
-          q: "How is Ferox rewarded?",
+          q: "How is Lupo rewarded?",
           options: [
             "He is scolded for barking at the crowd",
             "He receives a sausage — honestly earned, for once",
@@ -632,15 +632,15 @@ registerUnit({
       explain: "«ī!» is the one-letter command of «īre»: go! (‘He goes’ would be «it».) Possibly the shortest complete sentence in Latin."
     },
     {
-      prompt: "A friend shouts «Quīnte, venī!». Why «Quīnte» and not «Quīntus»?",
+      prompt: "A friend shouts «Amīce, venī!». Why «amīce» and not «amīcus»?",
       options: [
-        "It is the vocative — the calling form for names in ‑us",
-        "It is the accusative — Quintus is the object",
-        "It is the genitive — ‘of Quintus’",
+        "It is the vocative — the calling form for nouns in ‑us",
+        "It is the accusative — the friend is the object",
+        "It is the genitive — ‘of a friend’",
         "It is an affectionate nickname"
       ],
       answer: 0,
-      explain: "2nd-declension names in ‑us switch to ‑e when someone is addressed: Quīntus → Quīnte! Everything else in the shout — «venī!» — is an imperative."
+      explain: "2nd-declension nouns in ‑us switch to ‑e when someone is addressed: amīcus → amīce! Everything else in the shout — «venī!» — is an imperative."
     },
     {
       prompt: "«Currite, puerī!» is addressed to…",

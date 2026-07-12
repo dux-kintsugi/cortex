@@ -293,16 +293,17 @@ registerUnit({
   readings: [
     {
       title: "Aquila Decimae Legiōnis",
-      intro: "Philo opens a new scroll: Caesar’s own account of crossing to Britain — and the standard-bearer who saved the day. (Lightly adapted from Caesar, De Bello Gallico, book 4.)",
+      intro: "Phil opens a new scroll: Caesar’s own account of crossing to Britain — and the standard-bearer who saved the day. (Lightly adapted from Caesar, De Bello Gallico, book 4.)",
       paragraphs: [
-        "Philō Quīntō volūmen novum dedit. «Hōs librōs», inquit, «Caesar, dux clārissimus, dē bellō Gallicō scrīpsit. Dē sē tamen semper ‹Caesar› dīcit, numquam ‹ego›. Audī quōmodo in Britanniam trānsierit.»",
+        "Phil puerō Quinn volūmen novum dedit. «Hōs librōs», inquit, «Caesar, dux clārissimus, dē bellō Gallicō scrīpsit. Dē sē tamen semper ‹Caesar› dīcit, numquam ‹ego›. Audī quōmodo in Britanniam trānsierit.»",
         "Caesar iam multōs annōs bellum in Galliā gerēbat multāsque gentēs virtūte legiōnum superāverat. Tum in Britanniam quoque exercitum dūcere cōnstituit, quod Britannī hostibus populī Rōmānī saepe auxilium mīserant. Itaque, nāvibus parātīs, duās legiōnēs trāns mare trānsportāvit.",
         "Ubi ad īnsulam pervēnit, magnās hostium cōpiās in lītore vīdit. Mīlitēs dē nāvibus dēsilīre dubitābant, quod mare altum erat et hostēs tēla mittēbant. Tum mīles, quī aquilam decimae legiōnis ferēbat, clāmāvit: «Dēsilīte, mīlitēs, nisi aquilam hostibus trādere vultis!» Haec cum dīxisset, ex nāve dēsiluit et aquilam contrā hostēs ferre coepit.",
-        "Tum omnēs, tantō exemplō mōtī, dēsiluērunt. Diū atque ācriter pugnātum est; multī vulnera accēpērunt, sed nēmō fūgit. Tandem Rōmānī hostēs in fugam dedērunt, et Britannī lēgātōs dē pāce mīsērunt. Ita pāx facta est. «Caesar trāns mare nāvigāvit!» exclāmāvit Quīntus. «Ego quoque ōlim nāvigābō!»"
+        "Tum omnēs, tantō exemplō mōtī, dēsiluērunt. Diū atque ācriter pugnātum est; multī vulnera accēpērunt, sed nēmō fūgit. Tandem Rōmānī hostēs in fugam dedērunt, et Britannī lēgātōs dē pāce mīsērunt. Ita pāx facta est. «Caesar trāns mare nāvigāvit!» exclāmāvit Quinn. «Ego quoque ōlim nāvigābō!»"
       ],
       glosses: {
-        "philō": "Philo, the Greek tutor",
-        "quīntō": "to Quintus (dat.)",
+        "phil": "Phil, the Greek tutor (his name never changes form)",
+        "puerō": "to the boy (dat. — the case lives on «puerō», since «Quinn» never changes)",
+        "quinn": "Quinn, the son (his name never changes form)",
         "volūmen": "a scroll, book-roll (acc.)",
         "novum": "new (acc.)",
         "dedit": "gave (perfect)",
@@ -424,15 +425,14 @@ registerUnit({
         "facta": "made; «facta est» = was made",
         "nāvigāvit": "sailed (perfect)",
         "exclāmāvit": "cried out (perfect)",
-        "quīntus": "Quintus, the son",
         "ōlim": "one day, someday",
         "nāvigābō": "I shall sail (future)"
       },
       translation: [
-        "Philo gave Quintus a new scroll. «These books,» he said, «Caesar, the most famous commander, wrote about the Gallic war. Yet about himself he always says ‹Caesar›, never ‹I›. Hear how he crossed over to Britain.»",
+        "Phil gave the boy Quinn a new scroll. «These books,» he said, «Caesar, the most famous commander, wrote about the Gallic war. Yet about himself he always says ‹Caesar›, never ‹I›. Hear how he crossed over to Britain.»",
         "Caesar had already been waging war in Gaul for many years and had overcome many tribes by the courage of his legions. Then he decided to lead an army to Britain as well, because the Britons had often sent help to the enemies of the Roman people. And so, once the ships had been prepared, he transported two legions across the sea.",
         "When he reached the island, he saw great forces of the enemy on the shore. The soldiers hesitated to jump down from the ships, because the sea was deep and the enemy kept hurling missiles. Then a soldier who was carrying the eagle of the tenth legion shouted: «Jump down, soldiers, unless you want to hand the eagle over to the enemy!» When he had said this, he leapt from the ship and began to carry the eagle straight at the enemy.",
-        "Then all of them, stirred by so great an example, jumped down. For a long time there was fierce fighting; many received wounds, but no one fled. At last the Romans put the enemy to flight, and the Britons sent envoys to ask about peace. Thus peace was made. «Caesar sailed across the sea!» cried Quintus. «One day I too shall sail!»"
+        "Then all of them, stirred by so great an example, jumped down. For a long time there was fierce fighting; many received wounds, but no one fled. At last the Romans put the enemy to flight, and the Britons sent envoys to ask about peace. Thus peace was made. «Caesar sailed across the sea!» cried Quinn. «One day I too shall sail!»"
       ],
       questions: [
         {
@@ -483,18 +483,18 @@ registerUnit({
     },
     {
       title: "Fortūna Caesaris",
-      intro: "The next day Philo tells the whole sweep of Caesar’s career, the way the historians tell it — triumph, civil war, and the price of glory. (Adapted from Eutropius, Breviarium, book 6.)",
+      intro: "The next day Phil tells the whole sweep of Caesar’s career, the way the historians tell it — triumph, civil war, and the price of glory. (Adapted from Eutropius, Breviarium, book 6.)",
       paragraphs: [
-        "Posterō diē Quīntus plūra audīre cupiēbat. «Quālis homō erat Caesar?» rogāvit. «Semperne vīcit?» Philō «Audī», inquit. «Tōtam vītam eius breviter nārrābō, sīcut eam historicī nārrant.»",
+        "Posterō diē Quinn plūra audīre cupiēbat. «Quālis homō erat Caesar?» rogāvit. «Semperne vīcit?» Phil «Audī», inquit. «Tōtam vītam eius breviter nārrābō, sīcut eam historicī nārrant.»",
         "Gāius Iūlius Caesar prīmum cōnsul factus est; deinde in Galliam cum exercitū missus est. Novem annīs omnēs ferē gentēs Gallōrum multīs proeliīs superāvit. Britannīs quoque, quī anteā nē nōmen quidem populī Rōmānī audīverant, bellum intulit, et Germānōs trāns Rhēnum flūmen oppugnāvit. Tanta erat virtūs legiōnum eius ut nūlla gēns eī diū resistere posset.",
         "Sed fortūna, quae Caesarem in bellō semper iūverat, eī pācem nōn dedit. Senātus enim, quī potentiam eius timēbat, iussit eum exercitum dīmittere. Caesar recūsāvit: cum ūnā legiōne flūmen Rubicōnem trānsiit et contrā patriam prōcessit. Bellum cīvīle factum est, in quō cīvēs Rōmānī contrā cīvēs pugnāvērunt. Caesar Pompēium, ducem alterīus partis, magnō proeliō superāvit; deinde sōlus imperāre coepit.",
         "Sed quī omnēs bellō vincit, nōn semper pācem tenēre potest. Caesar enim contrā mōrem lībertātis Rōmānae agēbat; itaque sexāgintā senātōrēs contrā eum coniūrāvērunt, et ille in cūriā ā suīs cīvibus interfectus est.",
-        "Quīntus attonitus «Tantus dux», inquit, «ā suīs cīvibus interfectus est?» «Ita est», respondit Philō. «Memoriā tenē, mī Quīnte: bellum gerere multī possunt; pācem servāre opus difficilius est.»"
+        "Quinn attonitus «Tantus dux», inquit, «ā suīs cīvibus interfectus est?» «Ita est», respondit Phil. «Memoriā tenē, mī puer: bellum gerere multī possunt; pācem servāre opus difficilius est.»"
       ],
       glosses: {
         "posterō": "on the next («posterō diē» = the next day)",
         "diē": "day (abl. of «diēs»)",
-        "quīntus": "Quintus, the son",
+        "quinn": "Quinn, the son (his name never changes form)",
         "plūra": "more (things) (acc. n. pl. — comparative of «multus»)",
         "audīre": "to hear",
         "cupiēbat": "wanted, was eager",
@@ -505,7 +505,7 @@ registerUnit({
         "rogāvit": "asked (perfect)",
         "semperne": "always? (the question-marker «‑ne» attached to «semper»)",
         "vīcit": "did he win, did he conquer (perfect of «vincō»)",
-        "philō": "Philo, the Greek tutor",
+        "phil": "Phil, the Greek tutor (his name never changes form)",
         "audī": "listen! (sg. command)",
         "inquit": "said (used with quoted speech)",
         "tōtam": "the whole (acc.)",
@@ -630,8 +630,8 @@ registerUnit({
         "respondit": "replied (perfect)",
         "memoriā": "«memoriā tenē» = keep in memory, remember",
         "tenē": "hold! (sg. command — «memoriā tenē» = remember!)",
-        "mī": "my (vocative of «meus» — «mī Quīnte» = my dear Quintus)",
-        "quīnte": "Quintus (voc. — being addressed)",
+        "mī": "my (vocative of «meus» — «mī puer» = my boy)",
+        "puer": "boy (voc. — the tutor addressing Quinn)",
         "gerere": "to wage («bellum gerere» = to wage war)",
         "multī": "many (men)",
         "possunt": "are able, can",
@@ -640,15 +640,15 @@ registerUnit({
         "difficilius": "more difficult (comparative of «difficilis»)"
       },
       translation: [
-        "The next day Quintus wanted to hear more. «What sort of man was Caesar?» he asked. «Did he always win?» «Listen,» said Philo. «I shall tell you his whole life briefly, just as the historians tell it.»",
+        "The next day Quinn wanted to hear more. «What sort of man was Caesar?» he asked. «Did he always win?» «Listen,» said Phil. «I shall tell you his whole life briefly, just as the historians tell it.»",
         "Gaius Julius Caesar was first made consul; then he was sent into Gaul with an army. Within nine years he overcame almost all the tribes of the Gauls in many battles. He made war too upon the Britons, who before that had not even heard the name of the Roman people, and he attacked the Germans across the river Rhine. So great was the courage of his legions that no nation could resist him for long.",
         "But fortune, which had always helped Caesar in war, did not give him peace. For the senate, which feared his power, ordered him to disband his army. Caesar refused: with a single legion he crossed the river Rubicon and marched against his own fatherland. A civil war broke out, in which Roman citizens fought against citizens. Caesar defeated Pompey, the leader of the other side, in a great battle; then he began to rule alone.",
         "But the man who conquers everyone in war cannot always hold on to peace. For Caesar was acting against the custom of Roman liberty; and so sixty senators conspired against him, and he was killed in the senate-house by his own citizens.",
-        "Quintus, astonished, said: «So great a commander was killed by his own citizens?» «It is so,» replied Philo. «Remember, my dear Quintus: many men can wage war; to keep the peace is the more difficult task.»"
+        "Quinn, astonished, said: «So great a commander was killed by his own citizens?» «It is so,» replied Phil. «Remember, my boy: many men can wage war; to keep the peace is the more difficult task.»"
       ],
       questions: [
         {
-          q: "According to Philo’s account, what had the Britons known of Rome before Caesar made war on them?",
+          q: "According to Phil’s account, what had the Britons known of Rome before Caesar made war on them?",
           options: [
             "They had traded with Roman merchants for years",
             "They had not even heard the name of the Roman people",
@@ -681,7 +681,7 @@ registerUnit({
           explain: "«iussit eum exercitum dīmittere. Caesar recūsāvit: … flūmen Rubicōnem trānsiit et contrā patriam prōcessit» — refusal, then the fateful river."
         },
         {
-          q: "What is Philo’s closing lesson for Quintus?",
+          q: "What is Phil’s closing lesson for Quinn?",
           options: [
             "War is always glorious, whatever the cost",
             "Never trust what historians write",

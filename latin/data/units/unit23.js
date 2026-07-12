@@ -7,7 +7,7 @@ registerUnit({
   grammar: [
     {
       heading: "«Flēns»: the present participle — a verb in adjective's clothing",
-      body: "<p>English does it constantly: <em>the weeping mother</em>, <em>sailors arriving from other lands</em>. Latin builds this from the verb stem plus <span class=\"la\">‑ns</span>: <span class=\"la\">flēns</span> — weeping; <span class=\"la\">vigilāns</span> — keeping watch. Outside the nominative the stem shows <span class=\"la\">‑nt‑</span>: <span class=\"la\">flentem, flentis, flentēs</span>. It declines like the 3rd-declension adjectives of unit 17 (think <span class=\"la\">ingēns, ingentis</span>).</p><p>A participle is an adjective made out of a verb, so it <strong>agrees</strong> with a noun — and that noun is the one doing the action: <span class=\"la\">Līvia flēns sedēbat</span> — Livia sat <em>weeping</em>; <span class=\"la\">nautae ex aliīs terrīs venientēs</span> — sailors <em>arriving</em> from other lands. The action runs at the same time as the main verb: while she sat, she wept.</p>",
+      body: "<p>English does it constantly: <em>the weeping mother</em>, <em>sailors arriving from other lands</em>. Latin builds this from the verb stem plus <span class=\"la\">‑ns</span>: <span class=\"la\">flēns</span> — weeping; <span class=\"la\">vigilāns</span> — keeping watch. Outside the nominative the stem shows <span class=\"la\">‑nt‑</span>: <span class=\"la\">flentem, flentis, flentēs</span>. It declines like the 3rd-declension adjectives of unit 17 (think <span class=\"la\">ingēns, ingentis</span>).</p><p>A participle is an adjective made out of a verb, so it <strong>agrees</strong> with a noun — and that noun is the one doing the action: <span class=\"la\">Julia flēns sedēbat</span> — Julia sat <em>weeping</em>; <span class=\"la\">nautae ex aliīs terrīs venientēs</span> — sailors <em>arriving</em> from other lands. The action runs at the same time as the main verb: while she sat, she wept.</p>",
       table: {
         caption: "Present participles, conjugation by conjugation",
         headers: ["Verb", "Participle (nom., gen.)", "Meaning"],
@@ -28,7 +28,7 @@ registerUnit({
     },
     {
       heading: "«Ventūrus»: the participle of things to come",
-      body: "<p>The third and rarest snapshot: take the stem of the fourth principal part and add <span class=\"la\">‑ūrus, ‑ūra, ‑ūrum</span> — <em>about to, going to</em>. <span class=\"la\">nāvis ventūra</span> — a ship about to arrive. With <span class=\"la\">est</span> it makes a handy near-future: <span class=\"la\">Titus ventūrus est</span> — Titus is <em>going to</em> come. Recognition is all you need for now.</p><p>So every Latin verb can freeze its action in three snapshots — one before, one during, one after. Learn the trio as a chant: <span class=\"la\">portāns</span>, carrying; <span class=\"la\">portātus</span>, carried; <span class=\"la\">portātūrus</span>, about to carry.</p>",
+      body: "<p>The third and rarest snapshot: take the stem of the fourth principal part and add <span class=\"la\">‑ūrus, ‑ūra, ‑ūrum</span> — <em>about to, going to</em>. <span class=\"la\">nāvis ventūra</span> — a ship about to arrive. With <span class=\"la\">est</span> it makes a handy near-future: <span class=\"la\">avunculus ventūrus est</span> — the uncle is <em>going to</em> come. Recognition is all you need for now.</p><p>So every Latin verb can freeze its action in three snapshots — one before, one during, one after. Learn the trio as a chant: <span class=\"la\">portāns</span>, carrying; <span class=\"la\">portātus</span>, carried; <span class=\"la\">portātūrus</span>, about to carry.</p>",
       table: {
         caption: "The three participles side by side",
         headers: ["Time & voice", "Example", "Meaning"],
@@ -42,7 +42,7 @@ registerUnit({
     },
     {
       heading: "The ablative absolute: «nāve āmissā»",
-      body: "<p>Now for Latin's favorite scene-setting trick — and this unit's title. Take a noun and a participle, put <strong>both in the ablative</strong>, and park the pair at the edge of the sentence, usually fenced off by commas: <span class=\"la\">nāve āmissā, familia maesta erat</span> — <em>the ship having been lost</em>, the family was in mourning. The phrase is called <em>absolute</em> (from <span class=\"la\">absolūtus</span>, ‘untied’) because it hangs free: its noun plays no part in the main clause.</p><p>Translate it flexibly with <em>when, after, since, while</em>: <span class=\"la\">precibus factīs, familia discessit</span> — <em>after the prayers were made</em>, the family left; <span class=\"la\">aliīs dormientibus, Quīntus vigilābat</span> — <em>while the others slept</em>, Quintus kept watch. A perfect participle means the background deed is already done; a present participle means it is still going on.</p>",
+      body: "<p>Now for Latin's favorite scene-setting trick — and this unit's title. Take a noun and a participle, put <strong>both in the ablative</strong>, and park the pair at the edge of the sentence, usually fenced off by commas: <span class=\"la\">nāve āmissā, familia maesta erat</span> — <em>the ship having been lost</em>, the family was in mourning. The phrase is called <em>absolute</em> (from <span class=\"la\">absolūtus</span>, ‘untied’) because it hangs free: its noun plays no part in the main clause.</p><p>Translate it flexibly with <em>when, after, since, while</em>: <span class=\"la\">precibus factīs, familia discessit</span> — <em>after the prayers were made</em>, the family left; <span class=\"la\">aliīs dormientibus, Quinn vigilābat</span> — <em>while the others slept</em>, Quinn kept watch. A perfect participle means the background deed is already done; a present participle means it is still going on.</p>",
       table: {
         caption: "Reading the ablative absolute",
         headers: ["Latin", "Literal", "Natural English"],
@@ -63,8 +63,8 @@ registerUnit({
       forms: "speī, f.",
       pos: "noun (5th decl.)",
       gloss: "hope",
-      example: "Spēs Quīntum numquam relinquit.",
-      exampleGloss: "Hope never abandons Quintus."
+      example: "Spēs fīlium numquam relinquit.",
+      exampleGloss: "Hope never abandons the son."
     },
     {
       latin: "dolor",
@@ -79,16 +79,16 @@ registerUnit({
       forms: "lacrimae, f.",
       pos: "noun (1st decl.)",
       gloss: "tear",
-      example: "Oculī Paullae lacrimīs plēnī sunt.",
-      exampleGloss: "Paulla's eyes are full of tears."
+      example: "Oculī Paulae lacrimīs plēnī sunt.",
+      exampleGloss: "Paula's eyes are full of tears."
     },
     {
       latin: "cūra",
       forms: "cūrae, f.",
       pos: "noun (1st decl.)",
       gloss: "care, worry",
-      example: "Cūrae Mārcum per tōtam noctem tenent.",
-      exampleGloss: "Worries grip Marcus all night long."
+      example: "Cūrae patrem per tōtam noctem tenent.",
+      exampleGloss: "Worries grip the father all night long."
     },
     {
       latin: "silentium",
@@ -119,24 +119,24 @@ registerUnit({
       forms: "animī, m.",
       pos: "noun (2nd decl.)",
       gloss: "mind, spirit, courage",
-      example: "«Bonum animum habē!» inquit Quīntus.",
-      exampleGloss: "«Keep your courage up!» says Quintus."
+      example: "«Bonum animum habē!» inquit Quinn.",
+      exampleGloss: "«Keep your courage up!» says Quinn."
     },
     {
       latin: "precēs",
       forms: "precum, f. pl.",
       pos: "noun (3rd decl., plural)",
       gloss: "prayers",
-      example: "Dī precēs Līviae audiunt.",
-      exampleGloss: "The gods hear Livia's prayers."
+      example: "Dī precēs Juliae audiunt.",
+      exampleGloss: "The gods hear Julia's prayers."
     },
     {
       latin: "vōtum",
       forms: "vōtī, n.",
       pos: "noun (2nd decl.)",
       gloss: "vow",
-      example: "Līvia in templō vōtum facit.",
-      exampleGloss: "Livia makes a vow in the temple."
+      example: "Julia in templō vōtum facit.",
+      exampleGloss: "Julia makes a vow in the temple."
     },
     {
       latin: "sacrificium",
@@ -159,8 +159,8 @@ registerUnit({
       forms: "dēspērāre, dēspērāvī, dēspērātum",
       pos: "verb (1st conj.)",
       gloss: "despair, give up hope",
-      example: "Quīntus numquam dēspērat.",
-      exampleGloss: "Quintus never despairs."
+      example: "Quinn numquam dēspērat.",
+      exampleGloss: "Quinn never despairs."
     },
     {
       latin: "fleō",
@@ -191,24 +191,24 @@ registerUnit({
       forms: "cōnfirmāre, cōnfirmāvī, cōnfirmātum",
       pos: "verb (1st conj.)",
       gloss: "strengthen, encourage",
-      example: "Quīntus mātrem maestam cōnfirmāre temptat.",
-      exampleGloss: "Quintus tries to encourage his sorrowful mother."
+      example: "Quinn mātrem maestam cōnfirmāre temptat.",
+      exampleGloss: "Quinn tries to encourage his sorrowful mother."
     },
     {
       latin: "anxius",
       forms: "‑a, ‑um",
       pos: "adjective (1st/2nd decl.)",
       gloss: "anxious",
-      example: "Mārcus anxius nūntium exspectat.",
-      exampleGloss: "Anxious, Marcus waits for news."
+      example: "Pater anxius nūntium exspectat.",
+      exampleGloss: "Anxious, the father waits for news."
     },
     {
       latin: "trīstis",
       forms: "‑e",
       pos: "adjective (3rd decl.)",
       gloss: "sad",
-      example: "Cūr tam trīstis es, Paulla?",
-      exampleGloss: "Why are you so sad, Paulla?"
+      example: "Cūr tam trīstis es, Paula?",
+      exampleGloss: "Why are you so sad, Paula?"
     },
     {
       latin: "maestus",
@@ -231,16 +231,16 @@ registerUnit({
       forms: "‑a, ‑um",
       pos: "adjective (1st/2nd decl.)",
       gloss: "certain, sure",
-      example: "Ūna rēs certa est: Titus gubernātor optimus est.",
-      exampleGloss: "One thing is certain: Titus is the best helmsman."
+      example: "Ūna rēs certa est: avunculus Ted gubernātor optimus est.",
+      exampleGloss: "One thing is certain: Uncle Ted is the best helmsman."
     },
     {
       latin: "nūllus",
       forms: "‑a, ‑um (gen. nūllīus)",
       pos: "adjective (1st/2nd decl.)",
       gloss: "no, none",
-      example: "Nūlla epistula ā Titō venit.",
-      exampleGloss: "No letter comes from Titus."
+      example: "Nūlla epistula ab avunculō venit.",
+      exampleGloss: "No letter comes from the uncle."
     },
     {
       latin: "alius",
@@ -265,13 +265,13 @@ registerUnit({
       title: "Domus Maesta",
       intro: "In the days after the shipwreck the house falls silent — and rumors, some dark, some hopeful, drift through Ostia.",
       paragraphs: [
-        "Nāve Titī āmissā, tōta domus maesta erat. Ubīque silentium erat: nēmō cantābat, nēmō rīdēbat, etiam parva Paulla tacēbat. Līvia in cubiculō sedēbat, diū flēns; oculī eius lacrimīs plēnī erant. Etiam Ferōx maestus erat: botulōs nōn iam rapiēbat, sed ante portam iacēbat, viam oculīs trīstibus spectāns.",
-        "Mārcus autem cotīdiē ad portum ībat et nautās ex aliīs terrīs venientēs interrogābat: «Vīdistisne nāvem frāctam? Vīdistisne virōs ē marī servātōs?» Sed nēmō certum respōnsum dare poterat, et fāma incerta per oppidum errābat. Alter nauta clāmābat: «Omnēs periērunt!»; alter respondēbat: «Minimē! Paucī in īnsulā parvā etiam nunc vīvunt.» Itaque animus Mārcī inter spem metumque iactābātur.",
-        "Quīntus tamen nōn dēspērābat. «Nūlla nāvis», inquit, «gubernātōrem meliōrem habet. Avunculus noster vīvit et fortasse in īnsulā ignōtā auxilium exspectat.» Puer, tālia dīcēns, mātrem maestam cōnfirmāre temptābat. Nocte, aliīs dormientibus, sōlus vigilābat et, dē avunculō cōgitāns, stēllās clārās spectābat."
+        "Nāve avunculī āmissā, tōta domus maesta erat. Ubīque silentium erat: nēmō cantābat, nēmō rīdēbat, etiam parva Paula tacēbat. Julia in cubiculō sedēbat, diū flēns; oculī eius lacrimīs plēnī erant. Etiam canis Lupo maestus erat: botulōs nōn iam rapiēbat, sed ante portam iacēbat, viam oculīs trīstibus spectāns.",
+        "Mark autem cotīdiē ad portum ībat et nautās ex aliīs terrīs venientēs interrogābat: «Vīdistisne nāvem frāctam? Vīdistisne virōs ē marī servātōs?» Sed nēmō certum respōnsum dare poterat, et fāma incerta per oppidum errābat. Alter nauta clāmābat: «Omnēs periērunt!»; alter respondēbat: «Minimē! Paucī in īnsulā parvā etiam nunc vīvunt.» Itaque animus patris inter spem metumque iactābātur.",
+        "Quinn tamen nōn dēspērābat. «Nūlla nāvis», inquit, «gubernātōrem meliōrem habet. Avunculus noster vīvit et fortasse in īnsulā ignōtā auxilium exspectat.» Puer, tālia dīcēns, mātrem maestam cōnfirmāre temptābat. Nocte, aliīs dormientibus, sōlus vigilābat et, dē avunculō cōgitāns, stēllās clārās spectābat."
       ],
       glosses: {
         "nāve": "ship (abl. — first half of an ablative absolute)",
-        "titī": "of Titus (gen.)",
+        "avunculī": "of the uncle (gen.)",
         "āmissā": "lost; «nāve āmissā» = the ship having been lost, since the ship was lost (ablative absolute)",
         "tōta": "the whole",
         "domus": "house, household",
@@ -284,20 +284,21 @@ registerUnit({
         "rīdēbat": "was laughing",
         "etiam": "even; also",
         "parva": "little",
-        "paulla": "Paulla, the daughter",
+        "paula": "Paula, the daughter",
         "tacēbat": "was silent",
-        "līvia": "Livia, the mother",
+        "julia": "Julia, the mother",
         "in": "in, on",
         "cubiculō": "bedroom (abl.)",
         "sedēbat": "was sitting",
         "diū": "for a long time",
-        "flēns": "weeping (present participle — agrees with «Līvia»)",
+        "flēns": "weeping (present participle — agrees with «Julia»)",
         "oculī": "eyes (nom. pl.)",
         "eius": "her (lit. ‘of her’)",
         "lacrimīs": "with tears (abl. pl.)",
         "plēnī": "full",
         "erant": "were",
-        "ferōx": "Ferox, the family dog",
+        "canis": "dog",
+        "lupo": "Lupo, the family dog — quasi lupus! (his name never changes form)",
         "maestus": "sorrowful, mournful",
         "botulōs": "sausages (acc. pl.)",
         "nōn": "not; «nōn iam» = no longer",
@@ -310,8 +311,8 @@ registerUnit({
         "viam": "the road (acc.)",
         "oculīs": "with eyes (abl. pl.)",
         "trīstibus": "sad (abl. pl.)",
-        "spectāns": "watching (present participle — agrees with «Ferōx»)",
-        "mārcus": "Marcus, the father",
+        "spectāns": "watching (present participle — agrees with «canis»)",
+        "mark": "Mark, the father (his name never changes form)",
         "autem": "but, however",
         "cotīdiē": "every day",
         "ad": "to, toward",
@@ -354,12 +355,12 @@ registerUnit({
         "vīvunt": "(they) are alive, live",
         "itaque": "and so, therefore",
         "animus": "mind, spirit",
-        "mārcī": "of Marcus (gen.)",
+        "patris": "of the father (gen.)",
         "inter": "between",
         "spem": "hope (acc. of «spēs», 5th decl.)",
         "metumque": "and fear (acc., 4th decl. + ‑que)",
         "iactābātur": "was being tossed (imperfect passive)",
-        "quīntus": "Quintus, the son",
+        "quinn": "Quinn, the son (his name never changes form)",
         "tamen": "however, nevertheless",
         "dēspērābat": "despaired, gave up hope (with «nōn»: did not despair)",
         "nūlla": "no, not any",
@@ -394,24 +395,24 @@ registerUnit({
         "spectābat": "watched, kept watching"
       },
       translation: [
-        "With Titus's ship lost, the whole house was in mourning. Everywhere there was silence: no one sang, no one laughed, even little Paulla was silent. Livia sat in her bedroom, weeping for a long time; her eyes were full of tears. Even Ferox was sorrowful: he no longer stole sausages, but lay in front of the door, watching the road with sad eyes.",
-        "But Marcus went to the harbor every day and questioned the sailors arriving from other lands: «Did you see a wrecked ship? Did you see men saved from the sea?» But no one could give a certain answer, and uncertain rumor drifted through the town. One sailor kept shouting: «They all perished!»; the other kept answering: «Not at all! A few are alive on a small island even now.» And so Marcus's mind was tossed between hope and fear.",
-        "Quintus, however, did not despair. «No ship,» he said, «has a better helmsman. Our uncle is alive, and perhaps he is waiting for help on some unknown island.» Saying such things, the boy tried to strengthen his sorrowful mother. At night, while the others slept, he alone stayed awake and, thinking about his uncle, watched the bright stars."
+        "With the uncle's ship lost, the whole house was in mourning. Everywhere there was silence: no one sang, no one laughed, even little Paula was silent. Julia sat in her bedroom, weeping for a long time; her eyes were full of tears. Even Lupo the dog was sorrowful: he no longer stole sausages, but lay in front of the door, watching the road with sad eyes.",
+        "But Mark went to the harbor every day and questioned the sailors arriving from other lands: «Did you see a wrecked ship? Did you see men saved from the sea?» But no one could give a certain answer, and uncertain rumor drifted through the town. One sailor kept shouting: «They all perished!»; the other kept answering: «Not at all! A few are alive on a small island even now.» And so the father's mind was tossed between hope and fear.",
+        "Quinn, however, did not despair. «No ship,» he said, «has a better helmsman. Our uncle is alive, and perhaps he is waiting for help on some unknown island.» Saying such things, the boy tried to strengthen his sorrowful mother. At night, while the others slept, he alone stayed awake and, thinking about his uncle, watched the bright stars."
       ],
       questions: [
         {
-          q: "What does the opening phrase «nāve Titī āmissā» do for the whole reading?",
+          q: "What does the opening phrase «nāve avunculī āmissā» do for the whole reading?",
           options: [
-            "It says Titus is losing the ship at this very moment",
-            "It sets the scene: Titus's ship having been lost, the house is in mourning",
+            "It says the uncle is losing the ship at this very moment",
+            "It sets the scene: the uncle's ship having been lost, the house is in mourning",
             "It says the ship is about to be lost",
             "It makes «nāve» the subject of the main clause"
           ],
           answer: 1,
-          explain: "Noun + perfect participle, both ablative = ablative absolute: ‘with Titus's ship lost / since the ship was lost’. It hangs free of the main clause, which then starts fresh with «tōta domus»."
+          explain: "Noun + perfect participle, both ablative = ablative absolute: ‘with the uncle's ship lost / since the ship was lost’. It hangs free of the main clause, which then starts fresh with «tōta domus»."
         },
         {
-          q: "How has Ferox changed since the shipwreck?",
+          q: "How has Lupo changed since the shipwreck?",
           options: [
             "He barks at every sailor who passes",
             "He steals more sausages than ever",
@@ -422,7 +423,7 @@ registerUnit({
           explain: "«botulōs nōn iam rapiēbat, sed ante portam iacēbat, viam … spectāns» — even the sausage thief is in mourning."
         },
         {
-          q: "In «nautās ex aliīs terrīs venientēs interrogābat», whom does Marcus question?",
+          q: "In «nautās ex aliīs terrīs venientēs interrogābat», whom does Mark question?",
           options: [
             "Sailors who are about to leave for other lands",
             "Sailors arriving from other lands",
@@ -433,12 +434,12 @@ registerUnit({
           explain: "«venientēs» is a present participle agreeing with «nautās»: sailors ‘coming’ from other lands — arriving, not departing (that would be a form of «discēdō»)."
         },
         {
-          q: "What does Quintus do at night, «aliīs dormientibus»?",
+          q: "What does Quinn do at night, «aliīs dormientibus»?",
           options: [
             "He sleeps more soundly than anyone else",
             "He stays awake alone, thinking of his uncle and watching the stars",
             "He wakes the others with his weeping",
-            "He sneaks off to the harbor with Ferōx"
+            "He sneaks off to the harbor with Lupo"
           ],
           answer: 1,
           explain: "«aliīs dormientibus» is an ablative absolute with a present participle — WHILE the others slept — and the main clause says «sōlus vigilābat», he alone kept watch."
@@ -447,12 +448,12 @@ registerUnit({
     },
     {
       title: "Vōtum",
-      intro: "Livia decides that tears are not enough: the family carries its hope to the temple of Neptune — and an old sailor fans the spark.",
+      intro: "Julia decides that tears are not enough: the family carries its hope to the temple of Neptune — and an old sailor fans the spark.",
       paragraphs: [
-        "Multōs diēs familia nūntium exspectābat; sed nūllus nūntius, nūlla epistula veniēbat. Dolor et cūra Līviam tenēbant; per longās noctēs anxia vigilābat. Tandem, lacrimīs siccātīs, cōnsilium cēpit. «Lacrimae», inquit, «frātrem meum nōn servābunt. Deōs ōrāre dēbēmus. Venīte mēcum ad templum Neptūnī, quod prope portum stat!»",
-        "Prīmā lūce tōta familia per viās tacitās ad templum properāvit. In templō Līvia ante āram stetit et, manūs ad caelum tollēns, deum ōrāvit: «Ō Neptūne, rēx maris, audī precēs fēminae maestae! Frāter meus in marī tuō perditus est. Servā eum, et ego tibi sacrificium magnum dabō āramque tuam dōnīs ōrnābō. Hoc vōtum tibi faciō.» Quīntus et Paulla quoque, manūs ad caelum tollentēs, tacitī ōrābant.",
-        "Precibus factīs vōtōque datō, familia ē templō discessit. In viā Quīntus mātrī dīxit: «Bonum animum habē, māter! Pietās tua magna est; dī precēs tuās audient. Titus gubernātor optimus est — id ego sciō, id tū scīs, id etiam Ferōx scit!» Verba puerī mātrī sōlācium dabant, et Līvia prīmum post naufragium rīsit.",
-        "Posteā Quīntus cotīdiē in portū nāvēs intrantēs spectābat. Ōlim senex nauta, puerum vigilantem cōnspiciēns, «Quem exspectās, puer?» rogāvit. «Avunculum meum», respondit Quīntus, «magistrum nāvis āmissae.» Tum senex: «Spēs tua», inquit, «mihi placet. Mare virōs fortēs nōn semper dēvorat: ego quondam, nāve frāctā, trēs diēs in undīs natāvī et servātus sum. Manē cum spē certā: nūntius mox veniet.» Itaque familia, inter dolōrem spemque vīvēns, nūntium exspectābat. Sed dē eō nūntiō fābula alia erit."
+        "Multōs diēs familia nūntium exspectābat; sed nūllus nūntius, nūlla epistula veniēbat. Dolor et cūra Juliam tenēbant; per longās noctēs anxia vigilābat. Tandem, lacrimīs siccātīs, cōnsilium cēpit. «Lacrimae», inquit, «frātrem meum nōn servābunt. Deōs ōrāre dēbēmus. Venīte mēcum ad templum Neptūnī, quod prope portum stat!»",
+        "Prīmā lūce tōta familia per viās tacitās ad templum properāvit. In templō Julia ante āram stetit et, manūs ad caelum tollēns, deum ōrāvit: «Ō Neptūne, rēx maris, audī precēs fēminae maestae! Frāter meus in marī tuō perditus est. Servā eum, et ego tibi sacrificium magnum dabō āramque tuam dōnīs ōrnābō. Hoc vōtum tibi faciō.» Quinn et Paula quoque, manūs ad caelum tollentēs, tacitī ōrābant.",
+        "Precibus factīs vōtōque datō, familia ē templō discessit. In viā Quinn mātrī dīxit: «Bonum animum habē, māter! Pietās tua magna est; dī precēs tuās audient. Avunculus Ted gubernātor optimus est — id ego sciō, id tū scīs, id etiam Lupo scit!» Verba puerī mātrī sōlācium dabant, et Julia prīmum post naufragium rīsit.",
+        "Posteā Quinn cotīdiē in portū nāvēs intrantēs spectābat. Ōlim senex nauta, puerum vigilantem cōnspiciēns, «Quem exspectās, puer?» rogāvit. «Avunculum meum», respondit Quinn, «magistrum nāvis āmissae.» Tum senex: «Spēs tua», inquit, «mihi placet. Mare virōs fortēs nōn semper dēvorat: ego quondam, nāve frāctā, trēs diēs in undīs natāvī et servātus sum. Manē cum spē certā: nūntius mox veniet.» Itaque familia, inter dolōrem spemque vīvēns, nūntium exspectābat. Sed dē eō nūntiō fābula alia erit."
       ],
       glosses: {
         "multōs": "many (acc. — «multōs diēs» = for many days, duration)",
@@ -469,12 +470,12 @@ registerUnit({
         "dolor": "grief",
         "et": "and",
         "cūra": "worry, care",
-        "līviam": "Livia (acc.)",
+        "juliam": "Julia (acc. — her name declines: Julia, Juliam)",
         "tenēbant": "held, gripped",
         "per": "through, throughout",
         "longās": "long (acc. pl.)",
         "noctēs": "nights (acc. pl.)",
-        "anxia": "anxious (describing Livia)",
+        "anxia": "anxious (describing Julia)",
         "vigilābat": "lay awake, kept watch",
         "tandem": "at last",
         "lacrimīs": "tears (abl. — part of an ablative absolute)",
@@ -507,13 +508,13 @@ registerUnit({
         "properāvit": "hurried (perfect)",
         "in": "in, on",
         "templō": "the temple (abl.)",
-        "līvia": "Livia, the mother",
+        "julia": "Julia, the mother",
         "ante": "before, in front of (+ acc.)",
         "āram": "the altar (acc.)",
         "stetit": "stood (perfect of «stō»)",
         "manūs": "hands (acc. pl. — 4th decl.)",
         "caelum": "the sky (acc.)",
-        "tollēns": "raising, lifting (present participle — agrees with «Līvia»)",
+        "tollēns": "raising, lifting (present participle — agrees with «Julia»)",
         "deum": "the god (acc.)",
         "ōrāvit": "prayed to, entreated (perfect)",
         "ō": "O …! (marks someone being addressed)",
@@ -544,10 +545,10 @@ registerUnit({
         "hoc": "this (acc. neut. — with «vōtum»)",
         "vōtum": "vow (acc.)",
         "faciō": "I make",
-        "quīntus": "Quintus, the son",
-        "paulla": "Paulla, the daughter",
+        "quinn": "Quinn, the son (his name never changes form)",
+        "paula": "Paula, the daughter",
         "quoque": "also, too",
-        "tollentēs": "raising (present participle, pl. — agrees with Quintus and Paulla)",
+        "tollentēs": "raising (present participle, pl. — agrees with Quinn and Paula)",
         "tacitī": "silent, in silence (nom. pl.)",
         "ōrābant": "were praying",
         "precibus": "prayers (abl. — part of an ablative absolute)",
@@ -569,7 +570,8 @@ registerUnit({
         "dī": "the gods (irregular nom. pl. of «deus»)",
         "tuās": "your (acc. pl.)",
         "audient": "will hear (future)",
-        "titus": "Titus, Livia's brother, the missing captain",
+        "avunculus": "uncle",
+        "ted": "Ted, Julia's brother, the missing captain (his name never changes form)",
         "gubernātor": "helmsman",
         "optimus": "the best",
         "id": "it, this (acc.)",
@@ -577,7 +579,7 @@ registerUnit({
         "tū": "you",
         "scīs": "you know",
         "etiam": "even; also",
-        "ferōx": "Ferox, the family dog",
+        "lupo": "Lupo, the family dog (his name never changes form)",
         "scit": "knows",
         "verba": "the words (nom. pl.)",
         "puerī": "of the boy (gen.)",
@@ -644,29 +646,29 @@ registerUnit({
         "erit": "will be (future)"
       },
       translation: [
-        "For many days the family waited for news; but no message, no letter came. Grief and worry gripped Livia; through the long nights she lay awake, anxious. At last, her tears dried, she formed a plan. «Tears,» she said, «will not save my brother. We must pray to the gods. Come with me to the temple of Neptune, which stands near the harbor!»",
-        "At first light the whole family hurried through the silent streets to the temple. In the temple Livia stood before the altar and, raising her hands to the sky, prayed to the god: «O Neptune, king of the sea, hear the prayers of a sorrowful woman! My brother is lost on your sea. Save him, and I will give you a great sacrifice and adorn your altar with gifts. This vow I make to you.» Quintus and Paulla too, raising their hands to the sky, prayed in silence.",
-        "The prayers made and the vow given, the family left the temple. On the way Quintus said to his mother: «Keep your courage up, mother! Your devotion is great; the gods will hear your prayers. Titus is the best helmsman — I know it, you know it, even Ferox knows it!» The boy's words gave his mother comfort, and Livia smiled for the first time since the shipwreck.",
-        "Afterwards Quintus watched the incoming ships at the harbor every day. One day an old sailor, catching sight of the boy keeping watch, asked: «Whom are you waiting for, boy?» «My uncle,» Quintus replied, «the captain of the lost ship.» Then the old man said: «Your hope pleases me. The sea does not always devour brave men: I myself once, my ship wrecked, swam in the waves for three days and was saved. Wait with sure hope: news will come soon.» And so the family, living between grief and hope, waited for news. But about that news there will be another story."
+        "For many days the family waited for news; but no message, no letter came. Grief and worry gripped Julia; through the long nights she lay awake, anxious. At last, her tears dried, she formed a plan. «Tears,» she said, «will not save my brother. We must pray to the gods. Come with me to the temple of Neptune, which stands near the harbor!»",
+        "At first light the whole family hurried through the silent streets to the temple. In the temple Julia stood before the altar and, raising her hands to the sky, prayed to the god: «O Neptune, king of the sea, hear the prayers of a sorrowful woman! My brother is lost on your sea. Save him, and I will give you a great sacrifice and adorn your altar with gifts. This vow I make to you.» Quinn and Paula too, raising their hands to the sky, prayed in silence.",
+        "The prayers made and the vow given, the family left the temple. On the way Quinn said to his mother: «Keep your courage up, mother! Your devotion is great; the gods will hear your prayers. Uncle Ted is the best helmsman — I know it, you know it, even Lupo knows it!» The boy's words gave his mother comfort, and Julia smiled for the first time since the shipwreck.",
+        "Afterwards Quinn watched the incoming ships at the harbor every day. One day an old sailor, catching sight of the boy keeping watch, asked: «Whom are you waiting for, boy?» «My uncle,» Quinn replied, «the captain of the lost ship.» Then the old man said: «Your hope pleases me. The sea does not always devour brave men: I myself once, my ship wrecked, swam in the waves for three days and was saved. Wait with sure hope: news will come soon.» And so the family, living between grief and hope, waited for news. But about that news there will be another story."
       ],
       questions: [
         {
-          q: "What finally moves Livia to act?",
+          q: "What finally moves Julia to act?",
           options: [
-            "A letter at last arrives from Titus",
+            "A letter at last arrives from Ted",
             "She decides that tears will not save her brother — the family must pray to the gods",
-            "Marcus orders her to stop weeping",
+            "Mark orders her to stop weeping",
             "Neptune appears to her in a dream"
           ],
           answer: 1,
           explain: "«Lacrimae frātrem meum nōn servābunt. Deōs ōrāre dēbēmus.» — her grief turns into a plan: «cōnsilium cēpit»."
         },
         {
-          q: "What exactly does Livia vow to Neptune?",
+          q: "What exactly does Julia vow to Neptune?",
           options: [
-            "To send Quintus to sea as a sailor",
+            "To send Quinn to sea as a sailor",
             "To build him a new temple in Ostia",
-            "That if he saves Titus, she will give a great sacrifice and adorn his altar with gifts",
+            "That if he saves Ted, she will give a great sacrifice and adorn his altar with gifts",
             "To weep at his altar every day"
           ],
           answer: 2,
@@ -684,12 +686,12 @@ registerUnit({
           explain: "Two ablative absolutes with perfect participles — «precibus factīs», «vōtō datō» — mark completed background events: the praying and vowing are done, THEN they depart."
         },
         {
-          q: "Why does the old sailor tell Quintus his own story?",
+          q: "Why does the old sailor tell Quinn his own story?",
           options: [
             "To warn him that the sea devours everyone in the end",
-            "Because he once survived a shipwreck himself — living proof that Titus too may be saved",
+            "Because he once survived a shipwreck himself — living proof that Ted too may be saved",
             "To ask the boy for money",
-            "Because he was the helmsman of Titus's ship"
+            "Because he was the helmsman of Ted's ship"
           ],
           answer: 1,
           explain: "«ego quondam, nāve frāctā, … servātus sum» — an ablative absolute plus a first-person perfect passive: his ship was wrecked, yet he was saved. So: «Manē cum spē certā»."
@@ -700,15 +702,15 @@ registerUnit({
 
   quiz: [
     {
-      prompt: "In «Līvia lacrimāns sedēbat», what does «lacrimāns» tell you?",
+      prompt: "In «Julia lacrimāns sedēbat», what does «lacrimāns» tell you?",
       options: [
-        "Livia was weeping as she sat — an action running alongside the main verb",
-        "Livia had wept long before she sat down",
-        "Livia is about to weep",
-        "Someone else is weeping for Livia"
+        "Julia was weeping as she sat — an action running alongside the main verb",
+        "Julia had wept long before she sat down",
+        "Julia is about to weep",
+        "Someone else is weeping for Julia"
       ],
       answer: 0,
-      explain: "‑ns marks the present active participle: ‘weeping’, simultaneous with «sedēbat». It agrees with «Līvia», so she is the one doing it."
+      explain: "‑ns marks the present active participle: ‘weeping’, simultaneous with «sedēbat». It agrees with «Julia», so she is the one doing it."
     },
     {
       prompt: "Which phrase means «the arriving ships» — the ships that are coming in?",
@@ -728,15 +730,15 @@ registerUnit({
       explain: "Participle + «est» = the perfect passive verb of unit 22. The participle alone simply modifies its noun: «nāvis frācta», the wrecked ship — ready to be used in any sentence."
     },
     {
-      prompt: "«Titus ventūrus est.» What does this say?",
+      prompt: "«Avunculus ventūrus est.» What does this say?",
       options: [
-        "Titus has already come",
-        "Titus is coming through the door right now",
-        "Titus is going to come",
-        "Titus is being carried"
+        "The uncle has already come",
+        "The uncle is coming through the door right now",
+        "The uncle is going to come",
+        "The uncle is being carried"
       ],
       answer: 2,
-      explain: "‑ūrus is the future active participle: ‘about to, going to’. With «est» it makes a near-future: Titus is going to come. ‘Has come’ would be «vēnit»."
+      explain: "‑ūrus is the future active participle: ‘about to, going to’. With «est» it makes a near-future: the uncle is going to come. ‘Has come’ would be «vēnit»."
     },
     {
       prompt: "In «nāve āmissā, familia maesta erat», the phrase «nāve āmissā» is best read as…",
@@ -771,7 +773,7 @@ registerUnit({
       options: [
         "The mother",
         "The boy — «dīcēns» agrees with «puer»",
-        "Ferōx",
+        "Lupo the dog",
         "Nobody — «dīcēns» is a command"
       ],
       answer: 1,

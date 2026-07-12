@@ -67,8 +67,8 @@ registerUnit({
       forms: "lūdī, m.",
       pos: "noun (2nd decl.)",
       gloss: "school; game",
-      example: "Quīntus in lūdō sedet.",
-      exampleGloss: "Quintus sits in school."
+      example: "Quinn in lūdō sedet.",
+      exampleGloss: "Quinn sits in school."
     },
     {
       latin: "discipulus",
@@ -107,8 +107,8 @@ registerUnit({
       forms: "numerī, m.",
       pos: "noun (2nd decl.)",
       gloss: "number",
-      example: "Paulla numerōs amat.",
-      exampleGloss: "Paulla loves numbers."
+      example: "Paula numerōs amat.",
+      exampleGloss: "Paula loves numbers."
     },
     {
       latin: "ego",
@@ -163,8 +163,8 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "adverb",
       gloss: "no, not at all",
-      example: "Minimē, Ferōx bonus nōn est!",
-      exampleGloss: "No, Ferox is not good!"
+      example: "Minimē, Lupo bonus nōn est!",
+      exampleGloss: "No, Lupo is not good!"
     },
     {
       latin: "rogō",
@@ -195,8 +195,8 @@ registerUnit({
       forms: "scrībere, scrīpsī, scrīptum",
       pos: "verb (3rd conj.)",
       gloss: "write",
-      example: "Quīntus litterās bene scrībit.",
-      exampleGloss: "Quintus writes his letters well."
+      example: "Quinn litterās bene scrībit.",
+      exampleGloss: "Quinn writes his letters well."
     },
     {
       latin: "legō",
@@ -267,16 +267,16 @@ registerUnit({
   readings: [
     {
       title: "Ad lūdum",
-      intro: "Early one morning Quintus hurries to school — and Ferox tags along.",
+      intro: "Early one morning Quinn hurries to school — and Lupo tags along.",
       paragraphs: [
-        "Māne est. Quīntus ad lūdum properat; puer tabulam stilumque portat. Ferōx quoque per viās ambulat. Canis Quīntum amat, sed lūdum nōn amat: in lūdō cibus nōn est!",
-        "In lūdō magister discipulōs exspectat. Multī puerī iam in lūdō sedent. «Salvēte, discipulī!» inquit magister. «Salvē, magister!» respondent puerī. Quīntus intrat et prope amīcum sedet.",
+        "Māne est. Quinn ad lūdum properat; puer tabulam stilumque portat. Lupo quoque per viās ambulat. Canis puerum amat, sed lūdum nōn amat: in lūdō cibus nōn est!",
+        "In lūdō magister discipulōs exspectat. Multī puerī iam in lūdō sedent. «Salvēte, discipulī!» inquit magister. «Salvē, magister!» respondent puerī. Quinn intrat et prope amīcum sedet.",
         "Magister discipulōs spectat et rogat: «Habētisne tabulās et stilōs?» «Ita!» clāmant puerī. «Nōs tabulās et stilōs habēmus.» Sed Sextus tabulam nōn habet. «Ego tabulam nōn habeō,» inquit. Sextus discipulus piger est."
       ],
       glosses: {
         "māne": "in the morning, early",
         "est": "(it / he) is",
-        "quīntus": "Quintus (the son of the family, 12 years old)",
+        "quinn": "Quinn (the son of the family, 12 years old — his name never changes form)",
         "ad": "to, toward (+ acc.)",
         "lūdum": "school (acc. — after «ad», or as direct object)",
         "properat": "(he) hurries",
@@ -284,13 +284,13 @@ registerUnit({
         "tabulam": "a writing tablet (acc. — direct object)",
         "stilumque": "and a stylus («stilum» + ‑que)",
         "portat": "(he) carries",
-        "ferōx": "Ferox, the family dog",
+        "lupo": "Lupo, the family dog (named like «lupus», wolf — but he only hunts sausages)",
         "quoque": "also, too",
         "per": "through (+ acc.)",
         "viās": "streets (acc. pl. after «per»)",
         "ambulat": "(he) walks",
         "canis": "the dog",
-        "quīntum": "Quintus (acc. — direct object)",
+        "puerum": "the boy (acc. — direct object)",
         "amat": "(he) loves",
         "sed": "but",
         "nōn": "not",
@@ -323,7 +323,7 @@ registerUnit({
         "clāmant": "(they) shout",
         "nōs": "we (emphatic)",
         "habēmus": "(we) have",
-        "sextus": "Sextus, a schoolmate of Quintus",
+        "sextus": "Sextus, a schoolmate of Quinn",
         "habet": "(he) has",
         "ego": "I (emphatic)",
         "habeō": "(I) have",
@@ -331,24 +331,24 @@ registerUnit({
         "piger": "lazy"
       },
       translation: [
-        "It is early morning. Quintus hurries to school; the boy is carrying a writing tablet and a stylus. Ferox is walking through the streets too. The dog loves Quintus, but he does not love school: there is no food in school!",
-        "In the school the teacher is waiting for his students. Many boys are already sitting in the schoolroom. ‘Hello, students!’ says the teacher. ‘Hello, master!’ the boys answer. Quintus comes in and takes a seat next to a friend.",
+        "It is early morning. Quinn hurries to school; the boy is carrying a writing tablet and a stylus. Lupo is walking through the streets too. The dog loves the boy, but he does not love school: there is no food in school!",
+        "In the school the teacher is waiting for his students. Many boys are already sitting in the schoolroom. ‘Hello, students!’ says the teacher. ‘Hello, master!’ the boys answer. Quinn comes in and takes a seat next to a friend.",
         "The teacher looks at the students and asks: ‘Do you all have your tablets and styluses?’ ‘Yes!’ the boys shout. ‘We have our tablets and styluses.’ But Sextus has no tablet. ‘I don't have a tablet,’ he says. Sextus is a lazy student."
       ],
       questions: [
         {
-          q: "What is Quintus carrying to school?",
+          q: "What is Quinn carrying to school?",
           options: [
             "A sausage and a cheese",
             "A writing tablet and a stylus",
             "A gift for the teacher",
-            "Nothing — Ferox carries everything"
+            "Nothing — Lupo carries everything"
           ],
           answer: 1,
           explain: "«puer tabulam stilumque portat» — the ‑que on «stilum» means ‘and’: a tablet AND a stylus."
         },
         {
-          q: "Why does Ferox walk along but not love school?",
+          q: "Why does Lupo walk along but not love school?",
           options: [
             "He is afraid of the magister",
             "There is no food in school",
@@ -356,7 +356,7 @@ registerUnit({
             "He would rather dig in the garden"
           ],
           answer: 1,
-          explain: "«in lūdō cibus nōn est!» — for Ferox, a building without food is a building without a point."
+          explain: "«in lūdō cibus nōn est!» — for Lupo, a building without food is a building without a point."
         },
         {
           q: "In «Habētisne tabulās et stilōs?», what does the attached ‑ne do?",
@@ -371,7 +371,7 @@ registerUnit({
         },
         {
           q: "Who admits «Ego tabulam nōn habeō»?",
-          options: ["Quīntus", "The magister", "Sextus", "Paulla"],
+          options: ["Quinn", "The magister", "Sextus", "Paula"],
           answer: 2,
           explain: "«Sed Sextus tabulam nōn habet» — and he confirms it himself in the first person: «ego … nōn habeō»."
         }
@@ -379,12 +379,12 @@ registerUnit({
     },
     {
       title: "Magister rogat",
-      intro: "Letters, numbers, and hard questions — then Ferox pays the classroom a memorable visit.",
+      intro: "Letters, numbers, and hard questions — then Lupo pays the classroom a memorable visit.",
       paragraphs: [
-        "In lūdō discipulī litterās et numerōs discunt. Magister litterās docet; puerī in tabulīs scrībunt. Quīntus bene scrībit, sed Sextus male scrībit, quod piger est. «Vidētisne litterās?» rogat magister. «Ita! Nōs bene vidēmus,» respondent discipulī.",
-        "Deinde magister Quīntum rogat: «Scīsne litterās?» «Ita,» respondet puer, «ego litterās et numerōs sciō.» «Legisne fābulās?» «Ita! Ego fābulās dē pīrātīs legō.»",
+        "In lūdō discipulī litterās et numerōs discunt. Magister litterās docet; puerī in tabulīs scrībunt. Quinn bene scrībit, sed Sextus male scrībit, quod piger est. «Vidētisne litterās?» rogat magister. «Ita! Nōs bene vidēmus,» respondent discipulī.",
+        "Deinde magister Quinn rogat: «Scīsne litterās?» «Ita,» respondet puer, «ego litterās et numerōs sciō.» «Legisne fābulās?» «Ita! Ego fābulās dē pīrātīs legō.»",
         "Mox magister Sextum rogat: «Tūne litterās scīs?» Sextus nōn respondet: puer dormit! Discipulī rīdent. Tandem Sextus respondet: «Minimē, ego litterās nōn sciō… sed bene dormiō!» Magister īrātus est.",
-        "Deinde Quīntus fābulam dē pīrātīs bene recitat. «Bene recitās!» inquit magister. «Ego discipulōs bonōs semper laudō.» Subitō discipulī clāmant: ecce, Ferōx in fenestrā est! Canis per fenestram intrat et tabulam Quīntī rapit. Discipulī rīdent, sed magister nōn rīdet. «Amatne canis litterās?» rogat magister. «Minimē,» respondet Quīntus. «Litterās nōn amat — Ferōx tabulās semper dēvorat!»"
+        "Deinde Quinn fābulam dē pīrātīs bene recitat. «Bene recitās!» inquit magister. «Ego discipulōs bonōs semper laudō.» Subitō discipulī clāmant: ecce, Lupo in fenestrā est! Canis per fenestram intrat et tabulam puerī rapit. Discipulī rīdent, sed magister nōn rīdet. «Amatne canis litterās?» rogat magister. «Minimē,» respondet Quinn. «Litterās nōn amat — Lupo tabulās semper dēvorat!»"
       ],
       glosses: {
         "in": "in (+ abl.)",
@@ -396,14 +396,14 @@ registerUnit({
         "discunt": "(they) learn",
         "magister": "the teacher, schoolmaster",
         "docet": "(he) teaches",
-        "puerī": "the boys",
+        "puerī": "the boys (nom. pl.); in «tabulam puerī» — of the boy, the boy's (gen. sg.: same form, different job)",
         "tabulīs": "tablets (abl. pl. after «in» — on their tablets)",
         "scrībunt": "(they) write",
-        "quīntus": "Quintus",
+        "quinn": "Quinn (the son — his name never changes form)",
         "bene": "well",
         "scrībit": "(he) writes",
         "sed": "but",
-        "sextus": "Sextus, Quintus's lazy schoolmate",
+        "sextus": "Sextus, Quinn's lazy schoolmate",
         "male": "badly",
         "quod": "because",
         "piger": "lazy",
@@ -415,7 +415,6 @@ registerUnit({
         "vidēmus": "(we) see",
         "respondent": "(they) answer",
         "deinde": "then, next",
-        "quīntum": "Quintus (acc. — the one being asked)",
         "scīsne": "do you know…? («scīs» + question ‑ne)",
         "respondet": "(he) answers",
         "puer": "the boy",
@@ -448,14 +447,13 @@ registerUnit({
         "subitō": "suddenly",
         "clāmant": "(they) shout",
         "ecce": "look!",
-        "ferōx": "Ferox, the family dog",
+        "lupo": "Lupo, the family dog — quasi lupus!",
         "fenestrā": "window (abl. after «in» — at the window)",
         "canis": "the dog",
         "per": "through (+ acc.)",
         "fenestram": "window (acc. after «per»)",
         "intrat": "(he) enters, comes in",
         "tabulam": "tablet (acc. — direct object)",
-        "quīntī": "of Quintus, Quintus's (gen.)",
         "rapit": "(he) snatches, grabs",
         "rīdet": "(he) laughs",
         "amatne": "does (he) love…? («amat» + question ‑ne)",
@@ -464,10 +462,10 @@ registerUnit({
         "dēvorat": "(he) devours"
       },
       translation: [
-        "In school the students are learning letters and numbers. The teacher teaches the letters; the boys write on their tablets. Quintus writes well, but Sextus writes badly, because he is lazy. ‘Do you all see the letters?’ asks the teacher. ‘Yes! We see them well,’ the students answer.",
-        "Then the teacher asks Quintus: ‘Do you know your letters?’ ‘Yes,’ the boy answers, ‘I know my letters and my numbers.’ ‘Do you read stories?’ ‘Yes! I read stories about pirates.’",
+        "In school the students are learning letters and numbers. The teacher teaches the letters; the boys write on their tablets. Quinn writes well, but Sextus writes badly, because he is lazy. ‘Do you all see the letters?’ asks the teacher. ‘Yes! We see them well,’ the students answer.",
+        "Then the teacher asks Quinn: ‘Do you know your letters?’ ‘Yes,’ the boy answers, ‘I know my letters and my numbers.’ ‘Do you read stories?’ ‘Yes! I read stories about pirates.’",
         "Soon the teacher asks Sextus: ‘Do YOU know your letters?’ Sextus does not answer: the boy is asleep! The students laugh. At last Sextus answers: ‘No, I don't know my letters… but I sleep well!’ The teacher is angry.",
-        "Then Quintus recites a story about pirates, and recites it well. ‘You recite well!’ says the teacher. ‘I always praise good students.’ Suddenly the students shout: look, Ferox is at the window! The dog comes in through the window and snatches Quintus's tablet. The students laugh, but the teacher does not laugh. ‘Does the dog love letters?’ asks the teacher. ‘No,’ Quintus answers. ‘He doesn't love letters — Ferox always devours tablets!’"
+        "Then Quinn recites a story about pirates, and recites it well. ‘You recite well!’ says the teacher. ‘I always praise good students.’ Suddenly the students shout: look, Lupo is at the window! The dog comes in through the window and snatches the boy's tablet. The students laugh, but the teacher does not laugh. ‘Does the dog love letters?’ asks the teacher. ‘No,’ Quinn answers. ‘He doesn't love letters — Lupo always devours tablets!’"
       ],
       questions: [
         {
@@ -487,21 +485,21 @@ registerUnit({
             "«Ita» — he knows them well",
             "«Minimē» — he doesn't know them, but he sleeps well",
             "He recites a story about pirates",
-            "He blames Ferox for eating his tablet"
+            "He blames Lupo for eating his tablet"
           ],
           answer: 1,
           explain: "«Minimē, ego litterās nōn sciō… sed bene dormiō!» — no to the letters, yes to the napping."
         },
         {
-          q: "What does Ferox do when he gets into the classroom?",
+          q: "What does Lupo do when he gets into the classroom?",
           options: [
             "He bites the teacher",
             "He falls asleep beside Sextus",
-            "He snatches Quintus's tablet",
+            "He snatches Quinn's tablet",
             "He eats the students' lunch"
           ],
           answer: 2,
-          explain: "«tabulam Quīntī rapit» — «rapit» = snatches, and the genitive «Quīntī» tells you whose tablet it is."
+          explain: "«tabulam puerī rapit» — «rapit» = snatches, and the genitive «puerī» tells you whose tablet it is: the boy's, i.e. Quinn's."
         },
         {
           q: "In «Amatne canis litterās?», the ‑ne attached to «amat» tells you that the sentence is…",
@@ -512,7 +510,7 @@ registerUnit({
             "an emphatic exclamation"
           ],
           answer: 2,
-          explain: "‑ne on the first word (the verb «amat») marks a yes/no question: ‘Does the dog love letters?’ Quintus's answer: «minimē»."
+          explain: "‑ne on the first word (the verb «amat») marks a yes/no question: ‘Does the dog love letters?’ Quinn's answer: «minimē»."
         }
       ]
     }

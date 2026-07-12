@@ -24,7 +24,7 @@ registerUnit({
     },
     {
       heading: "«Vēnerit» — the future perfect",
-      body: "<p>Now lean the other way. The <strong>future perfect</strong> looks ahead to a moment when something <em>will already have happened</em>: perfect stem + <span class=\"la\">‑erō, ‑eris, ‑erit…</span> — like <span class=\"la\">erō</span> glued on, except that the 3rd plural is <span class=\"la\">‑erint</span>. So <span class=\"la\">audīverō</span> — I shall have heard.</p><p>Where you will actually meet it is after <span class=\"la\">ubi</span> and <span class=\"la\">sī</span>: <span class=\"la\">ubi Titus domum vēnerit, cēnam parābimus</span> — literally ‘when Titus <em>will have come</em> home, we will prepare dinner’. English flattens this to ‘when Titus comes home’. Latin is simply being precise about the order of events: first the arrival, <em>then</em> the dinner.</p>",
+      body: "<p>Now lean the other way. The <strong>future perfect</strong> looks ahead to a moment when something <em>will already have happened</em>: perfect stem + <span class=\"la\">‑erō, ‑eris, ‑erit…</span> — like <span class=\"la\">erō</span> glued on, except that the 3rd plural is <span class=\"la\">‑erint</span>. So <span class=\"la\">audīverō</span> — I shall have heard.</p><p>Where you will actually meet it is after <span class=\"la\">ubi</span> and <span class=\"la\">sī</span>: <span class=\"la\">ubi Ted domum vēnerit, cēnam parābimus</span> — literally ‘when Ted <em>will have come</em> home, we will prepare dinner’. English flattens this to ‘when Ted comes home’. Latin is simply being precise about the order of events: first the arrival, <em>then</em> the dinner.</p>",
       table: {
         caption: "Future perfect of audiō (hear)",
         headers: ["Latin", "English"],
@@ -96,16 +96,16 @@ registerUnit({
       forms: "sequī, secūtus sum",
       pos: "verb (3rd conj., deponent)",
       gloss: "follow (deponent)",
-      example: "Ferōx dominum per viās semper sequitur.",
-      exampleGloss: "Ferox always follows his master through the streets."
+      example: "Canis Lupo dominum per viās semper sequitur.",
+      exampleGloss: "The dog Lupo always follows his master through the streets."
     },
     {
       latin: "cōnor",
       forms: "cōnārī, cōnātus sum",
       pos: "verb (1st conj., deponent)",
       gloss: "try (deponent)",
-      example: "Quīntus mātrem cōnfirmāre cōnātur.",
-      exampleGloss: "Quintus tries to reassure his mother."
+      example: "Quinn mātrem cōnfirmāre cōnātur.",
+      exampleGloss: "Quinn tries to reassure his mother."
     },
     {
       latin: "moror",
@@ -128,16 +128,16 @@ registerUnit({
       forms: "mīrārī, mīrātus sum",
       pos: "verb (1st conj., deponent)",
       gloss: "wonder at, marvel (deponent)",
-      example: "Paulla verba tabellāriī mīrātur.",
-      exampleGloss: "Paulla marvels at the letter-carrier’s words."
+      example: "Paula verba tabellāriī mīrātur.",
+      exampleGloss: "Paula marvels at the letter-carrier’s words."
     },
     {
       latin: "arbitror",
       forms: "arbitrārī, arbitrātus sum",
       pos: "verb (1st conj., deponent)",
       gloss: "think, judge (deponent)",
-      example: "«Quid tū dē hōc rūmōre arbitrāris?» rogat Līvia.",
-      exampleGloss: "«What do you think about this rumor?» asks Livia."
+      example: "«Quid tū dē hōc rūmōre arbitrāris?» rogat Julia.",
+      exampleGloss: "«What do you think about this rumor?» asks Julia."
     },
     {
       latin: "polliceor",
@@ -152,8 +152,8 @@ registerUnit({
       forms: "verērī, veritus sum",
       pos: "verb (2nd conj., deponent)",
       gloss: "fear, be afraid (deponent)",
-      example: "Līvia dē vītā frātris verētur.",
-      exampleGloss: "Livia fears for her brother’s life."
+      example: "Julia dē vītā frātris verētur.",
+      exampleGloss: "Julia fears for her brother’s life."
     },
     {
       latin: "videor",
@@ -192,8 +192,8 @@ registerUnit({
       forms: "verbī, n.",
       pos: "noun (2nd decl.)",
       gloss: "word",
-      example: "Paulla verba patris memoriā tenet.",
-      exampleGloss: "Paulla keeps her father’s words in memory."
+      example: "Paula verba patris memoriā tenet.",
+      exampleGloss: "Paula keeps her father’s words in memory."
     },
     {
       latin: "signum",
@@ -224,16 +224,16 @@ registerUnit({
       forms: "(idiom: + acc. of the person informed)",
       pos: "phrase",
       gloss: "to inform (make more certain)",
-      example: "Tabellārius Mārcum dē Titō certiōrem facit.",
-      exampleGloss: "The letter-carrier informs Marcus about Titus."
+      example: "Tabellārius patrem dē avunculō Ted certiōrem facit.",
+      exampleGloss: "The letter-carrier informs the father about Uncle Ted."
     },
     {
       latin: "quam prīmum",
       forms: "(adv. phrase)",
       pos: "phrase",
       gloss: "as soon as possible",
-      example: "«Venī domum quam prīmum!» scrībit Līvia.",
-      exampleGloss: "«Come home as soon as possible!» writes Livia."
+      example: "«Venī domum quam prīmum!» scrībit Julia.",
+      exampleGloss: "«Come home as soon as possible!» writes Julia."
     },
     {
       latin: "incolumis",
@@ -248,16 +248,16 @@ registerUnit({
       forms: "‑a, ‑um",
       pos: "adjective (1st/2nd decl.)",
       gloss: "alive, living",
-      example: "«Frāter meus vīvus est!» clāmat Līvia.",
-      exampleGloss: "«My brother is alive!» shouts Livia."
+      example: "«Frāter meus vīvus est!» clāmat Julia.",
+      exampleGloss: "«My brother is alive!» shouts Julia."
     },
     {
       latin: "attonitus",
       forms: "‑a, ‑um",
       pos: "adjective (1st/2nd decl.)",
       gloss: "astonished, thunderstruck",
-      example: "Quīntus attonitus diū tacēbat.",
-      exampleGloss: "Astonished, Quintus was silent for a long time."
+      example: "Quinn attonitus diū tacēbat.",
+      exampleGloss: "Astonished, Quinn was silent for a long time."
     },
     {
       latin: "igitur",
@@ -272,11 +272,11 @@ registerUnit({
   readings: [
     {
       title: "Rūmōrēs",
-      intro: "Days pass with no word of Titus. Ostia, meanwhile, is doing what ports do best: talking.",
+      intro: "Days pass with no word of Ted. Ostia, meanwhile, is doing what ports do best: talking.",
       paragraphs: [
-        "Multōs iam diēs familia nūntium dē Titō exspectābat, sed nihil audīverat. Cotīdiē Mārcus ad portum ībat; Quīntus patrem semper sequēbātur, et Ferōx puerum sequēbātur. In portū omnēs dē naufragiō loquēbantur, sed nēmō rem certam sciēbat.",
-        "Rūmōrēs autem per oppidum celeriter currēbant — et rūmōrēs saepe fallunt. Alius nauta «Omnēs periērunt» inquit; alius «Minimē! Paucī servātī sunt et in īnsulā parvā auxilium exspectant»; alius autem «Nūlla nāvis ex Graeciā veniēbat; tōta fābula falsa est». Līvia, ubi hōs sermōnēs audīvit, misera «Cui crēdere dēbeō?» inquit. «Rūmor malus semper celerior est quam nūntius vērus.»",
-        "Quīntus mātrem cōnfirmāre cōnābātur et multa pollicēbātur: «Māter, ego vēra reperiam. Cotīdiē nautās interrogābō; ubi nūntium vērum audīverō, prīmus ad tē curram!» Līvia fīlium mīrābātur — puer enim parvus magnō animō loquēbātur — sed anxia manēbat et dē vītā frātris verēbātur; nam multī quaerēbant, nēmō tamen vestīgium Titī reppererat."
+        "Multōs iam diēs familia nūntium dē avunculō Ted exspectābat, sed nihil audīverat. Cotīdiē Mark ad portum ībat; Quinn patrem semper sequēbātur, et Lupo puerum sequēbātur. In portū omnēs dē naufragiō loquēbantur, sed nēmō rem certam sciēbat.",
+        "Rūmōrēs autem per oppidum celeriter currēbant — et rūmōrēs saepe fallunt. Alius nauta «Omnēs periērunt» inquit; alius «Minimē! Paucī servātī sunt et in īnsulā parvā auxilium exspectant»; alius autem «Nūlla nāvis ex Graeciā veniēbat; tōta fābula falsa est». Julia, ubi hōs sermōnēs audīvit, misera «Cui crēdere dēbeō?» inquit. «Rūmor malus semper celerior est quam nūntius vērus.»",
+        "Quinn mātrem cōnfirmāre cōnābātur et multa pollicēbātur: «Māter, ego vēra reperiam. Cotīdiē nautās interrogābō; ubi nūntium vērum audīverō, prīmus ad tē curram!» Julia fīlium mīrābātur — puer enim parvus magnō animō loquēbātur — sed anxia manēbat et dē vītā frātris verēbātur; nam multī quaerēbant, nēmō tamen vestīgium avunculī reppererat."
       ],
       glosses: {
         "multōs": "many (acc. — «multōs diēs» = for many days, duration)",
@@ -285,22 +285,23 @@ registerUnit({
         "familia": "the family",
         "nūntium": "news, a report (acc.)",
         "dē": "about, concerning",
-        "titō": "Titus (abl. — after «dē»)",
+        "avunculō": "the uncle (abl. — after «dē»)",
+        "ted": "Ted, the uncle — a foreign name; it never changes form",
         "exspectābat": "was waiting for",
         "sed": "but",
         "nihil": "nothing",
         "audīverat": "had heard (PLUPERFECT — in all those days, nothing had come)",
         "cotīdiē": "every day",
-        "mārcus": "Marcus, the father",
+        "mark": "Mark, the father — his name never changes form",
         "ad": "to, toward",
         "portum": "the harbor (acc.)",
         "ībat": "went, kept going (imperfect of «eō»)",
-        "quīntus": "Quintus, the son",
+        "quinn": "Quinn, the son — his name never changes form",
         "patrem": "his father (acc.)",
         "semper": "always",
         "sequēbātur": "followed, kept following (deponent «sequor»: passive form, active meaning)",
         "et": "and",
-        "ferōx": "Ferox, the family dog",
+        "lupo": "Lupo, the family dog — quasi lupus! (his name never changes form)",
         "puerum": "the boy (acc.)",
         "in": "in, on",
         "portū": "the harbor (abl.)",
@@ -340,7 +341,7 @@ registerUnit({
         "fābula": "story, tale",
         "falsa": "false",
         "est": "is",
-        "līvia": "Livia, the mother",
+        "julia": "Julia, the mother — her name declines like «puella»",
         "ubi": "when (conjunction); in a question: where",
         "hōs": "these (acc. pl. — with «sermōnēs»)",
         "sermōnēs": "conversations, this talk (acc. pl.)",
@@ -360,7 +361,7 @@ registerUnit({
         "cōnābātur": "kept trying (deponent «cōnor» — active meaning)",
         "multa": "many things (neut. pl. substantive)",
         "pollicēbātur": "promised, kept promising (deponent «polliceor»)",
-        "māter": "mother (Quintus is addressing her)",
+        "māter": "mother (Quinn is addressing her)",
         "ego": "I",
         "vēra": "the truth (‘true things’, neut. pl. substantive)",
         "reperiam": "I will find (future of «reperiō»)",
@@ -389,19 +390,19 @@ registerUnit({
         "quaerēbant": "were searching",
         "tamen": "nevertheless, yet",
         "vestīgium": "a trace, track (acc.)",
-        "titī": "of Titus (gen.)",
+        "avunculī": "of the uncle (gen. — whose trace?)",
         "reppererat": "had found (PLUPERFECT of «reperiō»)"
       },
       translation: [
-        "For many days now the family had been waiting for news of Titus, but had heard nothing. Every day Marcus went to the harbor; Quintus always followed his father, and Ferox followed the boy. In the harbor everyone was talking about the shipwreck, but no one knew anything certain.",
-        "Rumors, however, were running quickly through the town — and rumors often deceive. One sailor said: «They all perished»; another: «Not at all! A few were saved, and they are waiting for help on a small island»; yet another: «No ship was coming from Greece at all; the whole story is false.» When Livia heard this talk, she said miserably: «Whom am I to believe? A bad rumor is always faster than a true report.»",
-        "Quintus kept trying to reassure his mother and made many promises: «Mother, I will find the truth. Every day I will question the sailors; when I hear true news, I will be the first to run to you!» Livia marveled at her son — for the little boy was speaking with great courage — but she remained anxious and feared for her brother’s life; for many were searching, yet no one had found a trace of Titus."
+        "For many days now the family had been waiting for news of Uncle Ted, but had heard nothing. Every day Mark went to the harbor; Quinn always followed his father, and Lupo followed the boy. In the harbor everyone was talking about the shipwreck, but no one knew anything certain.",
+        "Rumors, however, were running quickly through the town — and rumors often deceive. One sailor said: «They all perished»; another: «Not at all! A few were saved, and they are waiting for help on a small island»; yet another: «No ship was coming from Greece at all; the whole story is false.» When Julia heard this talk, she said miserably: «Whom am I to believe? A bad rumor is always faster than a true report.»",
+        "Quinn kept trying to reassure his mother and made many promises: «Mother, I will find the truth. Every day I will question the sailors; when I hear true news, I will be the first to run to you!» Julia marveled at her son — for the little boy was speaking with great courage — but she remained anxious and feared for her brother’s life; for many were searching, yet no one had found a trace of their uncle."
       ],
       questions: [
         {
-          q: "After all these days of waiting, how much had the family actually heard about Titus?",
+          q: "After all these days of waiting, how much had the family actually heard about Ted?",
           options: [
-            "A letter from Titus had already arrived",
+            "A letter from Ted had already arrived",
             "Nothing at all — «nihil audīverat»",
             "That he was safe in Greece",
             "That his ship had returned to Ostia"
@@ -410,9 +411,9 @@ registerUnit({
           explain: "«familia nūntium exspectābat, sed nihil audīverat» — the pluperfect «audīverat»: up to that point, nothing had come."
         },
         {
-          q: "In «Quīntus patrem semper sequēbātur», what is «sequēbātur» doing?",
+          q: "In «Quinn patrem semper sequēbātur», what is «sequēbātur» doing?",
           options: [
-            "It is a true passive: Quintus was being followed",
+            "It is a true passive: Quinn was being followed",
             "It is a deponent: passive form but active meaning — he was following",
             "It is future: he will follow",
             "It is a command: follow!"
@@ -423,16 +424,16 @@ registerUnit({
         {
           q: "Which of these was one of the rumors running through Ostia?",
           options: [
-            "Titus had already reached Rome by land",
+            "Ted had already reached Rome by land",
             "Pirates had captured the ship",
             "A few sailors were saved and were waiting for help on a small island",
-            "Ferōx had found Titus’s tracks at the harbor"
+            "Lupo had found Ted’s tracks at the harbor"
           ],
           answer: 2,
           explain: "«Paucī servātī sunt et in īnsulā parvā auxilium exspectant» — the second sailor’s version of events."
         },
         {
-          q: "Quintus promises: «ubi nūntium vērum audīverō, prīmus ad tē curram». What does «audīverō» express?",
+          q: "Quinn promises: «ubi nūntium vērum audīverō, prīmus ad tē curram». What does «audīverō» express?",
           options: [
             "Something he had already heard (pluperfect)",
             "Something he is hearing right now (present)",
@@ -446,12 +447,12 @@ registerUnit({
     },
     {
       title: "Nūntius ex Sardiniā",
-      intro: "At last a ship from Sardinia puts in — and a letter-carrier is asking for Marcus Fabius by name.",
+      intro: "At last a ship from Sardinia puts in — and a letter-carrier is asking for Mark the merchant by name.",
       paragraphs: [
-        "Tandem diēs mīrus vēnit. Māne Quīntus, ut semper, prope portum morābātur. Subitō nāvem ignōtam cōnspexit, quae ex Sardiniā vēnerat. Ē nāve vir cum epistulīs in terram vēnit: tabellārius erat. «Puer», clāmāvit, «ubi domum Mārcī Fabiī mercātōris reperīre possum? Eum quam prīmum certiōrem facere dēbeō!» Quīntus attonitus «Mārcus pater meus est!» respondit. «Sequere mē!» Puer per viās cucurrit; tabellārius puerum secūtus est.",
-        "Domī omnēs tabellārium attonitī spectābant. Ille epistulam Mārcō trādidit et «Dominus meus», inquit, «Gāius, mercātor Sardiniae, amīcus tuus est. Tē dē rē magnā certiōrem facere cupiēbat.» Mārcus epistulam manū incertā solvit et clārā vōce recitāvit.",
-        "«Gāius Mārcō amīcō salūtem dīcit. Gaudē! Titus tuus vīvus et incolumis est. Nāvis eius ante tempestātem in portum nostrum vēnerat; Titus enim nūbēs ātrās procul cōnspexerat et — gubernātor callidus! — statim portum petīverat. Nunc mēcum morātur et multās fābulās dē marī nārrat. Paucōs diēs hīc manēbit; deinde ad vōs proficīscētur. Domum enim quam prīmum nāvigāre cupit. Valē!»",
-        "Attonita familia prīmō tacēbat; deinde omnēs clāmābant et lacrimābant — sed lacrimae iam gaudiī erant. «Frāter meus vīvit!» clāmāvit Līvia. «Vīvus est! Incolumis est!» Mārcus autem epistulam iterum spectāvit et «Hunc nūntium», inquit, «diū exspectāverāmus; tempestās enim tabellārium multōs diēs morāta erat.» Tum Paulla «Ubi Titus domum vēnerit», inquit, «magnam cēnam parābimus — et Ferōx, sī botulum rapere cōnābitur, in hortō sedēbit!» Omnēs rīsērunt; gaudium enim et spēs in domum tandem rediērunt."
+        "Tandem diēs mīrus vēnit. Māne Quinn, ut semper, prope portum morābātur. Subitō nāvem ignōtam cōnspexit, quae ex Sardiniā vēnerat. Ē nāve vir cum epistulīs in terram vēnit: tabellārius erat. «Puer», clāmāvit, «ubi domum mercātōris Mark reperīre possum? Eum quam prīmum certiōrem facere dēbeō!» Quinn attonitus «Mark pater meus est!» respondit. «Sequere mē!» Puer per viās cucurrit; tabellārius puerum secūtus est.",
+        "Domī omnēs tabellārium attonitī spectābant. Ille epistulam patrī trādidit et «Dominus meus», inquit, «Gāius, mercātor Sardiniae, amīcus tuus est. Tē dē rē magnā certiōrem facere cupiēbat.» Mark epistulam manū incertā solvit et clārā vōce recitāvit.",
+        "«Gāius amīcō Mark salūtem dīcit. Gaudē! Ted tuus vīvus et incolumis est. Nāvis eius ante tempestātem in portum nostrum vēnerat; Ted enim nūbēs ātrās procul cōnspexerat et — gubernātor callidus! — statim portum petīverat. Nunc mēcum morātur et multās fābulās dē marī nārrat. Paucōs diēs hīc manēbit; deinde ad vōs proficīscētur. Domum enim quam prīmum nāvigāre cupit. Valē!»",
+        "Attonita familia prīmō tacēbat; deinde omnēs clāmābant et lacrimābant — sed lacrimae iam gaudiī erant. «Frāter meus vīvit!» clāmāvit Julia. «Vīvus est! Incolumis est!» Mark autem epistulam iterum spectāvit et «Hunc nūntium», inquit, «diū exspectāverāmus; tempestās enim tabellārium multōs diēs morāta erat.» Tum Paula «Ubi Ted domum vēnerit», inquit, «magnam cēnam parābimus — et Lupo, sī botulum rapere cōnābitur, in hortō sedēbit!» Omnēs rīsērunt; gaudium enim et spēs in domum tandem rediērunt."
       ],
       glosses: {
         "tandem": "at last",
@@ -459,7 +460,7 @@ registerUnit({
         "mīrus": "wonderful, astonishing",
         "vēnit": "came (perfect)",
         "māne": "in the morning",
-        "quīntus": "Quintus, the son",
+        "quinn": "Quinn, the son — his name never changes form",
         "ut": "as («ut semper» = as always)",
         "semper": "always",
         "prope": "near",
@@ -482,13 +483,12 @@ registerUnit({
         "terram": "the land, the shore (acc.)",
         "tabellārius": "a letter-carrier, courier",
         "erat": "was; with a participle: had been …-ed / (deponent) had …-ed",
-        "puer": "boy! (addressing Quintus); later: the boy",
+        "puer": "boy! (addressing Quinn); later: the boy",
         "clāmāvit": "shouted (perfect)",
         "ubi": "where? (in the question); (as conjunction) when",
         "domum": "the house (acc.); later adverbially: home, homeward; «in domum» = into the house",
-        "mārcī": "of Marcus (gen.)",
-        "fabiī": "Fabius (gen. — the family name: ‘of Marcus Fabius’)",
-        "mercātōris": "the merchant (gen. — in apposition to Marcus Fabius)",
+        "mercātōris": "of the merchant (gen. — ‘the house OF the merchant’)",
+        "mark": "Mark, the father — a foreign name; it never changes form",
         "reperīre": "to find",
         "possum": "I can, am able",
         "eum": "him (acc.)",
@@ -498,7 +498,6 @@ registerUnit({
         "facere": "to make; «certiōrem facere» = to inform",
         "dēbeō": "I must, ought",
         "attonitus": "astonished, thunderstruck",
-        "mārcus": "Marcus, the father",
         "pater": "father",
         "meus": "my",
         "est": "is; after a participle: was …-ed (perfect passive / deponent perfect)",
@@ -517,12 +516,12 @@ registerUnit({
         "spectābant": "were watching, stared at",
         "ille": "he, that man",
         "epistulam": "the letter (acc.)",
-        "mārcō": "to Marcus (dat.)",
+        "patrī": "to the father (dat. — the ‑ī shows who receives the letter)",
         "trādidit": "handed over (perfect of «trādō»)",
         "et": "and",
         "dominus": "master",
         "inquit": "said (used with quoted speech)",
-        "gāius": "Gaius, a merchant of Sardinia, Marcus’s friend",
+        "gāius": "Gaius, a merchant of Sardinia, Mark’s friend",
         "mercātor": "merchant",
         "sardiniae": "of Sardinia (gen.)",
         "amīcus": "friend",
@@ -538,11 +537,11 @@ registerUnit({
         "clārā": "clear (abl.)",
         "vōce": "voice (abl. — «clārā vōce» = in a clear voice)",
         "recitāvit": "read aloud (perfect)",
-        "amīcō": "to his friend (dat.)",
+        "amīcō": "to his friend (dat. — with «Mark» in apposition)",
         "salūtem": "greeting (acc. — «salūtem dīcit» = ‘sends greetings’, the standard letter opening)",
         "dīcit": "says; «salūtem dīcit» = sends greetings",
         "gaudē": "rejoice! (command)",
-        "titus": "Titus, Livia’s brother, the ship’s captain",
+        "ted": "Ted, Julia’s brother, the ship’s captain — his name never changes form",
         "vīvus": "alive",
         "incolumis": "unharmed, safe and sound",
         "nāvis": "ship",
@@ -589,7 +588,7 @@ registerUnit({
         "erant": "were",
         "frāter": "brother",
         "vīvit": "is alive, lives",
-        "līvia": "Livia, the mother",
+        "julia": "Julia, the mother — her name declines like «puella»",
         "autem": "however, but",
         "iterum": "again",
         "spectāvit": "looked at (perfect)",
@@ -601,12 +600,12 @@ registerUnit({
         "multōs": "many (acc. — «multōs diēs» = for many days)",
         "morāta": "«morāta erat» = had delayed (pluperfect of deponent «moror» — active meaning, with «tabellārium» as its object!)",
         "tum": "then",
-        "paulla": "Paulla, the daughter",
-        "vēnerit": "(he) will have come (FUTURE PERFECT — ‘when Titus comes home’)",
+        "paula": "Paula, the daughter — her name declines like «puella»",
+        "vēnerit": "(he) will have come (FUTURE PERFECT — ‘when Ted comes home’)",
         "magnam": "great, big (acc.)",
         "cēnam": "dinner (acc.)",
         "parābimus": "we will prepare (future)",
-        "ferōx": "Ferox, the family dog",
+        "lupo": "Lupo, the family dog — quasi lupus! (his name never changes form)",
         "sī": "if",
         "botulum": "a sausage (acc.)",
         "rapere": "to snatch, steal",
@@ -619,14 +618,14 @@ registerUnit({
         "rediērunt": "returned (perfect of «redeō»)"
       },
       translation: [
-        "At last a wonderful day came. In the morning Quintus, as always, was lingering near the harbor. Suddenly he caught sight of an unfamiliar ship, which had come from Sardinia. From the ship a man came ashore with letters: it was a letter-carrier. «Boy,» he shouted, «where can I find the house of Marcus Fabius the merchant? I must inform him as soon as possible!» Astonished, Quintus answered: «Marcus is my father! Follow me!» The boy ran through the streets; the letter-carrier followed the boy.",
-        "At home everyone stared at the letter-carrier in astonishment. He handed the letter to Marcus and said: «My master, Gaius, a merchant of Sardinia, is your friend. He was eager to inform you about a great matter.» Marcus opened the letter with an unsteady hand and read it aloud in a clear voice.",
-        "«Gaius sends greetings to his friend Marcus. Rejoice! Your Titus is alive and unharmed. His ship had come into our harbor before the storm; for Titus had spotted the black clouds far off and — clever helmsman! — had immediately made for the harbor. Now he is staying with me and tells many stories about the sea. He will stay here for a few days; then he will set out to you. For he wants to sail home as soon as possible. Farewell!»",
-        "The astonished family was silent at first; then everyone was shouting and weeping — but by now the tears were tears of joy. «My brother is alive!» shouted Livia. «He is alive! He is unharmed!» But Marcus looked at the letter again and said: «We had been waiting a long time for this news; for the storm had delayed the letter-carrier for many days.» Then Paulla said: «When Titus comes home, we will prepare a great dinner — and if Ferox tries to snatch a sausage, he will sit in the garden!» Everyone laughed; for joy and hope at last returned to the house."
+        "At last a wonderful day came. In the morning Quinn, as always, was lingering near the harbor. Suddenly he caught sight of an unfamiliar ship, which had come from Sardinia. From the ship a man came ashore with letters: it was a letter-carrier. «Boy,» he shouted, «where can I find the house of Mark the merchant? I must inform him as soon as possible!» Astonished, Quinn answered: «Mark is my father! Follow me!» The boy ran through the streets; the letter-carrier followed the boy.",
+        "At home everyone stared at the letter-carrier in astonishment. He handed the letter to the father and said: «My master, Gaius, a merchant of Sardinia, is your friend. He was eager to inform you about a great matter.» Mark opened the letter with an unsteady hand and read it aloud in a clear voice.",
+        "«Gaius sends greetings to his friend Mark. Rejoice! Your Ted is alive and unharmed. His ship had come into our harbor before the storm; for Ted had spotted the black clouds far off and — clever helmsman! — had immediately made for the harbor. Now he is staying with me and tells many stories about the sea. He will stay here for a few days; then he will set out to you. For he wants to sail home as soon as possible. Farewell!»",
+        "The astonished family was silent at first; then everyone was shouting and weeping — but by now the tears were tears of joy. «My brother is alive!» shouted Julia. «He is alive! He is unharmed!» But Mark looked at the letter again and said: «We had been waiting a long time for this news; for the storm had delayed the letter-carrier for many days.» Then Paula said: «When Ted comes home, we will prepare a great dinner — and if Lupo tries to snatch a sausage, he will sit in the garden!» Everyone laughed; for joy and hope at last returned to the house."
       ],
       questions: [
         {
-          q: "According to the letter, what had Titus done before the storm broke?",
+          q: "According to the letter, what had Ted done before the storm broke?",
           options: [
             "He had sailed straight past Sardinia toward Ostia",
             "He had spotted the black clouds far off and had made for the Sardinian harbor at once",
@@ -653,13 +652,13 @@ registerUnit({
             "Gaius had forgotten to write the letter",
             "The letter had been lost at sea",
             "The storm had delayed the letter-carrier for many days",
-            "Titus had ordered the news kept secret"
+            "Ted had ordered the news kept secret"
           ],
           answer: 2,
           explain: "«tempestās tabellārium multōs diēs morāta erat» — deponent pluperfect: the storm HAD delayed the courier, with «tabellārium» as its object."
         },
         {
-          q: "What is Titus doing right now, according to Gaius?",
+          q: "What is Ted doing right now, according to Gaius?",
           options: [
             "Sailing home through the storm",
             "Searching the coast for his lost cargo",
@@ -692,12 +691,12 @@ registerUnit({
       explain: "«audīverit» is future perfect (perfect stem + ‑erit). «audīverat» = had heard (pluperfect), «audiēbat» = was hearing (imperfect), «audītur» = is heard (present passive)."
     },
     {
-      prompt: "«Titus multa dē marī loquitur.» The verb looks passive — what does it actually mean?",
+      prompt: "«Ted multa dē marī loquitur.» The verb looks passive — what does it actually mean?",
       options: [
-        "Titus is being spoken about",
-        "Titus says many things about the sea — «loquor» is deponent: passive form, active meaning",
-        "Titus will speak about the sea",
-        "The sea is speaking to Titus"
+        "Ted is being spoken about",
+        "Ted says many things about the sea — «loquor» is deponent: passive form, active meaning",
+        "Ted will speak about the sea",
+        "The sea is speaking to Ted"
       ],
       answer: 1,
       explain: "Deponents like «loquor» wear passive endings but mean something active: «loquitur» = he speaks."
@@ -709,7 +708,7 @@ registerUnit({
       explain: "«portātur» really is passive: ‘is being carried’ (unit 21). The other three are deponents: he follows, he tries, he marvels."
     },
     {
-      prompt: "«Titus cum amīcō locūtus est.» What does «locūtus est» mean?",
+      prompt: "«Ted cum amīcō locūtus est.» What does «locūtus est» mean?",
       options: [
         "He was spoken (by his friend)",
         "He spoke — the deponent’s perfect keeps its active meaning",
@@ -737,12 +736,12 @@ registerUnit({
       explain: "«videor», the passive of «videō», usually means ‘seem’: the rumor seems to be true. The literal ‘is seen’ is possible but far rarer."
     },
     {
-      prompt: "The tabellārius says: «Mārcum quam prīmum certiōrem facere dēbeō.» What does he need to do?",
+      prompt: "The tabellārius says: «Mercātōrem quam prīmum certiōrem facere dēbeō.» What does he need to do?",
       options: [
-        "Make Marcus stand first in line",
-        "Inform Marcus as soon as possible",
-        "Promise Marcus a certain reward",
-        "Follow Marcus to the harbor"
+        "Make the merchant stand first in line",
+        "Inform the merchant as soon as possible",
+        "Promise the merchant a certain reward",
+        "Follow the merchant to the harbor"
       ],
       answer: 1,
       explain: "«certiōrem facere» = to inform (literally ‘to make more certain’), and «quam prīmum» = as soon as possible."

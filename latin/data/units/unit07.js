@@ -37,7 +37,7 @@ registerUnit({
     },
     {
       heading: "The accusative four: ad, per, prope, in",
-      body: "<p>Movement and direction call for the accusative: <span class=\"la\">ad forum</span> (to the forum), <span class=\"la\">per viās</span> (through the streets), <span class=\"la\">prope portum</span> (near the harbor), and <span class=\"la\">in theātrum</span> (<em>into</em> the theater). If the ablative six mostly answer <em>where?</em>, these mostly answer <em>where to?</em></p><p>You have been reading accusatives as direct objects since unit 4 — this is the same ending with a new employer. In <span class=\"la\">Ferōx per turbam properat</span>, the dog is not hurrying the crowd anywhere; <span class=\"la\">turbam</span> is accusative simply because <span class=\"la\">per</span> demands it.</p>",
+      body: "<p>Movement and direction call for the accusative: <span class=\"la\">ad forum</span> (to the forum), <span class=\"la\">per viās</span> (through the streets), <span class=\"la\">prope portum</span> (near the harbor), and <span class=\"la\">in theātrum</span> (<em>into</em> the theater). If the ablative six mostly answer <em>where?</em>, these mostly answer <em>where to?</em></p><p>You have been reading accusatives as direct objects since unit 4 — this is the same ending with a new employer. In <span class=\"la\">Lupo per turbam properat</span>, the dog is not hurrying the crowd anywhere; <span class=\"la\">turbam</span> is accusative simply because <span class=\"la\">per</span> demands it.</p>",
       table: {
         caption: "Prepositions with the accusative",
         headers: ["Preposition", "Meaning", "Example"],
@@ -86,8 +86,8 @@ registerUnit({
       forms: "(+ abl.)",
       pos: "preposition",
       gloss: "with",
-      example: "Quīntus cum Paullā per viās ambulat.",
-      exampleGloss: "Quintus walks through the streets with Paulla."
+      example: "Quinn cum Paulā per viās ambulat.",
+      exampleGloss: "Quinn walks through the streets with Paula."
     },
     {
       latin: "sine",
@@ -118,8 +118,8 @@ registerUnit({
       forms: "(+ abl.)",
       pos: "preposition",
       gloss: "down from; about",
-      example: "Titus fābulās dē undīs nārrat.",
-      exampleGloss: "Titus tells stories about the waves."
+      example: "Avunculus Ted fābulās dē undīs nārrat.",
+      exampleGloss: "Uncle Ted tells stories about the waves."
     },
     {
       latin: "ad",
@@ -182,8 +182,8 @@ registerUnit({
       forms: "balneī, n.",
       pos: "noun (2nd decl., neut.)",
       gloss: "bath, bathhouse",
-      example: "Mārcus in balneō sedet.",
-      exampleGloss: "Marcus sits in the bath."
+      example: "Mark in balneō sedet.",
+      exampleGloss: "Mark sits in the bath."
     },
     {
       latin: "aedificium",
@@ -222,8 +222,8 @@ registerUnit({
       forms: "errāre, errāvī, errātum",
       pos: "verb (1st conj.)",
       gloss: "wander; be mistaken",
-      example: "Ferōx per oppidum errat.",
-      exampleGloss: "Ferox wanders through the town."
+      example: "Lupo per oppidum errat.",
+      exampleGloss: "Lupo wanders through the town."
     },
     {
       latin: "stō",
@@ -270,26 +270,26 @@ registerUnit({
   readings: [
     {
       title: "Ad forum",
-      intro: "The whole family sets out through the streets of Ostia toward the forum — and Ferox smells opportunity.",
+      intro: "The whole family sets out through the streets of Ostia toward the forum — and Lupo smells opportunity.",
       paragraphs: [
-        "Māne est. Mārcus et Līvia cum Quīntō et Paullā per viās Ostiae ambulant. Ferōx quoque cum familiā ambulat; canis laetus est, quod in viīs cibus est — hīc botulus, ibi cāseus!",
-        "In viīs turba magna est. Multī virī ad forum properant; servī saccōs et amphorās portant. Quīntus prope Mārcum ambulat et aedificia magna spectat. Paulla statuās videt et rīdet.",
-        "Tandem familia ad forum appropinquat. In forō templum magnum stat; prope templum statua pulchra est. «Ecce!» inquit Paulla. «Statua magna est, sed nōn ambulat!» Mārcus rīdet et fīliae fābulam dē statuā nārrat."
+        "Māne est. Mark et Julia cum Quinn et Paulā per viās Ostiae ambulant. Lupo quoque cum familiā ambulat; canis laetus est, quod in viīs cibus est — hīc botulus, ibi cāseus!",
+        "In viīs turba magna est. Multī virī ad forum properant; servī saccōs et amphorās portant. Quinn prope patrem ambulat et aedificia magna spectat. Paula statuās videt et rīdet.",
+        "Tandem familia ad forum appropinquat. In forō templum magnum stat; prope templum statua pulchra est. «Ecce!» inquit Paula. «Statua magna est, sed nōn ambulat!» Mark rīdet et fīliae fābulam dē statuā nārrat."
       ],
       glosses: {
         "māne": "in the morning; «māne est» = it is morning",
         "est": "is",
-        "mārcus": "Marcus (the father, a grain merchant)",
+        "mark": "Mark (the father, a grain merchant — his name never changes form)",
         "et": "and",
-        "līvia": "Livia (the mother)",
+        "julia": "Julia (the mother)",
         "cum": "with (+ ablative)",
-        "quīntō": "Quintus (abl. after «cum»)",
-        "paullā": "Paulla (abl. after «cum»)",
+        "quinn": "Quinn (the son, 12 — his name never changes form, even after «cum»)",
+        "paulā": "Paula (abl. after «cum» — her name declines)",
         "per": "through (+ accusative)",
         "viās": "streets (acc. pl. — object of «per»)",
         "ostiae": "of Ostia (gen.) — the port town of Rome",
         "ambulant": "(they) walk",
-        "ferōx": "Ferox (the family dog)",
+        "lupo": "Lupo (the family dog — quasi lupus!)",
         "quoque": "also, too",
         "familiā": "the family (abl. after «cum»)",
         "ambulat": "(he/she/it) walks",
@@ -314,12 +314,11 @@ registerUnit({
         "saccōs": "sacks (acc. pl.)",
         "amphorās": "amphoras, large jars (acc. pl.)",
         "portant": "(they) carry",
-        "quīntus": "Quintus (the son, 12)",
         "prope": "near (+ accusative)",
-        "mārcum": "Marcus (acc. after «prope»)",
+        "patrem": "his father (acc. after «prope»)",
         "aedificia": "buildings (acc. pl., neuter)",
         "spectat": "(he) looks at",
-        "paulla": "Paulla (the daughter, 8)",
+        "paula": "Paula (the daughter, 8)",
         "statuās": "statues (acc. pl.)",
         "videt": "(she) sees",
         "rīdet": "(he/she) laughs",
@@ -343,18 +342,18 @@ registerUnit({
         "nārrat": "(he) tells"
       },
       translation: [
-        "It is morning. Marcus and Livia are walking with Quintus and Paulla through the streets of Ostia. Ferox is walking with the family too; the dog is happy, because there is food in the streets — a sausage here, cheese there!",
-        "In the streets there is a big crowd. Many men are hurrying to the forum; slaves are carrying sacks and amphoras. Quintus walks near Marcus and looks at the big buildings. Paulla sees the statues and laughs.",
-        "At last the family approaches the forum. In the forum stands a great temple; near the temple is a beautiful statue. «Look!» says Paulla. «The statue is big, but it doesn't walk!» Marcus laughs and tells his daughter a story about the statue."
+        "It is morning. Mark and Julia are walking with Quinn and Paula through the streets of Ostia. Lupo is walking with the family too; the dog is happy, because there is food in the streets — a sausage here, cheese there!",
+        "In the streets there is a big crowd. Many men are hurrying to the forum; slaves are carrying sacks and amphoras. Quinn walks near his father and looks at the big buildings. Paula sees the statues and laughs.",
+        "At last the family approaches the forum. In the forum stands a great temple; near the temple is a beautiful statue. «Look!» says Paula. «The statue is big, but it doesn't walk!» Mark laughs and tells his daughter a story about the statue."
       ],
       questions: [
         {
-          q: "Why is Ferox happy as the family walks through the streets?",
+          q: "Why is Lupo happy as the family walks through the streets?",
           options: [
             "He loves big crowds",
             "There is food in the streets — a sausage here, cheese there",
-            "He is going to see Titus",
-            "Livia gave him breakfast"
+            "He is going to see Uncle Ted",
+            "Julia gave him breakfast"
           ],
           answer: 1,
           explain: "«canis laetus est, quod in viīs cibus est — hīc botulus, ibi cāseus»: he is happy because there is food in the streets."
@@ -377,26 +376,26 @@ registerUnit({
           explain: "«per» always takes the accusative, so «viās» wears the accusative-plural ending ‑ās. («Ostiae» is the genitive: the streets of Ostia.)"
         },
         {
-          q: "What does Paulla find funny about the statue?",
+          q: "What does Paula find funny about the statue?",
           options: [
             "It is very small",
-            "It looks like Ferox",
+            "It looks like Lupo",
             "It is big but doesn't walk",
             "It is holding a sausage"
           ],
           answer: 2,
-          explain: "«Statua magna est, sed nōn ambulat!» — the statue is big, but it doesn't walk. Paulla is easily amused."
+          explain: "«Statua magna est, sed nōn ambulat!» — the statue is big, but it doesn't walk. Paula is easily amused."
         }
       ]
     },
     {
-      title: "Sine Paullā",
-      intro: "From the forum the family heads for the harbor — but somewhere in the crowd, Paulla disappears.",
+      title: "Sine Paulā",
+      intro: "From the forum the family heads for the harbor — but somewhere in the crowd, Paula disappears.",
       paragraphs: [
-        "Deinde familia ē forō ambulat et ā templō ad portum properat, quod ibi nāvis Titī est. Sed in viīs turba magna est. Subitō Ferōx botulum videt et per turbam properat — et Paulla quoque per turbam properat!",
-        "Subitō Līvia stat. «Paulla nōn hīc est!» inquit. Familia sine Paullā per viās oppidī errat. Quīntus in theātrum intrat — Paulla ibi nōn est. Līvia prope balneum stat et fīliam vocat — puella nōn respondet.",
-        "Tandem Quīntus clāmat: «Ecce Ferōx! Canis prope portum stat — et ibi Paulla quoque est!» Familia ad portum properat. Paulla cum Titō prope aquam stat. «Salvē!» inquit Titus et rīdet. Paulla fābulam nārrat: «Ferōx ad portum properat — et ecce, Titus hīc est!»",
-        "Līvia ad fīliam properat et puellam tenet. Sed Ferōx nōn laetus est: canis sine botulō stat! Titus rīdet et botulum novum ē saccō portat. Tandem familia laeta domum ambulat."
+        "Deinde familia ē forō ambulat et ā templō ad portum properat, quod ibi nāvis avunculī est. Sed in viīs turba magna est. Subitō Lupo botulum videt et per turbam properat — et Paula quoque per turbam properat!",
+        "Subitō Julia stat. «Paula nōn hīc est!» inquit. Familia sine Paulā per viās oppidī errat. Quinn in theātrum intrat — Paula ibi nōn est. Julia prope balneum stat et fīliam vocat — puella nōn respondet.",
+        "Tandem Quinn clāmat: «Ecce Lupo! Canis prope portum stat — et ibi Paula quoque est!» Familia ad portum properat. Paula cum avunculō prope aquam stat. «Salvē!» inquit avunculus Ted et rīdet. Paula fābulam nārrat: «Lupo ad portum properat — et ecce, avunculus Ted hīc est!»",
+        "Julia ad fīliam properat et puellam tenet. Sed Lupo nōn laetus est: canis sine botulō stat! Ted rīdet et botulum novum ē saccō portat. Tandem familia laeta domum ambulat."
       ],
       glosses: {
         "deinde": "then, next",
@@ -413,7 +412,7 @@ registerUnit({
         "quod": "because",
         "ibi": "there",
         "nāvis": "the ship (nom.)",
-        "titī": "of Titus (gen.) — Livia’s brother, the sea captain",
+        "avunculī": "of their uncle (gen.) — Ted, Julia’s brother, the sea captain",
         "est": "is",
         "sed": "but",
         "in": "in (+ abl.); into (+ acc.)",
@@ -421,24 +420,24 @@ registerUnit({
         "turba": "a crowd",
         "magna": "big",
         "subitō": "suddenly",
-        "ferōx": "Ferox (the dog)",
+        "lupo": "Lupo (the dog — quasi lupus!)",
         "botulum": "a sausage (acc.)",
         "videt": "(he) sees",
         "per": "through (+ accusative)",
         "turbam": "the crowd (acc. after «per»)",
-        "paulla": "Paulla (the daughter, 8)",
+        "paula": "Paula (the daughter, 8)",
         "quoque": "also, too",
-        "līvia": "Livia (the mother)",
+        "julia": "Julia (the mother)",
         "stat": "(he/she) stands, stops still",
         "nōn": "not",
         "hīc": "here",
         "inquit": "says (used with quoted speech)",
         "sine": "without (+ abl.)",
-        "paullā": "Paulla (abl. after «sine»)",
+        "paulā": "Paula (abl. after «sine» — her name declines)",
         "viās": "the streets (acc. pl. after «per»)",
         "oppidī": "of the town (gen.)",
         "errat": "(it) wanders",
-        "quīntus": "Quintus (the son, 12)",
+        "quinn": "Quinn (the son, 12 — his name never changes form)",
         "theātrum": "the theater (acc. after «in» = into)",
         "intrat": "(he) enters, goes in",
         "prope": "near (+ accusative)",
@@ -452,10 +451,11 @@ registerUnit({
         "ecce": "look!",
         "canis": "the dog",
         "cum": "with (+ ablative)",
-        "titō": "Titus (abl. after «cum»)",
+        "avunculō": "her uncle (abl. after «cum»)",
         "aquam": "the water (acc. after «prope»)",
         "salvē": "hello!",
-        "titus": "Titus (Livia’s brother, the sea captain)",
+        "avunculus": "the uncle (nom.)",
+        "ted": "Ted (the uncle — his name never changes form)",
         "rīdet": "(he) laughs",
         "fābulam": "the story (acc.)",
         "nārrat": "(she) tells",
@@ -470,50 +470,50 @@ registerUnit({
         "domum": "home, homeward (special accusative — no preposition needed)"
       },
       translation: [
-        "Then the family walks out of the forum and hurries from the temple toward the harbor, because Titus's ship is there. But in the streets there is a big crowd. Suddenly Ferox sees a sausage and hurries through the crowd — and Paulla hurries through the crowd too!",
-        "Suddenly Livia stops. «Paulla is not here!» she says. The family wanders through the streets of the town without Paulla. Quintus goes into the theater — Paulla is not there. Livia stands near the bathhouse and calls her daughter — the girl does not answer.",
-        "At last Quintus shouts: «Look — Ferox! The dog is standing near the harbor — and Paulla is there too!» The family hurries to the harbor. Paulla is standing with Titus near the water. «Hello!» says Titus, and laughs. Paulla tells the story: «Ferox hurries to the harbor — and look, Titus is here!»",
-        "Livia hurries to her daughter and holds the girl tight. But Ferox is not happy: the dog stands there without a sausage! Titus laughs and brings a new sausage out of a sack. At last the family walks home happy."
+        "Then the family walks out of the forum and hurries from the temple toward the harbor, because their uncle's ship is there. But in the streets there is a big crowd. Suddenly Lupo sees a sausage and hurries through the crowd — and Paula hurries through the crowd too!",
+        "Suddenly Julia stops. «Paula is not here!» she says. The family wanders through the streets of the town without Paula. Quinn goes into the theater — Paula is not there. Julia stands near the bathhouse and calls her daughter — the girl does not answer.",
+        "At last Quinn shouts: «Look — Lupo! The dog is standing near the harbor — and Paula is there too!» The family hurries to the harbor. Paula is standing with her uncle near the water. «Hello!» says Uncle Ted, and laughs. Paula tells the story: «Lupo hurries to the harbor — and look, Uncle Ted is here!»",
+        "Julia hurries to her daughter and holds the girl tight. But Lupo is not happy: the dog stands there without a sausage! Ted laughs and brings a new sausage out of a sack. At last the family walks home happy."
       ],
       questions: [
         {
           q: "Why does the family head for the harbor after leaving the forum?",
           options: [
             "To buy fish at the market",
-            "Because Titus's ship is there",
+            "Because Uncle Ted's ship is there",
             "To watch the ships sail away",
-            "Because Ferox lives there"
+            "Because Lupo lives there"
           ],
           answer: 1,
-          explain: "«ad portum properat, quod ibi nāvis Titī est» — because Titus's ship is there. «Titī» is genitive: the ship of Titus."
+          explain: "«ad portum properat, quod ibi nāvis avunculī est» — because their uncle's ship is there. «avunculī» is genitive: the ship of the uncle."
         },
         {
-          q: "Where does Quintus go in to look for Paulla?",
+          q: "Where does Quinn go in to look for Paula?",
           options: ["Into the theater", "Into the bathhouse", "Into the temple", "Into a shop"],
           answer: 0,
-          explain: "«Quīntus in theātrum intrat» — in + accusative marks motion: he goes into the theater."
+          explain: "«Quinn in theātrum intrat» — in + accusative marks motion: he goes into the theater."
         },
         {
-          q: "Where — and with whom — is Paulla finally found?",
+          q: "Where — and with whom — is Paula finally found?",
           options: [
-            "Near the harbor, with Titus",
+            "Near the harbor, with Uncle Ted",
             "In the forum, with a merchant",
             "Near the bathhouse, alone",
-            "At home, with Livia"
+            "At home, with Julia"
           ],
           answer: 0,
-          explain: "«Canis prope portum stat — et ibi Paulla quoque est!… Paulla cum Titō prope aquam stat.»"
+          explain: "«Canis prope portum stat — et ibi Paula quoque est!… Paula cum avunculō prope aquam stat.»"
         },
         {
-          q: "Why is Ferox unhappy at the harbor, and how does Titus fix it?",
+          q: "Why is Lupo unhappy at the harbor, and how does Ted fix it?",
           options: [
-            "He is lost; Paulla finds him",
-            "He has no sausage; Titus brings a new one out of a sack",
-            "He is afraid of the water; Quintus holds him",
+            "He is lost; Paula finds him",
+            "He has no sausage; Ted brings a new one out of a sack",
+            "He is afraid of the water; Quinn holds him",
             "He is tired; the family carries him home"
           ],
           answer: 1,
-          explain: "«canis sine botulō stat» — sausage-less! Then «Titus… botulum novum ē saccō portat»: a new sausage out of a sack."
+          explain: "«canis sine botulō stat» — sausage-less! Then «Ted… botulum novum ē saccō portat»: a new sausage out of a sack."
         }
       ]
     }
@@ -527,7 +527,7 @@ registerUnit({
       explain: "«per» (through) takes the accusative: «per viās». The other three — «cum», «sine», «dē» — all take the ablative."
     },
     {
-      prompt: "In «Paulla in theātrum intrat», the phrase «in theātrum» means…",
+      prompt: "In «Paula in theātrum intrat», the phrase «in theātrum» means…",
       options: [
         "in the theater (she is already inside)",
         "near the theater",
@@ -561,18 +561,18 @@ registerUnit({
       explain: "«ē/ex» + ablative = out of: «ē tabernā», out of the shop."
     },
     {
-      prompt: "In «Mārcus cum Titō ambulat», what case is «Titō», and why?",
+      prompt: "In «Mark cum fīliō ambulat», what case is «fīliō», and why?",
       options: [
-        "Dative — Titus is receiving something",
-        "Accusative — Titus is the direct object",
+        "Dative — the son is receiving something",
+        "Accusative — the son is the direct object",
         "Ablative — «cum» always takes the ablative",
-        "Nominative — Titus is the subject"
+        "Nominative — the son is the subject"
       ],
       answer: 2,
       explain: "The ‑ō ending could be dative or ablative on its own, but the preposition decides: «cum» takes only the ablative."
     },
     {
-      prompt: "In «Mārcus fābulam dē statuā nārrat», what does «dē statuā» mean?",
+      prompt: "In «Mark fābulam dē statuā nārrat», what does «dē statuā» mean?",
       options: [
         "down from the statue",
         "toward the statue",

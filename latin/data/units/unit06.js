@@ -7,7 +7,7 @@ registerUnit({
   grammar: [
     {
       heading: "Giving takes three: giver, gift, receiver",
-      body: "<p>Say <em>give</em> and you already expect three players: someone gives <em>something</em> to <em>someone</em>. English marks the receiver with <strong>to</strong> or by word order (<em>give the dog a bone</em>). Latin marks it with an ending — a whole case, the <strong>dative</strong>.</p><p><span class=\"la\">Titus puerō dōnum dat.</span> — Titus gives the boy a gift. <span class=\"la\">dōnum</span> is accusative: the thing given. <span class=\"la\">puerō</span> is dative: the receiver.</p><p>So here is this unit’s reading habit: when you meet a giving, showing, or telling verb — <span class=\"la\">dat</span>, <span class=\"la\">dōnat</span>, <span class=\"la\">mōnstrat</span>, <span class=\"la\">nārrat</span> — expect <strong>two</strong> nouns near it: an accusative thing and a dative person.</p>",
+      body: "<p>Say <em>give</em> and you already expect three players: someone gives <em>something</em> to <em>someone</em>. English marks the receiver with <strong>to</strong> or by word order (<em>give the dog a bone</em>). Latin marks it with an ending — a whole case, the <strong>dative</strong>.</p><p><span class=\"la\">Ted puerō dōnum dat.</span> — Ted gives the boy a gift. <span class=\"la\">dōnum</span> is accusative: the thing given. <span class=\"la\">puerō</span> is dative: the receiver.</p><p>So here is this unit’s reading habit: when you meet a giving, showing, or telling verb — <span class=\"la\">dat</span>, <span class=\"la\">dōnat</span>, <span class=\"la\">mōnstrat</span>, <span class=\"la\">nārrat</span> — expect <strong>two</strong> nouns near it: an accusative thing and a dative person.</p>",
       tip: "Reading tip: the dative answers «to whom? for whom?». If the verb hands something over, hunt for the dative before you translate anything else."
     },
     {
@@ -21,16 +21,16 @@ registerUnit({
           ["2nd (puer, dōnum)", "‑ō → puerō", "‑īs → dōnīs"]
         ]
       },
-      tip: "Sneak preview: nouns like «māter» and «soror» — and «Ferōx»! — belong to a family you will meet properly in Unit 9. Their dative ends in ‑ī: «mātrī», «sorōrī», «Ferōcī». We gloss these whenever they appear."
+      tip: "Sneak preview: nouns like «māter», «soror», and «canis» belong to a family you will meet properly in Unit 9. Their dative ends in ‑ī: «mātrī», «sorōrī», «canī». We gloss these whenever they appear."
     },
     {
       heading: "placeō and friends: verbs that live on the dative",
-      body: "<p>Some verbs take the person in the dative even when nothing changes hands. The star is <span class=\"la\">placeō</span>: <span class=\"la\">Dōnum puellae placet</span> — the gift is pleasing <em>to the girl</em>, i.e. the girl likes the gift. Latin makes the gift the subject and the person the dative — the mirror image of English <em>like</em>.</p><p><span class=\"la\">respondeō</span> works the same way: <span class=\"la\">Quīntus avunculō respondet</span> — Quintus answers (gives an answer <em>to</em>) his uncle. The adjective <span class=\"la\">grātus</span> takes a dative too: <span class=\"la\">arca puerīs grāta est</span> — the chest is welcome to the children.</p><p>Contrast <span class=\"la\">dēlectō</span>, which means nearly the same as <span class=\"la\">placeō</span> but takes a plain accusative: <span class=\"la\">fābulae puerōs dēlectant</span> — the stories delight the boys. Same idea, different plumbing.</p>",
-      tip: "One handy idiom: «grātiam habēre» + dative = to feel gratitude toward someone. «Līvia Titō grātiam habet» — Livia is grateful to Titus."
+      body: "<p>Some verbs take the person in the dative even when nothing changes hands. The star is <span class=\"la\">placeō</span>: <span class=\"la\">Dōnum puellae placet</span> — the gift is pleasing <em>to the girl</em>, i.e. the girl likes the gift. Latin makes the gift the subject and the person the dative — the mirror image of English <em>like</em>.</p><p><span class=\"la\">respondeō</span> works the same way: <span class=\"la\">Quinn avunculō respondet</span> — Quinn answers (gives an answer <em>to</em>) his uncle. The adjective <span class=\"la\">grātus</span> takes a dative too: <span class=\"la\">arca puerīs grāta est</span> — the chest is welcome to the children.</p><p>Contrast <span class=\"la\">dēlectō</span>, which means nearly the same as <span class=\"la\">placeō</span> but takes a plain accusative: <span class=\"la\">fābulae puerōs dēlectant</span> — the stories delight the boys. Same idea, different plumbing.</p>",
+      tip: "One handy idiom: «grātiam habēre» + dative = to feel gratitude toward someone. «Paula avunculō grātiam habet» — Paula is grateful to her uncle."
     },
     {
       heading: "But ‑ae already means three things!",
-      body: "<p>True — and sorting it out is what makes you a real reader. <span class=\"la\">puellae</span> can be genitive singular (of the girl), dative singular (to the girl), or nominative plural (the girls). The ending is a signpost, not a verdict; the sentence decides.</p><p>Three quick checks. <strong>1.</strong> Is the verb a give-show-tell verb, or <span class=\"la\">placet</span>? Bet on the dative: <span class=\"la\">Titus puellae dōnum dat</span>. <strong>2.</strong> Is the ‑ae word glued to another noun? Think genitive: <span class=\"la\">pūpa puellae</span> — the girl’s doll. <strong>3.</strong> Is the verb plural, with no other subject in sight? Nominative plural: <span class=\"la\">puellae cantant</span> — the girls sing.</p>",
+      body: "<p>True — and sorting it out is what makes you a real reader. <span class=\"la\">puellae</span> can be genitive singular (of the girl), dative singular (to the girl), or nominative plural (the girls). The ending is a signpost, not a verdict; the sentence decides.</p><p>Three quick checks. <strong>1.</strong> Is the verb a give-show-tell verb, or <span class=\"la\">placet</span>? Bet on the dative: <span class=\"la\">Ted puellae dōnum dat</span>. <strong>2.</strong> Is the ‑ae word glued to another noun? Think genitive: <span class=\"la\">pūpa puellae</span> — the girl’s doll. <strong>3.</strong> Is the verb plural, with no other subject in sight? Nominative plural: <span class=\"la\">puellae cantant</span> — the girls sing.</p>",
       tip: "The same trick covers ‑īs: next to a giving verb, «servīs» means ‘to the slaves’. Let the verb tell you what the ending is doing."
     }
   ],
@@ -41,8 +41,8 @@ registerUnit({
       forms: "dōnī, n.",
       pos: "noun (2nd decl.)",
       gloss: "gift",
-      example: "Titus puerō dōnum dat.",
-      exampleGloss: "Titus gives the boy a gift."
+      example: "Ted puerō dōnum dat.",
+      exampleGloss: "Ted gives the boy a gift."
     },
     {
       latin: "fābula",
@@ -65,24 +65,24 @@ registerUnit({
       forms: "ānulī, m.",
       pos: "noun (2nd decl.)",
       gloss: "ring",
-      example: "Mārcus Līviae ānulum dōnat.",
-      exampleGloss: "Marcus presents Livia with a ring."
+      example: "Mark Juliae ānulum dōnat.",
+      exampleGloss: "Mark presents Julia with a ring."
     },
     {
       latin: "pūpa",
       forms: "pūpae, f.",
       pos: "noun (1st decl.)",
       gloss: "doll",
-      example: "Pūpa nova Paullae placet.",
-      exampleGloss: "The new doll pleases Paulla."
+      example: "Pūpa nova Paulae placet.",
+      exampleGloss: "The new doll pleases Paula."
     },
     {
       latin: "nāvicula",
       forms: "nāviculae, f.",
       pos: "noun (1st decl.)",
       gloss: "little ship, boat",
-      example: "Quīntus nāviculam parvam habet.",
-      exampleGloss: "Quintus has a little boat."
+      example: "Quinn nāviculam parvam habet.",
+      exampleGloss: "Quinn has a little boat."
     },
     {
       latin: "tunica",
@@ -97,16 +97,16 @@ registerUnit({
       forms: "togae, f.",
       pos: "noun (1st decl.)",
       gloss: "toga",
-      example: "Toga Mārcī magna est.",
-      exampleGloss: "Marcus’s toga is big."
+      example: "Toga dominī magna est.",
+      exampleGloss: "The master’s toga is big."
     },
     {
       latin: "concha",
       forms: "conchae, f.",
       pos: "noun (1st decl.)",
       gloss: "seashell",
-      example: "Paulla conchās pulchrās habet.",
-      exampleGloss: "Paulla has pretty seashells."
+      example: "Paula conchās pulchrās habet.",
+      exampleGloss: "Paula has pretty seashells."
     },
     {
       latin: "pīrāta",
@@ -121,8 +121,8 @@ registerUnit({
       forms: "mōnstrī, n.",
       pos: "noun (2nd decl.)",
       gloss: "monster",
-      example: "Mōnstrum est magnum, sed Paulla nōn clāmat.",
-      exampleGloss: "The monster is big, but Paulla does not cry out."
+      example: "Mōnstrum est magnum, sed Paula nōn clāmat.",
+      exampleGloss: "The monster is big, but Paula does not cry out."
     },
     {
       latin: "perīculum",
@@ -161,16 +161,16 @@ registerUnit({
       forms: "dōnāre, dōnāvī, dōnātum",
       pos: "verb (1st conj.)",
       gloss: "present, give as a gift",
-      example: "Avunculus Quīntō nāviculam dōnat.",
-      exampleGloss: "The uncle presents Quintus with a little ship."
+      example: "Avunculus puerō nāviculam dōnat.",
+      exampleGloss: "The uncle presents the boy with a little ship."
     },
     {
       latin: "mōnstrō",
       forms: "mōnstrāre, mōnstrāvī, mōnstrātum",
       pos: "verb (1st conj.)",
       gloss: "show, point out",
-      example: "Titus puerīs gemmās mōnstrat.",
-      exampleGloss: "Titus shows the children the gems."
+      example: "Ted puerīs gemmās mōnstrat.",
+      exampleGloss: "Ted shows the children the gems."
     },
     {
       latin: "nārrō",
@@ -185,8 +185,8 @@ registerUnit({
       forms: "respondēre, respondī, respōnsum (+ dat.)",
       pos: "verb (2nd conj.)",
       gloss: "answer, reply",
-      example: "Quīntus avunculō respondet.",
-      exampleGloss: "Quintus answers his uncle."
+      example: "Quinn avunculō respondet.",
+      exampleGloss: "Quinn answers his uncle."
     },
     {
       latin: "dēlectō",
@@ -225,27 +225,27 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "adverb",
       gloss: "first, at first",
-      example: "Titus prīmum puellae dōnum dat.",
-      exampleGloss: "First, Titus gives the girl a gift."
+      example: "Ted prīmum puellae dōnum dat.",
+      exampleGloss: "First, Ted gives the girl a gift."
     },
     {
       latin: "etiam",
       forms: "(indēcl.)",
       pos: "adverb",
       gloss: "also, even",
-      example: "Etiam Ferōx dōnum optat!",
-      exampleGloss: "Even Ferox wants a gift!"
+      example: "Etiam Lupo dōnum optat!",
+      exampleGloss: "Even Lupo wants a gift!"
     }
   ],
 
   readings: [
     {
       title: "Arca avunculī",
-      intro: "Uncle Titus arrives from the harbor with a mysterious chest — and the whole household comes running.",
+      intro: "Uncle Ted arrives from the harbor with a mysterious chest — and the whole household comes running.",
       paragraphs: [
-        "Familia Fabia laeta est, quod Titus domum intrat. Titus, avunculus Quīntī Paullaeque, est nauta et magister nāvis. Magnam arcam portat. Mārcus Līviaque avunculum salūtant, puerī clāmant, etiam Ferōx lātrat.",
-        "«Ecce arca!» inquit Titus. «Arca plēna dōnōrum est.» Quīntus et Paulla arcam spectant; arca puerīs grāta est.",
-        "Titus prīmum puellae dōnum dat: pūpa nova est! Pūpa Paullae placet; puella laeta pūpam tenet. Deinde avunculus Quīntō nāviculam dōnat. Nāvicula puerō placet, quod Quīntus vītam nautārum amat."
+        "Familia Fabia laeta est, quod Ted domum intrat. Ted, avunculus puerōrum, est nauta et magister nāvis. Magnam arcam portat. Mark Juliaque avunculum salūtant, puerī clāmant, etiam Lupo lātrat.",
+        "«Ecce arca!» inquit Ted. «Arca plēna dōnōrum est.» Quinn et Paula arcam spectant; arca puerīs grāta est.",
+        "Ted prīmum puellae dōnum dat: pūpa nova est! Pūpa Paulae placet; puella laeta pūpam tenet. Deinde avunculus fīliō nāviculam dōnat. Nāvicula puerō placet, quod Quinn vītam nautārum amat."
       ],
       glosses: {
         "familia": "family, household",
@@ -253,12 +253,11 @@ registerUnit({
         "laeta": "happy (describing «familia»)",
         "est": "is",
         "quod": "because",
-        "titus": "Titus (Livia’s brother, a ship’s captain)",
+        "ted": "Ted (Julia’s brother, a ship’s captain — his name never changes form)",
         "domum": "the house (acc. — object of «intrat»)",
         "intrat": "(he) enters, is coming into",
         "avunculus": "uncle (a mother’s brother)",
-        "quīntī": "of Quintus (gen.)",
-        "paullaeque": "and of Paulla (gen. + ‑que)",
+        "puerōrum": "of the children (gen. pl. — «avunculus puerōrum» = the children’s uncle)",
         "nauta": "a sailor",
         "et": "and",
         "magister": "master, captain",
@@ -266,22 +265,22 @@ registerUnit({
         "magnam": "big (acc., describing «arcam»)",
         "arcam": "chest, strongbox (acc.)",
         "portat": "(he) carries",
-        "mārcus": "Marcus (the father)",
-        "līviaque": "and Livia (the mother)",
+        "mark": "Mark (the father — his name never changes form)",
+        "juliaque": "and Julia (the mother — her name declines like «puella»; + ‑que)",
         "avunculum": "the uncle (acc.)",
         "puerī": "the children (nom. pl.)",
         "salūtant": "(they) greet",
         "clāmant": "(they) shout",
         "etiam": "even, also",
-        "ferōx": "Ferox (the dog)",
+        "lupo": "Lupo (the dog — «quasi lupus»! his name never changes form)",
         "lātrat": "(he) barks — a new word for the occasion",
         "ecce": "look! behold!",
         "arca": "the chest (nom.)",
         "inquit": "says (used with quoted speech)",
         "plēna": "full (+ gen.)",
         "dōnōrum": "of gifts (gen. pl.)",
-        "quīntus": "Quintus (the son, 12)",
-        "paulla": "Paulla (the daughter, 8)",
+        "quinn": "Quinn (the son, 12 — his name never changes form)",
+        "paula": "Paula (the daughter, 8 — her name declines like «puella»)",
         "spectant": "(they) look at, stare at",
         "puerīs": "to the children (dat. pl. — welcome *to* them)",
         "grāta": "welcome, pleasing (+ dat.)",
@@ -291,13 +290,13 @@ registerUnit({
         "dat": "(he) gives",
         "pūpa": "a doll (nom.)",
         "nova": "new",
-        "paullae": "to Paulla (dat. — the doll pleases *Paulla*)",
+        "paulae": "to Paula (dat. — the doll pleases *Paula*)",
         "placet": "is pleasing (to) — takes the dative",
         "puella": "the girl (nom.)",
         "pūpam": "the doll (acc.)",
         "tenet": "(she) holds",
         "deinde": "then, next",
-        "quīntō": "to Quintus (dat.)",
+        "fīliō": "to the son (dat. — the family’s boy, Quinn)",
         "nāviculam": "a little ship, toy boat (acc.)",
         "dōnat": "(he) presents, gives as a gift",
         "nāvicula": "the little ship (nom.)",
@@ -307,16 +306,16 @@ registerUnit({
         "amat": "(he) loves"
       },
       translation: [
-        "The Fabius family is happy, because Titus is coming into the house. Titus, the uncle of Quintus and Paulla, is a sailor and a ship’s captain. He is carrying a big chest. Marcus and Livia greet the uncle, the children shout, even Ferox barks.",
-        "«Look — a chest!» says Titus. «The chest is full of gifts.» Quintus and Paulla stare at the chest; the chest is welcome to the children.",
-        "First Titus gives the girl a gift: it is a new doll! The doll pleases Paulla; the happy girl holds her doll. Then the uncle presents Quintus with a little ship. The little ship pleases the boy, because Quintus loves the life of sailors."
+        "The Fabius family is happy, because Ted is coming into the house. Ted, the children’s uncle, is a sailor and a ship’s captain. He is carrying a big chest. Mark and Julia greet the uncle, the children shout, even Lupo barks.",
+        "«Look — a chest!» says Ted. «The chest is full of gifts.» Quinn and Paula stare at the chest; the chest is welcome to the children.",
+        "First Ted gives the girl a gift: it is a new doll! The doll pleases Paula; the happy girl holds her doll. Then the uncle presents the son with a little ship. The little ship pleases the boy, because Quinn loves the life of sailors."
       ],
       questions: [
         {
           q: "Why is the family happy at the start of the reading?",
-          options: ["Ferox has finally stopped barking", "Uncle Titus is coming into the house", "Marcus has sold all his grain", "The children are leaving for school"],
+          options: ["Lupo has finally stopped barking", "Uncle Ted is coming into the house", "Mark has sold all his grain", "The children are leaving for school"],
           answer: 1,
-          explain: "«laeta est, quod Titus domum intrat» — «quod» gives the reason: Titus is arriving."
+          explain: "«laeta est, quod Ted domum intrat» — «quod» gives the reason: Ted is arriving."
         },
         {
           q: "In «arca puerīs grāta est», what does «puerīs» tell you?",
@@ -326,37 +325,37 @@ registerUnit({
         },
         {
           q: "Who receives the new doll?",
-          options: ["Līvia", "Quīntus", "Paulla", "Ferōx"],
+          options: ["Julia", "Quinn", "Paula", "Lupo"],
           answer: 2,
-          explain: "«puellae dōnum dat … pūpa Paullae placet» — the girl, Paulla, gets the doll, and it pleases her."
+          explain: "«puellae dōnum dat … pūpa Paulae placet» — the girl, Paula, gets the doll, and it pleases her."
         },
         {
-          q: "Why does the little ship please Quintus?",
-          options: ["Because it is full of gems", "Because he loves the life of sailors", "Because Paulla wants it too", "Because it once belonged to Titus"],
+          q: "Why does the little ship please Quinn?",
+          options: ["Because it is full of gems", "Because he loves the life of sailors", "Because Paula wants it too", "Because it once belonged to Ted"],
           answer: 1,
-          explain: "«quod Quīntus vītam nautārum amat» — because Quintus loves the life of sailors."
+          explain: "«quod Quinn vītam nautārum amat» — because Quinn loves the life of sailors."
         }
       ]
     },
     {
       title: "Dōna et fābula",
-      intro: "The grown-ups get their gifts, Titus tells a pirate story, and Ferox receives a present of his own.",
+      intro: "The grown-ups get their gifts, Ted tells a pirate story, and Lupo receives a present of his own.",
       paragraphs: [
-        "Deinde Titus Mārcō togam novam dat; toga virō placet. Līviae gemmam pretiōsam ānulumque dōnat. Gemma ānulusque dominae placent; Līvia laeta Titō grātiam habet. Etiam servīs ancillīsque Titus tunicās novās dat. Servī laetī sunt et nautae grātiam habent.",
-        "Mox puerī clāmant: «Fābulam! Fābulam!» Titus puerīs fābulam pīrātārum nārrat: pīrāta malus gemmās mercātōris rapit, sed subitō mōnstrum magnum nāviculam pīrātae dēvorat! Paulla clāmat; fābula tamen puellae placet. «Mōnstra nōn sunt!» inquit Līvia. Sed Titus sorōrī respondet: «Mōnstra sunt — et magna sunt!»",
-        "Etiam Ferōx dōnum exspectat! Titus Ferōcī botulum magnum dat. Canis botulum nōn spectat — subitō dēvorat. Familia rīdet. Dōna fābulaeque familiam dēlectant; puerī avunculō bonō grātiam habent, et domus Fabia plēna gaudiī est."
+        "Deinde Ted patrī togam novam dat; toga virō placet. Juliae gemmam pretiōsam ānulumque dōnat. Gemma ānulusque dominae placent; Julia laeta frātrī grātiam habet. Etiam servīs ancillīsque Ted tunicās novās dat. Servī laetī sunt et nautae grātiam habent.",
+        "Mox puerī clāmant: «Fābulam! Fābulam!» Ted puerīs fābulam pīrātārum nārrat: pīrāta malus gemmās mercātōris rapit, sed subitō mōnstrum magnum nāviculam pīrātae dēvorat! Paula clāmat; fābula tamen puellae placet. «Mōnstra nōn sunt!» inquit Julia. Sed Ted sorōrī respondet: «Mōnstra sunt — et magna sunt!»",
+        "Etiam Lupo dōnum exspectat! Ted canī botulum magnum dat. Canis botulum nōn spectat — subitō dēvorat. Familia rīdet. Dōna fābulaeque familiam dēlectant; puerī avunculō bonō grātiam habent, et domus Fabia plēna gaudiī est."
       ],
       glosses: {
         "deinde": "then, next",
-        "titus": "Titus (the uncle)",
-        "mārcō": "to Marcus (dat.)",
+        "ted": "Ted (the uncle)",
+        "patrī": "to the father (dat. — «pater», like «soror», is a 3rd-declension noun: its dative ends in ‑ī)",
         "togam": "a toga (acc.)",
         "novam": "new (acc.)",
         "dat": "(he) gives",
         "toga": "the toga (nom.)",
         "virō": "the man (dat. — pleasing *to the man*)",
         "placet": "is pleasing (to) — takes the dative",
-        "līviae": "to Livia (dat.)",
+        "juliae": "to Julia (dat. — her name declines like «puella»)",
         "gemmam": "a gem (acc.)",
         "pretiōsam": "precious (acc.)",
         "ānulumque": "and a ring (acc. + ‑que)",
@@ -365,9 +364,9 @@ registerUnit({
         "ānulusque": "and the ring (nom. + ‑que)",
         "dominae": "to the lady of the house (dat.)",
         "placent": "are pleasing (to) — plural of «placet»",
-        "līvia": "Livia (the mother)",
+        "julia": "Julia (the mother)",
         "laeta": "happy, delighted",
-        "titō": "toward Titus (dat. — with «grātiam habet»)",
+        "frātrī": "toward her brother (dat. — another 3rd-declension ‑ī dative; with «grātiam habet»)",
         "grātiam": "gratitude, thanks (acc. — «grātiam habēre» = to be grateful)",
         "habet": "(she) has, feels",
         "etiam": "even, also",
@@ -379,7 +378,7 @@ registerUnit({
         "laetī": "happy (nom. pl.)",
         "sunt": "are",
         "et": "and",
-        "nautae": "toward the sailor (dat. sg. — they are grateful *to* Titus)",
+        "nautae": "toward the sailor (dat. sg. — they are grateful *to* Ted)",
         "habent": "(they) have, feel",
         "mox": "soon",
         "puerī": "the children (nom. pl.)",
@@ -400,7 +399,7 @@ registerUnit({
         "nāviculam": "the little ship, boat (acc.)",
         "pīrātae": "of the pirate (gen. sg.)",
         "dēvorat": "(he/it) devours, gulps down",
-        "paulla": "Paulla (the daughter, 8)",
+        "paula": "Paula (the daughter, 8)",
         "clāmat": "(she) screams, cries out",
         "fābula": "the story (nom.)",
         "tamen": "nevertheless, still",
@@ -411,10 +410,10 @@ registerUnit({
         "sorōrī": "to his sister (dat. — 3rd-declension nouns like «soror» mark the dative with ‑ī)",
         "respondet": "(he) answers, replies (+ dat.)",
         "magna": "big (nom. pl., with «mōnstra»)",
-        "ferōx": "Ferox (the dog)",
+        "lupo": "Lupo (the dog — quasi lupus, but not the wolf of the fables!)",
         "dōnum": "a gift (acc.)",
         "exspectat": "(he) awaits, is waiting for",
-        "ferōcī": "to Ferox (dat. — another 3rd-declension dative in ‑ī)",
+        "canī": "to the dog (dat. — «canis» also marks its dative with ‑ī)",
         "botulum": "a sausage (acc.)",
         "canis": "the dog (nom.)",
         "spectat": "(he) looks at",
@@ -433,31 +432,31 @@ registerUnit({
         "est": "is"
       },
       translation: [
-        "Then Titus gives Marcus a new toga; the toga pleases the man. To Livia he presents a precious gem and a ring. The gem and the ring please the lady of the house; Livia, delighted, is grateful to Titus. Titus even gives the slaves and the maidservants new tunics. The slaves are happy and are grateful to the sailor.",
-        "Soon the children are shouting: «A story! A story!» Titus tells the children a story of pirates: a wicked pirate seizes a merchant’s gems, but suddenly a huge monster devours the pirate’s boat! Paulla screams — yet the story pleases the girl. «Monsters do not exist!» says Livia. But Titus answers his sister: «Monsters do exist — and they are big!»",
-        "Even Ferox is waiting for a gift! Titus gives Ferox a big sausage. The dog does not look at the sausage — he devours it on the spot. The family laughs. The gifts and the stories delight the family; the children are grateful to their good uncle, and the Fabius house is full of joy."
+        "Then Ted gives the father a new toga; the toga pleases the man. To Julia he presents a precious gem and a ring. The gem and the ring please the lady of the house; Julia, delighted, is grateful to her brother. Ted even gives the slaves and the maidservants new tunics. The slaves are happy and are grateful to the sailor.",
+        "Soon the children are shouting: «A story! A story!» Ted tells the children a story of pirates: a wicked pirate seizes a merchant’s gems, but suddenly a huge monster devours the pirate’s boat! Paula screams — yet the story pleases the girl. «Monsters do not exist!» says Julia. But Ted answers his sister: «Monsters do exist — and they are big!»",
+        "Even Lupo is waiting for a gift! Ted gives the dog a big sausage. The dog does not look at the sausage — he devours it on the spot. The family laughs. The gifts and the stories delight the family; the children are grateful to their good uncle, and the Fabius house is full of joy."
       ],
       questions: [
         {
-          q: "What does Titus present to Livia?",
+          q: "What does Ted present to Julia?",
           options: ["A new toga", "A precious gem and a ring", "A little ship", "New tunics"],
           answer: 1,
-          explain: "«Līviae gemmam pretiōsam ānulumque dōnat» — to Livia (dative) he gives a precious gem and a ring."
+          explain: "«Juliae gemmam pretiōsam ānulumque dōnat» — to Julia (dative) he gives a precious gem and a ring."
         },
         {
           q: "In «toga virō placet», which word names the person who is pleased?",
           options: ["toga", "virō", "placet", "None — no person is mentioned"],
           answer: 1,
-          explain: "«virō» is dative: the toga is pleasing *to the man*, Marcus. With «placeō», the person pleased always sits in the dative."
+          explain: "«virō» is dative: the toga is pleasing *to the man*, Mark. With «placeō», the person pleased always sits in the dative."
         },
         {
-          q: "In Titus’s story, what does the monster do?",
-          options: ["It steals the merchant’s gems", "It rescues the wicked pirate", "It devours the pirate’s boat", "It frightens Livia away"],
+          q: "In Ted’s story, what does the monster do?",
+          options: ["It steals the merchant’s gems", "It rescues the wicked pirate", "It devours the pirate’s boat", "It frightens Julia away"],
           answer: 2,
           explain: "«mōnstrum magnum nāviculam pīrātae dēvorat» — the huge monster devours the pirate’s little ship."
         },
         {
-          q: "How does Ferox handle his present?",
+          q: "How does Lupo handle his present?",
           options: ["He devours the sausage on the spot", "He buries it in the garden", "He shows it to the children", "He refuses to touch it"],
           answer: 0,
           explain: "«botulum nōn spectat — subitō dēvorat» — he does not even look at it; he devours it immediately."
@@ -468,10 +467,10 @@ registerUnit({
 
   quiz: [
     {
-      prompt: "In «Titus puellae dōnum dat», who receives the gift?",
-      options: ["Titus", "The girl", "The gift", "No one — nothing is received"],
+      prompt: "In «Ted puellae dōnum dat», who receives the gift?",
+      options: ["Ted", "The girl", "The gift", "No one — nothing is received"],
       answer: 1,
-      explain: "«puellae» is dative — the receiving case. Titus gives the gift *to the girl*."
+      explain: "«puellae» is dative — the receiving case. Ted gives the gift *to the girl*."
     },
     {
       prompt: "You read «Māter fīliō fābulam nārrat». What is «fīliō» doing in the sentence?",
@@ -495,17 +494,17 @@ registerUnit({
       prompt: "What is a «pūpa»?",
       options: ["A doll", "A little boat", "A seashell", "A ring"],
       answer: 0,
-      explain: "«pūpa» is a doll — Paulla’s new treasure. The little boat is «nāvicula», the seashell «concha», the ring «ānulus»."
+      explain: "«pūpa» is a doll — Paula’s new treasure. The little boat is «nāvicula», the seashell «concha», the ring «ānulus»."
     },
     {
-      prompt: "In «Līvia Titō grātiam habet», what is Livia doing?",
-      options: ["Giving Titus a present", "Telling Titus a story", "Feeling grateful to Titus", "Asking Titus for money"],
+      prompt: "In «Julia nautae grātiam habet», what is Julia doing?",
+      options: ["Giving the sailor a present", "Telling the sailor a story", "Feeling grateful to the sailor", "Asking the sailor for money"],
       answer: 2,
-      explain: "«grātiam habēre» + dative is an idiom: to feel gratitude toward someone. Livia is grateful to Titus."
+      explain: "«grātiam habēre» + dative is an idiom: to feel gratitude toward someone. Julia is grateful to the sailor — her brother Ted. And «nautae» here is dative, not genitive: the verb decides."
     },
     {
-      prompt: "In «Mārcus fīliae gemmam mōnstrat», which word is the thing being shown?",
-      options: ["Mārcus", "fīliae", "gemmam", "mōnstrat"],
+      prompt: "In «Mark fīliae gemmam mōnstrat», which word is the thing being shown?",
+      options: ["Mark", "fīliae", "gemmam", "mōnstrat"],
       answer: 2,
       explain: "«gemmam» (‑am, accusative) is the thing shown; «fīliae» (dative) is the person it is shown to."
     },

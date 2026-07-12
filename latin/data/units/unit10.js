@@ -1,7 +1,7 @@
 registerUnit({
   id: 10,
   stage: 1,
-  title: "Ferōx Perditus",
+  title: "Lupo Perditus",
   tagline: "Adjective agreement across the cases — and everything Stage I taught you",
 
   grammar: [
@@ -100,8 +100,8 @@ registerUnit({
       forms: "nigra, nigrum",
       pos: "adjective (1st/2nd decl., -er)",
       gloss: "black",
-      example: "Ferōx est canis niger.",
-      exampleGloss: "Ferox is a black dog."
+      example: "Lupo est canis niger.",
+      exampleGloss: "Lupo is a black dog."
     },
     {
       latin: "rūfus",
@@ -164,8 +164,8 @@ registerUnit({
       forms: "-a, -um",
       pos: "adjective (1st/2nd decl.)",
       gloss: "alone, only",
-      example: "Paulla sōla in cubiculō sedet.",
-      exampleGloss: "Paulla sits alone in the bedroom."
+      example: "Paula sōla in cubiculō sedet.",
+      exampleGloss: "Paula sits alone in the bedroom."
     },
     {
       latin: "medius",
@@ -180,8 +180,8 @@ registerUnit({
       forms: "-a, -um",
       pos: "adjective (1st/2nd decl.)",
       gloss: "true, real",
-      example: "Fābula Titī vēra est.",
-      exampleGloss: "Titus's story is true."
+      example: "Fābula avunculī vēra est.",
+      exampleGloss: "The uncle's story is true."
     },
     {
       latin: "clārus",
@@ -204,8 +204,8 @@ registerUnit({
       forms: "quaerere, quaesīvī, quaesītum",
       pos: "verb (3rd conj.)",
       gloss: "search for, seek",
-      example: "Līvia fīliam in viīs quaerit.",
-      exampleGloss: "Livia is looking for her daughter in the streets."
+      example: "Julia fīliam in viīs quaerit.",
+      exampleGloss: "Julia is looking for her daughter in the streets."
     },
     {
       latin: "inveniō",
@@ -220,16 +220,16 @@ registerUnit({
       forms: "lātrāre, lātrāvī, lātrātum",
       pos: "verb (1st conj.)",
       gloss: "bark",
-      example: "Ferōx prope portam lātrat.",
-      exampleGloss: "Ferox is barking near the gate."
+      example: "Lupo prope portam lātrat.",
+      exampleGloss: "Lupo is barking near the gate."
     },
     {
       latin: "lacrimō",
       forms: "lacrimāre, lacrimāvī, lacrimātum",
       pos: "verb (1st conj.)",
       gloss: "weep, cry",
-      example: "Paulla lacrimat, quod canis perditus est.",
-      exampleGloss: "Paulla is crying because the dog is lost."
+      example: "Paula lacrimat, quod canis perditus est.",
+      exampleGloss: "Paula is crying because the dog is lost."
     },
     {
       latin: "ubīque",
@@ -244,8 +244,8 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "adverb",
       gloss: "nowhere",
-      example: "Ferōx nusquam est.",
-      exampleGloss: "Ferox is nowhere to be found."
+      example: "Lupo nusquam est.",
+      exampleGloss: "Lupo is nowhere to be found."
     },
     {
       latin: "fortasse",
@@ -286,9 +286,9 @@ registerUnit({
       title: "Canis Perditus",
       intro: "Morning in the Fabius house — and someone is missing from the atrium.",
       paragraphs: [
-        "Māne est. Familia Fabia in ātriō sedet, sed Ferōx, canis niger, nōn est in ātriō. Quīntus cubicula spectat, Līvia culīnam, Mārcus hortum et tōtam domum. Canis nusquam est.",
-        "Paulla misera lacrimat. «Ferōx perditus est!» clāmat. «Minimē,» inquit Līvia, et fīliam parvam tenet. «Ferōx validus est, nōn piger. Fortasse sōlus in viīs errat et cibum quaerit.» Sed tōta familia sollicita est.",
-        "Familia per viās canem quaerit. «Ferōx! Ferōx!» clāmant puer puellaque, sed nēmō canem nigrum videt: nōn est in forō, nōn in macellō. Tandem Mārcus «Ferōx cibum amat,» inquit, «et in portū cibus est. Ad portum!»"
+        "Māne est. Familia Fabia in ātriō sedet, sed Lupo, canis niger, nōn est in ātriō. Quinn cubicula spectat, Julia culīnam, Mark hortum et tōtam domum. Canis nusquam est.",
+        "Paula misera lacrimat. «Lupo perditus est!» clāmat. «Minimē,» inquit Julia, et fīliam parvam tenet. «Lupo validus est, nōn piger. Fortasse sōlus in viīs errat et cibum quaerit.» Sed tōta familia sollicita est.",
+        "Familia per viās canem quaerit. «Lupo! Lupo!» clāmant puer puellaque, sed nēmō canem nigrum videt: nōn est in forō, nōn in macellō. Tandem Mark «Lupo cibum amat,» inquit, «et in portū cibus est. Ad portum!»"
       ],
       glosses: {
         "māne": "in the early morning",
@@ -299,23 +299,23 @@ registerUnit({
         "ātriō": "the atrium, the main hall (abl. after «in»)",
         "sedet": "sits, is sitting",
         "sed": "but",
-        "ferōx": "Ferox, the family dog (his name means ‘fierce’)",
+        "lupo": "Lupo, the family dog — quasi lupus, ‘wolf’! (his name never changes form)",
         "canis": "dog (nom.)",
         "niger": "black (m. nom. — agreeing with «canis»)",
         "nōn": "not",
-        "quīntus": "Quintus, the son, 12 years old",
+        "quinn": "Quinn, the son, 12 years old (his name never changes form)",
         "cubicula": "the bedrooms (acc. pl., neuter)",
         "spectat": "looks at, checks",
-        "līvia": "Livia, the mother",
+        "julia": "Julia, the mother (her name declines like «puella»)",
         "culīnam": "the kitchen (acc.)",
-        "mārcus": "Marcus, the father",
+        "mark": "Mark, the father (his name never changes form)",
         "hortum": "the garden (acc.)",
         "et": "and",
         "tōtam": "the whole (acc. f. — agreeing with «domum»)",
         "domum": "house (acc.)",
         "nusquam": "nowhere",
-        "paulla": "Paulla, the daughter, 8 years old",
-        "misera": "poor, unhappy (f. nom. — agreeing with «Paulla»)",
+        "paula": "Paula, the daughter, 8 years old (her name declines: Paula, Paulae, Paulam…)",
+        "misera": "poor, unhappy (f. nom. — agreeing with «Paula»)",
         "lacrimat": "weeps, is crying",
         "perditus": "lost (m. nom.)",
         "clāmat": "shouts",
@@ -353,32 +353,32 @@ registerUnit({
         "portum": "the harbor (acc. after «ad»)"
       },
       translation: [
-        "It is early morning. The Fabius family is sitting in the atrium, but Ferox, the black dog, is not in the atrium. Quintus checks the bedrooms, Livia the kitchen, Marcus the garden and the whole house. The dog is nowhere.",
-        "Poor Paulla is crying. «Ferox is lost!» she shouts. «Not at all,» says Livia, and holds her little daughter. «Ferox is strong, not lazy. Perhaps he is wandering alone in the streets, looking for food.» But the whole family is worried.",
-        "The family searches the streets for the dog. «Ferox! Ferox!» shout the boy and the girl, but no one sees a black dog: he is not in the forum, not in the market. At last Marcus says: «Ferox loves food — and at the harbor there is food. To the harbor!»"
+        "It is early morning. The Fabius family is sitting in the atrium, but Lupo, the black dog, is not in the atrium. Quinn checks the bedrooms, Julia the kitchen, Mark the garden and the whole house. The dog is nowhere.",
+        "Poor Paula is crying. «Lupo is lost!» she shouts. «Not at all,» says Julia, and holds her little daughter. «Lupo is strong, not lazy. Perhaps he is wandering alone in the streets, looking for food.» But the whole family is worried.",
+        "The family searches the streets for the dog. «Lupo! Lupo!» shout the boy and the girl, but no one sees a black dog: he is not in the forum, not in the market. At last Mark says: «Lupo loves food — and at the harbor there is food. To the harbor!»"
       ],
       questions: [
         {
           q: "At the start of the reading, why is the family worried?",
           options: [
-            "Ferox has stolen Livia's breakfast",
-            "Ferox is nowhere in the whole house",
-            "Paulla refuses to get out of bed",
-            "Marcus's ship is late"
+            "Lupo has stolen Julia's breakfast",
+            "Lupo is nowhere in the whole house",
+            "Paula refuses to get out of bed",
+            "Mark's ship is late"
           ],
           answer: 1,
-          explain: "They search everywhere — «Quīntus cubicula spectat, Līvia culīnam, Mārcus hortum et tōtam domum» — and «canis nusquam est»: the dog is nowhere."
+          explain: "They search everywhere — «Quinn cubicula spectat, Julia culīnam, Mark hortum et tōtam domum» — and «canis nusquam est»: the dog is nowhere."
         },
         {
-          q: "How does Livia try to comfort Paulla?",
+          q: "How does Julia try to comfort Paula?",
           options: [
             "She promises to buy a new puppy",
-            "She says Ferox is asleep in the garden",
-            "She says Ferox is strong, not lazy — perhaps just off hunting for food",
-            "She gives Paulla a sausage"
+            "She says Lupo is asleep in the garden",
+            "She says Lupo is strong, not lazy — perhaps just off hunting for food",
+            "She gives Paula a sausage"
           ],
           answer: 2,
-          explain: "«Ferōx validus est, nōn piger. Fortasse sōlus in viīs errat et cibum quaerit.» — strong, not lazy; probably wandering and looking for food."
+          explain: "«Lupo validus est, nōn piger. Fortasse sōlus in viīs errat et cibum quaerit.» — strong, not lazy; probably wandering and looking for food."
         },
         {
           q: "In «nēmō canem nigrum videt», why does «nigrum» end in -um?",
@@ -392,15 +392,15 @@ registerUnit({
           explain: "«canem» is accusative singular masculine (the object of «videt»), so its adjective takes the matching form «nigrum». Same case, number, and gender — even though -em and -um are different letters."
         },
         {
-          q: "What is Marcus's reasoning for heading to the harbor?",
+          q: "What is Mark's reasoning for heading to the harbor?",
           options: [
-            "Titus is expecting the family there",
-            "Ferox loves food, and the harbor is full of it",
+            "Ted is expecting the family there",
+            "Lupo loves food, and the harbor is full of it",
             "A sailor reported seeing a black dog",
-            "Paulla wants to look at the ships"
+            "Paula wants to look at the ships"
           ],
           answer: 1,
-          explain: "«Ferōx cibum amat, et in portū cibus est. Ad portum!» — the dog loves food, and the harbor has food. Impeccable logic."
+          explain: "«Lupo cibum amat, et in portū cibus est. Ad portum!» — the dog loves food, and the harbor has food. Impeccable logic."
         }
       ]
     },
@@ -408,10 +408,10 @@ registerUnit({
       title: "Canis in Portū",
       intro: "The search reaches the harbor — where a very familiar ship is tied up.",
       paragraphs: [
-        "Portus Ostiae plēnus est: nāvēs longae, nautae validī, saccī, amphorae. Familia per turbam ambulat. «Estne hīc canis niger?» rogat Quīntus. Nautae rīdent: «Hīc canēs ubīque sunt — albī, rūfī, flāvī!»",
-        "Subitō canis procul lātrat: vōx clāra est. «Ferōx lātrat! Vōcem canis bene sciō!» clāmat Paulla. Familia ad nāvem magnam properat — et ibi canem invenit! In mediā nāve Ferōx sedet et caudam albam movet.",
-        "In nāve etiam vir validus stat: Titus avunculus! «Salvēte!» inquit. «Ferōx nōn perditus est: māne ad nāvem errat et iam botulōs nautārum dēvorat. Vērus pīrāta est!» Paulla laeta canem tenet; iam nēmō lacrimat.",
-        "Deinde Titus fābulās dē urbe Rōmā nārrat: «Rōma clāra est: forma urbis pulchra est, viae lātae sunt, templa alba.» «Spectāmusne nōs quoque urbem clāram?» rogat Quīntus. «Ita,» inquit Mārcus. «Mox tōta familia cum cane nigrō ad urbem nāvigat!»"
+        "Portus Ostiae plēnus est: nāvēs longae, nautae validī, saccī, amphorae. Familia per turbam ambulat. «Estne hīc canis niger?» rogat Quinn. Nautae rīdent: «Hīc canēs ubīque sunt — albī, rūfī, flāvī!»",
+        "Subitō canis procul lātrat: vōx clāra est. «Lupo lātrat! Vōcem canis bene sciō!» clāmat Paula. Familia ad nāvem magnam properat — et ibi canem invenit! In mediā nāve Lupo sedet et caudam albam movet.",
+        "In nāve etiam vir validus stat: avunculus Ted! «Salvēte!» inquit. «Lupo nōn perditus est: māne ad nāvem errat et iam botulōs nautārum dēvorat. Vērus pīrāta est!» Paula laeta canem tenet; iam nēmō lacrimat.",
+        "Deinde Ted fābulās dē urbe Rōmā nārrat: «Rōma clāra est: forma urbis pulchra est, viae lātae sunt, templa alba.» «Spectāmusne nōs quoque urbem clāram?» rogat Quinn. «Ita,» inquit Mark. «Mox tōta familia cum cane nigrō ad urbem nāvigat!»"
       ],
       glosses: {
         "portus": "the harbor (nom.)",
@@ -433,7 +433,7 @@ registerUnit({
         "canis": "dog — nom. in «canis niger»; genitive (‘of the dog’) in «vōcem canis»",
         "niger": "black (m. nom.)",
         "rogat": "asks",
-        "quīntus": "Quintus, the son",
+        "quinn": "Quinn, the son",
         "rīdent": "(they) laugh",
         "canēs": "dogs (nom. pl.)",
         "ubīque": "everywhere",
@@ -446,12 +446,12 @@ registerUnit({
         "lātrat": "barks",
         "vōx": "the voice (nom.)",
         "clāra": "clear; famous (f. nom. — with «vōx»: clear; with «Rōma»: famous)",
-        "ferōx": "Ferox, the family dog",
+        "lupo": "Lupo, the family dog",
         "vōcem": "voice (acc.)",
         "bene": "well",
         "sciō": "I know",
         "clāmat": "shouts",
-        "paulla": "Paulla, the daughter",
+        "paula": "Paula, the daughter",
         "ad": "to, toward (+ acc.)",
         "nāvem": "ship (acc.)",
         "magnam": "big (acc. f. — agreeing with «nāvem»)",
@@ -471,8 +471,8 @@ registerUnit({
         "vir": "a man (nom.)",
         "validus": "strong (m. nom. — agreeing with «vir»)",
         "stat": "stands",
-        "titus": "Titus, Livia's brother, a ship's captain",
         "avunculus": "uncle (your mother's brother)",
+        "ted": "Ted, Julia's brother, a ship's captain (his name never changes form)",
         "salvēte": "hello! (to more than one person)",
         "inquit": "says (used with quoted speech)",
         "nōn": "not",
@@ -485,7 +485,7 @@ registerUnit({
         "dēvorat": "devours, gobbles up",
         "vērus": "a true, real (m. nom.)",
         "pīrāta": "pirate (nom. — a 1st-declension noun that is masculine, like «nauta»)",
-        "laeta": "happy (f. nom. — agreeing with «Paulla»)",
+        "laeta": "happy (f. nom. — agreeing with «Paula»)",
         "tenet": "holds",
         "nēmō": "no one",
         "lacrimat": "weeps, cries",
@@ -509,7 +509,7 @@ registerUnit({
         "urbem": "the city (acc.)",
         "clāram": "famous (acc. f. — agreeing with «urbem»)",
         "ita": "yes",
-        "mārcus": "Marcus, the father",
+        "mark": "Mark, the father",
         "mox": "soon",
         "tōta": "the whole (f. nom. — agreeing with «familia»)",
         "cum": "with (+ abl.)",
@@ -518,25 +518,25 @@ registerUnit({
         "nāvigat": "sails, is sailing (present for the near future)"
       },
       translation: [
-        "The harbor of Ostia is full: long ships, strong sailors, sacks, amphorae. The family walks through the crowd. «Is there a black dog here?» asks Quintus. The sailors laugh: «There are dogs everywhere here — white ones, red ones, golden ones!»",
-        "Suddenly a dog barks in the distance: the voice is clear. «That is Ferox barking! I know that dog's voice well!» shouts Paulla. The family hurries to a big ship — and there it finds the dog! In the middle of the ship sits Ferox, wagging his white tail.",
-        "On the ship there also stands a strong man: Uncle Titus! «Hello, everyone!» he says. «Ferox is not lost: early this morning he wandered over to the ship, and now he is devouring the sailors' sausages. He is a true pirate!» Paulla, overjoyed, holds the dog; now no one is crying.",
-        "Then Titus tells stories about the city of Rome: «Rome is famous: the look of the city is beautiful, the streets are wide, the temples white.» «Are we going to see the famous city too?» asks Quintus. «Yes,» says Marcus. «Soon the whole family — black dog included — sails to the city!»"
+        "The harbor of Ostia is full: long ships, strong sailors, sacks, amphorae. The family walks through the crowd. «Is there a black dog here?» asks Quinn. The sailors laugh: «There are dogs everywhere here — white ones, red ones, golden ones!»",
+        "Suddenly a dog barks in the distance: the voice is clear. «That is Lupo barking! I know that dog's voice well!» shouts Paula. The family hurries to a big ship — and there it finds the dog! In the middle of the ship sits Lupo, wagging his white tail.",
+        "On the ship there also stands a strong man: Uncle Ted! «Hello, everyone!» he says. «Lupo is not lost: early this morning he wandered over to the ship, and now he is devouring the sailors' sausages. He is a true pirate!» Paula, overjoyed, holds the dog; now no one is crying.",
+        "Then Ted tells stories about the city of Rome: «Rome is famous: the look of the city is beautiful, the streets are wide, the temples white.» «Are we going to see the famous city too?» asks Quinn. «Yes,» says Mark. «Soon the whole family — black dog included — sails to the city!»"
       ],
       questions: [
         {
-          q: "How does Paulla know Ferox is near before she can see him?",
+          q: "How does Paula know Lupo is near before she can see him?",
           options: [
             "She spots his white tail above the crowd",
             "She recognizes his bark — she knows his voice well",
-            "Titus waves to her from the ship",
+            "Ted waves to her from the ship",
             "She smells the sausages"
           ],
           answer: 1,
-          explain: "«Subitō canis procul lātrat… Vōcem canis bene sciō!» — a dog barks in the distance, and Paulla knows that voice."
+          explain: "«Subitō canis procul lātrat… Vōcem canis bene sciō!» — a dog barks in the distance, and Paula knows that voice."
         },
         {
-          q: "According to Titus, what has the ‘true pirate’ been doing on board?",
+          q: "According to Ted, what has the ‘true pirate’ been doing on board?",
           options: [
             "Guarding the grain sacks",
             "Sleeping inside an amphora",
@@ -544,7 +544,7 @@ registerUnit({
             "Chasing the harbor cats"
           ],
           answer: 2,
-          explain: "«iam botulōs nautārum dēvorat. Vērus pīrāta est!» — he is gobbling up the sailors' sausages. Classic Ferox."
+          explain: "«iam botulōs nautārum dēvorat. Vērus pīrāta est!» — he is gobbling up the sailors' sausages. Classic Lupo."
         },
         {
           q: "In «cum cane nigrō», what does the ending of «nigrō» tell you?",
@@ -561,8 +561,8 @@ registerUnit({
           q: "How does the day end for the family?",
           options: [
             "The whole family — dog included — will soon sail to Rome",
-            "They sell Ferox to the sailors as a ship's dog",
-            "Titus sails away to Rome alone",
+            "They sell Lupo to the sailors as a ship's dog",
+            "Ted sails away to Rome alone",
             "They decide never to visit the harbor again"
           ],
           answer: 0,
@@ -591,7 +591,7 @@ registerUnit({
       explain: "«nāvem» is a 3rd-declension accusative (-em); the 1st/2nd-declension adjective shows the same case with its own ending, -am. If it agreed with «familia» (nominative) it would be «magna»."
     },
     {
-      prompt: "Which adjective correctly completes «Līvia in viā ______ ambulat» (Livia walks in the wide street)?",
+      prompt: "Which adjective correctly completes «Julia in viā ______ ambulat» (Julia walks in the wide street)?",
       options: ["lātus", "lātam", "lātā", "lātīs"],
       answer: 2,
       explain: "«in viā» is ablative singular feminine, so the adjective must be «lātā». «lātam» would be accusative, «lātīs» plural, «lātus» masculine."
@@ -609,15 +609,15 @@ registerUnit({
       explain: "«alba» is feminine nominative and agrees with «cauda», so «cauda» is the subject; «canis» here is genitive — ‘the dog's tail is white’. With 3rd-declension nouns, let the adjective's agreement guide you."
     },
     {
-      prompt: "In «Titus puerīs fābulās nārrat», who or what is in the dative case?",
+      prompt: "In «Avunculus puerīs fābulās nārrat», who or what is in the dative case?",
       options: [
-        "Titus — the storyteller",
+        "avunculus — the storytelling uncle",
         "puerīs — the boys, to whom he tells the stories",
         "fābulās — the stories",
         "nothing; there is no dative here"
       ],
       answer: 1,
-      explain: "«puerīs» has the dative plural ending -īs: Titus tells the stories to the boys. «fābulās» (-ās) is the accusative object; «Titus» is the nominative subject."
+      explain: "«puerīs» has the dative plural ending -īs: the uncle tells the stories to the boys. «fābulās» (-ās) is the accusative object; «avunculus» (-us) is the nominative subject."
     },
     {
       prompt: "Which phrase means ‘with the unhappy sailor’?",

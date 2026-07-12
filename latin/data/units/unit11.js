@@ -7,7 +7,7 @@ registerUnit({
   grammar: [
     {
       heading: "«Sum»: the whole present, at last",
-      body: "<p>Since Unit 1 you have known <span class=\"la\">est</span> (is) and <span class=\"la\">sunt</span> (are). They were the tip of an iceberg. Here is the entire verb <span class=\"la\">esse</span> (to be) in the present tense — six forms, one per person.</p><p>Reading strategy: a form of <span class=\"la\">esse</span> works like an equals sign. It links the subject to a description, and both sides stay in the <strong>nominative</strong>: <span class=\"la\">Quīntus laetus est</span> — Quintus = happy. Better yet, the ending tells you the subject even when no pronoun appears: <span class=\"la\">parāta sum</span> can only mean <em>I</em> am ready.</p>",
+      body: "<p>Since Unit 1 you have known <span class=\"la\">est</span> (is) and <span class=\"la\">sunt</span> (are). They were the tip of an iceberg. Here is the entire verb <span class=\"la\">esse</span> (to be) in the present tense — six forms, one per person.</p><p>Reading strategy: a form of <span class=\"la\">esse</span> works like an equals sign. It links the subject to a description, and both sides stay in the <strong>nominative</strong>: <span class=\"la\">Quinn laetus est</span> — Quinn = happy. Better yet, the ending tells you the subject even when no pronoun appears: <span class=\"la\">parāta sum</span> can only mean <em>I</em> am ready.</p>",
       table: {
         caption: "Present of «esse» (to be)",
         headers: ["Latin", "English"],
@@ -24,7 +24,7 @@ registerUnit({
     },
     {
       heading: "«Possum»: pot- glued onto sum",
-      body: "<p><span class=\"la\">Possum</span> (I can) is nothing more than <span class=\"la\">pot‑</span> (able) welded onto the forms of <span class=\"la\">sum</span>. Before an <strong>s</strong>, the <strong>t</strong> smooths out: <span class=\"la\">pot‑sum</span> becomes <span class=\"la\">possum</span>, while <span class=\"la\">pot‑es</span> stays <span class=\"la\">potes</span>. If you know <span class=\"la\">sum</span>, you already know <span class=\"la\">possum</span> for free.</p><p>And <span class=\"la\">possum</span> almost never travels alone: it wants a second verb in the <strong>infinitive</strong> to say what the subject is able <em>to do</em>: <span class=\"la\">Titus nāvigāre potest</span> — Titus can sail. Grammarians call this the <em>complementary infinitive</em>, because it completes the thought.</p>",
+      body: "<p><span class=\"la\">Possum</span> (I can) is nothing more than <span class=\"la\">pot‑</span> (able) welded onto the forms of <span class=\"la\">sum</span>. Before an <strong>s</strong>, the <strong>t</strong> smooths out: <span class=\"la\">pot‑sum</span> becomes <span class=\"la\">possum</span>, while <span class=\"la\">pot‑es</span> stays <span class=\"la\">potes</span>. If you know <span class=\"la\">sum</span>, you already know <span class=\"la\">possum</span> for free.</p><p>And <span class=\"la\">possum</span> almost never travels alone: it wants a second verb in the <strong>infinitive</strong> to say what the subject is able <em>to do</em>: <span class=\"la\">Ted nāvigāre potest</span> — Ted can sail. Grammarians call this the <em>complementary infinitive</em>, because it completes the thought.</p>",
       table: {
         caption: "Present of «posse» (to be able)",
         headers: ["Latin", "English"],
@@ -41,7 +41,7 @@ registerUnit({
     },
     {
       heading: "The infinitive: a verb wearing its name tag",
-      body: "<p>The <strong>infinitive</strong> is the ‘to ___’ form of a verb, and it is delightfully easy to spot: it ends in <span class=\"la\">‑re</span>. First-conjugation verbs end in <span class=\"la\">‑āre</span> (<span class=\"la\">amāre</span> — to love, <span class=\"la\">labōrāre</span> — to work), second-conjugation verbs in <span class=\"la\">‑ēre</span> (<span class=\"la\">vidēre</span> — to see, <span class=\"la\">habēre</span> — to have). Two irregulars are worth learning whole: <span class=\"la\">esse</span> (to be) and <span class=\"la\">posse</span> (to be able).</p><p>A whole club of verbs likes to be completed by an infinitive — verbs of wanting, owing, trying, hesitating, ordering. When you read one of them, expect an infinitive nearby.</p><p>Note the pattern with <span class=\"la\">iubeō</span> (I order): the person ordered goes in the <strong>accusative</strong>, then comes the infinitive. <span class=\"la\">Līvia Quīntum labōrāre iubet</span> — Livia orders Quintus to work.</p>",
+      body: "<p>The <strong>infinitive</strong> is the ‘to ___’ form of a verb, and it is delightfully easy to spot: it ends in <span class=\"la\">‑re</span>. First-conjugation verbs end in <span class=\"la\">‑āre</span> (<span class=\"la\">amāre</span> — to love, <span class=\"la\">labōrāre</span> — to work), second-conjugation verbs in <span class=\"la\">‑ēre</span> (<span class=\"la\">vidēre</span> — to see, <span class=\"la\">habēre</span> — to have). Two irregulars are worth learning whole: <span class=\"la\">esse</span> (to be) and <span class=\"la\">posse</span> (to be able).</p><p>A whole club of verbs likes to be completed by an infinitive — verbs of wanting, owing, trying, hesitating, ordering. When you read one of them, expect an infinitive nearby.</p><p>Note the pattern with <span class=\"la\">iubeō</span> (I order): the person ordered goes in the <strong>accusative</strong>, then comes the infinitive. <span class=\"la\">Julia fīlium labōrāre iubet</span> — Julia orders her son to work.</p>",
       table: {
         caption: "Verbs that call for an infinitive",
         headers: ["Signal verb", "Meaning", "Example"],
@@ -50,13 +50,13 @@ registerUnit({
           ["dēbet", "must, ought to…", "labōrāre dēbet — has to work"],
           ["temptat", "tries to…", "iuvāre temptat — tries to help"],
           ["dubitat", "hesitates to…", "intrāre dubitat — hesitates to go in"],
-          ["iubet", "orders (someone) to…", "Quīntum portāre iubet — orders Quintus to carry"]
+          ["iubet", "orders (someone) to…", "fīlium portāre iubet — orders her son to carry"]
         ]
       }
     },
     {
       heading: "«Necesse est» and «licet»: nobody in particular",
-      body: "<p>Two very useful chunks have no personal subject at all. <span class=\"la\">Necesse est</span> + infinitive means ‘it is necessary to…’ — in plain English, <em>somebody's gotta</em>: <span class=\"la\">necesse est aquam portāre</span> — the water has to be carried. <span class=\"la\">Licet</span> + infinitive means ‘it is allowed’; add a <strong>dative</strong> for the person who has permission: <span class=\"la\">Paullae natāre licet</span> — Paulla may swim. And with <span class=\"la\">nōn</span>? <span class=\"la\">Calceōs dēvorāre nōn licet</span> — eating shoes is <em>not</em> allowed. Somebody tell the dog.</p>",
+      body: "<p>Two very useful chunks have no personal subject at all. <span class=\"la\">Necesse est</span> + infinitive means ‘it is necessary to…’ — in plain English, <em>somebody's gotta</em>: <span class=\"la\">necesse est aquam portāre</span> — the water has to be carried. <span class=\"la\">Licet</span> + infinitive means ‘it is allowed’; add a <strong>dative</strong> for the person who has permission: <span class=\"la\">Paulae natāre licet</span> — Paula may swim. And with <span class=\"la\">nōn</span>? <span class=\"la\">Calceōs dēvorāre nōn licet</span> — eating shoes is <em>not</em> allowed. Somebody tell the dog.</p>",
       tip: "Read «necesse est» as one frozen chunk, like a stamp that says MUST. The infinitive after it tells you what must happen."
     }
   ],
@@ -75,16 +75,16 @@ registerUnit({
       forms: "posse, potuī (irreg.)",
       pos: "verb (irregular)",
       gloss: "be able, can",
-      example: "Titus bene nāvigāre potest.",
-      exampleGloss: "Titus can sail well."
+      example: "Ted bene nāvigāre potest.",
+      exampleGloss: "Ted can sail well."
     },
     {
       latin: "cupiō",
       forms: "cupere, cupīvī, cupītum",
       pos: "verb (3rd conj. ‑iō)",
       gloss: "desire, want",
-      example: "Quīntus nauta esse cupit.",
-      exampleGloss: "Quintus wants to be a sailor."
+      example: "Quinn nauta esse cupit.",
+      exampleGloss: "Quinn wants to be a sailor."
     },
     {
       latin: "dēbeō",
@@ -107,8 +107,8 @@ registerUnit({
       forms: "temptāre, temptāvī, temptātum",
       pos: "verb (1st conj.)",
       gloss: "try, attempt",
-      example: "Paulla natāre temptat.",
-      exampleGloss: "Paulla tries to swim."
+      example: "Paula natāre temptat.",
+      exampleGloss: "Paula tries to swim."
     },
     {
       latin: "spērō",
@@ -123,16 +123,16 @@ registerUnit({
       forms: "dubitāre, dubitāvī, dubitātum",
       pos: "verb (1st conj.)",
       gloss: "doubt, hesitate",
-      example: "Līvia nōn dubitat.",
-      exampleGloss: "Livia does not hesitate."
+      example: "Julia nōn dubitat.",
+      exampleGloss: "Julia does not hesitate."
     },
     {
       latin: "cōgitō",
       forms: "cōgitāre, cōgitāvī, cōgitātum",
       pos: "verb (1st conj.)",
       gloss: "think, plan",
-      example: "Mārcus dē itinere cōgitat.",
-      exampleGloss: "Marcus is thinking about the journey."
+      example: "Mark dē itinere cōgitat.",
+      exampleGloss: "Mark is thinking about the journey."
     },
     {
       latin: "iuvō",
@@ -179,16 +179,16 @@ registerUnit({
       forms: "cistae, f.",
       pos: "noun (1st decl.)",
       gloss: "trunk, chest",
-      example: "Līvia cistam parat.",
-      exampleGloss: "Livia is getting the trunk ready."
+      example: "Julia cistam parat.",
+      exampleGloss: "Julia is getting the trunk ready."
     },
     {
       latin: "calceus",
       forms: "calceī, m.",
       pos: "noun (2nd decl.)",
       gloss: "shoe",
-      example: "Ferōx calceum tenet.",
-      exampleGloss: "Ferox is holding a shoe."
+      example: "Canis Lupo calceum tenet.",
+      exampleGloss: "The dog Lupo is holding a shoe."
     },
     {
       latin: "paenula",
@@ -267,11 +267,11 @@ registerUnit({
   readings: [
     {
       title: "Cōnsilium Novum",
-      intro: "The evening after Ferox's harbor adventure, the family sits together — and Marcus has an announcement.",
+      intro: "The evening after Lupo's harbor adventure, the family sits together — and Mark has an announcement.",
       paragraphs: [
-        "Vesper est. Tōta familia in ātriō sedet, sed Mārcus nōn sedet: stat et cōgitat. Tandem «cōnsilium novum habeō!» inquit. «Rōmam nāvigāre cupiō. Titus nāvem magnam habet; nāvis Titī nōs portāre potest.»",
-        "Quīntus laetus clāmat: «ego nauta esse cupiō! Possumusne nōs quoque nāvigāre?» «Ita!» respondet Mārcus. «Tōta familia nāvigāre potest — etiam Ferōx!»",
-        "Līvia nōn dubitat, sed multa cōgitat. «Iter longum est» inquit. «Necesse est cistās et sarcinās parāre; crās multum labōrāre dēbēmus.» Paulla rīdet: «ego iam parāta sum! Parātīne vōs estis?» Ferōx nōn respondet: canis in culīnā dormit."
+        "Vesper est. Tōta familia in ātriō sedet, sed Mark nōn sedet: pater stat et cōgitat. Tandem «cōnsilium novum habeō!» inquit. «Rōmam nāvigāre cupiō. Avunculus Ted nāvem magnam habet; nāvis avunculī nōs portāre potest.»",
+        "Quinn laetus clāmat: «ego nauta esse cupiō! Possumusne nōs quoque nāvigāre?» «Ita!» respondet Mark. «Tōta familia nāvigāre potest — etiam Lupo!»",
+        "Julia nōn dubitat, sed multa cōgitat. «Iter longum est» inquit. «Necesse est cistās et sarcinās parāre; crās multum labōrāre dēbēmus.» Paula rīdet: «ego iam parāta sum! Parātīne vōs estis?» Lupo nōn respondet: canis in culīnā dormit."
       ],
       glosses: {
         "vesper": "evening (nom.)",
@@ -282,8 +282,9 @@ registerUnit({
         "ātriō": "atrium, hall (abl. after «in»)",
         "sedet": "sits, is sitting",
         "sed": "but",
-        "mārcus": "Marcus, the father",
+        "mark": "Mark, the father (his name never changes form)",
         "nōn": "not",
+        "pater": "father (nom.) — that is, Mark",
         "stat": "stands",
         "et": "and",
         "cōgitat": "thinks, is thinking",
@@ -295,16 +296,17 @@ registerUnit({
         "rōmam": "to Rome (city names take a plain accusative for ‘to’ — no preposition needed)",
         "nāvigāre": "to sail (infinitive)",
         "cupiō": "I want, I desire",
-        "titus": "Titus, Livia's brother, the ship captain",
+        "avunculus": "uncle (nom.) — the mother's brother",
+        "ted": "Ted, Julia's brother, the ship captain (his name never changes form)",
         "nāvem": "ship (acc.)",
         "magnam": "big (acc. sg. f., with «nāvem»)",
         "habet": "has",
         "nāvis": "ship (nom.)",
-        "titī": "of Titus, Titus's (gen.)",
+        "avunculī": "of the uncle, the uncle's (gen.)",
         "nōs": "we / us (the same form serves as subject and object)",
         "portāre": "to carry (infinitive)",
         "potest": "is able, can (+ infinitive)",
-        "quīntus": "Quintus, the son, twelve years old",
+        "quinn": "Quinn, the son, twelve years old",
         "laetus": "happy (nom., describing the subject)",
         "clāmat": "shouts",
         "ego": "I",
@@ -315,8 +317,8 @@ registerUnit({
         "ita": "yes",
         "respondet": "answers, replies",
         "etiam": "even, also",
-        "ferōx": "Ferox, the family dog",
-        "līvia": "Livia, the mother",
+        "lupo": "Lupo, the family dog — quasi lupus, ‘Wolf’!",
+        "julia": "Julia, the mother (her name declines: Julia, Juliae, Juliam…)",
         "dubitat": "hesitates",
         "multa": "many things (neuter plural used as a noun)",
         "iter": "journey (nom.)",
@@ -329,10 +331,10 @@ registerUnit({
         "multum": "much, hard (adverb)",
         "labōrāre": "to work (infinitive)",
         "dēbēmus": "we must, we ought",
-        "paulla": "Paulla, the daughter, eight years old",
+        "paula": "Paula, the daughter, eight years old",
         "rīdet": "laughs",
         "iam": "already",
-        "parāta": "ready (nom. sg. f. — Paulla is speaking)",
+        "parāta": "ready (nom. sg. f. — Paula is speaking)",
         "sum": "I am",
         "parātīne": "ready? («parātī» ready, masc. pl. + question particle ‑ne)",
         "vōs": "you (plural)",
@@ -342,18 +344,18 @@ registerUnit({
         "dormit": "sleeps, is asleep"
       },
       translation: [
-        "It is evening. The whole family is sitting in the atrium, but Marcus is not sitting: he stands and thinks. At last he says, «I have a new plan! I want to sail to Rome. Titus has a big ship; Titus's ship can carry us.»",
-        "Quintus shouts happily: «I want to be a sailor! Can we sail too?» «Yes!» answers Marcus. «The whole family can sail — even Ferox!»",
-        "Livia does not hesitate, but she is thinking of many things. «The journey is long,» she says. «We need to get the trunks and the packs ready; tomorrow we must work hard.» Paulla laughs: «I am ready already! Are you all ready?» Ferox does not answer: the dog is asleep in the kitchen."
+        "It is evening. The whole family is sitting in the atrium, but Mark is not sitting: the father stands and thinks. At last he says, «I have a new plan! I want to sail to Rome. Uncle Ted has a big ship; the uncle's ship can carry us.»",
+        "Quinn shouts happily: «I want to be a sailor! Can we sail too?» «Yes!» answers Mark. «The whole family can sail — even Lupo!»",
+        "Julia does not hesitate, but she is thinking of many things. «The journey is long,» she says. «We need to get the trunks and the packs ready; tomorrow we must work hard.» Paula laughs: «I am ready already! Are you all ready?» Lupo does not answer: the dog is asleep in the kitchen."
       ],
       questions: [
         {
-          q: "What does Marcus announce to the family?",
+          q: "What does Mark announce to the family?",
           options: [
             "He must work tomorrow",
             "He wants to sail to Rome",
             "He has bought a new ship",
-            "Titus is coming for dinner"
+            "Uncle Ted is coming for dinner"
           ],
           answer: 1,
           explain: "«Rōmam nāvigāre cupiō» — I want to sail to Rome. «Cupiō» plus the infinitive «nāvigāre» carries the announcement."
@@ -361,27 +363,27 @@ registerUnit({
         {
           q: "Whose ship will carry the family?",
           options: [
-            "Mārcus's own ship",
+            "Mark's own ship",
             "A merchant's ship from the forum",
-            "Titus's ship",
-            "Quīntus's little toy boat"
+            "Uncle Ted's ship",
+            "Quinn's little toy boat"
           ],
           answer: 2,
-          explain: "«nāvis Titī nōs portāre potest» — the genitive «Titī» tells you the ship is Titus's."
+          explain: "«nāvis avunculī nōs portāre potest» — the genitive «avunculī» tells you the ship is the uncle's, i.e. Ted's."
         },
         {
-          q: "In «Possumusne nōs quoque nāvigāre?», Quintus is asking whether…",
+          q: "In «Possumusne nōs quoque nāvigāre?», Quinn is asking whether…",
           options: [
             "they must also sail",
             "they are also able to sail",
             "they also want to sail",
-            "Titus can sail alone"
+            "Ted can sail alone"
           ],
           answer: 1,
           explain: "«possumus» = we can, we are able; the attached ‑ne turns it into a yes/no question. Wanting would be «cupimus», obligation «dēbēmus»."
         },
         {
-          q: "What does Livia say is necessary?",
+          q: "What does Julia say is necessary?",
           options: [
             "Praying to the gods",
             "Buying a new dog",
@@ -397,11 +399,11 @@ registerUnit({
       title: "Sarcinae et Deī",
       intro: "Packing day: trunks, cloaks, one doomed shoe — and a prayer for good fortune.",
       paragraphs: [
-        "Hodiē tōta familia labōrat, quod crās iter est. Līvia in cubiculō cistās parat: in cistīs sunt tunicae, togae, paenulae. «Iter longum est» inquit; «paenulās et calceōs bonōs habēre dēbēmus.»",
-        "Mārcus Quīntum sarcinās portāre iubet; puer laetus sarcinās magnās ad portam portat. Mārcus fīlium laudat: «tū validus es et bene labōrāre potes!» Paulla parva est, sed iuvāre temptat: pūpam et parvam sarcinam portat. «Ego quoque iter parāre possum!» inquit puella.",
-        "Subitō Ferōx quoque «iuvat»: calceum novum Mārcī rapit! Mārcus īrātus clāmat: «malus canis es! Calceōs dēvorāre nōn licet!» Sed Paulla nōn dubitat: botulum tenet et canem vocat. Ferōx calceum iam nōn cupit — botulum cupit. Mārcus calceum ūmidum accipit et tandem rīdet.",
-        "Vesper est. Familia deōs deāsque ōrat, quod in marī perīcula sunt. Mārcus deīs dōna parva dat et fortūnam bonam ōrat. «Dī nautās iuvāre possunt» inquit. «Fortūnam bonam spērāmus» respondet Līvia, «sed bene labōrāre quoque dēbēmus.»",
-        "Nox est. Quīntus dormīre nōn potest: puer dē nāvibus cōgitat. «Crās» inquit «nauta sum! Fortasse gubernātor esse possum!» Tandem puer fessus dormit. Ferōx quoque dormit — in cistā magnā!"
+        "Hodiē tōta familia labōrat, quod crās iter est. Julia in cubiculō cistās parat: in cistīs sunt tunicae, togae, paenulae. «Iter longum est» inquit; «paenulās et calceōs bonōs habēre dēbēmus.»",
+        "Mark fīlium sarcinās portāre iubet; puer laetus sarcinās magnās ad portam portat. Pater fīlium laudat: «tū validus es et bene labōrāre potes!» Paula parva est, sed iuvāre temptat: pūpam et parvam sarcinam portat. «Ego quoque iter parāre possum!» inquit puella.",
+        "Subitō Lupo quoque «iuvat»: calceum novum patris rapit! Mark īrātus clāmat: «malus canis es! Calceōs dēvorāre nōn licet!» Sed Paula nōn dubitat: botulum tenet et canem vocat. Lupo calceum iam nōn cupit — botulum cupit. Mark calceum ūmidum accipit et tandem rīdet.",
+        "Vesper est. Familia deōs deāsque ōrat, quod in marī perīcula sunt. Mark deīs dōna parva dat et fortūnam bonam ōrat. «Dī nautās iuvāre possunt» inquit. «Fortūnam bonam spērāmus» respondet Julia, «sed bene labōrāre quoque dēbēmus.»",
+        "Nox est. Quinn dormīre nōn potest: puer dē nāvibus cōgitat. «Crās» inquit «nauta sum! Fortasse gubernātor esse possum!» Tandem puer fessus dormit. Lupo quoque dormit — in cistā magnā!"
       ],
       glosses: {
         "hodiē": "today",
@@ -412,7 +414,7 @@ registerUnit({
         "crās": "tomorrow",
         "iter": "journey (nom.)",
         "est": "is; it is",
-        "līvia": "Livia, the mother",
+        "julia": "Julia, the mother",
         "in": "in (+ abl.)",
         "cubiculō": "bedroom (abl. after «in»)",
         "cistās": "trunks, chests (acc. pl.)",
@@ -430,8 +432,8 @@ registerUnit({
         "bonōs": "good (acc. pl. m., with «calceōs»)",
         "habēre": "to have (infinitive)",
         "dēbēmus": "we must, we ought",
-        "mārcus": "Marcus, the father",
-        "quīntum": "Quintus (acc. — the person being ordered)",
+        "mark": "Mark, the father",
+        "fīlium": "son (acc. — the person being ordered)",
         "sarcinās": "packs, bags (acc. pl.)",
         "portāre": "to carry (infinitive)",
         "iubet": "orders (person in the acc. + infinitive)",
@@ -441,7 +443,7 @@ registerUnit({
         "ad": "to, toward (+ acc.)",
         "portam": "door, gate (acc. after «ad»)",
         "portat": "carries",
-        "fīlium": "son (acc.)",
+        "pater": "father (nom. — the subject)",
         "laudat": "praises",
         "tū": "you (singular)",
         "validus": "strong",
@@ -449,7 +451,7 @@ registerUnit({
         "bene": "well",
         "labōrāre": "to work (infinitive)",
         "potes": "you (sg.) can, are able",
-        "paulla": "Paulla, the daughter, eight years old",
+        "paula": "Paula, the daughter, eight years old",
         "parva": "small, little",
         "sed": "but",
         "iuvāre": "to help (infinitive)",
@@ -463,11 +465,11 @@ registerUnit({
         "possum": "I can, I am able",
         "puella": "girl",
         "subitō": "suddenly",
-        "ferōx": "Ferox, the family dog",
+        "lupo": "Lupo, the family dog",
         "iuvat": "helps",
         "calceum": "shoe (acc.)",
         "novum": "new (acc. sg. m., with «calceum»)",
-        "mārcī": "of Marcus, Marcus's (gen.)",
+        "patris": "of the father, the father's (gen. of «pater»)",
         "rapit": "snatches, grabs",
         "īrātus": "angry",
         "clāmat": "shouts",
@@ -504,7 +506,7 @@ registerUnit({
         "spērāmus": "we hope for",
         "respondet": "answers, replies",
         "nox": "night (nom.)",
-        "quīntus": "Quintus, the son, twelve years old",
+        "quinn": "Quinn, the son, twelve years old",
         "dormīre": "to sleep (infinitive)",
         "potest": "is able, can (+ infinitive)",
         "dē": "about, concerning (+ abl.)",
@@ -521,11 +523,11 @@ registerUnit({
         "magnā": "big (abl. sg. f., with «cistā»)"
       },
       translation: [
-        "Today the whole family is working, because tomorrow is the journey. In the bedroom Livia is getting the trunks ready: in the trunks are tunics, togas, and traveling cloaks. «The journey is long,» she says; «we must have cloaks and good shoes.»",
-        "Marcus orders Quintus to carry the packs; the happy boy carries the big packs to the door. Marcus praises his son: «You are strong and you can work well!» Paulla is small, but she tries to help: she carries her doll and a little pack. «I can get ready for the journey too!» says the girl.",
-        "Suddenly Ferox «helps» too: he snatches Marcus's new shoe! Marcus shouts angrily: «You are a bad dog! Devouring shoes is not allowed!» But Paulla does not hesitate: she holds a sausage and calls the dog. Ferox no longer wants the shoe — he wants the sausage. Marcus takes the soggy shoe and at last he laughs.",
-        "It is evening. The family prays to the gods and goddesses, because there are dangers on the sea. Marcus gives the gods small gifts and prays for good fortune. «The gods can help sailors,» he says. «We hope for good fortune,» answers Livia, «but we must also work well.»",
-        "It is night. Quintus cannot sleep: the boy is thinking about ships. «Tomorrow,» he says, «I am a sailor! Maybe I can be a helmsman!» At last the tired boy falls asleep. Ferox is sleeping too — in the big trunk!"
+        "Today the whole family is working, because tomorrow is the journey. In the bedroom Julia is getting the trunks ready: in the trunks are tunics, togas, and traveling cloaks. «The journey is long,» she says; «we must have cloaks and good shoes.»",
+        "Mark orders his son to carry the packs; the happy boy carries the big packs to the door. The father praises his son: «You are strong and you can work well!» Paula is small, but she tries to help: she carries her doll and a little pack. «I can get ready for the journey too!» says the girl.",
+        "Suddenly Lupo «helps» too: he snatches the father's new shoe! Mark shouts angrily: «You are a bad dog! Devouring shoes is not allowed!» But Paula does not hesitate: she holds a sausage and calls the dog. Lupo no longer wants the shoe — he wants the sausage. Mark takes the soggy shoe and at last he laughs.",
+        "It is evening. The family prays to the gods and goddesses, because there are dangers on the sea. Mark gives the gods small gifts and prays for good fortune. «The gods can help sailors,» he says. «We hope for good fortune,» answers Julia, «but we must also work well.»",
+        "It is night. Quinn cannot sleep: the boy is thinking about ships. «Tomorrow,» he says, «I am a sailor! Maybe I can be a helmsman!» At last the tired boy falls asleep. Lupo is sleeping too — in the big trunk!"
       ],
       questions: [
         {
@@ -533,14 +535,14 @@ registerUnit({
           options: [
             "Because the journey is tomorrow",
             "Because a storm is coming",
-            "Because Titus is arriving",
+            "Because Uncle Ted is arriving",
             "Because the house is a mess"
           ],
           answer: 0,
           explain: "«quod crās iter est» — because tomorrow is the journey. «Quod» gives the reason; «crās» means tomorrow."
         },
         {
-          q: "In «Mārcus Quīntum sarcinās portāre iubet», what is Quintus told to do?",
+          q: "In «Mark fīlium sarcinās portāre iubet», what is the son told to do?",
           options: [
             "To pack the trunks",
             "To carry the packs",
@@ -548,10 +550,10 @@ registerUnit({
             "To watch the dog"
           ],
           answer: 1,
-          explain: "«iubet» + accusative person + infinitive: Marcus orders Quintus (acc.) to carry (portāre) the packs (sarcinās)."
+          explain: "«iubet» + accusative person + infinitive: Mark orders his son («fīlium», acc.) to carry (portāre) the packs (sarcinās)."
         },
         {
-          q: "How does Paulla get the shoe away from Ferox?",
+          q: "How does Paula get the shoe away from Lupo?",
           options: [
             "She chases him into the garden",
             "She shouts at him angrily",
@@ -559,12 +561,12 @@ registerUnit({
             "She hides the shoes in a trunk"
           ],
           answer: 2,
-          explain: "«botulum tenet et canem vocat» — she holds a sausage and calls the dog; then «Ferōx calceum iam nōn cupit — botulum cupit»."
+          explain: "«botulum tenet et canem vocat» — she holds a sausage and calls the dog; then «Lupo calceum iam nōn cupit — botulum cupit»."
         },
         {
-          q: "Why can't Quintus fall asleep?",
+          q: "Why can't Quinn fall asleep?",
           options: [
-            "Ferōx is barking in the kitchen",
+            "Lupo is barking in the kitchen",
             "He is thinking about ships",
             "He is afraid of the sea",
             "The trunks are in his bedroom"
@@ -590,10 +592,10 @@ registerUnit({
       explain: "The ‑tis ending marks ‘you (plural)’: «potestis» = you all can. ‘You (sg.) can’ would be «potes», ‘we can’ «possumus»."
     },
     {
-      prompt: "In «Quīntus nāvigāre cupit», what does «nāvigāre» mean?",
+      prompt: "In «Quinn nāvigāre cupit», what does «nāvigāre» mean?",
       options: ["he sails", "to sail", "the sailor", "they sail"],
       answer: 1,
-      explain: "The ‑āre ending marks the infinitive: Quintus wants to sail. ‘He sails’ would be «nāvigat»; ‘the sailor’ is «nauta»."
+      explain: "The ‑āre ending marks the infinitive: Quinn wants to sail. ‘He sails’ would be «nāvigat»; ‘the sailor’ is «nauta»."
     },
     {
       prompt: "Which sentence says that the family CANNOT work today?",
@@ -618,12 +620,12 @@ registerUnit({
       explain: "«necesse est» + infinitive: the necessary thing is «parāre» (to prepare), and «cistās» is the object of that infinitive."
     },
     {
-      prompt: "«Licetne Paullae natāre?» is asking whether…",
+      prompt: "«Licetne Paulae natāre?» is asking whether…",
       options: [
-        "Paulla knows how to swim",
-        "Paulla is allowed to swim",
-        "Paulla wants to swim",
-        "Paulla must swim"
+        "Paula knows how to swim",
+        "Paula is allowed to swim",
+        "Paula wants to swim",
+        "Paula must swim"
       ],
       answer: 1,
       explain: "«licet» + dative + infinitive = it is permitted for someone to… Ability would be «potest», desire «cupit», obligation «dēbet»."

@@ -7,7 +7,7 @@ registerUnit({
   grammar: [
     {
       heading: "One little ending means ‹of›",
-      body: "<p>English shows possession with <strong>of</strong> or <strong>’s</strong>: the ship <em>of Titus</em>, Titus<em>’s</em> ship. Latin does the same job with nothing but an ending: <span class=\"la\">nāvis Titī</span>. That ending is the <strong>genitive case</strong>, and it answers exactly one question: <em>whose? of what?</em></p><p>You already know the nominative (the do-er) and the accusative (the done-to). The genitive is the third case in your collection, and it is the gentlest of the three: it never changes what happens in the sentence. It just hangs a little ‹of…› label on the noun next door: <span class=\"la\">botulus nautae</span>, the sailor’s sausage; <span class=\"la\">vēlum nāvis</span>, the ship’s sail. The genitive can stand before or after its noun — Latin does not mind.</p>",
+      body: "<p>English shows possession with <strong>of</strong> or <strong>’s</strong>: the ship <em>of the uncle</em>, the uncle<em>’s</em> ship. Latin does the same job with nothing but an ending: <span class=\"la\">nāvis avunculī</span>. That ending is the <strong>genitive case</strong>, and it answers exactly one question: <em>whose? of what?</em></p><p>You already know the nominative (the do-er) and the accusative (the done-to). The genitive is the third case in your collection, and it is the gentlest of the three: it never changes what happens in the sentence. It just hangs a little ‹of…› label on the noun next door: <span class=\"la\">botulus nautae</span>, the sailor’s sausage; <span class=\"la\">vēlum nāvis</span>, the ship’s sail. The genitive can stand before or after its noun — Latin does not mind.</p>",
       table: {
         caption: "The genitive, 1st and 2nd declension",
         headers: ["Declension", "Genitive singular", "Genitive plural"],
@@ -21,7 +21,7 @@ registerUnit({
     },
     {
       heading: "Cuius…? Asking (and answering) whose",
-      body: "<p>This unit’s little question word is <span class=\"la\">cuius</span> — <em>whose?</em> The answer comes back in the genitive, often with nothing but <span class=\"la\">est</span> or <span class=\"la\">sunt</span> holding it up: <span class=\"la\">Cuius est arca? Arca Līviae est.</span> Whose is the chest? It is Livia’s. Latin loves this bare pattern — there is no word for ‹belongs›; you just say <em>X is of-somebody</em>.</p><p>Family words are natural genitive magnets: <span class=\"la\">Līvia est uxor Mārcī</span> — Livia is Marcus’s wife; <span class=\"la\">Titus est frāter Līviae</span> — Titus is Livia’s brother; <span class=\"la\">avunculus Quīntī Paullaeque</span> — the uncle of Quintus and Paulla. (There is <span class=\"la\">‑que</span> again, glued to the second name.)</p>",
+      body: "<p>This unit’s little question word is <span class=\"la\">cuius</span> — <em>whose?</em> The answer comes back in the genitive, often with nothing but <span class=\"la\">est</span> or <span class=\"la\">sunt</span> holding it up: <span class=\"la\">Cuius est arca? Arca Juliae est.</span> Whose is the chest? It is Julia’s. Latin loves this bare pattern — there is no word for ‹belongs›; you just say <em>X is of-somebody</em>.</p><p>Family words are natural genitive magnets: <span class=\"la\">Mark est marītus Juliae</span> — Mark is Julia’s husband; <span class=\"la\">Ted est frāter Juliae</span> — Ted is Julia’s brother; <span class=\"la\">avunculus puerī puellaeque</span> — the uncle of the boy and the girl. (There is <span class=\"la\">‑que</span> again, glued to the second word.)</p><p>A note about the family’s names: Julia and Paula take Latin endings like any 1st-declension noun (<span class=\"la\">Juliae</span>, <span class=\"la\">Paulae</span> — of Julia, of Paula), but Mark, Quinn, Ted, and Lupo keep exactly one shape in every case — just as Hebrew names do in Latin Bibles (<span class=\"la\">vīdit Iacob</span>). When you need to <em>see</em> the case, lean on a family word: <span class=\"la\">nāvis avunculī</span>, the uncle’s ship.</p>",
       tip: "When a sentence is just noun + genitive + «est», read it as ‹…belongs to…› and move on. Nothing is hiding."
     },
     {
@@ -58,8 +58,8 @@ registerUnit({
       forms: "nāvis, f.",
       pos: "noun (3rd decl.)",
       gloss: "ship",
-      example: "Nāvis Titī portum intrat.",
-      exampleGloss: "Titus’s ship enters the harbor."
+      example: "Nāvis avunculī portum intrat.",
+      exampleGloss: "The uncle’s ship enters the harbor."
     },
     {
       latin: "nauta",
@@ -74,8 +74,8 @@ registerUnit({
       forms: "magistrī, m.",
       pos: "noun (2nd decl.)",
       gloss: "master, captain; teacher",
-      example: "Titus est magister nāvis.",
-      exampleGloss: "Titus is the master of the ship."
+      example: "Ted est magister nāvis.",
+      exampleGloss: "Ted is the master of the ship."
     },
     {
       latin: "gubernātor",
@@ -122,8 +122,8 @@ registerUnit({
       forms: "frūmentī, n.",
       pos: "noun (2nd decl., neuter)",
       gloss: "grain",
-      example: "Frūmentum Mārcī est.",
-      exampleGloss: "The grain is Marcus’s."
+      example: "Frūmentum mercātōris est.",
+      exampleGloss: "The grain is the merchant’s."
     },
     {
       latin: "saccus",
@@ -146,24 +146,24 @@ registerUnit({
       forms: "arcae, f.",
       pos: "noun (1st decl.)",
       gloss: "chest, box",
-      example: "Paulla arcam magnam spectat.",
-      exampleGloss: "Paulla looks at the big chest."
+      example: "Paula arcam magnam spectat.",
+      exampleGloss: "Paula looks at the big chest."
     },
     {
       latin: "uxor",
       forms: "uxōris, f.",
       pos: "noun (3rd decl.)",
       gloss: "wife",
-      example: "Līvia est uxor Mārcī.",
-      exampleGloss: "Livia is Marcus’s wife."
+      example: "Julia est uxor mercātōris.",
+      exampleGloss: "Julia is the merchant’s wife."
     },
     {
       latin: "marītus",
       forms: "marītī, m.",
       pos: "noun (2nd decl.)",
       gloss: "husband",
-      example: "Mārcus est marītus Līviae.",
-      exampleGloss: "Marcus is Livia’s husband."
+      example: "Mark est marītus Juliae.",
+      exampleGloss: "Mark is Julia’s husband."
     },
     {
       latin: "vīta",
@@ -186,40 +186,40 @@ registerUnit({
       forms: "exspectāre, exspectāvī, exspectātum",
       pos: "verb (1st conj.)",
       gloss: "wait for, expect",
-      example: "Familia Titum exspectat.",
-      exampleGloss: "The family is waiting for Titus."
+      example: "Familia avunculum exspectat.",
+      exampleGloss: "The family is waiting for the uncle."
     },
     {
       latin: "nāvigō",
       forms: "nāvigāre, nāvigāvī, nāvigātum",
       pos: "verb (1st conj.)",
       gloss: "sail",
-      example: "Titus semper nāvigat.",
-      exampleGloss: "Titus is always sailing."
+      example: "Ted semper nāvigat.",
+      exampleGloss: "Ted is always sailing."
     },
     {
       latin: "salūtō",
       forms: "salūtāre, salūtāvī, salūtātum",
       pos: "verb (1st conj.)",
       gloss: "greet",
-      example: "Quīntus et Paulla avunculum salūtant.",
-      exampleGloss: "Quintus and Paulla greet their uncle."
+      example: "Quinn et Paula avunculum salūtant.",
+      exampleGloss: "Quinn and Paula greet their uncle."
     },
     {
       latin: "natō",
       forms: "natāre, natāvī, natātum",
       pos: "verb (1st conj.)",
       gloss: "swim",
-      example: "Ferōx laetus natat.",
-      exampleGloss: "Ferox happily swims."
+      example: "Lupo laetus natat.",
+      exampleGloss: "Lupo happily swims."
     },
     {
       latin: "maneō",
       forms: "manēre, mānsī, mānsum",
       pos: "verb (2nd conj.)",
       gloss: "remain, stay",
-      example: "Titus nōn manet: semper nāvigat.",
-      exampleGloss: "Titus does not stay: he is always sailing."
+      example: "Ted nōn manet: semper nāvigat.",
+      exampleGloss: "Ted does not stay: he is always sailing."
     },
     {
       latin: "altus",
@@ -249,12 +249,12 @@ registerUnit({
 
   readings: [
     {
-      title: "Nāvis Titī",
-      intro: "Uncle Titus’s ship is coming in — the whole family heads down to the harbor of Ostia.",
+      title: "Nāvis Avunculī",
+      intro: "Uncle Ted’s ship is coming in — the whole family heads down to the harbor of Ostia.",
       paragraphs: [
-        "Portus Ostiae magnus est. Nautae clāmant et cantant; servī saccōs portant. Familia Fabia quoque portum intrat, quod Titum exspectat: Titus est frāter Līviae et avunculus Quīntī Paullaeque. Titus semper nāvigat.",
-        "Quīntus aquam spectat et subitō clāmat: «Ecce! Nāvis Titī!» Nāvis procul est; vēlum plēnum est, undae altae sunt, sed gubernātor bonus est. Mox nāvis magna portum intrat.",
-        "Titus, magister nāvis, familiam videt et clāmat: «Salvē, salvē!» Quīntus et Paulla avunculum laetī salūtant. Ferōx quoque laetus est — sed subitō botulum nautae videt! Canis malus botulum rapit et dēvorat. Nauta īrātus clāmat, sed Ferōx iam procul est."
+        "Portus Ostiae magnus est. Nautae clāmant et cantant; servī saccōs portant. Familia Fabia quoque portum intrat, quod avunculum exspectat: Ted est frāter Juliae et avunculus Quinn Paulaeque. Ted semper nāvigat.",
+        "Quinn aquam spectat et subitō clāmat: «Ecce! Nāvis avunculī!» Nāvis procul est; vēlum plēnum est, undae altae sunt, sed gubernātor bonus est. Mox nāvis magna portum intrat.",
+        "Ted, magister nāvis, familiam videt et clāmat: «Salvē, salvē!» Quinn et Paula avunculum laetī salūtant. Lupo quoque laetus est — sed subitō botulum nautae videt! Canis malus botulum rapit et dēvorat. Nauta īrātus clāmat, sed Lupo iam procul est."
       ],
       glosses: {
         "portus": "harbor (nom. — the subject)",
@@ -274,24 +274,23 @@ registerUnit({
         "portum": "harbor (acc. — object of «intrat»)",
         "intrat": "enters",
         "quod": "because",
-        "titum": "Titus (acc. — object of «exspectat»)",
+        "avunculum": "uncle (acc. — object)",
         "exspectat": "is waiting for",
-        "titus": "Titus, Livia’s brother, a ship’s captain",
+        "ted": "Ted, Julia’s brother, a ship’s captain — his name never changes form",
         "frāter": "brother",
-        "līviae": "of Livia, Livia’s (gen.)",
+        "juliae": "of Julia, Julia’s (gen. — Julia is the mother)",
         "avunculus": "uncle (your mother’s brother)",
-        "quīntī": "of Quintus, Quintus’s (gen.)",
-        "paullaeque": "and of Paulla (gen. + ‑que ‹and›)",
+        "quinn": "Quinn, the son (twelve years old, mad about ships) — his name never changes form; after «avunculus» it means ‹of Quinn›",
+        "paulaeque": "and of Paula (gen. + ‑que ‹and›)",
         "semper": "always",
         "nāvigat": "sails, is sailing",
-        "quīntus": "Quintus, the son (twelve years old, mad about ships)",
         "aquam": "water (acc.)",
         "spectat": "watches, looks at",
         "subitō": "suddenly",
         "clāmat": "shouts",
         "ecce": "look!",
         "nāvis": "ship (nom.); after another noun: of the ship (gen. — same form)",
-        "titī": "of Titus, Titus’s (gen.)",
+        "avunculī": "of the uncle, the uncle’s (gen.)",
         "procul": "far off, in the distance",
         "vēlum": "sail (nom.)",
         "plēnum": "full",
@@ -307,11 +306,10 @@ registerUnit({
         "familiam": "family (acc. — object)",
         "videt": "sees",
         "salvē": "hello!",
-        "paulla": "Paulla, the daughter (eight years old, fearless)",
-        "avunculum": "uncle (acc. — object)",
+        "paula": "Paula, the daughter (eight years old, fearless) — her name declines like «puella»",
         "laetī": "happy (describing both children at once)",
         "salūtant": "(they) greet",
-        "ferōx": "Ferox, the family dog — a lovable menace",
+        "lupo": "Lupo, the family dog — a lovable menace (his name never changes form)",
         "laetus": "happy",
         "botulum": "sausage (acc. — object; the sailor’s lunch)",
         "canis": "dog",
@@ -323,35 +321,35 @@ registerUnit({
         "iam": "already, by now"
       },
       translation: [
-        "The harbor of Ostia is big. Sailors are shouting and singing; slaves are carrying sacks. The Fabius family enters the harbor too, because it is waiting for Titus: Titus is Livia’s brother and the uncle of Quintus and Paulla. Titus is always sailing.",
-        "Quintus watches the water and suddenly shouts: «Look! Titus’s ship!» The ship is far off; the sail is full, the waves are high, but the helmsman is good. Soon the big ship enters the harbor.",
-        "Titus, the captain of the ship, sees the family and shouts: «Hello, hello!» Quintus and Paulla happily greet their uncle. Ferox is happy too — but suddenly he sees a sailor’s sausage! The naughty dog snatches the sausage and devours it. The angry sailor shouts, but Ferox is already far away."
+        "The harbor of Ostia is big. Sailors are shouting and singing; slaves are carrying sacks. The Fabius family enters the harbor too, because it is waiting for the uncle: Ted is Julia’s brother and the uncle of Quinn and Paula. Ted is always sailing.",
+        "Quinn watches the water and suddenly shouts: «Look! Uncle’s ship!» The ship is far off; the sail is full, the waves are high, but the helmsman is good. Soon the big ship enters the harbor.",
+        "Ted, the captain of the ship, sees the family and shouts: «Hello, hello!» Quinn and Paula happily greet their uncle. Lupo is happy too — but suddenly he sees a sailor’s sausage! The naughty dog snatches the sausage and devours it. The angry sailor shouts, but Lupo is already far away."
       ],
       questions: [
         {
           q: "Why does the family go into the harbor?",
           options: [
             "To buy grain at the market",
-            "They are waiting for Titus",
+            "They are waiting for Uncle Ted",
             "To watch the slaves work",
-            "Ferox ran there and they followed"
+            "Lupo ran there and they followed"
           ],
           answer: 1,
-          explain: "«portum intrat, quod Titum exspectat» — «quod» means ‹because›: the family is waiting for Titus."
+          explain: "«portum intrat, quod avunculum exspectat» — «quod» means ‹because›: the family is waiting for their uncle, Ted."
         },
         {
-          q: "In «nāvis Titī», what does the form «Titī» tell you?",
+          q: "In «nāvis avunculī», what does the form «avunculī» tell you?",
           options: [
-            "Titus is performing the action",
-            "The ship belongs to Titus",
-            "Titus is being spoken to",
-            "Titus is the object of the verb"
+            "The uncle is performing the action",
+            "The ship belongs to the uncle",
+            "The uncle is being spoken to",
+            "The uncle is the object of the verb"
           ],
           answer: 1,
-          explain: "«Titī» ends in ‑ī — genitive singular, ‹of Titus›. It is Titus’s ship."
+          explain: "«avunculī» ends in ‑ī — genitive singular, ‹of the uncle›. It is the uncle’s ship."
         },
         {
-          q: "How is Titus related to the children?",
+          q: "How is Ted related to the children?",
           options: [
             "He is their father",
             "He is their grandfather",
@@ -359,15 +357,15 @@ registerUnit({
             "He is just a family friend"
           ],
           answer: 2,
-          explain: "«Titus est frāter Līviae et avunculus Quīntī Paullaeque» — Livia’s brother, so the children’s uncle («avunculus» is specifically a maternal uncle)."
+          explain: "«Ted est frāter Juliae et avunculus Quinn Paulaeque» — Julia’s brother, so the children’s uncle («avunculus» is specifically a maternal uncle)."
         },
         {
-          q: "What does Ferox steal at the harbor?",
+          q: "What does Lupo steal at the harbor?",
           options: [
             "A sailor’s sausage",
             "A sack of grain",
             "An egg from a merchant",
-            "Cheese from Titus’s ship"
+            "Cheese from Ted’s ship"
           ],
           answer: 0,
           explain: "«botulum nautae videt… rapit et dēvorat» — he sees the sailor’s sausage, snatches it, and devours it."
@@ -378,14 +376,14 @@ registerUnit({
       title: "Cuius Est Arca?",
       intro: "The cargo comes ashore — sacks, amphorae, and one mysterious chest. Time to sort out whose is whose.",
       paragraphs: [
-        "Nāvis Titī iam manet — ancora aquam intrat! Nautae labōrant et saccōs portant; saccī frūmentī plēnī sunt. «Cuius est frūmentum?» inquit Paulla. «Frūmentum Mārcī est,» inquit Titus. «Mārcus est mercātor frūmentī.»",
-        "Nautae amphorās quoque portant; amphorae vīnī et oleī plēnae sunt. «Cuius sunt amphorae?» inquit Quīntus. «Dominī tabernae sunt,» inquit Titus. «Dominus tabernae vīnum semper optat!»",
-        "Deinde nautae arcam magnam portant. «Cuius est arca?» inquit Paulla. Titus rīdet: «Arca Līviae est… sed mox, mox!» Līvia quoque, uxor Mārcī, rīdet; Paulla tamen arcam spectat et spectat.",
-        "Subitō Ferōx aquam intrat — canis natat! Nautae rīdent. Quīntus mare spectat. «Vīta nautae pulchra est!» inquit puer. «Mare magnum est, undae altae sunt! Mox Quīntus quoque nauta est!» Titus rīdet: «Vīta nautae longa nōn semper est… sed pulchra est.» Familia laeta est: Titus iam nōn nāvigat, sed manet."
+        "Nāvis avunculī iam manet — ancora aquam intrat! Nautae labōrant et saccōs portant; saccī frūmentī plēnī sunt. «Cuius est frūmentum?» inquit Paula. «Frūmentum patris est,» inquit Ted. «Mark est mercātor frūmentī.»",
+        "Nautae amphorās quoque portant; amphorae vīnī et oleī plēnae sunt. «Cuius sunt amphorae?» inquit Quinn. «Dominī tabernae sunt,» inquit Ted. «Dominus tabernae vīnum semper optat!»",
+        "Deinde nautae arcam magnam portant. «Cuius est arca?» inquit Paula. Ted rīdet: «Arca Juliae est… sed mox, mox!» Julia quoque, māter Paulae, rīdet; Paula tamen arcam spectat et spectat.",
+        "Subitō Lupo aquam intrat — canis natat! Nautae rīdent. Quinn mare spectat. «Vīta nautae pulchra est!» inquit puer. «Mare magnum est, undae altae sunt! Mox Quinn quoque nauta est!» Ted rīdet: «Vīta nautae longa nōn semper est… sed pulchra est.» Familia laeta est: Ted iam nōn nāvigat, sed manet."
       ],
       glosses: {
-        "nāvis": "ship (nom.): «nāvis Titī» = Titus’s ship",
-        "titī": "of Titus, Titus’s (gen.)",
+        "nāvis": "ship (nom.): «nāvis avunculī» = the uncle’s ship",
+        "avunculī": "of the uncle, the uncle’s (gen.)",
         "iam": "now, by now; «iam nōn» = no longer",
         "manet": "stays, stays put, is at rest",
         "ancora": "anchor (nom.)",
@@ -404,10 +402,10 @@ registerUnit({
         "est": "is",
         "frūmentum": "grain (nom.)",
         "inquit": "says (used with quoted speech)",
-        "paulla": "Paulla, the daughter",
-        "mārcī": "of Marcus, Marcus’s (gen.)",
-        "titus": "Titus, the ship’s captain",
-        "mārcus": "Marcus, the father",
+        "paula": "Paula, the daughter",
+        "patris": "of the father, father’s (gen. — a 3rd-declension ‹of›: same job, different ending)",
+        "ted": "Ted, the ship’s captain — his name never changes form",
+        "mark": "Mark, the father — his name never changes form",
         "mercātor": "merchant: «mercātor frūmentī» = a grain merchant",
         "quoque": "also, too",
         "amphorās": "amphorae, storage jars (acc. — object)",
@@ -415,7 +413,7 @@ registerUnit({
         "vīnī": "of wine (gen. — with «plēnae»: full of wine)",
         "oleī": "of oil (gen.)",
         "plēnae": "full (with the genitive: full of…)",
-        "quīntus": "Quintus, the son",
+        "quinn": "Quinn, the son — his name never changes form",
         "dominī": "the master’s, of the master (gen. — ‹they belong to the master›)",
         "tabernae": "of the tavern (gen.): «dominus tabernae» = the tavern keeper",
         "dominus": "master, owner",
@@ -427,15 +425,16 @@ registerUnit({
         "magnam": "big",
         "arca": "chest, box (nom.)",
         "rīdet": "laughs",
-        "līviae": "of Livia, Livia’s (gen.)",
+        "juliae": "of Julia, Julia’s (gen.)",
         "sed": "but",
         "mox": "soon",
-        "līvia": "Livia, the mother",
-        "uxor": "wife: «uxor Mārcī» = Marcus’s wife",
+        "julia": "Julia, the mother — her name declines: Julia, Juliae…",
+        "māter": "mother: «māter Paulae» = Paula’s mother",
+        "paulae": "of Paula, Paula’s (gen.)",
         "tamen": "however, though",
         "spectat": "looks at, stares at",
         "subitō": "suddenly",
-        "ferōx": "Ferox, the family dog",
+        "lupo": "Lupo, the family dog — quasi lupus! (but his name never changes form)",
         "canis": "dog",
         "natat": "swims, is swimming",
         "rīdent": "(they) laugh",
@@ -454,22 +453,22 @@ registerUnit({
         "nāvigat": "sails, is sailing"
       },
       translation: [
-        "Titus’s ship is at rest now — the anchor goes into the water! The sailors work and carry sacks; the sacks are full of grain. «Whose is the grain?» says Paulla. «The grain is Marcus’s,» says Titus. «Marcus is a grain merchant.»",
-        "The sailors carry amphorae too; the amphorae are full of wine and oil. «Whose are the amphorae?» says Quintus. «They are the tavern keeper’s,» says Titus. «The master of the tavern always wants wine!»",
-        "Then the sailors carry a big chest. «Whose is the chest?» says Paulla. Titus laughs: «The chest is Livia’s… but soon, soon!» Livia, Marcus’s wife, laughs too; Paulla, however, stares and stares at the chest.",
-        "Suddenly Ferox goes into the water — the dog is swimming! The sailors laugh. Quintus gazes at the sea. «A sailor’s life is beautiful!» says the boy. «The sea is big, the waves are high! Soon Quintus is a sailor too!» Titus laughs: «A sailor’s life is not always long… but it is beautiful.» The family is happy: Titus is not sailing now, but staying."
+        "The uncle’s ship is at rest now — the anchor goes into the water! The sailors work and carry sacks; the sacks are full of grain. «Whose is the grain?» says Paula. «The grain is father’s,» says Ted. «Mark is a grain merchant.»",
+        "The sailors carry amphorae too; the amphorae are full of wine and oil. «Whose are the amphorae?» says Quinn. «They are the tavern keeper’s,» says Ted. «The master of the tavern always wants wine!»",
+        "Then the sailors carry a big chest. «Whose is the chest?» says Paula. Ted laughs: «The chest is Julia’s… but soon, soon!» Julia, Paula’s mother, laughs too; Paula, however, stares and stares at the chest.",
+        "Suddenly Lupo goes into the water — the dog is swimming! The sailors laugh. Quinn gazes at the sea. «A sailor’s life is beautiful!» says the boy. «The sea is big, the waves are high! Soon Quinn is a sailor too!» Ted laughs: «A sailor’s life is not always long… but it is beautiful.» The family is happy: Ted is not sailing now, but staying."
       ],
       questions: [
         {
           q: "Whose is the grain?",
           options: [
             "The tavern keeper’s",
-            "Titus’s",
-            "Marcus’s",
+            "Ted’s",
+            "Mark’s — the children’s father",
             "The sailors’"
           ],
           answer: 2,
-          explain: "«Frūmentum Mārcī est» — the genitive «Mārcī» marks the owner: Marcus, the grain merchant."
+          explain: "«Frūmentum patris est… Mark est mercātor frūmentī» — the grain belongs to the father, Mark, who is a grain merchant."
         },
         {
           q: "In «amphorae vīnī et oleī plēnae sunt», the genitives «vīnī» and «oleī» tell you…",
@@ -486,23 +485,23 @@ registerUnit({
           q: "What do we learn about the big chest?",
           options: [
             "It is full of grain for the family",
-            "It is Livia’s — but Titus won’t say more yet",
+            "It is Julia’s — but Ted won’t say more yet",
             "It belongs to the tavern keeper",
-            "Ferox chews it open on the dock"
+            "Lupo chews it open on the dock"
           ],
           answer: 1,
-          explain: "«Arca Līviae est… sed mox, mox!» — it is Livia’s, and Titus only teases: ‹soon, soon!›"
+          explain: "«Arca Juliae est… sed mox, mox!» — it is Julia’s, and Ted only teases: ‹soon, soon!›"
         },
         {
-          q: "«Vīta nautae longa nōn semper est» — what does Titus mean?",
+          q: "«Vīta nautae longa nōn semper est» — what does Ted mean?",
           options: [
             "A sailor’s life can be short — a bit of dark sailor humor",
             "Sailors always live to a ripe old age",
             "The voyage to Ostia took too long",
-            "Quintus is too young to become a sailor"
+            "Quinn is too young to become a sailor"
           ],
           answer: 0,
-          explain: "Word for word: ‹a sailor’s life is not always long›. Titus teases the starry-eyed boy — then grants that it is beautiful."
+          explain: "Word for word: ‹a sailor’s life is not always long›. Ted teases the starry-eyed boy — then grants that it is beautiful."
         }
       ]
     }
@@ -510,26 +509,26 @@ registerUnit({
 
   quiz: [
     {
-      prompt: "In «nāvis Titī», who owns the ship?",
+      prompt: "In «nāvis avunculī», who owns the ship?",
       options: [
-        "Titus",
+        "The uncle",
         "The sailor",
         "The helmsman",
-        "No one — «Titī» is the ship’s name"
+        "No one — «avunculī» is the ship’s name"
       ],
       answer: 0,
-      explain: "«Titī» is the genitive of Titus: ‹of Titus›. The ‑ī ending on the name is your ‹of› signal."
+      explain: "«avunculī» is the genitive of «avunculus»: ‹of the uncle›. The ‑ī ending is your ‹of› signal."
     },
     {
-      prompt: "In «Ferōx botulum nautae rapit», whose sausage is it?",
+      prompt: "In «Lupo botulum nautae rapit», whose sausage is it?",
       options: [
-        "Ferox’s",
+        "Lupo’s",
         "The sailor’s",
         "Nobody’s — «nautae» means ‹the sailors›",
-        "Titus’s"
+        "Ted’s"
       ],
       answer: 1,
-      explain: "The verb «rapit» is singular with «Ferōx» as its subject, and «nautae» sits right next to «botulum» — genitive singular: the sailor’s sausage."
+      explain: "The verb «rapit» is singular with «Lupo» as its subject, and «nautae» sits right next to «botulum» — genitive singular: the sailor’s sausage."
     },
     {
       prompt: "«puellae» can be ‹the girls› (subject) or ‹of the girl›. In «rosa puellae pulchra est», it means…",
@@ -551,7 +550,7 @@ registerUnit({
         "How big is the chest?"
       ],
       answer: 2,
-      explain: "«cuius» = ‹whose?› — and the answer comes back in the genitive: «Arca Līviae est»."
+      explain: "«cuius» = ‹whose?› — and the answer comes back in the genitive: «Arca Juliae est»."
     },
     {
       prompt: "Which form means ‹of the sailors› — more than one sailor?",
@@ -565,15 +564,15 @@ registerUnit({
       explain: "‑ārum is the 1st-declension genitive plural. «nautae» as a genitive is singular — one sailor only."
     },
     {
-      prompt: "In «Līvia est uxor Mārcī», the ending of «Mārcī» shows that…",
+      prompt: "In «Mark est marītus Juliae», the ending of «Juliae» shows that…",
       options: [
-        "Marcus is the subject of the sentence",
-        "Livia is Marcus’s wife",
-        "Marcus is the direct object",
-        "there are several men named Marcus"
+        "Julia is the subject of the sentence",
+        "Mark is Julia’s husband",
+        "Julia is the direct object",
+        "there are several women named Julia"
       ],
       answer: 1,
-      explain: "Genitive ‑ī = ‹of Marcus›: Livia is the wife of Marcus."
+      explain: "Genitive ‑ae = ‹of Julia›: Mark is the husband of Julia. (Mark’s own name keeps one shape in every case.)"
     },
     {
       prompt: "Review: in «Nautae saccōs portant», which word is the direct object?",
@@ -587,15 +586,15 @@ registerUnit({
       explain: "«saccōs» ends in ‑ōs — accusative plural, the done-to case. «Nautae» (nom. pl.) do the carrying."
     },
     {
-      prompt: "«Frūmentum Mārcī est» is best translated…",
+      prompt: "«Frūmentum dominī est» is best translated…",
       options: [
-        "Marcus is grain",
-        "The grain is Marcus’s",
-        "Marcus has no grain",
-        "The grain, like Marcus, exists"
+        "The master is grain",
+        "The grain is the master’s",
+        "The master has no grain",
+        "The grain, like the master, exists"
       ],
       answer: 1,
-      explain: "A genitive with «est» states possession: the grain is ‹of Marcus› — it belongs to him."
+      explain: "A genitive with «est» states possession: the grain is ‹of the master› — it belongs to him."
     }
   ]
 });

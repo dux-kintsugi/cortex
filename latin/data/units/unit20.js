@@ -41,7 +41,7 @@ registerUnit({
     },
     {
       heading: "«Erō», «poterō», «ībō»: the irregulars fall in line",
-      body: "<p>For once, the irregular verbs behave. <span class=\"la\">Sum</span> builds its future on <span class=\"la\">er‑</span>: <span class=\"la\">erō</span>, I will be. <span class=\"la\">Possum</span> simply glues <span class=\"la\">pot‑</span> on the front, as always: <span class=\"la\">poterō</span>, I will be able. And <span class=\"la\">eō</span> (I go) with its compounds — <span class=\"la\">abeō</span> (I go away), <span class=\"la\">redeō</span> (I return) — borrows the friendly <span class=\"la\">‑bō</span> kit: <span class=\"la\">ībō, abībō, redībit</span>.</p><p>You will meet these constantly in this unit's story: <span class=\"la\">ubi vir eris</span> — when you are (literally <em>will be</em>) a man; <span class=\"la\">iterum hīc erō</span> — I will be here again; <span class=\"la\">Titus hodiē abībit</span> — Titus will depart today. Notice that Latin uses the future in that <span class=\"la\">ubi</span> clause where English says ‘when you <em>are</em>’ — Latin is simply more honest about the timing.</p>",
+      body: "<p>For once, the irregular verbs behave. <span class=\"la\">Sum</span> builds its future on <span class=\"la\">er‑</span>: <span class=\"la\">erō</span>, I will be. <span class=\"la\">Possum</span> simply glues <span class=\"la\">pot‑</span> on the front, as always: <span class=\"la\">poterō</span>, I will be able. And <span class=\"la\">eō</span> (I go) with its compounds — <span class=\"la\">abeō</span> (I go away), <span class=\"la\">redeō</span> (I return) — borrows the friendly <span class=\"la\">‑bō</span> kit: <span class=\"la\">ībō, abībō, redībit</span>.</p><p>You will meet these constantly in this unit's story: <span class=\"la\">ubi vir eris</span> — when you are (literally <em>will be</em>) a man; <span class=\"la\">iterum hīc erō</span> — I will be here again; <span class=\"la\">Ted hodiē abībit</span> — Ted will depart today. Notice that Latin uses the future in that <span class=\"la\">ubi</span> clause where English says ‘when you <em>are</em>’ — Latin is simply more honest about the timing.</p>",
       table: {
         caption: "Future of «sum», «possum», and «eō»",
         headers: ["sum → erō", "possum → poterō", "eō → ībō"],
@@ -111,8 +111,8 @@ registerUnit({
       forms: "abīre, abiī, abitum (compound of eō)",
       pos: "verb (irregular)",
       gloss: "go away, depart",
-      example: "Crās Titus abībit.",
-      exampleGloss: "Tomorrow Titus will go away."
+      example: "Crās Ted abībit.",
+      exampleGloss: "Tomorrow Ted will go away."
     },
     {
       latin: "dēsīderō",
@@ -127,16 +127,16 @@ registerUnit({
       forms: "monēre, monuī, monitum",
       pos: "verb (2nd conj.)",
       gloss: "warn, advise",
-      example: "Līvia frātrem dē perīculīs monet.",
-      exampleGloss: "Livia warns her brother about the dangers."
+      example: "Julia frātrem dē perīculīs monet.",
+      exampleGloss: "Julia warns her brother about the dangers."
     },
     {
       latin: "valē",
       forms: "(pl. valēte)",
       pos: "interjection",
       gloss: "farewell!, goodbye!",
-      example: "«Valē, mī amīce!» inquit Titus.",
-      exampleGloss: "«Farewell, my friend!» says Titus."
+      example: "«Valē, mī amīce!» inquit Ted.",
+      exampleGloss: "«Farewell, my friend!» says Ted."
     },
     {
       latin: "vēla dare",
@@ -151,8 +151,8 @@ registerUnit({
       forms: "somniī, n.",
       pos: "noun (2nd decl.)",
       gloss: "dream",
-      example: "In somniō Quīntus nāvigat.",
-      exampleGloss: "In his dream Quintus is sailing."
+      example: "In somniō Quinn nāvigat.",
+      exampleGloss: "In his dream Quinn is sailing."
     },
     {
       latin: "patria",
@@ -167,8 +167,8 @@ registerUnit({
       forms: "negōtiī, n.",
       pos: "noun (2nd decl.)",
       gloss: "business, task",
-      example: "Mārcus negōtium in urbe habet.",
-      exampleGloss: "Marcus has business in the city."
+      example: "Mark negōtium in urbe habet.",
+      exampleGloss: "Mark has business in the city."
     },
     {
       latin: "fīnis",
@@ -183,8 +183,8 @@ registerUnit({
       forms: "fideī, f.",
       pos: "noun (5th decl. — full pattern comes in Unit 22)",
       gloss: "faith, trust, loyalty",
-      example: "Fidēs Titī magna est.",
-      exampleGloss: "Titus's loyalty is great."
+      example: "Fidēs avunculī magna est.",
+      exampleGloss: "The uncle's loyalty is great."
     },
     {
       latin: "raeda",
@@ -207,40 +207,40 @@ registerUnit({
       forms: "‑a, ‑um",
       pos: "adjective (1st/2nd decl.)",
       gloss: "Greek",
-      example: "Titus vīnum Graecum amat.",
-      exampleGloss: "Titus loves Greek wine."
+      example: "Ted vīnum Graecum amat.",
+      exampleGloss: "Ted loves Greek wine."
     },
     {
       latin: "fidēlis",
       forms: "‑e",
       pos: "adjective (3rd decl.)",
       gloss: "faithful, loyal",
-      example: "Ferōx amīcus fidēlis est.",
-      exampleGloss: "Ferox is a loyal friend."
+      example: "Lupo amīcus fidēlis est.",
+      exampleGloss: "Lupo is a loyal friend."
     },
     {
       latin: "cupidus",
       forms: "‑a, ‑um (+ gen.)",
       pos: "adjective (1st/2nd decl.)",
       gloss: "eager, desirous (of)",
-      example: "Quīntus maris cupidus est.",
-      exampleGloss: "Quintus is eager for the sea."
+      example: "Quinn maris cupidus est.",
+      exampleGloss: "Quinn is eager for the sea."
     },
     {
       latin: "optimus",
       forms: "‑a, ‑um (superl. of bonus)",
       pos: "adjective (1st/2nd decl., superlative)",
       gloss: "best, excellent",
-      example: "Titus gubernātor optimus est.",
-      exampleGloss: "Titus is an excellent helmsman."
+      example: "Ted gubernātor optimus est.",
+      exampleGloss: "Ted is an excellent helmsman."
     },
     {
       latin: "dum",
       forms: "(conj.)",
       pos: "conjunction",
       gloss: "while",
-      example: "Dum raeda currit, Paulla cantat.",
-      exampleGloss: "While the carriage rolls along, Paulla sings."
+      example: "Dum raeda currit, Paula cantat.",
+      exampleGloss: "While the carriage rolls along, Paula sings."
     },
     {
       latin: "itaque",
@@ -255,8 +255,8 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "adverb",
       gloss: "afterwards",
-      example: "Posteā Titus vēla dedit.",
-      exampleGloss: "Afterwards Titus set sail."
+      example: "Posteā Ted vēla dedit.",
+      exampleGloss: "Afterwards Ted set sail."
     },
     {
       latin: "iterum",
@@ -271,24 +271,24 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "adverb",
       gloss: "certainly, surely",
-      example: "Titus profectō redībit.",
-      exampleGloss: "Titus will certainly return."
+      example: "Ted profectō redībit.",
+      exampleGloss: "Ted will certainly return."
     }
   ],
 
   readings: [
     {
       title: "Fīnis Negōtiī",
-      intro: "The family's last morning in Rome — and Titus reveals a plan of his own.",
+      intro: "The family's last morning in Rome — and Ted reveals a plan of his own.",
       paragraphs: [
-        "Prīmā hōrā Mārcus familiam vocat et «audīte!» inquit. «Negōtium meum tandem fīnem habet; itaque hodiē Ostiam redībimus. Raedam magnam iam parāvī. Iterum domum nostram et amīcōs nostrōs vidēbimus!» Paulla rīdet et clāmat: «domum, domum!»",
-        "Titus autem nōn rīdet. «Ego Ostiam vōbīscum redībō» inquit, «sed ibi nōn manēbō: nāvis mea mē exspectat. In Graeciam nāvigābō, quod cum mercātōre illō Graecō, quem nūper cognōvimus, negōtium magnum habeō. Frūmentum emam et vēndam; post trēs mēnsēs domum redībō.»",
-        "Quīntus, cupidus maris, statim clāmat: «ō avuncule! licetne mihi tēcum nāvigāre?» Titus rīdet et respondet: «nōn hodiē, mī amīce. Sed ubi vir eris, mēcum vēla dabis: hoc tibi prōmittō.» Puer laetissimus est; prōmissum enim avunculī dōnum optimum est."
+        "Prīmā hōrā Mark familiam vocat et «audīte!» inquit. «Negōtium meum tandem fīnem habet; itaque hodiē Ostiam redībimus. Raedam magnam iam parāvī. Iterum domum nostram et amīcōs nostrōs vidēbimus!» Paula rīdet et clāmat: «domum, domum!»",
+        "Ted autem nōn rīdet. «Ego Ostiam vōbīscum redībō» inquit, «sed ibi nōn manēbō: nāvis mea mē exspectat. In Graeciam nāvigābō, quod cum mercātōre illō Graecō, quem nūper cognōvimus, negōtium magnum habeō. Frūmentum emam et vēndam; post trēs mēnsēs domum redībō.»",
+        "Quinn, cupidus maris, statim clāmat: «ō avuncule! licetne mihi tēcum nāvigāre?» Ted rīdet et respondet: «nōn hodiē, mī amīce. Sed ubi vir eris, mēcum vēla dabis: hoc tibi prōmittō.» Puer laetissimus est; prōmissum enim avunculī dōnum optimum est."
       ],
       glosses: {
         "prīmā": "first (abl. — «prīmā hōrā» = at the first hour)",
         "hōrā": "hour (abl. of time when)",
-        "mārcus": "Marcus, the father",
+        "mark": "Mark, the father (a foreign name — it keeps the same form in every case)",
         "familiam": "family (acc.)",
         "vocat": "calls (together)",
         "et": "and",
@@ -313,10 +313,10 @@ registerUnit({
         "amīcōs": "friends (acc. pl.)",
         "nostrōs": "our (acc. pl. m.)",
         "vidēbimus": "we will see (future — the ‑bi‑ signpost)",
-        "paulla": "Paulla, the daughter, eight years old",
+        "paula": "Paula, the daughter, eight years old",
         "rīdet": "laughs",
         "clāmat": "shouts",
-        "titus": "Titus, Livia's brother, the ship's captain",
+        "ted": "Ted, the uncle — Julia's brother, the ship's captain (his name never changes form)",
         "autem": "however, but (never the first word)",
         "nōn": "not",
         "ego": "I",
@@ -348,12 +348,12 @@ registerUnit({
         "post": "after (+ acc.)",
         "trēs": "three",
         "mēnsēs": "months (acc. pl. after «post»)",
-        "quīntus": "Quintus, the son, twelve years old",
+        "quinn": "Quinn, the son, twelve years old",
         "cupidus": "eager, desirous (+ gen.: eager for…)",
         "maris": "of the sea (gen., after «cupidus»)",
         "statim": "immediately, at once",
         "ō": "O…! (exclamation before a name)",
-        "avuncule": "uncle! (vocative — Quintus is addressing him)",
+        "avuncule": "uncle! (vocative — Quinn is addressing him)",
         "licetne": "is it allowed…? («licet» + question particle ‑ne)",
         "mihi": "for me (dat. — the person who would be allowed)",
         "tēcum": "with you — «tē» + «cum» stuck on the end",
@@ -380,24 +380,24 @@ registerUnit({
         "optimum": "the best (n., with «dōnum»)"
       },
       translation: [
-        "At the first hour Marcus calls the family together and says, «Listen! My business at last has an end; and so today we will return to Ostia. I have already hired a big carriage. We will see our home and our friends again!» Paulla laughs and shouts: «Home, home!»",
-        "Titus, however, is not laughing. «I will return to Ostia with you,» he says, «but I will not stay there: my ship is waiting for me. I will sail to Greece, because I have big business with that Greek merchant whom we recently got to know. I will buy and sell grain; after three months I will return home.»",
-        "Quintus, eager for the sea, shouts at once: «O uncle! May I sail with you?» Titus laughs and answers: «Not today, my friend. But when you are a man, you will set sail with me: this I promise you.» The boy is overjoyed; for the uncle's promise is the best of gifts."
+        "At the first hour Mark calls the family together and says, «Listen! My business at last has an end; and so today we will return to Ostia. I have already hired a big carriage. We will see our home and our friends again!» Paula laughs and shouts: «Home, home!»",
+        "Ted, however, is not laughing. «I will return to Ostia with you,» he says, «but I will not stay there: my ship is waiting for me. I will sail to Greece, because I have big business with that Greek merchant whom we recently got to know. I will buy and sell grain; after three months I will return home.»",
+        "Quinn, eager for the sea, shouts at once: «O uncle! May I sail with you?» Ted laughs and answers: «Not today, my friend. But when you are a man, you will set sail with me: this I promise you.» The boy is overjoyed; for the uncle's promise is the best of gifts."
       ],
       questions: [
         {
           q: "Why is the family returning to Ostia?",
           options: [
             "Winter is coming and the roads will close",
-            "Mārcus's business in Rome is finally finished",
-            "Ferōx has run away toward the harbor",
-            "Titus's ship needs repairs at Ostia"
+            "Mark's business in Rome is finally finished",
+            "Lupo has run away toward the harbor",
+            "Ted's ship needs repairs at Ostia"
           ],
           answer: 1,
           explain: "«Negōtium meum tandem fīnem habet; itaque hodiē Ostiam redībimus» — the business at last has its end, and so («itaque») they will return today."
         },
         {
-          q: "What will Titus do once they reach Ostia?",
+          q: "What will Ted do once they reach Ostia?",
           options: [
             "Stay with the family all winter",
             "Sell his ship to a Greek merchant",
@@ -419,10 +419,10 @@ registerUnit({
           explain: "«vidē‑bi‑mus» — the ‑bi‑ signpost marks the future: we WILL see our home again. The imperfect ‘used to see’ would be «vidēbāmus»."
         },
         {
-          q: "What exactly does Titus promise Quintus?",
+          q: "What exactly does Ted promise Quinn?",
           options: [
             "A model ship from Greece",
-            "That Quīntus will sail with him when he is a man",
+            "That Quinn will sail with him when he is a man",
             "That he will teach him Greek",
             "That he will return within three days"
           ],
@@ -432,14 +432,14 @@ registerUnit({
       ]
     },
     {
-      title: "Valē, Tite!",
-      intro: "Home to Ostia by carriage — and then down to the harbor, where Titus's ship is waiting.",
+      title: "Valē, avuncule!",
+      intro: "Home to Ostia by carriage — and then down to the harbor, where Ted's ship is waiting.",
       paragraphs: [
-        "Raeda per viam longam celeriter currit. Paulla omnia numerat: «videō duo templa, trēs pontēs, septem asinōs!» Dum raeda currit, Quīntus dē marī cōgitat; Ferōx dormit.",
-        "Tandem familia Ostiam pervenit. Quam grāta est domus! Ferōx laetus per hortum currit. «Rōma splendida est» inquit Mārcus, «sed patria nostra optima est.»",
-        "Posteā tōta familia ad portum ambulat, quod Titus hodiē abībit. Nautae amphorās in nāvem portant. Līvia frātrem monet: «in marī perīcula magna sunt; semper tē moneō, sed tū numquam audīs!» Titus iūrat: «per omnēs deōs iūrō: post trēs mēnsēs iterum hīc erō. Vir fidēlis prōmissa sua nōn relinquit.»",
-        "Tum nautae ancorās solvunt; nāvis vēla dat et lentē discēdit. «Valē, valē!» clāmant omnēs. Paulla lacrimat, quod avunculum iam dēsīderat. «Titus profectō redībit» inquit Līvia; «fidēs eius magna est.»",
-        "Nocte Quīntus somnium mīrum habet: iam vir est et magister nāvis magnae! Per undās altās nāvigat et fīnēs ignōtōs videt; Titus comes eius est. Posteā puer mātrī dīcit: «ōlim haec vēra erunt. Nauta erō, et prōmissa mea numquam relinquam!» Ferōx quoque somnia habet: in somniīs botulōs magnōs videt."
+        "Raeda per viam longam celeriter currit. Paula omnia numerat: «videō duo templa, trēs pontēs, septem asinōs!» Dum raeda currit, Quinn dē marī cōgitat; canis Lupo dormit.",
+        "Tandem familia Ostiam pervenit. Quam grāta est domus! Lupo laetus per hortum currit. «Rōma splendida est» inquit Mark, «sed patria nostra optima est.»",
+        "Posteā tōta familia ad portum ambulat, quod Ted hodiē abībit. Nautae amphorās in nāvem portant. Julia frātrem monet: «in marī perīcula magna sunt; semper tē moneō, sed tū numquam audīs!» Ted iūrat: «per omnēs deōs iūrō: post trēs mēnsēs iterum hīc erō. Vir fidēlis prōmissa sua nōn relinquit.»",
+        "Tum nautae ancorās solvunt; nāvis vēla dat et lentē discēdit. «Valē, valē!» clāmant omnēs. Paula lacrimat, quod avunculum iam dēsīderat. «Ted profectō redībit» inquit Julia; «fidēs eius magna est.»",
+        "Nocte Quinn somnium mīrum habet: iam vir est et magister nāvis magnae! Per undās altās nāvigat et fīnēs ignōtōs videt; Ted comes eius est. Posteā puer mātrī dīcit: «ōlim haec vēra erunt. Nauta erō, et prōmissa mea numquam relinquam!» Lupo quoque somnia habet: in somniīs botulōs magnōs videt."
       ],
       glosses: {
         "raeda": "carriage (nom.)",
@@ -448,7 +448,7 @@ registerUnit({
         "longam": "long (acc. sg. f.)",
         "celeriter": "quickly",
         "currit": "runs, rolls along",
-        "paulla": "Paulla, the daughter, eight years old",
+        "paula": "Paula, the daughter, eight years old",
         "omnia": "everything (n. pl. of «omnis» used as a noun)",
         "numerat": "counts",
         "videō": "I see",
@@ -459,11 +459,12 @@ registerUnit({
         "septem": "seven",
         "asinōs": "donkeys (acc. pl.)",
         "dum": "while",
-        "quīntus": "Quintus, the son, twelve years old",
+        "quinn": "Quinn, the son, twelve years old",
         "dē": "about (+ abl.)",
         "marī": "sea (abl. after «dē» / «in»)",
         "cōgitat": "thinks, is thinking",
-        "ferōx": "Ferox, the family dog",
+        "canis": "dog (nom. — «canis Lupo» = the dog Lupo, name and noun side by side)",
+        "lupo": "Lupo, the family dog — his name winks at «lupus», wolf (and never changes form)",
         "dormit": "sleeps",
         "tandem": "at last",
         "familia": "family",
@@ -478,7 +479,7 @@ registerUnit({
         "rōma": "Rome (nom.)",
         "splendida": "splendid (nom. sg. f.)",
         "inquit": "says / said (with quoted speech)",
-        "mārcus": "Marcus, the father",
+        "mark": "Mark, the father",
         "sed": "but",
         "patria": "homeland (nom.)",
         "nostra": "our (nom. sg. f.)",
@@ -489,7 +490,7 @@ registerUnit({
         "portum": "harbor (acc. after «ad»)",
         "ambulat": "walks",
         "quod": "because",
-        "titus": "Titus, Livia's brother, the ship's captain",
+        "ted": "Ted, the uncle, the ship's captain",
         "hodiē": "today",
         "abībit": "will go away, will depart (future of «abeō»)",
         "nautae": "sailors (nom. pl.)",
@@ -497,7 +498,7 @@ registerUnit({
         "in": "into (+ acc.: «in nāvem»); in, on (+ abl.: «in marī», «in somniīs»)",
         "nāvem": "ship (acc. after «in» = onto)",
         "portant": "carry",
-        "līvia": "Livia, the mother",
+        "julia": "Julia, the mother",
         "frātrem": "brother (acc.)",
         "monet": "warns",
         "perīcula": "dangers (nom. pl.)",
@@ -573,37 +574,37 @@ registerUnit({
         "magnōs": "big (acc. pl. m.)"
       },
       translation: [
-        "The carriage rolls quickly along the long road. Paulla counts everything: «I see two temples, three bridges, seven donkeys!» While the carriage rolls on, Quintus thinks about the sea; Ferox sleeps.",
-        "At last the family reaches Ostia. How welcome home is! Ferox runs happily through the garden. «Rome is splendid,» says Marcus, «but our homeland is best.»",
-        "Afterwards the whole family walks to the harbor, because today Titus will depart. Sailors are carrying amphoras onto the ship. Livia warns her brother: «At sea there are great dangers; I always warn you, but you never listen!» Titus swears: «By all the gods I swear: after three months I will be here again. A faithful man does not abandon his promises.»",
-        "Then the sailors cast off the anchors; the ship sets sail and slowly moves off. «Farewell, farewell!» everyone shouts. Paulla weeps, because she already misses her uncle. «Titus will certainly return,» says Livia; «his loyalty is great.»",
-        "That night Quintus has an amazing dream: he is already a man and the captain of a great ship! He sails through high waves and sees unknown lands; Titus is his companion. Afterwards the boy tells his mother: «One day these things will be true. I will be a sailor, and I will never abandon my promises!» Ferox has dreams too: in his dreams he sees big sausages."
+        "The carriage rolls quickly along the long road. Paula counts everything: «I see two temples, three bridges, seven donkeys!» While the carriage rolls on, Quinn thinks about the sea; the dog Lupo sleeps.",
+        "At last the family reaches Ostia. How welcome home is! Lupo runs happily through the garden. «Rome is splendid,» says Mark, «but our homeland is best.»",
+        "Afterwards the whole family walks to the harbor, because today Ted will depart. Sailors are carrying amphoras onto the ship. Julia warns her brother: «At sea there are great dangers; I always warn you, but you never listen!» Ted swears: «By all the gods I swear: after three months I will be here again. A faithful man does not abandon his promises.»",
+        "Then the sailors cast off the anchors; the ship sets sail and slowly moves off. «Farewell, farewell!» everyone shouts. Paula weeps, because she already misses her uncle. «Ted will certainly return,» says Julia; «his loyalty is great.»",
+        "That night Quinn has an amazing dream: he is already a man and the captain of a great ship! He sails through high waves and sees unknown lands; Ted is his companion. Afterwards the boy tells his mother: «One day these things will be true. I will be a sailor, and I will never abandon my promises!» Lupo has dreams too: in his dreams he sees big sausages."
       ],
       questions: [
         {
-          q: "What does Paulla do during the carriage ride?",
+          q: "What does Paula do during the carriage ride?",
           options: [
-            "She sleeps next to Ferōx",
+            "She sleeps next to Lupo",
             "She counts the things she sees",
             "She cries because she misses Rome",
-            "She tells stories about Titus"
+            "She tells stories about Ted"
           ],
           answer: 1,
-          explain: "«Paulla omnia numerat» — she counts everything: two temples, three bridges, seven donkeys. Sleeping is Ferox's department."
+          explain: "«Paula omnia numerat» — she counts everything: two temples, three bridges, seven donkeys. Sleeping is Lupo's department."
         },
         {
-          q: "What does Titus swear by all the gods?",
+          q: "What does Ted swear by all the gods?",
           options: [
             "That he will never sail again",
             "That he will be back here in three months",
             "That he will write a letter every day",
-            "That he will bring Quīntus a Greek ship"
+            "That he will bring Quinn a Greek ship"
           ],
           answer: 1,
           explain: "«per omnēs deōs iūrō: post trēs mēnsēs iterum hīc erō» — after three months I will be here again; «erō» is the future of «sum»."
         },
         {
-          q: "In «Titus profectō redībit», the form «redībit» means…",
+          q: "In «Ted profectō redībit», the form «redībit» means…",
           options: [
             "he returns",
             "he was returning",
@@ -611,10 +612,10 @@ registerUnit({
             "he has returned"
           ],
           answer: 2,
-          explain: "«redībit» is the future of «redeō», a compound of «eō»: he WILL return. «Profectō» adds Livia's confidence — certainly."
+          explain: "«redībit» is the future of «redeō», a compound of «eō»: he WILL return. «Profectō» adds Julia's confidence — certainly."
         },
         {
-          q: "In his dream, what has Quintus become?",
+          q: "In his dream, what has Quinn become?",
           options: [
             "A helmsman on his uncle's ship",
             "The captain of a great ship",
@@ -622,7 +623,7 @@ registerUnit({
             "A Greek tutor in Athens"
           ],
           answer: 1,
-          explain: "«iam vir est et magister nāvis magnae» — already a man and the master of a great ship; Titus sails along as his «comes», his companion."
+          explain: "«iam vir est et magister nāvis magnae» — already a man and the master of a great ship; Ted sails along as his «comes», his companion."
         }
       ]
     }
@@ -648,7 +649,7 @@ registerUnit({
       explain: "«erimus» is the future of «sum»: we will be — a perfect match for «crās» (tomorrow). ‘They will be’ would be «erunt», and ‘we will be able’ «poterimus»."
     },
     {
-      prompt: "«Titus fābulās nārrābat.» The ‑bā‑ in «nārrābat» paints the storytelling as…",
+      prompt: "«Ted fābulās nārrābat.» The ‑bā‑ in «nārrābat» paints the storytelling as…",
       options: [
         "a single finished event",
         "ongoing or repeated in the past",
@@ -659,10 +660,10 @@ registerUnit({
       explain: "‑bā‑ is the imperfect signpost: he was telling / used to tell stories. One completed telling would be the perfect «nārrāvit»; a future telling «nārrābit»."
     },
     {
-      prompt: "In «nāvis quam Titus habet magna est», the word «quam» refers to…",
-      options: ["nāvis", "Titus", "magna", "nothing — it means ‘than’"],
+      prompt: "In «nāvis quam avunculus habet magna est», the word «quam» refers to…",
+      options: ["nāvis", "avunculus", "magna", "nothing — it means ‘than’"],
       answer: 0,
-      explain: "«quam» is feminine singular accusative: it picks up «nāvis» and serves as the object of «habet» — the ship WHICH Titus has. «Quam» only means ‘than’ after a comparative, and there is none here."
+      explain: "«quam» is feminine singular accusative: it picks up «nāvis» and serves as the object of «habet» — the ship WHICH the uncle has. «Quam» only means ‘than’ after a comparative, and there is none here."
     },
     {
       prompt: "«Nāvis longior quam raeda est» means…",
@@ -676,7 +677,7 @@ registerUnit({
       explain: "«longior» is the comparative (‘longer’), and after a comparative «quam» = ‘than’. The superlative ‘longest’ would be «longissima»."
     },
     {
-      prompt: "In «Titus trēs mēnsēs in Graeciā manēbit», the accusative «trēs mēnsēs» answers the question…",
+      prompt: "In «Ted trēs mēnsēs in Graeciā manēbit», the accusative «trēs mēnsēs» answers the question…",
       options: ["When will he leave?", "How long will he stay?", "Why is he going?", "Where will he stay?"],
       answer: 1,
       explain: "The accusative of time tells HOW LONG: for three months. A point in time (‘when’) takes the ablative, like «prīmā hōrā»."

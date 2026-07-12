@@ -24,7 +24,7 @@ registerUnit({
     },
     {
       heading: "The ‑iō rebels: capiō, faciō, fugiō",
-      body: "<p>Inside the third conjugation lives a small gang that adds an <span class=\"la\">i</span> in exactly two places: the <em>I</em>-form and the <em>they</em>-form. So <span class=\"la\">capiō</span> (I take) and <span class=\"la\">capiunt</span> (they take) — but plain <span class=\"la\">capis, capit, capimus, capitis</span> everywhere in between.</p><p>You already know one of these outlaws personally: <span class=\"la\">rapiō</span> (snatch) — Ferox's signature move since the sausage incident of unit 4 — behaves exactly like <span class=\"la\">capiō</span>. So do <span class=\"la\">faciō</span> (make, do) and <span class=\"la\">fugiō</span> (flee), which, in Ferox's world, tend to happen in that order.</p>",
+      body: "<p>Inside the third conjugation lives a small gang that adds an <span class=\"la\">i</span> in exactly two places: the <em>I</em>-form and the <em>they</em>-form. So <span class=\"la\">capiō</span> (I take) and <span class=\"la\">capiunt</span> (they take) — but plain <span class=\"la\">capis, capit, capimus, capitis</span> everywhere in between.</p><p>You already know one of these outlaws personally: <span class=\"la\">rapiō</span> (snatch) — Lupo's signature move since the sausage incident of unit 4 — behaves exactly like <span class=\"la\">capiō</span>. So do <span class=\"la\">faciō</span> (make, do) and <span class=\"la\">fugiō</span> (flee), which, in Lupo's world, tend to happen in that order.</p>",
       table: {
         caption: "Third conjugation ‑iō: capiō, capere (take, catch)",
         headers: ["Person", "Latin", "English"],
@@ -41,7 +41,7 @@ registerUnit({
     },
     {
       heading: "The fourth conjugation keeps its ī",
-      body: "<p>The fourth family is the tidy one: it carries a long <span class=\"la\">ī</span> almost everywhere. <span class=\"la\">veniō, venīre</span> (come), <span class=\"la\">audiō, audīre</span> (hear), <span class=\"la\">sentiō, sentīre</span> (feel), <span class=\"la\">dormiō, dormīre</span> (sleep) — you have been reading <span class=\"la\">dormit</span> since Ferox first napped through breakfast in unit 3.</p><p>Watch the macrons: <span class=\"la\">venīmus</span> (we come) and <span class=\"la\">venītis</span> (you all come) hold their long <span class=\"la\">ī</span> proudly, where third-conjugation <span class=\"la\">dīcimus</span> mumbles. The <em>they</em>-form is <span class=\"la\">-iunt</span>: <span class=\"la\">veniunt, dormiunt, sentiunt</span> — the same shape the ‑iō rebels use in <span class=\"la\">capiunt</span>.</p>",
+      body: "<p>The fourth family is the tidy one: it carries a long <span class=\"la\">ī</span> almost everywhere. <span class=\"la\">veniō, venīre</span> (come), <span class=\"la\">audiō, audīre</span> (hear), <span class=\"la\">sentiō, sentīre</span> (feel), <span class=\"la\">dormiō, dormīre</span> (sleep) — you have been reading <span class=\"la\">dormit</span> since Lupo first napped through breakfast in unit 3.</p><p>Watch the macrons: <span class=\"la\">venīmus</span> (we come) and <span class=\"la\">venītis</span> (you all come) hold their long <span class=\"la\">ī</span> proudly, where third-conjugation <span class=\"la\">dīcimus</span> mumbles. The <em>they</em>-form is <span class=\"la\">-iunt</span>: <span class=\"la\">veniunt, dormiunt, sentiunt</span> — the same shape the ‑iō rebels use in <span class=\"la\">capiunt</span>.</p>",
       table: {
         caption: "Fourth conjugation: veniō, venīre (come)",
         headers: ["Person", "Latin", "English"],
@@ -81,8 +81,8 @@ registerUnit({
       forms: "dīcere, dīxī, dictum",
       pos: "verb (3rd conj.)",
       gloss: "say, tell",
-      example: "Titus semper vēra dīcit.",
-      exampleGloss: "Titus always tells the truth."
+      example: "Avunculus Ted semper vēra dīcit.",
+      exampleGloss: "Uncle Ted always tells the truth."
     },
     {
       latin: "dūcō",
@@ -121,8 +121,8 @@ registerUnit({
       forms: "currere, cucurrī, cursum",
       pos: "verb (3rd conj.)",
       gloss: "run",
-      example: "Ferōx per hortum celeriter currit.",
-      exampleGloss: "Ferox runs quickly through the garden."
+      example: "Lupo per hortum celeriter currit.",
+      exampleGloss: "Lupo runs quickly through the garden."
     },
     {
       latin: "trahō",
@@ -169,16 +169,16 @@ registerUnit({
       forms: "capere, cēpī, captum",
       pos: "verb (3rd conj. ‑iō)",
       gloss: "take, seize",
-      example: "Paulla canem malum capit.",
-      exampleGloss: "Paulla catches the naughty dog."
+      example: "Paula canem malum capit.",
+      exampleGloss: "Paula catches the naughty dog."
     },
     {
       latin: "fugiō",
       forms: "fugere, fūgī",
       pos: "verb (3rd conj. ‑iō)",
       gloss: "flee",
-      example: "Ferōx cum botulō fugit!",
-      exampleGloss: "Ferox flees with the sausage!"
+      example: "Lupo cum botulō fugit!",
+      exampleGloss: "Lupo flees with the sausage!"
     },
     {
       latin: "veniō",
@@ -257,8 +257,8 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "adverb",
       gloss: "quickly",
-      example: "Paulla celeriter currit.",
-      exampleGloss: "Paulla runs fast."
+      example: "Paula celeriter currit.",
+      exampleGloss: "Paula runs fast."
     },
     {
       latin: "lentē",
@@ -281,11 +281,11 @@ registerUnit({
   readings: [
     {
       title: "Nāvem Solvimus",
-      intro: "At first light the family boards Titus's boat in the harbor of Ostia — cargo, children, and one very interested dog.",
+      intro: "At first light the family boards Uncle Ted's boat in the harbor of Ostia — cargo, children, and one very interested dog.",
       paragraphs: [
-        "Hodiē familia Fabia magnum iter facit: ad urbem Rōmam nāvigat. Mārcus, Līvia, Quīntus Paullaque ad portum celeriter properant. Ferōx quoque venit et laetus lātrat.",
-        "Ibi nāvis Titī manet; nāvis onera ad urbem vehit. Servī validī onera in nāvem pōnunt — saccōs frūmentī, amphorās vīnī, cistās. Onera magna sunt; servī lentē ambulant et saccōs trahunt. Titus in nāve stat et clāmat: «Salvēte, amīcī! Ventus bonus est, caelum clārum. Nunc nāvem solvere possumus!»",
-        "Titus familiam in nāvem dūcit. Quīntus laetus est, quod nauta esse cupit. «Egone nautās iuvāre possum?» avunculum rogat. «Ita!» respondet Titus. «Puerī validī nautās semper iuvāre possunt.» Tandem nautae ancoram trahunt et nāvem solvunt; nāvis lentē discēdit. «Valē, Ōstia!» clāmant puerī."
+        "Hodiē familia Fabia magnum iter facit: ad urbem Rōmam nāvigat. Mark, Julia, Quinn Paulaque ad portum celeriter properant. Lupo quoque venit et laetus lātrat.",
+        "Ibi nāvis avunculī manet; nāvis onera ad urbem vehit. Servī validī onera in nāvem pōnunt — saccōs frūmentī, amphorās vīnī, cistās. Onera magna sunt; servī lentē ambulant et saccōs trahunt. Avunculus Ted in nāve stat et clāmat: «Salvēte, amīcī! Ventus bonus est, caelum clārum. Nunc nāvem solvere possumus!»",
+        "Avunculus Ted familiam in nāvem dūcit. Quinn laetus est, quod nauta esse cupit. «Egone nautās iuvāre possum?» avunculum rogat. «Ita!» respondet Ted. «Puerī validī nautās semper iuvāre possunt.» Tandem nautae ancoram trahunt et nāvem solvunt; nāvis lentē discēdit. «Valē, Ōstia!» clāmant puerī."
       ],
       glosses: {
         "hodiē": "today",
@@ -298,14 +298,14 @@ registerUnit({
         "urbem": "city (acc.)",
         "rōmam": "Rome (acc.)",
         "nāvigat": "(it/she) sails, is sailing",
-        "mārcus": "Marcus (the father, a grain merchant)",
-        "līvia": "Livia (the mother)",
-        "quīntus": "Quintus (the son, 12, would-be sailor)",
-        "paullaque": "and Paulla (the daughter, 8) — «‑que» = and",
+        "mark": "Mark (the father, a grain merchant — his name never changes form)",
+        "julia": "Julia (the mother)",
+        "quinn": "Quinn (the son, 12, would-be sailor — his name never changes form)",
+        "paulaque": "and Paula (the daughter, 8) — «‑que» = and",
         "portum": "harbor (acc.)",
         "celeriter": "quickly",
         "properant": "(they) hurry",
-        "ferōx": "Ferox (the family dog)",
+        "lupo": "Lupo (the family dog — his name, not the word «lupus», wolf)",
         "quoque": "also, too",
         "venit": "comes (4th conjugation)",
         "et": "and",
@@ -313,7 +313,7 @@ registerUnit({
         "lātrat": "barks",
         "ibi": "there",
         "nāvis": "ship, boat (nom.)",
-        "titī": "of Titus (gen.) — Livia's brother, a ship's captain",
+        "avunculī": "of (their) uncle (gen.) — Ted, Julia's brother, a ship's captain",
         "manet": "waits, stays",
         "onera": "loads, cargo (neuter plural — same form as subject and object)",
         "vehit": "carries, conveys (3rd conjugation)",
@@ -332,7 +332,8 @@ registerUnit({
         "lentē": "slowly",
         "ambulant": "(they) walk",
         "trahunt": "(they) drag, pull (3rd conjugation)",
-        "titus": "Titus (the uncle, captain of the boat)",
+        "avunculus": "uncle (nom.) — «avunculus Ted» = Uncle Ted",
+        "ted": "Ted (the uncle, captain of the boat — his name never changes form)",
         "nāve": "ship (abl. — «in nāve» = on the ship)",
         "stat": "stands",
         "clāmat": "shouts",
@@ -373,9 +374,9 @@ registerUnit({
         "clāmant": "(they) shout"
       },
       translation: [
-        "Today the Fabius family is making a great journey: they are sailing to the city of Rome. Marcus, Livia, Quintus, and Paulla hurry quickly to the harbor. Ferox comes too, and barks happily.",
-        "There Titus's boat is waiting; the boat carries cargo to the city. Strong slaves are putting the loads onto the boat — sacks of grain, amphoras of wine, chests. The loads are heavy; the slaves walk slowly and drag the sacks. Titus stands on the boat and shouts: «Greetings, friends! The wind is good, the sky clear. Now we can cast off!»",
-        "Titus leads the family onto the boat. Quintus is happy, because he wants to be a sailor. «Can I help the sailors?» he asks his uncle. «Yes!» Titus replies. «Strong boys can always help sailors.» At last the sailors pull up the anchor and cast off; the boat slowly departs. «Goodbye, Ostia!» the children shout."
+        "Today the Fabius family is making a great journey: they are sailing to the city of Rome. Mark, Julia, Quinn, and Paula hurry quickly to the harbor. Lupo comes too, and barks happily.",
+        "There their uncle's boat is waiting; the boat carries cargo to the city. Strong slaves are putting the loads onto the boat — sacks of grain, amphoras of wine, chests. The loads are heavy; the slaves walk slowly and drag the sacks. Uncle Ted stands on the boat and shouts: «Greetings, friends! The wind is good, the sky clear. Now we can cast off!»",
+        "Uncle Ted leads the family onto the boat. Quinn is happy, because he wants to be a sailor. «Can I help the sailors?» he asks his uncle. «Yes!» Ted replies. «Strong boys can always help sailors.» At last the sailors pull up the anchor and cast off; the boat slowly departs. «Goodbye, Ostia!» the children shout."
       ],
       questions: [
         {
@@ -383,8 +384,8 @@ registerUnit({
           options: [
             "They are buying fish at the market",
             "They are beginning a journey to Rome by boat",
-            "Titus is arriving home from Greece",
-            "Ferox has run away to the docks again"
+            "Ted is arriving home from Greece",
+            "Lupo has run away to the docks again"
           ],
           answer: 1,
           explain: "«magnum iter facit: ad urbem Rōmam nāvigat» — the family is making a great journey, sailing to the city of Rome."
@@ -401,23 +402,23 @@ registerUnit({
           explain: "«in nāvem» is in + accusative — motion onto the boat — and «pōnunt» (they place) is our new 3rd conjugation ‑unt ending."
         },
         {
-          q: "What does Quintus ask his uncle?",
+          q: "What does Quinn ask his uncle?",
           options: [
             "Whether the wind is good",
             "Whether he can help the sailors",
-            "Whether Ferox may come aboard",
+            "Whether Lupo may come aboard",
             "Where the boat is going"
           ],
           answer: 1,
-          explain: "«Egone nautās iuvāre possum?» — the ‑ne on «ego» marks the question: «Can I help the sailors?» Titus answers «ita» — yes."
+          explain: "«Egone nautās iuvāre possum?» — the ‑ne on «ego» marks the question: «Can I help the sailors?» Ted answers «ita» — yes."
         },
         {
           q: "Which of these happens LAST in the reading?",
           options: [
-            "Titus greets the family",
+            "Ted greets the family",
             "The slaves load the sacks",
             "The sailors raise the anchor and cast off",
-            "Ferox barks happily"
+            "Lupo barks happily"
           ],
           answer: 2,
           explain: "«Tandem» (at last) signals the final step: «nautae ancoram trahunt et nāvem solvunt» — anchor up, and the boat departs."
@@ -426,13 +427,13 @@ registerUnit({
     },
     {
       title: "Flūmen Tiberis",
-      intro: "The boat crawls up the Tiber: men tow, sailors row, Ferox commits a crime, and night falls on the river.",
+      intro: "The boat crawls up the Tiber: men tow, sailors row, Lupo commits a crime, and night falls on the river.",
       paragraphs: [
         "Nāvis nunc nōn per mare sed per flūmen nāvigat. Flūmen Tiberis est; aqua flāva lentē ad mare currit. Nāvis tamen urbem petit: ventus nāvem iuvat; vēlum plēnum est. In rīpīs sunt templa, tabernae, īnsulae altae.",
-        "In flūmine nautae semper labōrant. Virī validī in rīpā ambulant et fūnem longum trahunt: ita nāvem lentē per aquam trahunt. Nautae rēmōs longōs tenent; rēmī nāvem per undās agunt. «Aqua ad mare currit», dīcit Titus, «sed nōs ad urbem nāvigāmus.»",
-        "«Lentē venīmus!» clāmat Quīntus. «Ego celeriter nāvigāre cupiō!» Titus rīdet et respondet: «Vēra dīcis. Sed sentīsne ventum? Ventus nōs iuvat. Nautae bonī nōn semper properant.» Quīntus ventum sentit et gaudium in corde sentit.",
-        "Subitō Ferōx cibum sentit: in cistā botulī sunt! Botulum rapit et per nāvem fugit. Paulla celeriter currit et canem capit, sed Ferōx botulum iam dēvorat. Nautae rīdent; Līvia nōn rīdet.",
-        "Mox nox venit. Nautae nāvem ad rīpam agunt et ancoram pōnunt. «Rōma procul est», dīcit Titus. «Crās quoque nāvigāmus; nunc dormīre dēbētis.» Puerī dormiunt. Ferōx nōn dormit: canis botulōs quaerit."
+        "In flūmine nautae semper labōrant. Virī validī in rīpā ambulant et fūnem longum trahunt: ita nāvem lentē per aquam trahunt. Nautae rēmōs longōs tenent; rēmī nāvem per undās agunt. «Aqua ad mare currit», dīcit avunculus Ted, «sed nōs ad urbem nāvigāmus.»",
+        "«Lentē venīmus!» clāmat Quinn. «Ego celeriter nāvigāre cupiō!» Ted rīdet et respondet: «Vēra dīcis. Sed sentīsne ventum? Ventus nōs iuvat. Nautae bonī nōn semper properant.» Quinn ventum sentit et gaudium in corde sentit.",
+        "Subitō canis Lupo cibum sentit: in cistā botulī sunt! Botulum rapit et per nāvem fugit. Paula celeriter currit et canem capit, sed Lupo botulum iam dēvorat. Nautae rīdent; Julia nōn rīdet.",
+        "Mox nox venit. Nautae nāvem ad rīpam agunt et ancoram pōnunt. «Rōma procul est», dīcit Ted. «Crās quoque nāvigāmus; nunc dormīre dēbētis.» Puerī dormiunt. Lupo nōn dormit: canis botulōs quaerit."
       ],
       glosses: {
         "nāvis": "ship, boat (nom.)",
@@ -486,12 +487,13 @@ registerUnit({
         "undās": "waves (acc. pl.)",
         "agunt": "(they) drive (3rd conjugation) — «nāvem agunt» = they drive the boat",
         "dīcit": "says (3rd conjugation)",
-        "titus": "Titus (the uncle, captain of the boat)",
+        "avunculus": "uncle (nom.) — «avunculus Ted» = Uncle Ted",
+        "ted": "Ted (the uncle, the captain)",
         "nōs": "we; us",
         "nāvigāmus": "we sail, we are sailing",
         "venīmus": "we come, we are coming along (4th conjugation — note the long ī)",
         "clāmat": "shouts",
-        "quīntus": "Quintus (the son, 12, would-be sailor)",
+        "quinn": "Quinn (the son)",
         "ego": "I",
         "celeriter": "quickly, fast",
         "nāvigāre": "to sail",
@@ -508,20 +510,20 @@ registerUnit({
         "gaudium": "joy (acc.)",
         "corde": "heart (abl. — «in corde» = in his heart)",
         "subitō": "suddenly",
-        "ferōx": "Ferox (the dog — a known sausage criminal)",
+        "lupo": "Lupo (the dog — a known sausage criminal; «canis Lupo» — quasi lupus!)",
         "cibum": "food (acc.)",
         "cistā": "chest, trunk (abl.)",
         "botulī": "sausages (nom. pl.)",
         "botulum": "sausage (acc.)",
         "rapit": "snatches, grabs (a 3rd conj. ‑iō verb, like capiō)",
         "fugit": "flees, runs away (3rd conjugation ‑iō)",
-        "paulla": "Paulla (the daughter, 8, fearless)",
+        "paula": "Paula (the daughter, 8, fearless)",
         "canem": "dog (acc.)",
         "capit": "catches, seizes (3rd conjugation ‑iō)",
         "iam": "already",
         "dēvorat": "devours, gobbles down",
         "rīdent": "(they) laugh",
-        "līvia": "Livia (the mother)",
+        "julia": "Julia (the mother)",
         "mox": "soon",
         "nox": "night (nom.)",
         "venit": "comes (4th conjugation)",
@@ -543,10 +545,10 @@ registerUnit({
       },
       translation: [
         "The boat is now sailing not over the sea but along a river. The river is the Tiber; its yellow water runs slowly toward the sea. The boat, however, is heading for the city: the wind helps the boat; the sail is full. On the banks there are temples, shops, and tall apartment blocks.",
-        "On the river the sailors are always working. Strong men walk on the bank and pull a long rope: in this way they slowly drag the boat through the water. The sailors hold long oars; the oars drive the boat through the waves. «The water runs to the sea», says Titus, «but we are sailing to the city.»",
-        "«We're coming along so slowly!» shouts Quintus. «I want to sail fast!» Titus laughs and answers: «You speak the truth. But do you feel the wind? The wind is helping us. Good sailors do not always hurry.» Quintus feels the wind — and feels a joy in his heart.",
-        "Suddenly Ferox smells food: there are sausages in a chest! He snatches a sausage and flees through the boat. Paulla runs quickly and catches the dog, but Ferox is already devouring the sausage. The sailors laugh; Livia does not laugh.",
-        "Soon night comes. The sailors steer the boat to the bank and drop the anchor. «Rome is far away», says Titus. «Tomorrow we sail again; now you must sleep.» The children sleep. Ferox does not sleep: the dog is looking for sausages."
+        "On the river the sailors are always working. Strong men walk on the bank and pull a long rope: in this way they slowly drag the boat through the water. The sailors hold long oars; the oars drive the boat through the waves. «The water runs to the sea», says Uncle Ted, «but we are sailing to the city.»",
+        "«We're coming along so slowly!» shouts Quinn. «I want to sail fast!» Ted laughs and answers: «You speak the truth. But do you feel the wind? The wind is helping us. Good sailors do not always hurry.» Quinn feels the wind — and feels a joy in his heart.",
+        "Suddenly Lupo the dog smells food: there are sausages in a chest! He snatches a sausage and flees through the boat. Paula runs quickly and catches the dog, but Lupo is already devouring the sausage. The sailors laugh; Julia does not laugh.",
+        "Soon night comes. The sailors steer the boat to the bank and drop the anchor. «Rome is far away», says Ted. «Tomorrow we sail again; now you must sleep.» The children sleep. Lupo does not sleep: the dog is looking for sausages."
       ],
       questions: [
         {
@@ -555,7 +557,7 @@ registerUnit({
             "The river's current runs the other way, toward the sea",
             "The boat is overloaded and leaking",
             "The sailors are asleep at the oars",
-            "Titus keeps stopping to tell stories"
+            "Ted keeps stopping to tell stories"
           ],
           answer: 0,
           explain: "«Aqua ad mare currit, sed nōs ad urbem nāvigāmus» — the water runs seaward while the boat heads upstream, so men tow and sailors row."
@@ -572,7 +574,7 @@ registerUnit({
           explain: "«in rīpā» — in + ablative gives a location: on the riverbank. They walk along it, towing the boat with a rope."
         },
         {
-          q: "What does «sentit» tell us Ferox does just before the sausage theft?",
+          q: "What does «sentit» tell us Lupo does just before the sausage theft?",
           options: [
             "He sees the food",
             "He smells the food",
@@ -580,7 +582,7 @@ registerUnit({
             "He barks at the food"
           ],
           answer: 1,
-          explain: "«Ferōx cibum sentit» — sentīre means to perceive with the senses, and a dog perceives sausages with his nose."
+          explain: "«canis Lupo cibum sentit» — sentīre means to perceive with the senses, and a dog perceives sausages with his nose."
         },
         {
           q: "What happens when night falls?",
@@ -588,7 +590,7 @@ registerUnit({
             "The boat finally reaches Rome",
             "They turn around and sail back to Ostia",
             "The sailors bring the boat to the bank and anchor for the night",
-            "Titus tells sea stories until dawn"
+            "Ted tells sea stories until dawn"
           ],
           answer: 2,
           explain: "«Nautae nāvem ad rīpam agunt et ancoram pōnunt» — they steer the boat to the bank and drop anchor; Rome is still «procul», far off."
@@ -606,7 +608,7 @@ registerUnit({
     },
     {
       prompt: "In «Servī saccōs trahunt», who is doing the dragging?",
-      options: ["The sacks", "The slaves", "One slave", "Titus"],
+      options: ["The sacks", "The slaves", "One slave", "Ted"],
       answer: 1,
       explain: "«servī» is nominative plural — the subject — and «trahunt» ends in ‑unt: the slaves are dragging the sacks («saccōs», accusative)."
     },

@@ -35,12 +35,12 @@ registerUnit({
     },
     {
       heading: "Adjectives dress to match",
-      body: "<p>You met describing words in unit 1: <span class=\"la\">Paulla laeta est</span>. Here is the family secret: an adjective copies the ending style of its noun. <span class=\"la\">Hortus magnus est</span>. <span class=\"la\">Rosa pulchra est</span>. <span class=\"la\">Ātrium magnum est</span>. In the plural, the adjective goes plural too: <span class=\"la\">lectī novī sunt</span>, <span class=\"la\">rosae pulchrae sunt</span>, <span class=\"la\">cubicula parva sunt</span>.</p><p>One wardrobe note: <span class=\"la\">pulcher</span> (beautiful) hides its <span class=\"la\">-us</span>, but its other forms are perfectly regular — <span class=\"la\">pulchra</span>, <span class=\"la\">pulchrum</span>. And remember: you never have to build these forms yourself. Your only job as a reader is to notice the rhyme — matching endings mean the words belong together.</p>",
+      body: "<p>You met describing words in unit 1: <span class=\"la\">Paula laeta est</span>. Here is the family secret: an adjective copies the ending style of its noun. <span class=\"la\">Hortus magnus est</span>. <span class=\"la\">Rosa pulchra est</span>. <span class=\"la\">Ātrium magnum est</span>. In the plural, the adjective goes plural too: <span class=\"la\">lectī novī sunt</span>, <span class=\"la\">rosae pulchrae sunt</span>, <span class=\"la\">cubicula parva sunt</span>.</p><p>One wardrobe note: <span class=\"la\">pulcher</span> (beautiful) hides its <span class=\"la\">-us</span>, but its other forms are perfectly regular — <span class=\"la\">pulchra</span>, <span class=\"la\">pulchrum</span>. And remember: you never have to build these forms yourself. Your only job as a reader is to notice the rhyme — matching endings mean the words belong together.</p>",
       tip: "When «est» or «sunt» links a noun to a matching adjective, the sentence is describing something: X est Y — ‘X is Y’."
     },
     {
       heading: "«-que»: the clip-on ‘and’",
-      body: "<p>Latin has a second way to say ‘and’. Instead of putting <span class=\"la\">et</span> between two words, it can clip <span class=\"la\">-que</span> onto the <strong>end of the second word</strong>: <span class=\"la\">Quīntus Paullaque</span> = <span class=\"la\">Quīntus et Paulla</span>, ‘Quintus and Paulla’. Likewise <span class=\"la\">māter paterque</span>, ‘mother and father’.</p><p>Rome loved this little clip. The state's own name-stamp was <span class=\"la\">SPQR</span> — <span class=\"la\">Senātus Populusque Rōmānus</span>, ‘the Senate and People of Rome’. While we are collecting small words, meet <span class=\"la\">ecce</span>: it means ‘look!’ — the storyteller's finger pointing at whatever comes next.</p>",
+      body: "<p>Latin has a second way to say ‘and’. Instead of putting <span class=\"la\">et</span> between two words, it can clip <span class=\"la\">-que</span> onto the <strong>end of the second word</strong>: <span class=\"la\">Quinn Paulaque</span> = <span class=\"la\">Quinn et Paula</span>, ‘Quinn and Paula’. Likewise <span class=\"la\">māter paterque</span>, ‘mother and father’.</p><p>Rome loved this little clip. The state's own name-stamp was <span class=\"la\">SPQR</span> — <span class=\"la\">Senātus Populusque Rōmānus</span>, ‘the Senate and People of Rome’. While we are collecting small words, meet <span class=\"la\">ecce</span>: it means ‘look!’ — the storyteller's finger pointing at whatever comes next.</p>",
       tip: "See a word ending in -que? Snip the -que off, say ‘and’ in front of what's left, and keep reading."
     }
   ],
@@ -171,16 +171,16 @@ registerUnit({
       forms: "gen. dominī, m.",
       pos: "noun (2nd decl.)",
       gloss: "master of the house",
-      example: "Mārcus dominus est.",
-      exampleGloss: "Marcus is the master of the house."
+      example: "Mark dominus est.",
+      exampleGloss: "Mark is the master of the house."
     },
     {
       latin: "domina",
       forms: "gen. dominae, f.",
       pos: "noun (1st decl.)",
       gloss: "mistress of the house",
-      example: "Līvia domina est.",
-      exampleGloss: "Livia is the mistress of the house."
+      example: "Julia domina est.",
+      exampleGloss: "Julia is the mistress of the house."
     },
     {
       latin: "-que",
@@ -235,8 +235,8 @@ registerUnit({
       forms: "-a, -um",
       pos: "adj. (1st/2nd decl.)",
       gloss: "tired",
-      example: "Paulla fessa est.",
-      exampleGloss: "Paulla is tired."
+      example: "Paula fessa est.",
+      exampleGloss: "Paula is tired."
     },
     {
       latin: "īrātus",
@@ -251,12 +251,12 @@ registerUnit({
   readings: [
     {
       title: "Domus Fabia",
-      intro: "Quintus and Paulla give you a tour of the family's house in Ostia.",
+      intro: "Quinn and Paula give you a tour of the family's house in Ostia.",
       paragraphs: [
-        "Salvē! Ecce domus! Domus magna nōn est, sed bona pulchraque est. Hīc est familia Fabia: Mārcus et Līvia, Quīntus Paullaque, et Ferōx canis. Mārcus dominus est, Līvia domina est; Ferōx nōn dominus, sed canis est.",
+        "Salvē! Ecce domus! Domus magna nōn est, sed bona pulchraque est. Hīc est familia Fabia: Mark et Julia, Quinn Paulaque, et Lupo canis. Mark dominus est, Julia domina est; Lupo nōn dominus, sed canis est.",
         "Ecce ātrium! Ātrium magnum pulchrumque est. Hīc sunt mēnsa sellaeque; mēnsa nova nōn est, sed magna. Fenestrae quoque multae sunt.",
-        "Ecce culīna! Culīna parva sed plēna est. Ferōx laetus est, nam culīna plēna est!",
-        "Ecce cubicula! Cubicula parva sunt, sed lectī novī sunt. Ecce — lectus et Ferōx! Ēheu! Canis fessus est: lectus iam plēnus est."
+        "Ecce culīna! Culīna parva sed plēna est. Lupo laetus est, nam culīna plēna est!",
+        "Ecce cubicula! Cubicula parva sunt, sed lectī novī sunt. Ecce — lectus et Lupo! Ēheu! Canis fessus est: lectus iam plēnus est."
       ],
       glosses: {
         "salvē": "hello!",
@@ -271,12 +271,12 @@ registerUnit({
         "hīc": "here (adverb)",
         "familia": "family, household",
         "fabia": "Fabian — the family’s name",
-        "mārcus": "Marcus, the father",
+        "mark": "Mark, the father — his name never changes form",
         "et": "and",
-        "līvia": "Livia, the mother",
-        "quīntus": "Quintus, the son (age 12)",
-        "paullaque": "and Paulla («Paulla», the daughter, + -que)",
-        "ferōx": "Ferox, the family dog",
+        "julia": "Julia, the mother — her name declines like «puella»",
+        "quinn": "Quinn, the son (age 12)",
+        "paulaque": "and Paula («Paula», the daughter, + -que)",
+        "lupo": "Lupo, the family dog — his name plays on «lupus», ‘wolf’, but it never changes form",
         "canis": "dog",
         "dominus": "master of the house",
         "domina": "mistress of the house",
@@ -305,17 +305,17 @@ registerUnit({
         "plēnus": "full (matching «lectus»)"
       },
       translation: [
-        "Hello! Look — the house! The house is not big, but it is good and beautiful. Here is the Fabian family: Marcus and Livia, Quintus and Paulla, and the dog Ferox. Marcus is the master of the house, Livia is the mistress; Ferox is not the master — he is the dog.",
+        "Hello! Look — the house! The house is not big, but it is good and beautiful. Here is the Fabian family: Mark and Julia, Quinn and Paula, and the dog Lupo. Mark is the master of the house, Julia is the mistress; Lupo is not the master — he is the dog.",
         "Look — the atrium! The atrium is large and beautiful. Here are a table and chairs; the table is not new, but it is big. There are also many windows.",
-        "Look — the kitchen! The kitchen is small but full. Ferox is happy, because the kitchen is full!",
-        "Look — the bedrooms! The bedrooms are small, but the beds are new. Look — a bed, and Ferox! Oh no! The dog is tired: the bed is already full."
+        "Look — the kitchen! The kitchen is small but full. Lupo is happy, because the kitchen is full!",
+        "Look — the bedrooms! The bedrooms are small, but the beds are new. Look — a bed, and Lupo! Oh no! The dog is tired: the bed is already full."
       ],
       questions: [
         {
           q: "Who is the master of the house?",
-          options: ["Quīntus", "Ferōx", "Mārcus", "Paulla"],
+          options: ["Quinn", "Lupo", "Mark", "Paula"],
           answer: 2,
-          explain: "«Mārcus dominus est» — Marcus is the dominus, and Livia is the domina. Ferox, the text insists, is only the dog."
+          explain: "«Mark dominus est» — Mark is the dominus, and Julia is the domina. Lupo, the text insists, is only the dog."
         },
         {
           q: "In «Hīc sunt mēnsa sellaeque», what does «sellaeque» mean?",
@@ -324,27 +324,27 @@ registerUnit({
           explain: "Snip off the -que and say ‘and’: «sellaeque» = «et sellae», ‘and chairs’. The -ae ending shows it is plural."
         },
         {
-          q: "Why is Ferox happy in the kitchen?",
-          options: ["The kitchen is full", "The kitchen is new", "Līvia is there", "The windows are big"],
+          q: "Why is Lupo happy in the kitchen?",
+          options: ["The kitchen is full", "The kitchen is new", "Julia is there", "The windows are big"],
           answer: 0,
-          explain: "«Ferōx laetus est, nam culīna plēna est» — the kitchen is full, and a full kitchen is Ferox's favorite kind."
+          explain: "«Lupo laetus est, nam culīna plēna est» — the kitchen is full, and a full kitchen is Lupo's favorite kind."
         },
         {
           q: "At the end of the tour, why is the bed «plēnus» (full)?",
-          options: ["It is piled with gifts", "Quīntus is asleep in it", "Ferōx is lying on it", "It is covered with roses"],
+          options: ["It is piled with gifts", "Quinn is asleep in it", "Lupo is lying on it", "It is covered with roses"],
           answer: 2,
-          explain: "«Ecce — lectus et Ferōx! … lectus iam plēnus est» — the tired dog has already claimed the new bed."
+          explain: "«Ecce — lectus et Lupo! … lectus iam plēnus est» — the tired dog has already claimed the new bed."
         }
       ]
     },
     {
-      title: "Hortus et Ferōx",
-      intro: "The tour ends in Livia's pride and joy, the garden — where Ferox has been busy.",
+      title: "Hortus et Lupo",
+      intro: "The tour ends in Julia's pride and joy, the garden — where Lupo has been busy.",
       paragraphs: [
-        "Ecce hortus! Hortus parvus est, sed pulcher. Hīc mūrus magnus est, et porta nova. Hīc sunt herbae multae, aqua bona terraque bona. Sed ecce — rosae! Rosae pulchrae sunt. Līvia laeta est: rosae novae sunt, et hortus plēnus est.",
-        "Familia laeta est: Quīntus Paullaque laetī sunt, Mārcus Līviaque quoque laetī sunt. Sed ubi est Ferōx? Ferōx hīc nōn est.",
-        "Ecce Ferōx! Et ecce — fossa! Fossa magna est. Terra hīc est, terra ibi est… et rosae? Ēheu! Rosae novae iam perditae sunt! Herbae quoque perditae sunt. Hortus pulcher iam fossa magna est!",
-        "«Ferōx! Ferōx!» inquit Līvia. Domina valdē īrāta est. Ferōx iam laetus nōn est — canis fessus est. Sed Quīntus Paullaque laetī sunt: fossa magna est, et Ferōx amīcus bonus est! Māter īrāta est; pater quoque īrātus est… sed nōn valdē."
+        "Ecce hortus! Hortus parvus est, sed pulcher. Hīc mūrus magnus est, et porta nova. Hīc sunt herbae multae, aqua bona terraque bona. Sed ecce — rosae! Rosae pulchrae sunt. Julia laeta est: rosae novae sunt, et hortus plēnus est.",
+        "Familia laeta est: Quinn Paulaque laetī sunt, Mark Juliaque quoque laetī sunt. Sed ubi est Lupo? Lupo hīc nōn est.",
+        "Ecce Lupo! Et ecce — fossa! Fossa magna est. Terra hīc est, terra ibi est… et rosae? Ēheu! Rosae novae iam perditae sunt! Herbae quoque perditae sunt. Hortus pulcher iam fossa magna est!",
+        "«Lupo! Lupo!» inquit Julia. Domina valdē īrāta est. Lupo iam laetus nōn est — canis fessus est. Sed Quinn Paulaque laetī sunt: fossa magna est, et Lupo amīcus bonus est! Māter īrāta est; pater quoque īrātus est… sed nōn valdē."
       ],
       glosses: {
         "ecce": "look! behold!",
@@ -367,19 +367,19 @@ registerUnit({
         "terraque": "and earth («terra» + -que)",
         "rosae": "roses (plural of «rosa»)",
         "pulchrae": "beautiful (plural, matching «rosae»)",
-        "līvia": "Livia, the mother",
+        "julia": "Julia, the mother",
         "laeta": "happy",
         "novae": "new (plural)",
         "plēnus": "full",
         "familia": "family, household",
-        "quīntus": "Quintus, the son",
-        "paullaque": "and Paulla («Paulla» + -que)",
+        "quinn": "Quinn, the son",
+        "paulaque": "and Paula («Paula» + -que)",
         "laetī": "happy (plural)",
-        "mārcus": "Marcus, the father",
-        "līviaque": "and Livia («Līvia» + -que)",
+        "mark": "Mark, the father",
+        "juliaque": "and Julia («Julia» + -que)",
         "quoque": "also, too",
         "ubi": "where…? (part of the set phrase «ubi est …?», ‘where is …?’)",
-        "ferōx": "Ferox, the family dog",
+        "lupo": "Lupo, the family dog",
         "nōn": "not",
         "fossa": "a hole, a pit",
         "magna": "big",
@@ -402,35 +402,35 @@ registerUnit({
         "īrātus": "angry (matching «pater»)"
       },
       translation: [
-        "Look — the garden! The garden is small, but beautiful. Here there is a great wall, and a new gate. Here are many plants, good water, and good earth. But look — the roses! The roses are beautiful. Livia is happy: the roses are new, and the garden is full.",
-        "The family is happy: Quintus and Paulla are happy, and Marcus and Livia are happy too. But where is Ferox? Ferox is not here.",
-        "There is Ferox! And look — a hole! The hole is big. There is earth here, there is earth there… and the roses? Oh no! The new roses are already ruined! The plants are ruined too. The beautiful garden is now one big hole!",
-        "«Ferox! Ferox!» says Livia. The mistress of the house is very angry. Ferox is no longer happy — the dog is tired. But Quintus and Paulla are delighted: the hole is big, and Ferox is a good friend! Mother is angry; father is angry too… but not very."
+        "Look — the garden! The garden is small, but beautiful. Here there is a great wall, and a new gate. Here are many plants, good water, and good earth. But look — the roses! The roses are beautiful. Julia is happy: the roses are new, and the garden is full.",
+        "The family is happy: Quinn and Paula are happy, and Mark and Julia are happy too. But where is Lupo? Lupo is not here.",
+        "There is Lupo! And look — a hole! The hole is big. There is earth here, there is earth there… and the roses? Oh no! The new roses are already ruined! The plants are ruined too. The beautiful garden is now one big hole!",
+        "«Lupo! Lupo!» says Julia. The mistress of the house is very angry. Lupo is no longer happy — the dog is tired. But Quinn and Paula are delighted: the hole is big, and Lupo is a good friend! Mother is angry; father is angry too… but not very."
       ],
       questions: [
         {
-          q: "What is in the garden before Ferox gets to work?",
+          q: "What is in the garden before Lupo gets to work?",
           options: ["Many plants, good water, and roses", "A fountain and statues", "Trees and birds", "A table and chairs"],
           answer: 0,
-          explain: "«Hīc sunt herbae multae, aqua bona terraque bona. Sed ecce — rosae!» — plants, water, good earth, and Livia's new roses."
+          explain: "«Hīc sunt herbae multae, aqua bona terraque bona. Sed ecce — rosae!» — plants, water, good earth, and Julia's new roses."
         },
         {
-          q: "What has happened to Livia's new roses?",
-          options: ["They are blooming beautifully", "They have been ruined", "Paulla picked them", "They were moved inside"],
+          q: "What has happened to Julia's new roses?",
+          options: ["They are blooming beautifully", "They have been ruined", "Paula picked them", "They were moved inside"],
           answer: 1,
           explain: "«Rosae novae iam perditae sunt» — the new roses are now ruined, along with the plants, thanks to one very big hole."
         },
         {
-          q: "In «Quīntus Paullaque laetī sunt», why does the adjective end in -ī?",
+          q: "In «Quinn Paulaque laetī sunt», why does the adjective end in -ī?",
           options: ["It agrees with the plural subject", "It shows possession", "It marks a question", "It is a spelling mistake"],
           answer: 0,
-          explain: "«laetī» is nominative plural, matching the two-person subject «Quīntus Paullaque» — and «sunt» confirms the plural."
+          explain: "«laetī» is nominative plural, matching the two-person subject «Quinn Paulaque» — and «sunt» confirms the plural."
         },
         {
           q: "How does the family react to the hole?",
-          options: ["Everyone is furious", "Everyone laughs", "Līvia is very angry, but the children are delighted", "Only Ferōx is upset"],
+          options: ["Everyone is furious", "Everyone laughs", "Julia is very angry, but the children are delighted", "Only Lupo is upset"],
           answer: 2,
-          explain: "«Domina valdē īrāta est … sed Quīntus Paullaque laetī sunt». Marcus is angry too — «sed nōn valdē», but not very."
+          explain: "«Domina valdē īrāta est … sed Quinn Paulaque laetī sunt». Mark is angry too — «sed nōn valdē», but not very."
         }
       ]
     }

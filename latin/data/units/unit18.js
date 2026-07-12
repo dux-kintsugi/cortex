@@ -7,7 +7,7 @@ registerUnit({
   grammar: [
     {
       heading: "Counting to ten (and who declines)",
-      body: "<p>Paulla counts everything in this unit, so you will be counting too. The good news: most Latin numbers never change their endings. From <span class=\"la\">quattuor</span> to <span class=\"la\">decem</span> they are frozen — <span class=\"la\">quattuor saccī</span>, <span class=\"la\">quattuor saccōs</span>, <span class=\"la\">quattuor saccōrum</span>: the same four every time. The noun beside the number carries all the case information, so read the noun’s ending exactly as you always have.</p><p>Only the first three numbers dress to match their nouns. <span class=\"la\">ūnus, ūna, ūnum</span> behaves like an ordinary adjective; <span class=\"la\">duo</span> and <span class=\"la\">trēs</span> have a few forms of their own: <span class=\"la\">duo puerī</span> but <span class=\"la\">duae puellae</span>; <span class=\"la\">trēs hōrae</span> but <span class=\"la\">tria templa</span>. When you meet <span class=\"la\">duās</span> or <span class=\"la\">tria</span>, don’t reach for the dictionary — it is just two or three, dressed to agree with its noun.</p>",
+      body: "<p>Paula counts everything in this unit, so you will be counting too. The good news: most Latin numbers never change their endings. From <span class=\"la\">quattuor</span> to <span class=\"la\">decem</span> they are frozen — <span class=\"la\">quattuor saccī</span>, <span class=\"la\">quattuor saccōs</span>, <span class=\"la\">quattuor saccōrum</span>: the same four every time. The noun beside the number carries all the case information, so read the noun’s ending exactly as you always have.</p><p>Only the first three numbers dress to match their nouns. <span class=\"la\">ūnus, ūna, ūnum</span> behaves like an ordinary adjective; <span class=\"la\">duo</span> and <span class=\"la\">trēs</span> have a few forms of their own: <span class=\"la\">duo puerī</span> but <span class=\"la\">duae puellae</span>; <span class=\"la\">trēs hōrae</span> but <span class=\"la\">tria templa</span>. When you meet <span class=\"la\">duās</span> or <span class=\"la\">tria</span>, don’t reach for the dictionary — it is just two or three, dressed to agree with its noun.</p>",
       table: {
         caption: "The cardinal numbers 1–10",
         headers: ["Arabic", "Roman", "Latin"],
@@ -116,8 +116,8 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "numeral",
       gloss: "five",
-      example: "Paulla quīnque sēstertiōs habet.",
-      exampleGloss: "Paulla has five sesterces."
+      example: "Paula quīnque sēstertiōs habet.",
+      exampleGloss: "Paula has five sesterces."
     },
     {
       latin: "sex",
@@ -164,8 +164,8 @@ registerUnit({
       forms: "(indēcl.)",
       pos: "numeral",
       gloss: "twenty",
-      example: "Iam vīgintī annōs Mārcus mercātor est.",
-      exampleGloss: "Marcus has been a merchant for twenty years now."
+      example: "Iam vīgintī annōs Mark mercātor est.",
+      exampleGloss: "Mark has been a merchant for twenty years now."
     },
     {
       latin: "centum",
@@ -212,8 +212,8 @@ registerUnit({
       forms: "hōrae, f.",
       pos: "noun (1st decl.)",
       gloss: "hour",
-      example: "Quīntus trēs hōrās in lūdō sedet.",
-      exampleGloss: "Quintus sits in school for three hours."
+      example: "Quinn trēs hōrās in lūdō sedet.",
+      exampleGloss: "Quinn sits in school for three hours."
     },
     {
       latin: "annus",
@@ -252,24 +252,24 @@ registerUnit({
       forms: "sēstertiī, m.",
       pos: "noun (2nd decl.)",
       gloss: "sesterce (coin)",
-      example: "Mercātor Paullae ūnum sēstertium dat.",
-      exampleGloss: "The merchant gives Paulla one sesterce."
+      example: "Mercātor Paulae ūnum sēstertium dat.",
+      exampleGloss: "The merchant gives Paula one sesterce."
     },
     {
       latin: "numerō",
       forms: "numerāre, numerāvī, numerātum",
       pos: "verb (1st conj.)",
       gloss: "count",
-      example: "Paulla nāvēs in portū numerat.",
-      exampleGloss: "Paulla counts the ships in the harbor."
+      example: "Paula nāvēs in portū numerat.",
+      exampleGloss: "Paula counts the ships in the harbor."
     },
     {
       latin: "post",
       forms: "(+ acc.)",
       pos: "preposition",
       gloss: "after, behind",
-      example: "Post cēnam Ferōx statim dormit.",
-      exampleGloss: "After dinner Ferox immediately goes to sleep."
+      example: "Post cēnam canis Lupo statim dormit.",
+      exampleGloss: "After dinner the dog Lupo immediately goes to sleep."
     },
     {
       latin: "ante",
@@ -283,19 +283,19 @@ registerUnit({
 
   readings: [
     {
-      title: "Paulla omnia numerat",
-      intro: "Marcus has grain to sell in Rome — and Paulla, who counts everything she sees, insists on coming along.",
+      title: "Paula omnia numerat",
+      intro: "Mark has grain to sell in Rome — and Paula, who counts everything she sees, insists on coming along.",
       paragraphs: [
-        "Prīmā hōrā Mārcus et Paulla per viās urbis ambulant. Mārcus hodiē frūmentum suum vēndere cupit; mercātor enim Rōmānus centum saccōs frūmentī emere optat. Paulla cum patre ambulat, quod numerāre amat. Puella omnia numerat!",
-        "«Ecce, pater!» inquit Paulla. «In hāc viā decem tabernās videō et vīgintī asinōs!» Deinde puella columnās templī numerat: «Ūna, duae, trēs, quattuor, quīnque, sex, septem, octō — octō columnae!» Mārcus rīdet et rogat: «Quot hominēs in forō sunt?» «Tot hominēs numerāre nōn possum, pater! Fortasse mīlle sunt!»",
-        "Post duās hōrās ad forum veniunt. Ibi mercātor Rōmānus, vir magnus, iam Mārcum exspectat. «Salvē, Mārce!» inquit. «Quot saccōs frūmentī habēs?» «Centum saccōs habeō,» respondet Mārcus. «Frūmentum meum optimum est: melius frūmentum in urbe nōn est!»"
+        "Prīmā hōrā Mark et Paula per viās urbis ambulant. Mark hodiē frūmentum suum vēndere cupit; mercātor enim Rōmānus centum saccōs frūmentī emere optat. Paula cum patre ambulat, quod numerāre amat. Puella omnia numerat!",
+        "«Ecce, pater!» inquit Paula. «In hāc viā decem tabernās videō et vīgintī asinōs!» Deinde puella columnās templī numerat: «Ūna, duae, trēs, quattuor, quīnque, sex, septem, octō — octō columnae!» Mark rīdet et rogat: «Quot hominēs in forō sunt?» «Tot hominēs numerāre nōn possum, pater! Fortasse mīlle sunt!»",
+        "Post duās hōrās ad forum veniunt. Ibi mercātor Rōmānus, vir magnus, iam patrem exspectat. «Salvē, Mark!» inquit. «Quot saccōs frūmentī habēs?» «Centum saccōs habeō,» respondet Mark. «Frūmentum meum optimum est: melius frūmentum in urbe nōn est!»"
       ],
       glosses: {
         "prīmā": "first (abl. — «prīmā hōrā», at the first hour: dawn)",
         "hōrā": "hour (abl. of time when — answers ‘when?’)",
-        "mārcus": "Marcus (the father, a grain merchant)",
+        "mark": "Mark (the father, a grain merchant — his name never changes form)",
         "et": "and",
-        "paulla": "Paulla (his daughter, eight years old)",
+        "paula": "Paula (his daughter, eight years old)",
         "per": "through (+ acc.)",
         "viās": "the streets (acc. pl. after «per»)",
         "urbis": "of the city (gen.)",
@@ -366,10 +366,9 @@ registerUnit({
         "vir": "a man (nom.)",
         "magnus": "big",
         "iam": "already",
-        "mārcum": "Marcus (acc. — the one being waited for)",
+        "patrem": "(her) father (acc. — the one being waited for)",
         "exspectat": "awaits, is waiting for",
         "salvē": "hello!",
-        "mārce": "Marcus! (vocative — direct address)",
         "habēs": "you (sg.) have",
         "habeō": "I have",
         "respondet": "answers, replies",
@@ -380,24 +379,24 @@ registerUnit({
         "urbe": "the city (abl. after «in»)"
       },
       translation: [
-        "At the first hour Marcus and Paulla are walking through the streets of the city. Today Marcus wants to sell his grain, for a Roman merchant wishes to buy a hundred sacks of grain. Paulla walks along with her father because she loves to count. The girl counts everything!",
-        "«Look, father!» says Paulla. «In this street I see ten shops and twenty donkeys!» Then the girl counts the columns of a temple: «One, two, three, four, five, six, seven, eight — eight columns!» Marcus laughs and asks: «How many people are in the forum?» «I can’t count so many people, father! Maybe there are a thousand!»",
-        "After two hours they come to the forum. There the Roman merchant, a big man, is already waiting for Marcus. «Hello, Marcus!» he says. «How many sacks of grain do you have?» «I have a hundred sacks,» Marcus replies. «My grain is excellent: there is no better grain in the city!»"
+        "At the first hour Mark and Paula are walking through the streets of the city. Today Mark wants to sell his grain, for a Roman merchant wishes to buy a hundred sacks of grain. Paula walks along with her father because she loves to count. The girl counts everything!",
+        "«Look, father!» says Paula. «In this street I see ten shops and twenty donkeys!» Then the girl counts the columns of a temple: «One, two, three, four, five, six, seven, eight — eight columns!» Mark laughs and asks: «How many people are in the forum?» «I can’t count so many people, father! Maybe there are a thousand!»",
+        "After two hours they come to the forum. There the Roman merchant, a big man, is already waiting for her father. «Hello, Mark!» he says. «How many sacks of grain do you have?» «I have a hundred sacks,» Mark replies. «My grain is excellent: there is no better grain in the city!»"
       ],
       questions: [
         {
-          q: "Why does Paulla come along with her father?",
+          q: "Why does Paula come along with her father?",
           options: [
             "She wants to buy a new doll",
             "Because she loves to count — and counts everything she sees",
-            "Livia sent her to keep an eye on Marcus",
-            "She is looking for Ferox, who has run off"
+            "Julia sent her to keep an eye on Mark",
+            "She is looking for Lupo, who has run off"
           ],
           answer: 1,
-          explain: "«Paulla cum patre ambulat, quod numerāre amat. Puella omnia numerat!» — she walks with her father because she loves counting."
+          explain: "«Paula cum patre ambulat, quod numerāre amat. Puella omnia numerat!» — she walks with her father because she loves counting."
         },
         {
-          q: "In «Prīmā hōrā Mārcus et Paulla ambulant», what does «prīmā hōrā» tell you?",
+          q: "In «Prīmā hōrā Mark et Paula ambulant», what does «prīmā hōrā» tell you?",
           options: [
             "How long they walk",
             "Where they are walking",
@@ -411,10 +410,10 @@ registerUnit({
           q: "How many columns does the temple turn out to have?",
           options: ["Six", "Seven", "Eight", "Ten"],
           answer: 2,
-          explain: "Paulla counts up to «octō — octō columnae!»: eight columns."
+          explain: "Paula counts up to «octō — octō columnae!»: eight columns."
         },
         {
-          q: "How does Marcus answer the question «Quot saccōs frūmentī habēs?»",
+          q: "How does Mark answer the question «Quot saccōs frūmentī habēs?»",
           options: [
             "Twenty sacks, of poor quality",
             "A hundred sacks — and no better grain in the city",
@@ -430,10 +429,10 @@ registerUnit({
       title: "Pretium frūmentī",
       intro: "The haggling begins — and when the coins are finally counted out, only one person in the forum counts them correctly.",
       paragraphs: [
-        "«Quantum est pretium?» rogat mercātor Rōmānus. «Centum saccī — centum sēstertiī!» respondet Mārcus. «Centum sēstertiī? Nimium est!» clāmat mercātor. «Tibi octōgintā sēstertiōs dō.» Mārcus caput movet: «Iam vīgintī annōs frūmentum vēndō, amīce; pretium bonum sciō.»",
-        "Duās hōrās mercātōrēs dē pretiō clāmant. Tandem mercātor Rōmānus «Nōnāgintā sēstertiōs tibi dō» inquit, «nōn plūs!» «Bene,» respondet Mārcus. «Nōnāgintā sēstertiī mihi placent.» Mercātor numerum in tabulā scrībit: XC.",
-        "Deinde mercātor Rōmānus sēstertiōs numerat et Mārcō dat. Sed Paulla quoque pecūniam numerat. «Pater!» clāmat. «Hīc octōgintā septem sēstertiī sunt, nōn nōnāgintā! Trēs sēstertiī dēsunt!» Mercātor ērubēscit et trēs sēstertiōs addit. «Errāvī,» inquit. «Haec puella callidior est quam multī mercātōrēs! Quot annōs nāta es, puella?» «Octō annōs nāta sum!» respondet Paulla. Mercātor rīdet et puellae ūnum sēstertium dōnat.",
-        "Nocte familia in caupōnā sedet et Paulla mātrī omnia nārrat. «Nunc quīnque sēstertiōs habeō, māter: quattuor et ūnum novum!» Līvia rīdet. Quīntus rogat: «Quandō domum redīmus, pater?» «Post ūnum mēnsem,» respondet Mārcus. Subitō Ferōx botulum Quīntī rapit et dēvorat. «Ō Ferōx!» clāmat puer īrātus. «Botulus meus erat!» Paulla rīdet: «Nunc Ferōx ūnum botulum habet, tū nūllum!»"
+        "«Quantum est pretium?» rogat mercātor Rōmānus. «Centum saccī — centum sēstertiī!» respondet Mark. «Centum sēstertiī? Nimium est!» clāmat mercātor. «Tibi octōgintā sēstertiōs dō.» Mark caput movet: «Iam vīgintī annōs frūmentum vēndō, amīce; pretium bonum sciō.»",
+        "Duās hōrās mercātōrēs dē pretiō clāmant. Tandem mercātor Rōmānus «Nōnāgintā sēstertiōs tibi dō» inquit, «nōn plūs!» «Bene,» respondet Mark. «Nōnāgintā sēstertiī mihi placent.» Mercātor numerum in tabulā scrībit: XC.",
+        "Deinde mercātor Rōmānus sēstertiōs numerat et patrī dat. Sed Paula quoque pecūniam numerat. «Pater!» clāmat. «Hīc octōgintā septem sēstertiī sunt, nōn nōnāgintā! Trēs sēstertiī dēsunt!» Mercātor ērubēscit et trēs sēstertiōs addit. «Errāvī,» inquit. «Haec puella callidior est quam multī mercātōrēs! Quot annōs nāta es, puella?» «Octō annōs nāta sum!» respondet Paula. Mercātor rīdet et puellae ūnum sēstertium dōnat.",
+        "Nocte familia in caupōnā sedet et Paula mātrī omnia nārrat. «Nunc quīnque sēstertiōs habeō, māter: quattuor et ūnum novum!» Julia rīdet. Quinn rogat: «Quandō domum redīmus, pater?» «Post ūnum mēnsem,» respondet Mark. Subitō canis Lupo botulum puerī rapit et dēvorat. «Ō Lupo!» clāmat puer īrātus. «Botulus meus erat!» Paula rīdet: «Nunc Lupo ūnum botulum habet, tū nūllum!»"
       ],
       glosses: {
         "quantum": "how much? how great? (from «quantus»)",
@@ -446,7 +445,7 @@ registerUnit({
         "saccī": "sacks (nom. pl.)",
         "sēstertiī": "sesterces (nom. pl. — the everyday Roman coin)",
         "respondet": "answers, replies",
-        "mārcus": "Marcus (the father)",
+        "mark": "Mark (the father — his name never changes form)",
         "nimium": "too much",
         "clāmat": "shouts",
         "tibi": "to you (dat. of «tū»)",
@@ -485,10 +484,10 @@ registerUnit({
         "deinde": "then, next",
         "numerat": "counts",
         "et": "and",
-        "mārcō": "to Marcus (dat. — the receiver)",
+        "patrī": "to (her) father (dat. — the receiver)",
         "dat": "gives",
         "sed": "but",
-        "paulla": "Paulla (the daughter)",
+        "paula": "Paula (the daughter)",
         "quoque": "also, too",
         "pecūniam": "the money (acc. — object)",
         "pater": "father! (vocative)",
@@ -527,18 +526,19 @@ registerUnit({
         "māter": "mother! (vocative)",
         "quattuor": "four",
         "novum": "new (agreeing with «ūnum [sēstertium]»)",
-        "līvia": "Livia (the mother)",
+        "julia": "Julia (the mother — her name declines like «puella»)",
         "rīdet": "laughs",
-        "quīntus": "Quintus (the son, twelve years old)",
+        "quinn": "Quinn (the son, twelve years old — his name never changes form)",
         "quandō": "when?",
         "domum": "home(ward) (acc. of motion toward — no preposition needed)",
         "redīmus": "do we return, go back (from «redeō»)",
         "post": "after (+ acc.)",
         "mēnsem": "month (acc. after «post»)",
         "subitō": "suddenly",
-        "ferōx": "Ferox (the dog, a lovable menace)",
+        "canis": "the dog (nom. — subject; his name follows in apposition)",
+        "lupo": "Lupo (the dog, a lovable menace — quasi lupus!)",
         "botulum": "the sausage (acc. — object)",
-        "quīntī": "of Quintus, Quintus’s (gen.)",
+        "puerī": "of the boy, the boy’s (gen.)",
         "rapit": "snatches",
         "dēvorat": "devours",
         "ō": "oh!",
@@ -552,25 +552,25 @@ registerUnit({
         "habet": "has"
       },
       translation: [
-        "«How much is the price?» asks the Roman merchant. «A hundred sacks — a hundred sesterces!» answers Marcus. «A hundred sesterces? That’s too much!» shouts the merchant. «I’ll give you eighty sesterces.» Marcus shakes his head: «I have been selling grain for twenty years now, my friend; I know a good price.»",
-        "For two hours the merchants shout about the price. At last the Roman merchant says: «I’ll give you ninety sesterces — no more!» «Fine,» answers Marcus. «Ninety sesterces suit me.» The merchant writes the number on a tablet: XC.",
-        "Then the Roman merchant counts out the sesterces and gives them to Marcus. But Paulla counts the money too. «Father!» she shouts. «There are eighty-seven sesterces here, not ninety! Three sesterces are missing!» The merchant blushes and adds three sesterces. «I made a mistake,» he says. «This girl is cleverer than many merchants! How old are you, girl?» «I am eight years old!» Paulla answers. The merchant laughs and gives the girl one sesterce as a present.",
-        "That night the family sits in the inn, and Paulla tells her mother everything. «Now I have five sesterces, mother: four — and one new one!» Livia laughs. Quintus asks: «When do we go home, father?» «After one month,» Marcus answers. Suddenly Ferox snatches Quintus’s sausage and devours it. «Oh, Ferox!» shouts the boy, furious. «That was my sausage!» Paulla laughs: «Now Ferox has one sausage — and you have none!»"
+        "«How much is the price?» asks the Roman merchant. «A hundred sacks — a hundred sesterces!» answers Mark. «A hundred sesterces? That’s too much!» shouts the merchant. «I’ll give you eighty sesterces.» Mark shakes his head: «I have been selling grain for twenty years now, my friend; I know a good price.»",
+        "For two hours the merchants shout about the price. At last the Roman merchant says: «I’ll give you ninety sesterces — no more!» «Fine,» answers Mark. «Ninety sesterces suit me.» The merchant writes the number on a tablet: XC.",
+        "Then the Roman merchant counts out the sesterces and gives them to her father. But Paula counts the money too. «Father!» she shouts. «There are eighty-seven sesterces here, not ninety! Three sesterces are missing!» The merchant blushes and adds three sesterces. «I made a mistake,» he says. «This girl is cleverer than many merchants! How old are you, girl?» «I am eight years old!» Paula answers. The merchant laughs and gives the girl one sesterce as a present.",
+        "That night the family sits in the inn, and Paula tells her mother everything. «Now I have five sesterces, mother: four — and one new one!» Julia laughs. Quinn asks: «When do we go home, father?» «After one month,» Mark answers. Suddenly the dog Lupo snatches the boy’s sausage and devours it. «Oh, Lupo!» shouts the boy, furious. «That was my sausage!» Paula laughs: «Now Lupo has one sausage — and you have none!»"
       ],
       questions: [
         {
-          q: "What does the Roman merchant offer at first, and what does Marcus ask for?",
+          q: "What does the Roman merchant offer at first, and what does Mark ask for?",
           options: [
-            "He offers eighty sesterces; Marcus asks a hundred",
-            "He offers a hundred sesterces; Marcus asks eighty",
-            "He offers ninety sesterces; Marcus asks a thousand",
-            "He offers twenty sesterces; Marcus asks ninety"
+            "He offers eighty sesterces; Mark asks a hundred",
+            "He offers a hundred sesterces; Mark asks eighty",
+            "He offers ninety sesterces; Mark asks a thousand",
+            "He offers twenty sesterces; Mark asks ninety"
           ],
           answer: 0,
-          explain: "Marcus opens with «centum saccī — centum sēstertiī!» and the merchant counters «Tibi octōgintā sēstertiōs dō» — eighty."
+          explain: "Mark opens with «centum saccī — centum sēstertiī!» and the merchant counters «Tibi octōgintā sēstertiōs dō» — eighty."
         },
         {
-          q: "In «Iam vīgintī annōs frūmentum vēndō», what is Marcus saying?",
+          q: "In «Iam vīgintī annōs frūmentum vēndō», what is Mark saying?",
           options: [
             "He sold grain twenty years ago",
             "He has been selling grain for twenty years now",
@@ -581,12 +581,12 @@ registerUnit({
           explain: "The accusative «vīgintī annōs» measures duration, and «iam» + present tense means ‘have been …ing for … now’."
         },
         {
-          q: "What does Paulla discover when she counts the money?",
+          q: "What does Paula discover when she counts the money?",
           options: [
             "The merchant has paid three sesterces too many",
             "There are only eighty-seven sesterces — three are missing",
             "The coins are denarii, not sesterces",
-            "Marcus has miscounted his sacks of grain"
+            "Mark has miscounted his sacks of grain"
           ],
           answer: 1,
           explain: "«Hīc octōgintā septem sēstertiī sunt, nōn nōnāgintā! Trēs sēstertiī dēsunt!» — 87, not 90: three missing."
@@ -595,12 +595,12 @@ registerUnit({
           q: "How does the merchant react to being caught short?",
           options: [
             "He angrily refuses to pay anything",
-            "He blames Marcus for the mistake",
-            "He blushes, adds the three sesterces, and gives Paulla a coin of her own",
+            "He blames Mark for the mistake",
+            "He blushes, adds the three sesterces, and gives Paula a coin of her own",
             "He calls for the soldiers in the forum"
           ],
           answer: 2,
-          explain: "«Mercātor ērubēscit et trēs sēstertiōs addit» — then he praises Paulla («callidior … quam multī mercātōrēs!») and gives her a sesterce."
+          explain: "«Mercātor ērubēscit et trēs sēstertiōs addit» — then he praises Paula («callidior … quam multī mercātōrēs!») and gives her a sesterce."
         }
       ]
     }
@@ -631,7 +631,7 @@ registerUnit({
       explain: "A bare ablative on a time word is the ‘time when’ construction: at the first hour."
     },
     {
-      prompt: "In «Titus multōs annōs nāvigat», the accusative «multōs annōs» expresses…",
+      prompt: "In «Avunculus Ted multōs annōs nāvigat», the accusative «multōs annōs» expresses…",
       options: [
         "the place where he sails",
         "possession — whose years they are",
@@ -639,7 +639,7 @@ registerUnit({
         "a point in time — in that year"
       ],
       answer: 2,
-      explain: "The bare accusative of a time word measures a stretch of time: Titus sails for many years."
+      explain: "The bare accusative of a time word measures a stretch of time: Uncle Ted sails for many years."
     },
     {
       prompt: "Which phrase correctly says ‘two girls’ as the subject of a sentence?",
