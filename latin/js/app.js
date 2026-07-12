@@ -89,8 +89,12 @@
       speechSynthesis.cancel();
       const voice = L.pickVoice();
       const rate = (L.state.settings && L.state.settings.rate) || 0.85;
+      // classical-pronunciation engine: respell so the Italian voice produces the classical
+      // sounds (hard c/g, sc = sk, v = w, ae = eye) with the classically-stressed syllable marked
+      const usePhon = !(L.state.settings && L.state.settings.phonetics === false) && L.phon;
+      const prepared = usePhon ? L.phon.transliterate(text) : L.stripMacrons(text);
       // speak sentence by sentence — natural pauses instead of one robotic run-on
-      const chunks = L.stripMacrons(text).match(/[^.!?;:]+[.!?;:]*\s*/g) || [L.stripMacrons(text)];
+      const chunks = prepared.match(/[^.!?;:]+[.!?;:]*\s*/g) || [prepared];
       for (const chunk of chunks) {
         if (!chunk.trim()) continue;
         const u = new SpeechSynthesisUtterance(chunk.trim());
@@ -157,6 +161,10 @@
       L.save();
       const label = document.getElementById('ratelabel');
       if (label) label.textContent = e.target.value + '×';
+    } else if (e.target.id === 'phonsel') {
+      L.state.settings = L.state.settings || {};
+      L.state.settings.phonetics = e.target.checked;
+      L.save();
     }
   });
 
@@ -401,6 +409,18 @@
           <button class="btn ghost" data-action="speak"
             data-text="Salvē! Ecce familia. Mark pater est, Julia māter est, et Lupo — canis optimus — semper dormit.">🔊 Test the voice</button>
         </p>
+        <p class="phonrow"><label><input type="checkbox" id="phonsel"
+          ${!(L.state.settings && L.state.settings.phonetics === false) ? 'checked' : ''}>
+          <strong>Classical pronunciation engine</strong> — before anything is spoken, the app respells each
+          word so the Italian voice is forced to produce the classical sounds: hard <span class="la">c</span>
+          and <span class="la">g</span> everywhere, <span class="la">sc</span> as <em>sk</em>,
+          <span class="la">v</span> as <em>w</em>, <span class="la">ae</span> as in <em>eye</em> — and marks the
+          classically correct stressed syllable on every word. Leave it on; turn it off only to compare.</label></p>
+        <p class="mini">Honest fine print: even with the engine, <span class="la">gn</span> comes out "ny"
+        (the church value — the classical one is debated anyway), vowel length off the stressed syllable
+        isn't conveyed, <span class="la">h</span> is nearly silent, and an <span class="la">s</span> between
+        vowels may soften toward <em>z</em> on some voices. Everything else the Reference tab teaches is
+        what you'll hear.</p>
         <p class="mini"><strong>Make it sound much better:</strong> your device likely has far nicer voices
         than the default, just not downloaded. On a Mac: System Settings → Accessibility → Spoken Content →
         System Voice → Manage Voices… → download an Italian voice marked <em>Enhanced</em> or
