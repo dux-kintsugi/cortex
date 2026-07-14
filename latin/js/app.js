@@ -78,10 +78,13 @@
         .sort((a, b) => voiceScore(b) - voiceScore(a));
     } catch (e) { return []; }
   };
+  L.allVoices = () => {
+    try { return speechSynthesis.getVoices(); } catch (e) { return []; }
+  };
   L.pickVoice = () => {
-    const list = L.voiceList();
     const wanted = L.state.settings && L.state.settings.voice;
-    return list.find(v => v.voiceURI === wanted) || list[0] || null;
+    // honor an explicit choice from ANY voice on the system, not just the ranked list
+    return L.allVoices().find(v => v.voiceURI === wanted) || L.voiceList()[0] || null;
   };
   L.speak = text => {
     try {
@@ -146,6 +149,8 @@
       }
     } else if (action === 'speak') {
       L.speak(el.dataset.text || '');
+    } else if (action === 'rescan-voices') {
+      refreshVoiceUI();
     }
   }
 
@@ -169,19 +174,29 @@
   });
 
   function voiceOptionsHTML() {
-    const list = L.voiceList();
-    if (!list.length) return '<option value="">(no suitable voice found — see the tip below)</option>';
+    const ranked = L.voiceList();
+    const all = L.allVoices();
+    if (!all.length) return '<option value="">(no voices found — see the tips below)</option>';
     const chosen = L.pickVoice();
-    return list.map((v, i) =>
-      `<option value="${L.esc(v.voiceURI)}" ${chosen && v.voiceURI === chosen.voiceURI ? 'selected' : ''}>${L.esc(v.name)} — ${L.esc(v.lang)}${i === 0 ? ' (recommended)' : ''}</option>`).join('');
+    const opt = (v, tag) =>
+      `<option value="${L.esc(v.voiceURI)}" ${chosen && v.voiceURI === chosen.voiceURI ? 'selected' : ''}>${L.esc(v.name)} — ${L.esc(v.lang)}${tag || ''}</option>`;
+    const rankedSet = new Set(ranked.map(v => v.voiceURI));
+    const others = all.filter(v => !rankedSet.has(v.voiceURI))
+      .sort((a, b) => (a.lang + a.name).localeCompare(b.lang + b.name));
+    return `<optgroup label="Best for Latin — Italian, ranked">${ranked.map((v, i) => opt(v, i === 0 ? ' (recommended)' : '')).join('')}</optgroup>` +
+      (others.length ? `<optgroup label="All other voices — selectable, but the classical engine is tuned for Italian">${others.map(v => opt(v)).join('')}</optgroup>` : '');
+  }
+
+  function refreshVoiceUI() {
+    const sel = document.getElementById('voicesel');
+    if (sel) sel.innerHTML = voiceOptionsHTML();
+    const meta = document.getElementById('voicemeta');
+    if (meta) meta.textContent = L.allVoices().length + ' voices detected';
   }
 
   try {
     if (window.speechSynthesis) {
-      speechSynthesis.onvoiceschanged = () => {
-        const sel = document.getElementById('voicesel');
-        if (sel) sel.innerHTML = voiceOptionsHTML();
-      };
+      speechSynthesis.onvoiceschanged = refreshVoiceUI;
     }
   } catch (e) {}
 
@@ -216,7 +231,7 @@
     else if (c.view === 'reference') L.renderReference(app, c.a);
     else if (c.view === 'library') L.renderLibrary(app);
     else if (c.view === 'placement') L.renderPlacement(app);
-    else if (c.view === 'guide') app.innerHTML = renderGuide();
+    else if (c.view === 'guide') { app.innerHTML = renderGuide(); refreshVoiceUI(); }
     else app.innerHTML = renderHome();
   };
 
@@ -409,6 +424,13 @@
           <button class="btn ghost" data-action="speak"
             data-text="Salvē! Ecce familia. Mark pater est, Julia māter est, et Lupo — canis optimus — semper dormit.">🔊 Test the voice</button>
         </p>
+        <p class="mini"><span id="voicemeta"></span> · <button class="linkbtn" data-action="rescan-voices">rescan</button></p>
+        <p class="mini"><strong>Downloaded a voice but it isn't listed?</strong> Two usual causes.
+        ① Browsers scan system voices only at launch — quit the browser completely (⌘Q on a Mac, swipe the
+        app away on iPhone) and reopen; then hit <em>rescan</em>. ② <em>Siri</em> voices never appear —
+        Apple doesn't share them with web apps. Download from the <em>Spoken Content</em> voice list
+        instead (System Settings → Accessibility → Spoken Content → Manage Voices → Italian →
+        Alice / Federica / Emma, marked Enhanced or Premium).</p>
         <p class="phonrow"><label><input type="checkbox" id="phonsel"
           ${!(L.state.settings && L.state.settings.phonetics === false) ? 'checked' : ''}>
           <strong>Classical pronunciation engine</strong> — before anything is spoken, the app respells each
