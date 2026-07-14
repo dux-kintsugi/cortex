@@ -316,6 +316,45 @@ button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
   * { transition: none !important; animation: none !important; }
 }
 
+/* ---------- magister ---------- */
+.magwrap { max-width: 780px; margin: 0 auto; }
+.maghead { text-align: center; margin-bottom: 1.1rem; }
+.maghead h1 { color: var(--red); font-variant: small-caps; letter-spacing: 0.05em; }
+.maghead p { color: var(--muted); margin-top: 0.3rem; }
+.mag-msgs {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: var(--shadow); padding: 1rem; min-height: 260px; max-height: 60vh;
+  overflow-y: auto; display: flex; flex-direction: column; gap: 0.7rem;
+}
+.mag-msg {
+  max-width: 85%; padding: 0.6rem 0.95rem; border-radius: 12px; line-height: 1.55;
+  font-size: 0.98rem; overflow-wrap: break-word;
+}
+.mag-msg.mine { align-self: flex-end; background: var(--red-bg); border: 1px solid #e8c8c2; }
+.mag-msg.theirs { align-self: flex-start; background: #faf5e6; border: 1px solid var(--line); }
+.mag-msg.pending { color: var(--muted); }
+.mag-msg.mag-error { border-color: var(--red); color: var(--red-deep); }
+.mag-note { margin-top: 0.4rem; font-size: 0.8rem; color: var(--muted); font-style: italic; }
+.mag-msg .la { color: var(--red-deep); font-weight: 550; }
+.mag-inputrow { display: flex; gap: 0.7rem; margin-top: 0.9rem; align-items: flex-end; }
+.mag-inputrow textarea {
+  flex: 1; font: inherit; font-size: 0.98rem; padding: 0.6rem 0.8rem; resize: vertical;
+  border: 1.5px solid var(--line); border-radius: 10px; background: #fffdf6; color: var(--ink);
+  min-height: 2.6rem;
+}
+.mag-inputrow textarea:focus { outline: 2px solid var(--gold); }
+.mag-keyrow { display: flex; gap: 0.7rem; justify-content: center; margin: 1rem 0 0.4rem; flex-wrap: wrap; }
+.mag-keyrow input {
+  font: inherit; font-size: 0.95rem; padding: 0.55rem 0.8rem; width: min(320px, 100%);
+  border: 1.5px solid var(--line); border-radius: 10px; background: #fffdf6; color: var(--ink);
+}
+.tipask {
+  display: block; margin-top: 0.45rem; color: #f0cf8e; font-size: 0.85rem;
+  font-variant: small-caps; letter-spacing: 0.06em; text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.tipask:hover { color: #fff; }
+
 /* ---------- library ---------- */
 .libhead { max-width: 700px; margin: 0 auto 1.4rem; text-align: center; }
 .libhead h1 { color: var(--red); font-variant: small-caps; letter-spacing: 0.05em; }

@@ -25,6 +25,8 @@ browser you use.
 - **Spaced-repetition review** of every word you learn (Review tab).
 - **A full reference** — pronunciation, all five declensions, the complete verb system,
   pronouns, participles, the subjunctive for readers, and a sentence-attack strategy.
+- **Magister** — an AI tutor / advanced dictionary (bring your own Anthropic API key; stored
+  in-browser only). Progress-aware answers, plus one-tap "Ask Magister" on any word in any reading.
 
 ## Structure
 

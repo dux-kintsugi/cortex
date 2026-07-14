@@ -380,11 +380,39 @@
       }
       document.querySelectorAll('.w.hl').forEach(x => x.classList.remove('hl'));
       w.classList.add('hl');
-      tip.innerHTML = `<b class="la">${L.esc(w.textContent)}</b> — ${L.esc(w.dataset.g)}`;
+      // sentence context for "Ask Magister": the sentence containing THIS occurrence
+      // (located by character offset, so tapping «est» in sentence 3 doesn't send sentence 1)
+      const word = w.textContent;
+      const par = w.closest('.rp');
+      let sentence = '';
+      if (par) {
+        let offset = 0;
+        const walker = document.createTreeWalker(par, NodeFilter.SHOW_TEXT);
+        let node;
+        while ((node = walker.nextNode())) {
+          if (w.contains(node)) break;
+          offset += node.textContent.length;
+        }
+        const parts = par.textContent.match(/[^.!?]*[.!?]*/g) || [];
+        let acc = 0;
+        sentence = par.textContent;
+        for (const s of parts) {
+          if (offset < acc + s.length) { sentence = s; break; }
+          acc += s.length;
+        }
+        sentence = sentence.slice(0, 220);
+      }
+      L._tipContext = { word, sentence };
+      tip.innerHTML = `<b class="la">${L.esc(word)}</b> — ${L.esc(w.dataset.g)}
+        <button class="tipask">Ask Magister ›</button>`;
       tip.classList.add('show');
       const rect = w.getBoundingClientRect();
       tip.style.left = Math.max(8, Math.min(rect.left, window.innerWidth - 300)) + 'px';
       tip.style.top = (rect.bottom + 8) + 'px';
+    } else if (e.target.closest('.tipask')) {
+      tip.classList.remove('show');
+      const ctx = L._tipContext || {};
+      if (L.askAboutWord) L.askAboutWord(ctx.word || '', ctx.sentence || '');
     } else if (!e.target.closest('#glosstip')) {
       tip.classList.remove('show');
       document.querySelectorAll('.w.hl').forEach(x => x.classList.remove('hl'));

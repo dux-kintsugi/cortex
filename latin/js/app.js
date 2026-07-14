@@ -211,6 +211,7 @@
           <button class="navbtn ${c === 'home' ? 'on' : ''}" data-go="home">Course</button>
           <button class="navbtn ${c === 'review' ? 'on' : ''}" data-go="review">Review${due ? ` <span class="badge">${due}</span>` : ''}</button>
           <button class="navbtn ${c === 'library' ? 'on' : ''}" data-go="library">Library</button>
+          <button class="navbtn ${c === 'magister' ? 'on' : ''}" data-go="magister">Magister</button>
           <button class="navbtn ${c === 'reference' ? 'on' : ''}" data-go="reference">Reference</button>
           <button class="navbtn ${c === 'guide' ? 'on' : ''}" data-go="guide">Guide</button>
         </nav>
@@ -230,6 +231,7 @@
     else if (c.view === 'review') L.renderReview(app);
     else if (c.view === 'reference') L.renderReference(app, c.a);
     else if (c.view === 'library') L.renderLibrary(app);
+    else if (c.view === 'magister') L.renderMagister(app);
     else if (c.view === 'placement') L.renderPlacement(app);
     else if (c.view === 'guide') { app.innerHTML = renderGuide(); refreshVoiceUI(); }
     else app.innerHTML = renderHome();
