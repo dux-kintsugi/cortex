@@ -105,6 +105,11 @@ Offline is handled: sync retries automatically when the connection returns.
 ## Use it
 
 - Paste any text, hit **Read this** (or **📋 Paste** straight from the clipboard).
+- Everything is **cleaned before reading** — pasted or imported: invisible
+  soft-hyphens/zero-widths (which silently break words), non-breaking
+  spaces, stray HTML entities, `[12]`-style footnote markers, bare URLs,
+  bullet glyphs, separator rules, and PDF-style words split across line
+  breaks are all normalized. The text box shows exactly what will play.
 - Play takes over the full screen with the word centered and counts down
   **● ● ●** (~1.5 s) before starting, so you have time to settle in — seeking
   and sentence-jumps resume instantly without the countdown. **✕** or Esc

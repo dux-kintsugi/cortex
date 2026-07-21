@@ -126,6 +126,28 @@
     'If you get lost, pause: the surrounding sentence appears so you can re-orient. The left and right arrows jump by sentence.\n\n' +
     'Ready? Paste your own text below — an article, an email, anything — and press "Read this".';
 
+  /* ---------------- Input cleanup ---------------- */
+  // Every text passes through here before reading — pastes especially
+  // arrive with invisible characters and web/PDF artifacts that flash by
+  // as garbage tokens one word at a time.
+  function cleanInputText(t) {
+    return (t || '')
+      .replace(/\r\n?/g, '\n')
+      .replace(/[\u00AD\u200B\u200C\u200D\uFEFF]/g, '')       // soft hyphens & zero-widths silently break words
+      .replace(/[\u00A0\u2007\u202F\t]/g, ' ')                  // exotic spaces → plain space
+      .replace(/&nbsp;/gi, ' ').replace(/&amp;/gi, '&')          // stray HTML entities
+      .replace(/&quot;/gi, '"').replace(/&#39;|&apos;/gi, "'")
+      .replace(/([A-Za-z])-\n(?=[a-z])/g, '$1')                  // words hyphen-split across lines (PDF copy-paste)
+      .replace(/^[ ]*[•●▪◦‣·*]\s+/gm, '')                        // bullet glyphs
+      .replace(/\[(\d{1,3}|citation needed)\]/gi, '')            // footnote markers
+      .replace(/(https?:\/\/|www\.)\S+/gi, '')                   // bare URLs read as noise
+      .replace(/\(\s*\)/g, '')                                   // parens left empty by URL removal
+      .replace(/^[ ]*[-=_*~—–]{3,}[ ]*$/gm, '')                  // separator rules
+      .replace(/[ ]{2,}/g, ' ')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+  }
+
   /* ---------------- Tokenizer ---------------- */
 
   // Proportional ORP: the letter whose optical center sits nearest to
@@ -405,6 +427,8 @@
 
   function loadText(raw, startAt, book) {
     pause(); // also saves the outgoing book's position
+    raw = cleanInputText(raw); // every source — pastes, imports, books — gets normalized
+    el.text.value = raw;       // the box always shows exactly what will play
     currentBook = book || null;
     tokens = tokenize(raw || '');
     pos = Math.max(0, Math.min(tokens.length - 1, startAt || 0));
@@ -1801,7 +1825,7 @@
   // version, and when one activates the page reloads itself once — unless
   // you're mid-read, in which case it applies on the next open.
 
-  var APP_VERSION = 'v9'; // keep in step with CACHE in sw.js
+  var APP_VERSION = 'v10'; // keep in step with CACHE in sw.js
   $('version').textContent = 'presto ' + APP_VERSION;
 
   if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
